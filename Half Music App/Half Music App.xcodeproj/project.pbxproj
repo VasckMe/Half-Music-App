@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AED28E44082000FCD54 /* NetworkService.swift */; };
+		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
+		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
+		18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF428E4532E000FCD54 /* SearchTableViewController.swift */; };
 		1876014C28E34C0B000223CD /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014B28E34C0B000223CD /* Audio.swift */; };
 		1876014E28E34C46000223CD /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014D28E34C46000223CD /* ItemInfo.swift */; };
 		1876015028E34C50000223CD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014F28E34C50000223CD /* Track.swift */; };
@@ -18,7 +21,6 @@
 		1876016028E35150000223CD /* CacheResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015F28E35150000223CD /* CacheResponseManager.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
-		18B66C7028DC7343000D5F79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6F28DC7343000D5F79 /* ViewController.swift */; };
 		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
 		18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */; };
@@ -26,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		18130AED28E44082000FCD54 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
+		18130AF428E4532E000FCD54 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		1876014B28E34C0B000223CD /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		1876014D28E34C46000223CD /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		1876014F28E34C50000223CD /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -37,7 +42,6 @@
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		18B66C6F28DC7343000D5F79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18B66C7228DC7343000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18B66C7428DC7346000D5F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B66C7728DC7346000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,9 +62,19 @@
 		18130AEC28E4406C000FCD54 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				18130AF128E4515D000FCD54 /* DataFetcherService.swift */,
+				18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */,
 				18130AED28E44082000FCD54 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		18130AF328E4530D000FCD54 /* Main Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
+			);
+			path = "Main Controllers";
 			sourceTree = "<group>";
 		};
 		1876014628E34360000223CD /* Views */ = {
@@ -78,7 +92,7 @@
 		1876014728E34365000223CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				18B66C6F28DC7343000D5F79 /* ViewController.swift */,
+				18130AF328E4530D000FCD54 /* Main Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,10 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B66C7028DC7343000D5F79 /* ViewController.swift in Sources */,
+				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
 				1876016028E35150000223CD /* CacheResponseManager.swift in Sources */,
+				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
+				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
 				1876015D28E35085000223CD /* Constants.swift in Sources */,
