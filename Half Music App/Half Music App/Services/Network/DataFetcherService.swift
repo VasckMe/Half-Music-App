@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import AlamofireImage
+
 protocol DataFetcherServiceProtocol {
     func fetchFreeMusic(completion: @escaping(Audio?) -> Void)
+    func fetchImage(urlString: String, completion: @escaping (Image?) -> Void)
 }
 
 final class DataFetcherService: DataFetcherServiceProtocol {
@@ -23,5 +26,9 @@ final class DataFetcherService: DataFetcherServiceProtocol {
             urlString: Constants.apiString,
             headers: Constants.apiHeaders,
             response: completion)
+    }
+    
+    func fetchImage(urlString: String, completion: @escaping (Image?) -> Void) {
+        networkDataFetcher.fetchURLImageData(urlString: urlString, completion: completion)
     }
 }

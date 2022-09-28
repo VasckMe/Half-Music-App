@@ -20,12 +20,13 @@ class SearchTableViewController: UITableViewController {
     // MARK: Properties
     
     let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
-    var copiedArray = LocalStorage.shared.searchTracks
+    var copiedArray: [ItemInfo] = []
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.title = "Search music"
         searchTrackBar.delegate = self
         tableView.register(
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
@@ -35,8 +36,7 @@ class SearchTableViewController: UITableViewController {
             guard let tracks = audio?.items else { return }
             LocalStorage.shared.searchTracks = tracks
             self?.tableView.reloadData()
-            self?.copiedArray = LocalStorage.shared.searchTracks
-//            print(audio?.items.first?.track.name)
+            self?.copiedArray = tracks
         }
     }
 
@@ -45,7 +45,6 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LocalStorage.shared.searchTracks.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard

@@ -6,18 +6,22 @@
 //
 
 import Foundation
+import AlamofireImage
 
-
-
-final class CacheResponseManager {
+final class CacheManager {
     
-    static let shared = CacheResponseManager()
+    static let shared = CacheManager()
     
     private init() {}
         
-    let cache = URLCache(
+    let urlCache = URLCache(
         memoryCapacity: 0,
         diskCapacity: 100 * 1024 * 1024,
         diskPath: "myChache"
+    )
+    
+    let imageCache = AutoPurgingImageCache(
+        memoryCapacity: 100_000_000,
+        preferredMemoryUsageAfterPurge: 60_000_000
     )
 }

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+import AlamofireImage
 
 protocol NetworkDataFetcherProtocol {
     func fetchJSONGenericData<T: Decodable>(
@@ -13,6 +15,7 @@ protocol NetworkDataFetcherProtocol {
         headers: [String : String]?,
         response: @escaping(T?) -> Void
     )
+    func fetchURLImageData(urlString: String, completion: @escaping (Image?) -> Void)
 }
 
 final class NetworkDataFetcher: NetworkDataFetcherProtocol {
@@ -38,6 +41,17 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
             } else {
                 let decodedModel = self.decodeJSON(type: T.self, data: data)
                 response(decodedModel)
+            }
+        }
+    }
+    
+    func fetchURLImageData(urlString: String, completion: @escaping (Image?) -> Void) {
+        networkService.requestImage(url: urlString) { response in
+            switch response.result {
+            case .failure(let error):
+                print("Error \(error)")
+            case .success(let image):
+                completion(image)
             }
         }
     }
