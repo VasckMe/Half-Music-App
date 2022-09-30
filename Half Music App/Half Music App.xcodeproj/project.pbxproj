@@ -11,6 +11,14 @@
 		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
 		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
 		18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF428E4532E000FCD54 /* SearchTableViewController.swift */; };
+		1872835B28E74EC90064278A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1872835A28E74EC90064278A /* SignIn.storyboard */; };
+		1872835F28E758400064278A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872835E28E758400064278A /* SignInViewController.swift */; };
+		1872836128E75C700064278A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1872836028E75C700064278A /* SignUp.storyboard */; };
+		1872836328E75CA90064278A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872836228E75CA90064278A /* SignUpViewController.swift */; };
+		1872836528E75D5F0064278A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1872836428E75D5E0064278A /* GoogleService-Info.plist */; };
+		1872836828E75F040064278A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836728E75F040064278A /* FirebaseAuth */; };
+		1872836A28E75F040064278A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836928E75F040064278A /* FirebaseDatabase */; };
+		1872836C28E75F040064278A /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836B28E75F040064278A /* FirebaseDatabaseSwift */; };
 		1876014C28E34C0B000223CD /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014B28E34C0B000223CD /* Audio.swift */; };
 		1876014E28E34C46000223CD /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014D28E34C46000223CD /* ItemInfo.swift */; };
 		1876015028E34C50000223CD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014F28E34C50000223CD /* Track.swift */; };
@@ -36,6 +44,11 @@
 		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		18130AF428E4532E000FCD54 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		1872835A28E74EC90064278A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		1872835E28E758400064278A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		1872836028E75C700064278A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		1872836228E75CA90064278A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1872836428E75D5E0064278A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1876014B28E34C0B000223CD /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		1876014D28E34C46000223CD /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		1876014F28E34C50000223CD /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -61,7 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1872836C28E75F040064278A /* FirebaseDatabaseSwift in Frameworks */,
 				18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */,
+				1872836828E75F040064278A /* FirebaseAuth in Frameworks */,
+				1872836A28E75F040064278A /* FirebaseDatabase in Frameworks */,
 				18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +102,22 @@
 			path = "Main Controllers";
 			sourceTree = "<group>";
 		};
+		1872835C28E7581C0064278A /* SignIn Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1872835E28E758400064278A /* SignInViewController.swift */,
+			);
+			path = "SignIn Controllers";
+			sourceTree = "<group>";
+		};
+		1872835D28E7582A0064278A /* SignUp Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1872836228E75CA90064278A /* SignUpViewController.swift */,
+			);
+			path = "SignUp Controllers";
+			sourceTree = "<group>";
+		};
 		1876014628E34360000223CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +133,8 @@
 		1876014728E34365000223CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1872835D28E7582A0064278A /* SignUp Controllers */,
+				1872835C28E7581C0064278A /* SignIn Controllers */,
 				18130AF328E4530D000FCD54 /* Main Controllers */,
 			);
 			path = Controllers;
@@ -139,6 +173,7 @@
 		1876015728E34FE2000223CD /* Sign In */ = {
 			isa = PBXGroup;
 			children = (
+				1872835A28E74EC90064278A /* SignIn.storyboard */,
 			);
 			path = "Sign In";
 			sourceTree = "<group>";
@@ -146,6 +181,7 @@
 		1876015828E34FEB000223CD /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				1872836028E75C700064278A /* SignUp.storyboard */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -209,6 +245,7 @@
 				1876014728E34365000223CD /* Controllers */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
 				18B66C7928DC7346000D5F79 /* Info.plist */,
+				1872836428E75D5E0064278A /* GoogleService-Info.plist */,
 				1876014828E3436B000223CD /* Delegates */,
 			);
 			path = "Half Music App";
@@ -284,6 +321,9 @@
 			packageProductDependencies = (
 				18D20D2D28E49B8A00A758CC /* Alamofire */,
 				18D20D3028E49BB800A758CC /* AlamofireImage */,
+				1872836728E75F040064278A /* FirebaseAuth */,
+				1872836928E75F040064278A /* FirebaseDatabase */,
+				1872836B28E75F040064278A /* FirebaseDatabaseSwift */,
 			);
 			productName = "Half Music App";
 			productReference = 18B66C6828DC7343000D5F79 /* Half Music App.app */;
@@ -316,6 +356,7 @@
 			packageReferences = (
 				18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				18D20D2F28E49BB800A758CC /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 18B66C6928DC7343000D5F79 /* Products */;
 			projectDirPath = "";
@@ -332,9 +373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
+				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
+				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
 				18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */,
+				1872836528E75D5F0064278A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +395,9 @@
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
+				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
+				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
 				1876015D28E35085000223CD /* Constants.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
@@ -512,7 +558,7 @@
 				INFOPLIST_FILE = "Half Music App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -539,7 +585,7 @@
 				INFOPLIST_FILE = "Half Music App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -578,6 +624,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.6.0;
+			};
+		};
 		18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -597,6 +651,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1872836728E75F040064278A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		1872836928E75F040064278A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		1872836B28E75F040064278A /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
 		18D20D2D28E49B8A00A758CC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */;

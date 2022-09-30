@@ -16,6 +16,7 @@ class SearchTableViewCell: UITableViewCell {
     
     static let identifier = "SearchTableViewCell"
     let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
+    var photoURL: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +26,8 @@ class SearchTableViewCell: UITableViewCell {
     func configure(model: Track) {
         trackNameLabel.text = model.name
         trackArtistsLabel.text = model.artists.first?.name
-        
-        let imageUrl = model.album.images[2].url
-        
-        if let image = CacheManager.shared.imageCache.image(withIdentifier: imageUrl) {
+        guard let photoURL = photoURL else { return }
+        if let image = CacheManager.shared.imageCache.image(withIdentifier: photoURL) {
             trackImageView.image = image
             activityIndicator.stopAnimating()
         } else {
@@ -36,7 +35,7 @@ class SearchTableViewCell: UITableViewCell {
                 guard let image = image else {
                     return
                 }
-                CacheManager.shared.imageCache.add(image, withIdentifier: imageUrl)
+                CacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
                 self?.trackImageView.image = image
                 self?.activityIndicator.stopAnimating()
             }

@@ -26,6 +26,7 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "TEST TITLE"
         navigationController?.title = "Search music"
         searchTrackBar.delegate = self
         tableView.register(
@@ -57,6 +58,7 @@ class SearchTableViewController: UITableViewController {
         
         let track = LocalStorage.shared.searchTracks[indexPath.row].track
         
+        cell.photoURL = track.album.images[2].url
         cell.configure(model: track)
 
         return cell
