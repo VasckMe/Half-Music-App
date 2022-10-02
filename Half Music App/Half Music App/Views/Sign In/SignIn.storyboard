@@ -69,7 +69,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="loginAction" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Il1-os-iT6"/>
-                                                    <segue destination="YsG-3X-puo" kind="show" id="B2U-S1-BJJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -100,6 +99,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="CHn-4d-Dj4" id="qSJ-HV-bBE"/>
                         <outlet property="passwordTextField" destination="Exn-2A-kn2" id="Vo8-el-zbg"/>
+                        <segue destination="YsG-3X-puo" kind="show" identifier="GoToMainTBVC" id="El2-9N-ftX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

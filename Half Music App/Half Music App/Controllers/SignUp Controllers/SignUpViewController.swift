@@ -58,7 +58,21 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ref = Database.database().reference(withPath: "users")
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbDidShow),
+            name: UIWindow.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbDidHide),
+            name: UIWindow.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     // MARK: IBActions
@@ -107,7 +121,8 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 let userRef = self?.ref.child(user.user.uid)
-                userRef?.setValue(["email": user.user.email])
+//                userRef?.setValue(["email": user.user.email])
+                userRef?.updateChildValues(["email" : user.user.email, "nickname" : nickname])
             }
         }
     }
@@ -128,6 +143,17 @@ class SignUpViewController: UIViewController {
         signUpButtonOutlet.isEnabled = isValidEmail && isValidPassword != .bad && isValidConfPass
     }
     
+    @objc func kbDidShow(notification: Notification) {
+        self.view.frame.origin.y = 0
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y -= (keyboardSize.height / 2)
+        }
+    }
+    
+    @objc func kbDidHide() {
+        self.view.frame.origin.y = 0
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -137,5 +163,11 @@ class SignUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
