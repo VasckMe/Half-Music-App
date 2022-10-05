@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+final class SearchTableViewController: UITableViewController {
 
     // MARK: IBOutlets
     
@@ -67,7 +67,7 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75.0
     }
-
+    
     /*
     // MARK: - Navigation
 

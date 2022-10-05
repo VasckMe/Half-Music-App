@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
-class SignInViewController: UIViewController {
+final class SignInViewController: BaseViewController {
 
     // MARK: IBOutlets
     
@@ -42,15 +43,15 @@ class SignInViewController: UIViewController {
     @IBAction private func loginAction() {
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        
+
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
             if let error = error {
-                print("Error ocured: \(error.localizedDescription)")
+                self?.callDefaultAlert(title: "Error", message: "\(error.localizedDescription)")
             } else if let _ = user {
                 self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
                 return
             } else {
-                print("ERROR LOGIN AMOGUS ACTION")
+                self?.callDefaultAlert(title: "Error", message: "Uknown problem O_o")
             }
         }
     }
@@ -66,6 +67,10 @@ class SignInViewController: UIViewController {
         self.view.frame.origin.y = 0
     }
     
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+    }
     
     /*
     // MARK: - Navigation

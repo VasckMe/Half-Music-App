@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseViewController {
 
     // MARK: IBOutlets
     
@@ -109,20 +110,20 @@ class SignUpViewController: UIViewController {
         let nickname = nickTextField.text,
         let password = passwordTextField.text
     else {
-        print("Bad email, nickname, password")
+        print("Wrong data")
         return
         }
     
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
             if let error = error {
-                print("Registration was incorrect\n\(error.localizedDescription)")
+                self?.callDefaultAlert(title: "Error", message: "\(error.localizedDescription)")
             } else {
                 guard let user = user else {
                     return
                 }
                 let userRef = self?.ref.child(user.user.uid)
-//                userRef?.setValue(["email": user.user.email])
-                userRef?.updateChildValues(["email" : user.user.email, "nickname" : nickname])
+                userRef?.setValue(["email": user.user.email, "nickname" : nickname])
+                self?.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
             }
         }
     }
@@ -154,15 +155,14 @@ class SignUpViewController: UIViewController {
         self.view.frame.origin.y = 0
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if
+            let signUpMessageVC = segue.destination as? SignUpMessageViewController,
+            let nickname = sender as? String
+        {
+            signUpMessageVC.nickname = nickname
+        }
     }
-    */
 }
 
 extension SignUpViewController: UITextFieldDelegate {

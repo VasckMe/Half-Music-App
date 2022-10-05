@@ -6,8 +6,20 @@
 //
 
 import Foundation
+//import Firebase
 
 struct Album: Decodable {
-    let images: [Images]
+    let images: [AlbumImage]
     let name: String
+    
+    static func convertFromDictionary(dictionary: [String: Any]) -> Album? {
+        guard
+            let imagesDictionary = dictionary["Images"] as? [String: String],
+            let albumName = dictionary["Album name"] as? String,
+            let images = AlbumImage.convertFromDictionary(dictionary: imagesDictionary)
+        else {
+            return nil
+        }
+        return Album(images: images, name: albumName)
+    }
 }

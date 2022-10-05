@@ -11,6 +11,7 @@
 		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
 		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
 		18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF428E4532E000FCD54 /* SearchTableViewController.swift */; };
+		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
 		18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18680D9E28E8867D001DF00D /* GoogleService-Info.plist */; };
@@ -18,9 +19,6 @@
 		1872835F28E758400064278A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872835E28E758400064278A /* SignInViewController.swift */; };
 		1872836128E75C700064278A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1872836028E75C700064278A /* SignUp.storyboard */; };
 		1872836328E75CA90064278A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872836228E75CA90064278A /* SignUpViewController.swift */; };
-		1872836828E75F040064278A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836728E75F040064278A /* FirebaseAuth */; };
-		1872836A28E75F040064278A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836928E75F040064278A /* FirebaseDatabase */; };
-		1872836C28E75F040064278A /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1872836B28E75F040064278A /* FirebaseDatabaseSwift */; };
 		1876014C28E34C0B000223CD /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014B28E34C0B000223CD /* Audio.swift */; };
 		1876014E28E34C46000223CD /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014D28E34C46000223CD /* ItemInfo.swift */; };
 		1876015028E34C50000223CD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014F28E34C50000223CD /* Track.swift */; };
@@ -29,6 +27,10 @@
 		1876015628E34C6C000223CD /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015528E34C6C000223CD /* Artists.swift */; };
 		1876015D28E35085000223CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015C28E35085000223CD /* Constants.swift */; };
 		1876016028E35150000223CD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015F28E35150000223CD /* CacheManager.swift */; };
+		1898336228EC359300558234 /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1898336128EC359300558234 /* File.rtf */; };
+		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
+		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
+		1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336A28EC447D00558234 /* SignUpMessageViewController.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
 		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
@@ -39,13 +41,16 @@
 		18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */; };
 		18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D2D28E49B8A00A758CC /* Alamofire */; };
 		18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D3028E49BB800A758CC /* AlamofireImage */; };
+		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Half_Music_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18130AED28E44082000FCD54 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		18130AF428E4532E000FCD54 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
 		18680D9E28E8867D001DF00D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -61,6 +66,10 @@
 		1876015528E34C6C000223CD /* Artists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artists.swift; sourceTree = "<group>"; };
 		1876015C28E35085000223CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1876015F28E35150000223CD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		1898336128EC359300558234 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
+		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
+		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1898336A28EC447D00558234 /* SignUpMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMessageViewController.swift; sourceTree = "<group>"; };
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +80,8 @@
 		18D20D2528E45FAF00A758CC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
+		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +89,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1872836C28E75F040064278A /* FirebaseDatabaseSwift in Frameworks */,
 				18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */,
-				1872836828E75F040064278A /* FirebaseAuth in Frameworks */,
-				1872836A28E75F040064278A /* FirebaseDatabase in Frameworks */,
 				18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */,
+				66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1872836228E75CA90064278A /* SignUpViewController.swift */,
+				1898336A28EC447D00558234 /* SignUpMessageViewController.swift */,
 			);
 			path = "SignUp Controllers";
 			sourceTree = "<group>";
@@ -165,7 +175,9 @@
 		1876014928E34BAC000223CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1898336528EC402700558234 /* BaseVC */,
 				1876014A28E34BB3000223CD /* TrackModels */,
+				1898336028EC352200558234 /* FirebaseModels */,
 				18680D9C28E843E0001DF00D /* PasswordDifficult.swift */,
 			);
 			path = Models;
@@ -232,11 +244,29 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		1898336028EC352200558234 /* FirebaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				1860484328EB1E38007F4A93 /* TrackFB.swift */,
+			);
+			path = FirebaseModels;
+			sourceTree = "<group>";
+		};
+		1898336528EC402700558234 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				1898336828EC406400558234 /* BaseViewController.swift */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
 		18B66C5F28DC7343000D5F79 = {
 			isa = PBXGroup;
 			children = (
 				18B66C6A28DC7343000D5F79 /* Half Music App */,
 				18B66C6928DC7343000D5F79 /* Products */,
+				BC95A44075828F7A9FF65BD4 /* Pods */,
+				85719C8348536048B7F4D2D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +289,7 @@
 				1876014728E34365000223CD /* Controllers */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
 				18B66C7928DC7346000D5F79 /* Info.plist */,
+				1898336128EC359300558234 /* File.rtf */,
 				18680D9E28E8867D001DF00D /* GoogleService-Info.plist */,
 				1876014828E3436B000223CD /* Delegates */,
 			);
@@ -303,6 +334,7 @@
 		18D20D2428E45F9E00A758CC /* FireBase Storage */ = {
 			isa = PBXGroup;
 			children = (
+				1898336328EC361E00558234 /* FireBaseStorageService.swift */,
 			);
 			path = "FireBase Storage";
 			sourceTree = "<group>";
@@ -316,6 +348,23 @@
 			path = "Cell View";
 			sourceTree = "<group>";
 		};
+		85719C8348536048B7F4D2D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC95A44075828F7A9FF65BD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */,
+				225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,9 +372,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18B66C7C28DC7346000D5F79 /* Build configuration list for PBXNativeTarget "Half Music App" */;
 			buildPhases = (
+				217B85B9ED54F28FCFF7920F /* [CP] Check Pods Manifest.lock */,
 				18B66C6428DC7343000D5F79 /* Sources */,
 				18B66C6528DC7343000D5F79 /* Frameworks */,
 				18B66C6628DC7343000D5F79 /* Resources */,
+				10A4DE8C33463A7B56F86C4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,9 +386,6 @@
 			packageProductDependencies = (
 				18D20D2D28E49B8A00A758CC /* Alamofire */,
 				18D20D3028E49BB800A758CC /* AlamofireImage */,
-				1872836728E75F040064278A /* FirebaseAuth */,
-				1872836928E75F040064278A /* FirebaseDatabase */,
-				1872836B28E75F040064278A /* FirebaseDatabaseSwift */,
 			);
 			productName = "Half Music App";
 			productReference = 18B66C6828DC7343000D5F79 /* Half Music App.app */;
@@ -370,7 +418,6 @@
 			packageReferences = (
 				18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				18D20D2F28E49BB800A758CC /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 18B66C6928DC7343000D5F79 /* Products */;
 			projectDirPath = "";
@@ -388,6 +435,7 @@
 			files = (
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
 				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
+				1898336228EC359300558234 /* File.rtf in Resources */,
 				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
 				18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
@@ -398,6 +446,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10A4DE8C33463A7B56F86C4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Half Music App/Pods-Half Music App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Half Music App/Pods-Half Music App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Half Music App/Pods-Half Music App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		217B85B9ED54F28FCFF7920F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Half Music App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18B66C6428DC7343000D5F79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -405,6 +495,9 @@
 			files = (
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
+				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
+				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
+				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				1876016028E35150000223CD /* CacheManager.swift in Sources */,
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
@@ -413,6 +506,7 @@
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
+				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
 				1876015D28E35085000223CD /* Constants.swift in Sources */,
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
@@ -564,6 +658,7 @@
 		};
 		18B66C7D28DC7346000D5F79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -591,6 +686,7 @@
 		};
 		18B66C7E28DC7346000D5F79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -640,14 +736,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.6.0;
-			};
-		};
 		18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -667,21 +755,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1872836728E75F040064278A /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		1872836928E75F040064278A /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		1872836B28E75F040064278A /* FirebaseDatabaseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1872836628E75F040064278A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabaseSwift;
-		};
 		18D20D2D28E49B8A00A758CC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18D20D2C28E49B8A00A758CC /* XCRemoteSwiftPackageReference "Alamofire" */;
