@@ -27,6 +27,9 @@
 		1876015628E34C6C000223CD /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015528E34C6C000223CD /* Artists.swift */; };
 		1876015D28E35085000223CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015C28E35085000223CD /* Constants.swift */; };
 		1876016028E35150000223CD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015F28E35150000223CD /* CacheManager.swift */; };
+		1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885D0C928ED846300288CA4 /* DetailTrack.storyboard */; };
+		1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */; };
+		1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */; };
 		1898336228EC359300558234 /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1898336128EC359300558234 /* File.rtf */; };
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
 		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
@@ -66,6 +69,9 @@
 		1876015528E34C6C000223CD /* Artists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artists.swift; sourceTree = "<group>"; };
 		1876015C28E35085000223CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1876015F28E35150000223CD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		1885D0C928ED846300288CA4 /* DetailTrack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailTrack.storyboard; sourceTree = "<group>"; };
+		1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackViewController.swift; sourceTree = "<group>"; };
+		1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		1898336128EC359300558234 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
 		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
+				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -216,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				18B66C7128DC7343000D5F79 /* Main.storyboard */,
+				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -242,6 +250,14 @@
 				18D20D1F28E45EF000A758CC /* Cache */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		1885D0CD28EDA9B600288CA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1898336028EC352200558234 /* FirebaseModels */ = {
@@ -283,6 +299,7 @@
 			children = (
 				18130AEC28E4406C000FCD54 /* Services */,
 				1876015E28E3513B000223CD /* Managers */,
+				1885D0CD28EDA9B600288CA4 /* Extensions */,
 				1876015B28E35029000223CD /* Constants */,
 				1876014928E34BAC000223CD /* Models */,
 				1876014628E34360000223CD /* Views */,
@@ -439,6 +456,7 @@
 				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
 				18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
+				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
 				18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
 			);
@@ -500,7 +518,9 @@
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				1876016028E35150000223CD /* CacheManager.swift in Sources */,
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
+				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
+				1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,

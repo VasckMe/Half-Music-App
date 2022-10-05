@@ -59,7 +59,7 @@ final class SignUpViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Sign Up"
         ref = Database.database().reference(withPath: "users")
         
         NotificationCenter.default.addObserver(

@@ -16,14 +16,13 @@ final class SignInViewController: BaseViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    // MARK: Properties
-    
-    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        passwordTextField.enablePasswordToggle()
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(kbDidShow),
@@ -36,8 +35,6 @@ final class SignInViewController: BaseViewController {
             name: UIWindow.keyboardWillHideNotification,
             object: nil
         )
-        
-
     }
     
     @IBAction private func loginAction() {
