@@ -49,7 +49,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="poV-Dd-Iwz">
                                                 <rect key="frame" x="0.0" y="65.333333333333371" width="350" height="48"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NNI-W7-rVl">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="NNI-W7-rVl">
                                                         <rect key="frame" x="-2" y="0.0" width="354" height="31"/>
                                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="maximumTrackTintColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
@@ -154,15 +154,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qog-Zs-74R">
                                         <rect key="frame" x="0.0" y="627" width="350" height="30"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-08-943">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-08-943">
                                                 <rect key="frame" x="-2" y="0.0" width="354" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <imageReference key="minimumValueImage" image="volume.fill" catalog="system" symbolScale="small"/>
-                                                <imageReference key="maximumValueImage" image="volume.3.fill" catalog="system" symbolScale="small"/>
+                                                <imageReference key="minimumValueImage" image="speaker.fill" catalog="system" symbolScale="small"/>
+                                                <imageReference key="maximumValueImage" image="speaker.wave.3.fill" catalog="system" symbolScale="small"/>
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="maximumTrackTintColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <action selector="volumeSliderAction" destination="Y6W-OH-hqX" eventType="valueChanged" id="n46-3u-GQe"/>
+                                                    <action selector="volumeSliderAction:" destination="Y6W-OH-hqX" eventType="valueChanged" id="wri-gF-tIH"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -189,15 +189,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.84615384615384" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="346" y="4"/>
         </scene>
     </scenes>
     <resources>
         <image name="backward.fill" catalog="system" width="128" height="77"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
-        <image name="volume.3.fill" catalog="system" width="128" height="84"/>
-        <image name="volume.fill" catalog="system" width="128" height="125"/>
+        <image name="speaker.fill" catalog="system" width="128" height="125"/>
+        <image name="speaker.wave.3.fill" catalog="system" width="128" height="84"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

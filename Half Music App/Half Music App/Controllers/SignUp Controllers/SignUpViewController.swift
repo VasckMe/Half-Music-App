@@ -76,6 +76,10 @@ final class SignUpViewController: BaseViewController {
         )
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: IBActions
     
     @IBAction private func emailTFAction() {

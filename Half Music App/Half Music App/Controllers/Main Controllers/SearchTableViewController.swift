@@ -26,8 +26,6 @@ final class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "TEST TITLE"
-        navigationController?.title = "Search music"
         searchTrackBar.delegate = self
         tableView.register(
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
@@ -91,6 +89,7 @@ extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             LocalStorage.shared.searchTracks = copiedArray
+            tableView.reloadData()
         } else {
             LocalStorage.shared.searchTracks = copiedArray.filter({ iteminfo in
                 iteminfo.track.name.contains(searchText)

@@ -27,7 +27,7 @@ class SearchTableViewCell: UITableViewCell {
         trackNameLabel.text = model.name
         trackArtistsLabel.text = model.artists.first?.name
         guard let photoURL = photoURL else { return }
-        if let image = CacheManager.shared.imageCache.image(withIdentifier: photoURL) {
+        if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: photoURL) {
             trackImageView.image = image
             activityIndicator.stopAnimating()
         } else {
@@ -35,7 +35,7 @@ class SearchTableViewCell: UITableViewCell {
                 guard let image = image else {
                     return
                 }
-                CacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
+                ImageCacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
                 self?.trackImageView.image = image
                 self?.activityIndicator.stopAnimating()
             }

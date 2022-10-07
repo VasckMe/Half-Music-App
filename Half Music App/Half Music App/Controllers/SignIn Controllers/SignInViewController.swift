@@ -16,12 +16,21 @@ final class SignInViewController: BaseViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle!
+    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         passwordTextField.enablePasswordToggle()
+        
+        authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let _ = user else {
+                return
+            }
+            self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
+        }
         
         NotificationCenter.default.addObserver(
             self,
@@ -35,6 +44,11 @@ final class SignInViewController: BaseViewController {
             name: UIWindow.keyboardWillHideNotification,
             object: nil
         )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(authStateDidChangeListenerHandle)
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction private func loginAction() {
@@ -65,7 +79,7 @@ final class SignInViewController: BaseViewController {
     }
     
     @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
+        let _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
     

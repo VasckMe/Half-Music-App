@@ -31,9 +31,9 @@ final class NetworkService: NetworkServiceProtocol {
             return
         }
 
-        let cache = CacheManager.shared.urlCache
+        let cache = ResponseCacheManager.shared.urlCache
         
-        var defaultRequest = URLRequest(url: url)
+        let defaultRequest = URLRequest(url: url)
         
         let httpHeaders = headers != nil ? HTTPHeaders(headers!) : nil
         
