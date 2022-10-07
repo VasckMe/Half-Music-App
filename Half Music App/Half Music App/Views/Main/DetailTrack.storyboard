@@ -181,6 +181,7 @@
                     <connections>
                         <outlet property="authorNameLabel" destination="uxF-KE-oUj" id="ksh-Xd-pnY"/>
                         <outlet property="endTimeLabel" destination="Hhx-zM-97E" id="FqF-Rg-bom"/>
+                        <outlet property="playPauseButtonOutlet" destination="p4W-Id-BcF" id="xQn-h8-6LD"/>
                         <outlet property="startTimeLabel" destination="DiU-Rx-rtP" id="wG6-dM-IBF"/>
                         <outlet property="trackImageView" destination="DVH-eC-JOj" id="bBO-3W-9ZU"/>
                         <outlet property="trackNameLabel" destination="pdH-bF-bkw" id="HuC-zr-HKs"/>

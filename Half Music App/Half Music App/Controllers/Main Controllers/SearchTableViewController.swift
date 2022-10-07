@@ -79,8 +79,7 @@ final class SearchTableViewController: UITableViewController {
             let detailTrackVC = segue.destination as? DetailTrackViewController,
             let indexPath = tableView.indexPathForSelectedRow
         {
-            let selectedTrack = LocalStorage.shared.searchTracks[indexPath.row].track
-            detailTrackVC.track = selectedTrack
+            detailTrackVC.trackIndex = indexPath.row
         }
     }
 }

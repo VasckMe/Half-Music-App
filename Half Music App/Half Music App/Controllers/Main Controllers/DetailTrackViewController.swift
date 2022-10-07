@@ -8,7 +8,7 @@
 import UIKit
 import MediaPlayer
 
-class DetailTrackViewController: UIViewController {
+final class DetailTrackViewController: UIViewController {
 
     // MARK: IBOutlets
     
@@ -18,95 +18,102 @@ class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var trackSlider: UISlider!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var playPauseButtonOutlet: UIButton!
     
     // MARK: Properties
     
-    var track: Track?
-    var player: AVPlayer!
-    let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    var timeobs: Any!
+    private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
+    private let mediaPlayer: MediaPlayerProtocol = MediaPlayer()
+    
+    private var isPlaying = false {
+        didSet {
+            if isPlaying {
+                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                mediaPlayer.player.play()
+            } else {
+                playPauseButtonOutlet.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                mediaPlayer.player.pause()
+            }
+        }
+    }
+    
+    var trackIndex: Int?
+    private var timeObserver: Any!
     
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.backgroundColor = .clear
-        setupPlayer()
+        guard
+            let trackIndex = trackIndex
+        else {
+            print("There is no tracks with that index")
+                return
+        }
+        let track = LocalStorage.shared.searchTracks[trackIndex].track
         setupTrackUI()
         
-        timeobs = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.0, preferredTimescale: .max), queue: nil) {[weak self] time in
-            print("time: \(time.value)")
-            print("STATUs: ",self?.player.status)
+        timeObserver = mediaPlayer.addObserver { [weak self] time in
             self?.makeTime(time: time)
-//            let duration = Int((self?.player.currentItem?.duration.value)!/44100)
-//            let seconds = Int(time.value/1000000000)
-//            self?.trackSlider.value = Float(seconds)
-//            self?.startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
-//            self?.endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        player.removeTimeObserver(timeobs!)
+        mediaPlayer.removeObserver(observer: timeObserver!)
     }
     
     // MARK: IBActions
     
-    @IBAction func trackSliderAction() {
+    @IBAction private func trackSliderAction() {
         let value: Double = Double(trackSlider.value)
         let time = CMTime(seconds: value, preferredTimescale: .max)
-        player.seek(to: time)
-        makeTime(time: time)
+        mediaPlayer.seekTo(time: time)
+//        makeTime(time: time)
     }
     
     @IBAction private func backwardTrackAction() {
-    }
-    @IBAction private func playPauseTrackAction(_ sender: UIButton) {
-        
-//        sender.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        
-        if sender.imageView?.image == UIImage(systemName: "play.fill") {
-            sender.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            player.play()
-        } else {
-            sender.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            player.pause()
+        if trackIndex != nil {
+            trackIndex! -= 1
+            setupTrackUI()
         }
     }
     
-    func makeTime(time: CMTime) {
-        let duration = Int((player.currentItem?.duration.value)!/44100)
-        let seconds = Int(time.value/1000000000)
-        trackSlider.value = Float(seconds)
-        startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
-        endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
+    @IBAction private func playPauseTrackAction(_ sender: UIButton) {
+        trackSlider.maximumValue = Float(mediaPlayer.getDuration()!)
+        isPlaying.toggle()
     }
     
     @IBAction private func forwardTrackAction() {
+        if trackIndex != nil {
+            trackIndex! += 1
+            setupTrackUI()
+        }
     }
     
-    @IBAction func volumeSliderAction(_ sender: UISlider) {
-        player.volume = sender.value
-        print("CURRRRRRRR ",player.currentItem?.currentTime())
-        print("CURRENT TIME: ",player.currentTime().value/1000000000)
-        print("DURATION: ",(player.currentItem?.duration.value)!/44100)
+    @IBAction private func volumeSliderAction(_ sender: UISlider) {
+        mediaPlayer.changeVolume(volume: sender.value)
     }
-    
-    
-    
     
     // MARK: Private
     
     private func setupTrackUI() {
-        guard let track = track else {
-            return
+        guard
+            let trackIndex = trackIndex,
+            LocalStorage.shared.searchTracks.indices.contains(trackIndex)
+        else {
+            print("There is no tracks with that index")
+                return
         }
+        
+        let track = LocalStorage.shared.searchTracks[trackIndex].track
+        
+        mediaPlayer.preparePlayer(urlString: track.preview_url)
+        
         trackNameLabel.text = track.name
         authorNameLabel.text = track.artists[0].name
         let trackUrl = track.album.images[0].url
-        
-        trackSlider.maximumValue = Float((player.currentItem?.duration.value)! / 44100)
-        
+                
         if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: trackUrl) {
             trackImageView.image = image
         } else {
@@ -120,16 +127,18 @@ class DetailTrackViewController: UIViewController {
         }
     }
     
-    private func setupPlayer() {
-        guard
-            let trackUrl = track?.preview_url,
-            let url = URL(string: trackUrl)
-        else {
-            return
+    private func makeTime(time: CMTime) {
+        let duration = mediaPlayer.getDuration()!
+        let seconds = Int(time.value/1000000000)
+        trackSlider.value = Float(seconds)
+        startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
+        endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
+        
+        if duration - seconds <= 0 {
+            isPlaying = false
+            mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
+            trackSlider.value = Float(duration - seconds)
         }
-        let music = AVPlayerItem(url: url)
-//        player = AVPlayer(url: url)
-        player = AVPlayer(playerItem: music)
     }
     
     /*
