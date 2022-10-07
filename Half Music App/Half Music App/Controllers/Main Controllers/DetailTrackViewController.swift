@@ -24,9 +24,6 @@ class DetailTrackViewController: UIViewController {
     var track: Track?
     var player: AVPlayer!
     let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    var timer = Timer()
-    var seconds = 0
-    
     var timeobs: Any!
     
     // MARK: LifeCycle
@@ -36,22 +33,30 @@ class DetailTrackViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         setupPlayer()
         setupTrackUI()
+        
+        timeobs = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.0, preferredTimescale: .max), queue: nil) {[weak self] time in
+            print("time: \(time.value)")
+            print("STATUs: ",self?.player.status)
+            self?.makeTime(time: time)
+//            let duration = Int((self?.player.currentItem?.duration.value)!/44100)
+//            let seconds = Int(time.value/1000000000)
+//            self?.trackSlider.value = Float(seconds)
+//            self?.startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
+//            self?.endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        player.removeTimeObserver(timeobs)
+        player.removeTimeObserver(timeobs!)
     }
     
     // MARK: IBActions
     
     @IBAction func trackSliderAction() {
-        seconds = Int(trackSlider.value)
-//        player.currentTime().tim  = CMTimeValue(seconds * 1000000000)
-        timeobs = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.0, preferredTimescale: .max), queue: nil) { time in
-            print("time: \(time.value)")
-        }
-        
-        print(player.status)
+        let value: Double = Double(trackSlider.value)
+        let time = CMTime(seconds: value, preferredTimescale: .max)
+        player.seek(to: time)
+        makeTime(time: time)
     }
     
     @IBAction private func backwardTrackAction() {
@@ -62,13 +67,19 @@ class DetailTrackViewController: UIViewController {
         
         if sender.imageView?.image == UIImage(systemName: "play.fill") {
             sender.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            startTimer()
             player.play()
         } else {
             sender.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            stopTimer()
             player.pause()
         }
+    }
+    
+    func makeTime(time: CMTime) {
+        let duration = Int((player.currentItem?.duration.value)!/44100)
+        let seconds = Int(time.value/1000000000)
+        trackSlider.value = Float(seconds)
+        startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
+        endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
     }
     
     @IBAction private func forwardTrackAction() {
@@ -94,7 +105,7 @@ class DetailTrackViewController: UIViewController {
         authorNameLabel.text = track.artists[0].name
         let trackUrl = track.album.images[0].url
         
-//        trackSlider.maximumValue = Float((player.currentItem?.duration.value)! / 44100)
+        trackSlider.maximumValue = Float((player.currentItem?.duration.value)! / 44100)
         
         if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: trackUrl) {
             trackImageView.image = image
@@ -117,35 +128,8 @@ class DetailTrackViewController: UIViewController {
             return
         }
         let music = AVPlayerItem(url: url)
+//        player = AVPlayer(url: url)
         player = AVPlayer(playerItem: music)
-    }
-    private func stopTimer() {
-        timer.invalidate()
-    }
-    
-    private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerSelector), userInfo: nil, repeats: true)
-    }
-    
-    private func reset() {
-        stopTimer()
-        trackSlider.value = 0
-        seconds = 0
-//        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
-    }
-    
-    @objc private func timerSelector() {
-        trackSlider.maximumValue = Float((player.currentItem?.duration.value)! / 44100)
-        let duration = Int((player.currentItem?.duration.value)! / 44100)
-        if duration - seconds == 0 {
-            reset()
-        }
-        print("Timer tolerance: ",timer.tolerance)
-        print("Seconds: ",seconds)
-        trackSlider.value = Float(seconds)
-        startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
-        endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
-        seconds += 1
     }
     
     /*
