@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NF-n4-Q9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="-321"/>
+            <point key="canvasLocation" x="1964.6153846153845" y="-321.32701421800948"/>
         </scene>
         <!--Account-->
         <scene sceneID="RCF-C1-b6x">
@@ -51,6 +51,7 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Find in tracks" id="OZO-UO-4XP">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.79929538749999995" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <textInputTraits key="textInputTraits"/>
@@ -102,6 +103,19 @@
             </objects>
             <point key="canvasLocation" x="1587" y="-823"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J1p-IK-YbA">
+            <objects>
+                <navigationController id="ton-79-Ol4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uQw-GF-nlz">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3n-DF-FOP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1005" y="-368"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">
             <objects>
@@ -122,7 +136,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIJ-0f-eHu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56" y="-320"/>
+            <point key="canvasLocation" x="15" y="-321"/>
         </scene>
     </scenes>
     <resources>

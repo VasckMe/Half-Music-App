@@ -20,12 +20,15 @@ final class SearchTableViewController: UITableViewController {
     // MARK: Properties
     
     let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
-    var copiedArray: [ItemInfo] = []
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navigationController.navi
+        navigationItem.title = "Your Title"
+        title = "TEST"
+        navigationController?.title = "TEST"
         searchTrackBar.delegate = self
         tableView.register(
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
@@ -33,16 +36,15 @@ final class SearchTableViewController: UITableViewController {
         
         dataFetcher.fetchFreeMusic { [weak self] audio in
             guard let tracks = audio?.items else { return }
-            LocalStorage.shared.searchTracks = tracks
+            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
             self?.tableView.reloadData()
-            self?.copiedArray = tracks
         }
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LocalStorage.shared.searchTracks.count
+        return LocalStorage.shared.localTracks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +56,7 @@ final class SearchTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let track = LocalStorage.shared.searchTracks[indexPath.row].track
+        let track = LocalStorage.shared.localTracks[indexPath.row]
         
         cell.photoURL = track.album.images[2].url
         cell.configure(model: track)
@@ -87,11 +89,11 @@ final class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            LocalStorage.shared.searchTracks = copiedArray
+            LocalStorage.shared.refreshLocalTracks()
             tableView.reloadData()
         } else {
-            LocalStorage.shared.searchTracks = copiedArray.filter({ iteminfo in
-                iteminfo.track.name.contains(searchText)
+            LocalStorage.shared.localTracks = LocalStorage.shared.copyLocalTracks.filter({ trackFB in
+                trackFB.name.contains(searchText)
             })
             tableView.reloadData()
         }

@@ -13,7 +13,22 @@ final class LocalStorage {
     
     private init() {}
     
-    var searchTracks: [ItemInfo] = []
+    var localTracks: [TrackFB] = []
+    var copyLocalTracks: [TrackFB] = []
     
-    let libraryTableArray = ["Artists", "Songs", "Playlists"]
+    private let libraryTableArray = ["Artists", "Songs", "Playlists"]
+    
+    func convertToNewModelArray(itemArray: [ItemInfo]) {
+        var newItemArray: [TrackFB] = []
+        for item in itemArray {
+            let trackFB = TrackFB(itemInfo: item)
+            newItemArray.append(trackFB)
+        }
+        localTracks = newItemArray
+        copyLocalTracks = newItemArray
+    }
+    
+    func refreshLocalTracks() {
+        localTracks = copyLocalTracks
+    }
 }

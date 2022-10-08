@@ -43,7 +43,7 @@ final class DetailTrackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = .clear
+//        navigationController?.navigationBar.backgroundColor = .clear
         setupTrackUI()
         
         timeObserver = mediaPlayer.addObserver { [weak self] time in
@@ -67,7 +67,7 @@ final class DetailTrackViewController: UIViewController {
     @IBAction private func backwardTrackAction() {
         if trackIndex != nil {
 //            trackIndex! -= 1
-            trackIndex! = trackIndex!-1 >= 0 ? trackIndex!-1 : LocalStorage.shared.searchTracks.count-1
+            trackIndex! = trackIndex!-1 >= 0 ? trackIndex!-1 : LocalStorage.shared.localTracks.count-1
             setupTrackUI()
         }
     }
@@ -80,7 +80,7 @@ final class DetailTrackViewController: UIViewController {
     @IBAction private func forwardTrackAction() {
         if trackIndex != nil {
 //            trackIndex! += 1
-            trackIndex! = trackIndex!+1 >= LocalStorage.shared.searchTracks.count ? 0 : trackIndex!+1
+            trackIndex! = trackIndex!+1 >= LocalStorage.shared.localTracks.count ? 0 : trackIndex!+1
             setupTrackUI()
         }
     }
@@ -94,18 +94,18 @@ final class DetailTrackViewController: UIViewController {
     private func setupTrackUI() {
         guard
             let trackIndex = trackIndex,
-            LocalStorage.shared.searchTracks.indices.contains(trackIndex)
+            LocalStorage.shared.localTracks.indices.contains(trackIndex)
         else {
             print("There is no tracks with that index")
                 return
         }
         
-        let track = LocalStorage.shared.searchTracks[trackIndex].track
+        let track = LocalStorage.shared.localTracks[trackIndex]
         
         mediaPlayer.preparePlayer(urlString: track.preview_url)
         
         trackNameLabel.text = track.name
-        authorNameLabel.text = track.artists[0].name
+        authorNameLabel.text = track.artist
         let trackUrl = track.album.images[0].url
                 
         if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: trackUrl) {

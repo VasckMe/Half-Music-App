@@ -23,9 +23,9 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(model: Track) {
+    func configure(model: TrackFB) {
         trackNameLabel.text = model.name
-        trackArtistsLabel.text = model.artists.first?.name
+        trackArtistsLabel.text = model.artist
         guard let photoURL = photoURL else { return }
         if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: photoURL) {
             trackImageView.image = image
