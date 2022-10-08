@@ -10,9 +10,12 @@ import MediaPlayer
 
 protocol MediaPlayerProtocol {
     var player: AVPlayer { get }
+    
+    func preparePlayer(urlString: String?)
+    
     func addObserver(completion: @escaping (CMTime) -> Void) -> Any
     func removeObserver(observer: Any)
-    func preparePlayer(urlString: String?)
+    
     func getDuration() -> Int?
     func seekTo(time: CMTime)
     func changeVolume(volume: Float)

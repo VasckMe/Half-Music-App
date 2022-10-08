@@ -36,22 +36,14 @@ final class DetailTrackViewController: UIViewController {
             }
         }
     }
-    
-    var trackIndex: Int?
     private var timeObserver: Any!
+    var trackIndex: Int?
     
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.backgroundColor = .clear
-        guard
-            let trackIndex = trackIndex
-        else {
-            print("There is no tracks with that index")
-                return
-        }
-        let track = LocalStorage.shared.searchTracks[trackIndex].track
         setupTrackUI()
         
         timeObserver = mediaPlayer.addObserver { [weak self] time in
@@ -74,7 +66,8 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func backwardTrackAction() {
         if trackIndex != nil {
-            trackIndex! -= 1
+//            trackIndex! -= 1
+            trackIndex! = trackIndex!-1 >= 0 ? trackIndex!-1 : LocalStorage.shared.searchTracks.count-1
             setupTrackUI()
         }
     }
@@ -86,7 +79,8 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func forwardTrackAction() {
         if trackIndex != nil {
-            trackIndex! += 1
+//            trackIndex! += 1
+            trackIndex! = trackIndex!+1 >= LocalStorage.shared.searchTracks.count ? 0 : trackIndex!+1
             setupTrackUI()
         }
     }
@@ -135,7 +129,8 @@ final class DetailTrackViewController: UIViewController {
         endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
         
         if duration - seconds <= 0 {
-            isPlaying = false
+//            isPlaying = false
+//            forwardTrackAction()
             mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             trackSlider.value = Float(duration - seconds)
         }
