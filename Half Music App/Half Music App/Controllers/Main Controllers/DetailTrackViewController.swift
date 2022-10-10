@@ -7,6 +7,7 @@
 
 import UIKit
 import MediaPlayer
+import FirebaseDatabase
 
 final class DetailTrackViewController: UIViewController {
 
@@ -20,11 +21,11 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var endTimeLabel: UILabel!
     @IBOutlet private weak var playPauseButtonOutlet: UIButton!
     
+    @IBOutlet weak var likeButtonOutlet: UIButton!
     // MARK: Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let mediaPlayer: MediaPlayerProtocol = MediaPlayer()
-    
     private var isPlaying = false {
         didSet {
             if isPlaying {
@@ -43,16 +44,26 @@ final class DetailTrackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
         setupTrackUI()
-        
+    }
+    
+    deinit {
+        print("DEINITED")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         timeObserver = mediaPlayer.addObserver { [weak self] time in
             self?.makeTime(time: time)
         }
+        print("ADDED OBSERVER")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         mediaPlayer.removeObserver(observer: timeObserver!)
+        FireBaseStorageManager.audioRef.removeAllObservers()
+        print("REMOVED OBSERVER")
     }
     
     // MARK: IBActions
@@ -61,7 +72,6 @@ final class DetailTrackViewController: UIViewController {
         let value: Double = Double(trackSlider.value)
         let time = CMTime(seconds: value, preferredTimescale: .max)
         mediaPlayer.seekTo(time: time)
-//        makeTime(time: time)
     }
     
     @IBAction private func backwardTrackAction() {
@@ -89,6 +99,29 @@ final class DetailTrackViewController: UIViewController {
         mediaPlayer.changeVolume(volume: sender.value)
     }
     
+    @IBAction func addToLibrary(_ sender: Any) {
+        guard
+            let trackIndex = trackIndex,
+            LocalStorage.shared.localTracks.indices.contains(trackIndex)
+        else {
+            print("There is no tracks with that index")
+                return
+        }
+        
+        let track = LocalStorage.shared.localTracks[trackIndex]
+        
+        
+        if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
+            print("REMOVING")
+            FireBaseStorageManager.audioRef.child(track.name).removeValue()
+            likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+        } else {
+            print("ADDING")
+            likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            FireBaseStorageManager.saveTrackInDB(track: track)
+        }
+    }
+    
     // MARK: Private
     
     private func setupTrackUI() {
@@ -101,6 +134,22 @@ final class DetailTrackViewController: UIViewController {
         }
         
         let track = LocalStorage.shared.localTracks[trackIndex]
+        
+        FireBaseStorageManager.audioRef.getData { [weak self] error, snapshot in
+            guard let snapshot = snapshot else {
+                return
+            }
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let trackFB = TrackFB(snapshot: snapshot) else { continue }
+                if trackFB.name == track.name {
+                    self?.likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    return
+                }
+            }
+            self?.likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
         
         mediaPlayer.preparePlayer(urlString: track.preview_url)
         
@@ -123,6 +172,7 @@ final class DetailTrackViewController: UIViewController {
     
     private func makeTime(time: CMTime) {
         let duration = mediaPlayer.getDuration()!
+        
         let seconds = Int(time.value/1000000000)
         trackSlider.value = Float(seconds)
         startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"

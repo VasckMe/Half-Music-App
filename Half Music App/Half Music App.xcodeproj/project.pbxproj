@@ -46,6 +46,7 @@
 		18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D2D28E49B8A00A758CC /* Alamofire */; };
 		18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D3028E49BB800A758CC /* AlamofireImage */; };
 		18D51B7828F0488E00CCAE4A /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */; };
+		18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
+		18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
 		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 			children = (
 				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
+				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -530,6 +533,7 @@
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
+				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,

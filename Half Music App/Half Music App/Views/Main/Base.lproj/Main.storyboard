@@ -10,7 +10,7 @@
         <!--Library-->
         <scene sceneID="ihr-t4-NNv">
             <objects>
-                <viewController id="ubX-lk-j1b" sceneMemberID="viewController">
+                <viewController id="ubX-lk-j1b" customClass="LibraryViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kij-uK-O7D">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,19 +102,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1N-5m-fRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1587" y="-823"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="J1p-IK-YbA">
-            <objects>
-                <navigationController id="ton-79-Ol4" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uQw-GF-nlz">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t3n-DF-FOP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1005" y="-368"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">

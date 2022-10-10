@@ -8,7 +8,7 @@
 import UIKit
 
 final class SearchTableViewController: UITableViewController {
-
+    
     // MARK: IBOutlets
     
     @IBOutlet private weak var searchTrackBar: UISearchBar! {
@@ -25,10 +25,8 @@ final class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController.navi
-        navigationItem.title = "Your Title"
-        title = "TEST"
-        navigationController?.title = "TEST"
+        title = "Music"
+//        navigationController?.isNavigationBarHidden = true
         searchTrackBar.delegate = self
         tableView.register(
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),

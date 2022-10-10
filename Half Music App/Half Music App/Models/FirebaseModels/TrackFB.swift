@@ -41,4 +41,14 @@ struct TrackFB {
         self.album = albumModel
         ref = snapshot.ref
     }
+    
+    func convertInDictionary() -> [String : Any] {
+        ["Name" : self.name,
+         "Album" : ["Album name" : self.album.name,
+                    "Images" : ["Big image" : self.album.images[0].url,
+                                "Medium image" : self.album.images[1].url,
+                                "Small image" : self.album.images[2].url]],
+         "Artist" : self.artist,
+         "Preview_url" : self.preview_url]
+    }
 }

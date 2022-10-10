@@ -22,7 +22,6 @@ final class SignInViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         passwordTextField.enablePasswordToggle()
         
         authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
