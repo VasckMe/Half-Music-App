@@ -100,22 +100,26 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeS-Qr-ID2">
                                                         <rect key="frame" x="0.0" y="523.33333333333337" width="350" height="43.666666666666629"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7ff-4v-vmh">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ff-4v-vmh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="43.666666666666664"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-WE-JY1">
-                                                                        <rect key="frame" x="0.0" y="3" width="39" height="37.666666666666664"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain">
-                                                                            <imageReference key="image" image="shuffle" catalog="system" symbolScale="large"/>
-                                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                                                        </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="addToLibrary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1zS-i7-Atc"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89N-1l-NHp">
-                                                                        <rect key="frame" x="39.000000000000007" y="0.0" width="77.666666666666686" height="43.666666666666664"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qq7-HR-u72">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="43.666666666666664"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-WE-JY1">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="43.666666666666664"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" image="shuffle" catalog="system"/>
+                                                                                <connections>
+                                                                                    <action selector="shuffleAction" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HOt-vl-7C2"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89N-1l-NHp">
+                                                                        <rect key="frame" x="58.333333333333329" y="0.0" width="58.333333333333329" height="43.666666666666664"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
                                                                             <imageReference key="image" image="backward.fill" catalog="system" symbolScale="large" variableValue="0.0"/>
@@ -127,6 +131,9 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="qq7-HR-u72" firstAttribute="width" secondItem="89N-1l-NHp" secondAttribute="width" id="o1g-7v-OwO"/>
+                                                                </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-cU-7PP">
                                                                 <rect key="frame" x="116.66666666666666" y="0.0" width="116.66666666666666" height="43.666666666666664"/>
@@ -174,6 +181,8 @@
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-08-943">
                                                                 <rect key="frame" x="-2" y="0.0" width="354" height="31"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <imageReference key="minimumValueImage" image="speaker.fill" catalog="system" symbolScale="small"/>
+                                                                <imageReference key="maximumValueImage" image="speaker.3.fill" catalog="system" symbolScale="small"/>
                                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="maximumTrackTintColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <connections>
@@ -187,11 +196,13 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqK-G3-Sdb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="155" height="34.333333333333336"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="rectangle.stack.badge.plus.fill" catalog="system"/>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILl-5L-P1l">
                                                                 <rect key="frame" x="195" y="0.0" width="155" height="34.333333333333336"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                                                                 <connections>
@@ -241,6 +252,7 @@
                         <outlet property="endTimeLabel" destination="Hhx-zM-97E" id="FqF-Rg-bom"/>
                         <outlet property="likeButtonOutlet" destination="ILl-5L-P1l" id="O85-qz-mxE"/>
                         <outlet property="playPauseButtonOutlet" destination="p4W-Id-BcF" id="xQn-h8-6LD"/>
+                        <outlet property="shuffleOutlet" destination="fT3-WE-JY1" id="LTL-F3-wY5"/>
                         <outlet property="startTimeLabel" destination="DiU-Rx-rtP" id="wG6-dM-IBF"/>
                         <outlet property="trackImageView" destination="DVH-eC-JOj" id="bBO-3W-9ZU"/>
                         <outlet property="trackNameLabel" destination="pdH-bF-bkw" id="HuC-zr-HKs"/>
@@ -259,6 +271,8 @@
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="rectangle.stack.badge.plus.fill" catalog="system" width="128" height="118"/>
         <image name="shuffle" catalog="system" width="128" height="95"/>
+        <image name="speaker.3.fill" catalog="system" width="128" height="84"/>
+        <image name="speaker.fill" catalog="system" width="128" height="125"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

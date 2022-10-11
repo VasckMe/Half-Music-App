@@ -19,9 +19,17 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var trackSlider: UISlider!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
-    @IBOutlet private weak var playPauseButtonOutlet: UIButton!
     
-    @IBOutlet weak var likeButtonOutlet: UIButton!
+    @IBOutlet private weak var playPauseButtonOutlet: UIButton!
+    @IBOutlet private weak var shuffleOutlet: UIButton! {
+        didSet {
+            shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
+            shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
+        }
+    }
+
+    @IBOutlet private weak var likeButtonOutlet: UIButton!
+    
     // MARK: Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
@@ -90,9 +98,17 @@ final class DetailTrackViewController: UIViewController {
     @IBAction private func forwardTrackAction() {
         if trackIndex != nil {
 //            trackIndex! += 1
-            trackIndex! = trackIndex!+1 >= LocalStorage.shared.localTracks.count ? 0 : trackIndex!+1
+            if shuffleOutlet.isSelected {
+                trackIndex! = Int.random(in: 0..<LocalStorage.shared.localTracks.count)
+            } else {
+                trackIndex! = trackIndex!+1 >= LocalStorage.shared.localTracks.count ? 0 : trackIndex!+1
+            }
             setupTrackUI()
         }
+    }
+    
+    @IBAction func shuffleAction() {
+        shuffleOutlet.isSelected.toggle()
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
@@ -109,7 +125,6 @@ final class DetailTrackViewController: UIViewController {
         }
         
         let track = LocalStorage.shared.localTracks[trackIndex]
-        
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING")

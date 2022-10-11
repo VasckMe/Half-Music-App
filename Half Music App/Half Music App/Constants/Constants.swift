@@ -5,7 +5,7 @@
 //  Created by Apple Macbook Pro 13 on 27.09.22.
 //
 
-import Foundation
+import UIKit
 
 final class Constants {
     static let apiHeaders = [
@@ -13,4 +13,5 @@ final class Constants {
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com"
     ]
     static let apiString = "https://spotify23.p.rapidapi.com/playlist_tracks/?id=37i9dQZF1DX4Wsb4d7NKfP&offset=0&limit=100"
+    static let globalTintColor = UIColor(red: 1, green: 0.313144, blue: 0, alpha: 1)
 }
