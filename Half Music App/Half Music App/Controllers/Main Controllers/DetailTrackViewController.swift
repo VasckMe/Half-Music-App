@@ -27,7 +27,14 @@ final class DetailTrackViewController: UIViewController {
             shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
         }
     }
+    @IBOutlet weak var repeatOutlet: UIButton! {
+        didSet {
+            repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
+            repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
 
+        }
+    }
+    
     @IBOutlet private weak var likeButtonOutlet: UIButton!
     
     // MARK: Properties
@@ -37,10 +44,10 @@ final class DetailTrackViewController: UIViewController {
     private var isPlaying = false {
         didSet {
             if isPlaying {
-                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
                 mediaPlayer.player.play()
             } else {
-                playPauseButtonOutlet.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
                 mediaPlayer.player.pause()
             }
         }
@@ -115,12 +122,16 @@ final class DetailTrackViewController: UIViewController {
         mediaPlayer.changeVolume(volume: sender.value)
     }
     
+    @IBAction func repeatAction() {
+        repeatOutlet.isSelected.toggle()
+    }
+    
     @IBAction func addToLibrary(_ sender: Any) {
         guard
             let trackIndex = trackIndex,
             LocalStorage.shared.localTracks.indices.contains(trackIndex)
         else {
-            print("There is no tracks with that index")
+            print("Bad track index")
                 return
         }
         
@@ -194,7 +205,7 @@ final class DetailTrackViewController: UIViewController {
         endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
         
         if duration - seconds <= 0 {
-//            isPlaying = false
+            isPlaying = repeatOutlet.isSelected
 //            forwardTrackAction()
             mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             trackSlider.value = Float(duration - seconds)
