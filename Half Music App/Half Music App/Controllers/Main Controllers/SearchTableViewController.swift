@@ -32,12 +32,22 @@ final class SearchTableViewController: UITableViewController {
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: SearchTableViewCell.identifier)
         
+//        dataFetcher.fetchFreeMusic { [weak self] audio in
+//            guard let tracks = audio?.items else { return }
+//            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+//            self?.tableView.reloadData()
+//        }
+//        print("== = == = = = == = = = =view did load")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         dataFetcher.fetchFreeMusic { [weak self] audio in
             guard let tracks = audio?.items else { return }
             LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
             self?.tableView.reloadData()
         }
     }
+    
 
     // MARK: - Table view data source
 

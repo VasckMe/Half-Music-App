@@ -13,10 +13,9 @@ final class LocalStorage {
     
     private init() {}
     
+    var library: [String] = ["Artists", "Albums", "Songs"]
     var localTracks: [TrackFB] = []
     var copyLocalTracks: [TrackFB] = []
-    
-    private let libraryTableArray = ["Artists", "Songs", "Playlists"]
     
     func convertToNewModelArray(itemArray: [ItemInfo]) {
         var newItemArray: [TrackFB] = []

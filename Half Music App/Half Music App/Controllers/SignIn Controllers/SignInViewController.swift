@@ -45,10 +45,17 @@ final class SignInViewController: BaseViewController {
         )
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(authStateDidChangeListenerHandle)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    // MARK: Actions
     
     @IBAction private func loginAction() {
         let email = emailTextField.text!
@@ -66,32 +73,20 @@ final class SignInViewController: BaseViewController {
         }
     }
     
-    @objc func kbDidShow(notification: Notification) {
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        let _ = unwindSegue.source
+    }
+    
+    @objc private func kbDidShow(notification: Notification) {
         self.view.frame.origin.y = 0
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y -= (keyboardSize.height / 2)
         }
     }
     
-    @objc func kbDidHide() {
+    @objc private func kbDidHide() {
         self.view.frame.origin.y = 0
     }
-    
-    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
-        let _ = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension SignInViewController: UITextFieldDelegate {
