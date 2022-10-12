@@ -21,7 +21,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder Image" translatesAutoresizingMaskIntoConstraints="NO" id="c18-iV-SlH">
                                 <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
-                                <color key="backgroundColor" red="0.4988286495" green="0.75975400209999999" blue="0.0039863092820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="c18-iV-SlH" secondAttribute="height" multiplier="1:1" id="g9R-Sk-br8"/>
                                 </constraints>

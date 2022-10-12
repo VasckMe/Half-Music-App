@@ -19,7 +19,7 @@
                                 <rect key="frame" x="20" y="87" width="350" height="654"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EnS-hn-0SO">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="317"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="211.33333333333334"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -27,24 +27,35 @@
                                             <outlet property="delegate" destination="ubX-lk-j1b" id="4M1-d3-QVx"/>
                                         </connections>
                                     </tableView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hiV-Ly-0GL">
-                                        <rect key="frame" x="0.0" y="337" width="350" height="317"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s3b-vt-PmK">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="ubX-lk-j1b" id="UCi-Ck-vZn"/>
-                                            <outlet property="delegate" destination="ubX-lk-j1b" id="1Dg-0u-uTM"/>
-                                        </connections>
-                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3ef-fa-k3M">
+                                        <rect key="frame" x="0.0" y="231.33333333333329" width="350" height="422.66666666666674"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f80-g6-U6G">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hiV-Ly-0GL">
+                                                <rect key="frame" x="0.0" y="56" width="350" height="366.66666666666669"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s3b-vt-PmK">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="ubX-lk-j1b" id="UCi-Ck-vZn"/>
+                                                    <outlet property="delegate" destination="ubX-lk-j1b" id="1Dg-0u-uTM"/>
+                                                </connections>
+                                            </collectionView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="EnS-hn-0SO" firstAttribute="height" secondItem="hiV-Ly-0GL" secondAttribute="height" id="qwq-TY-6vF"/>
+                                    <constraint firstItem="EnS-hn-0SO" firstAttribute="height" secondItem="3ef-fa-k3M" secondAttribute="height" multiplier="0.5" id="iz4-Uq-cjO"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -61,11 +72,43 @@
                     <connections>
                         <outlet property="libraryTableView" destination="EnS-hn-0SO" id="Ncm-jJ-5GC"/>
                         <outlet property="recentlyAddedCollectionView" destination="hiV-Ly-0GL" id="sGz-Xw-8XF"/>
+                        <segue destination="l9Y-RD-oiX" kind="show" identifier="GoToDetailTrackVC" id="xfa-Ki-7tB"/>
+                        <segue destination="0T3-zV-LEu" kind="show" identifier="GoToSongsTVC" id="Wf6-0P-1GH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NF-n4-Q9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964.6153846153845" y="-321.32701421800948"/>
+            <point key="canvasLocation" x="1728" y="-321"/>
+        </scene>
+        <!--Songs Table View Controller-->
+        <scene sceneID="X9C-tY-PCD">
+            <objects>
+                <tableViewController id="0T3-zV-LEu" customClass="SongsTableViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="zWt-a0-E0I">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8uz-52-tJ1">
+                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8uz-52-tJ1" id="Wgs-fO-6Ny">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0T3-zV-LEu" id="kdx-hh-U4l"/>
+                            <outlet property="delegate" destination="0T3-zV-LEu" id="1lB-wK-kOv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="dKE-0L-QUq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-ef-4hI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2549" y="-321"/>
         </scene>
         <!--Account-->
         <scene sceneID="RCF-C1-b6x">
@@ -135,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6c-Jw-fAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1002" y="-635"/>
+            <point key="canvasLocation" x="1000" y="-823"/>
         </scene>
         <!--DetailTrack-->
         <scene sceneID="VUi-Tv-gSX">
@@ -145,7 +188,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1N-5m-fRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="-823"/>
+            <point key="canvasLocation" x="2285" y="-804"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">
@@ -170,6 +213,9 @@
             <point key="canvasLocation" x="-403" y="-321"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xfa-Ki-7tB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>

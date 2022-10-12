@@ -31,6 +31,7 @@
 		1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */; };
 		1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */; };
 		1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */; };
+		1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894E35128F721EE00ED403F /* SongsTableViewController.swift */; };
 		1898336228EC359300558234 /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1898336128EC359300558234 /* File.rtf */; };
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
 		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
@@ -80,6 +81,7 @@
 		1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCacheManager.swift; sourceTree = "<group>"; };
 		1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		1894E35128F721EE00ED403F /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
 		1898336128EC359300558234 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
 		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
+				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -552,6 +555,7 @@
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
+				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
 				18EC915928F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.swift in Sources */,
 				1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,

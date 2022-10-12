@@ -42,16 +42,17 @@ class LibraryViewController: UIViewController {
         ref.removeAllObservers()
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if
+            let detailTrackVC = segue.destination as? DetailTrackViewController,
+            let index = sender as? Int
+        {
+            detailTrackVC.trackIndex = index
+        }
     }
-    */
-
 }
 
 extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -73,6 +74,11 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55.0
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if LocalStorage.shared.library[indexPath.row] == "Songs" {
+            performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
+        }
     }
 }
 
@@ -97,5 +103,9 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = .zero
         return CGSize(width: 170, height: 190)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GoToDetailTrackVC", sender: indexPath.row)
     }
 }

@@ -77,6 +77,8 @@ final class SignInViewController: BaseViewController {
         let _ = unwindSegue.source
     }
     
+    // MARK: Private
+    
     @objc private func kbDidShow(notification: Notification) {
         self.view.frame.origin.y = 0
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
