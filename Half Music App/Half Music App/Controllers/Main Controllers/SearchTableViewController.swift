@@ -31,13 +31,6 @@ final class SearchTableViewController: UITableViewController {
         tableView.register(
             UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: SearchTableViewCell.identifier)
-        
-//        dataFetcher.fetchFreeMusic { [weak self] audio in
-//            guard let tracks = audio?.items else { return }
-//            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-//            self?.tableView.reloadData()
-//        }
-//        print("== = == = = = == = = = =view did load")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,17 +72,14 @@ final class SearchTableViewController: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToDetailTrackVC", sender: nil)
-    }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
         if
-            let detailTrackVC = segue.destination as? DetailTrackViewController,
-            let indexPath = tableView.indexPathForSelectedRow
+            let vc = storyboard.instantiateViewController(
+                withIdentifier: "DetailTrackVC"
+            ) as? DetailTrackViewController
         {
-            detailTrackVC.trackIndex = indexPath.row
+            vc.trackIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

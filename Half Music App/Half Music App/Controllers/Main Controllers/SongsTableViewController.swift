@@ -42,6 +42,17 @@ class SongsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
+        if
+            let vc = storyboard.instantiateViewController(
+                withIdentifier: "DetailTrackVC"
+            ) as? DetailTrackViewController
+        {
+            vc.trackIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,15 +88,4 @@ class SongsTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

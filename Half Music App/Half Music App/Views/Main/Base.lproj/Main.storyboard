@@ -72,7 +72,6 @@
                     <connections>
                         <outlet property="libraryTableView" destination="EnS-hn-0SO" id="Ncm-jJ-5GC"/>
                         <outlet property="recentlyAddedCollectionView" destination="hiV-Ly-0GL" id="sGz-Xw-8XF"/>
-                        <segue destination="l9Y-RD-oiX" kind="show" identifier="GoToDetailTrackVC" id="xfa-Ki-7tB"/>
                         <segue destination="0T3-zV-LEu" kind="show" identifier="GoToSongsTVC" id="Wf6-0P-1GH"/>
                     </connections>
                 </viewController>
@@ -213,9 +212,6 @@
             <point key="canvasLocation" x="-403" y="-321"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="xfa-Ki-7tB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>

@@ -41,18 +41,6 @@ class LibraryViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
     }
-
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if
-            let detailTrackVC = segue.destination as? DetailTrackViewController,
-            let index = sender as? Int
-        {
-            detailTrackVC.trackIndex = index
-        }
-    }
 }
 
 extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -106,6 +94,14 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToDetailTrackVC", sender: indexPath.row)
+        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
+        if
+            let vc = storyboard.instantiateViewController(
+                withIdentifier: "DetailTrackVC"
+            ) as? DetailTrackViewController
+        {
+            vc.trackIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
