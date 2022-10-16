@@ -34,6 +34,8 @@ class LibraryViewController: UIViewController {
                 tracks.append(track)
             }
             LocalStorage.shared.localTracks = tracks
+            LocalStorage.shared.copyLocalTracks = tracks
+
             self?.recentlyAddedCollectionView.reloadData()
         }
     }
@@ -66,6 +68,10 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if LocalStorage.shared.library[indexPath.row] == "Songs" {
             performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
+        } else if LocalStorage.shared.library[indexPath.row] == "Artists"{
+            performSegue(withIdentifier: "GoToArtistsTVC", sender: nil)
+        } else if LocalStorage.shared.library[indexPath.row] == "Albums" {
+            performSegue(withIdentifier: "GoToAlbumsCVC", sender: nil)
         }
     }
 }

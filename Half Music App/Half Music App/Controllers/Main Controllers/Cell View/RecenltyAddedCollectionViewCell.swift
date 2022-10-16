@@ -21,7 +21,6 @@ final class RecenltyAddedCollectionViewCell: UICollectionViewCell {
         let photoURL = track.album.images[1].url
         if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: photoURL) {
             trackImageView.image = image
-//            activityIndicator.stopAnimating()
         } else {
             dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
                 guard let image = image else {
@@ -29,7 +28,6 @@ final class RecenltyAddedCollectionViewCell: UICollectionViewCell {
                 }
                 ImageCacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
                 self?.trackImageView.image = image
-//                self?.activityIndicator.stopAnimating()
             }
         }
         

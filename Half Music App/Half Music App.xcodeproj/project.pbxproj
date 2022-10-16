@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */; };
+		180EEC4828FC030900D2FEE9 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EEC4628FC030900D2FEE9 /* ArtistTableViewCell.swift */; };
+		180EEC4928FC030900D2FEE9 /* ArtistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EEC4728FC030900D2FEE9 /* ArtistTableViewCell.xib */; };
+		180EEC4F28FC571800D2FEE9 /* AlbumsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */; };
+		180EEC5228FC575000D2FEE9 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EEC5028FC575000D2FEE9 /* AlbumCollectionViewCell.swift */; };
+		180EEC5328FC575000D2FEE9 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EEC5128FC575000D2FEE9 /* AlbumCollectionViewCell.xib */; };
+		180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EEC5428FC5A3A00D2FEE9 /* AlbumFB.swift */; };
 		18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AED28E44082000FCD54 /* NetworkService.swift */; };
 		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
 		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
@@ -57,6 +64,13 @@
 
 /* Begin PBXFileReference section */
 		04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Half_Music_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsTableViewController.swift; sourceTree = "<group>"; };
+		180EEC4628FC030900D2FEE9 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		180EEC4728FC030900D2FEE9 /* ArtistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistTableViewCell.xib; sourceTree = "<group>"; };
+		180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewController.swift; sourceTree = "<group>"; };
+		180EEC5028FC575000D2FEE9 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		180EEC5128FC575000D2FEE9 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
+		180EEC5428FC5A3A00D2FEE9 /* AlbumFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumFB.swift; sourceTree = "<group>"; };
 		18130AED28E44082000FCD54 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
@@ -137,6 +151,8 @@
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
 				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
+				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
+				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -283,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				1860484328EB1E38007F4A93 /* TrackFB.swift */,
+				180EEC5428FC5A3A00D2FEE9 /* AlbumFB.swift */,
 			);
 			path = FirebaseModels;
 			sourceTree = "<group>";
@@ -385,6 +402,10 @@
 				18EC915428F6B840006B5B66 /* LibraryTableViewCell.xib */,
 				18EC915728F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.swift */,
 				18EC915828F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.xib */,
+				180EEC4628FC030900D2FEE9 /* ArtistTableViewCell.swift */,
+				180EEC4728FC030900D2FEE9 /* ArtistTableViewCell.xib */,
+				180EEC5028FC575000D2FEE9 /* AlbumCollectionViewCell.swift */,
+				180EEC5128FC575000D2FEE9 /* AlbumCollectionViewCell.xib */,
 			);
 			path = "Cell View";
 			sourceTree = "<group>";
@@ -488,10 +509,12 @@
 				18EC915A28F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.xib in Resources */,
 				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
 				18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */,
+				180EEC4928FC030900D2FEE9 /* ArtistTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
 				18EC915628F6B840006B5B66 /* LibraryTableViewCell.xib in Resources */,
 				18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */,
+				180EEC5328FC575000D2FEE9 /* AlbumCollectionViewCell.xib in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,10 +568,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180EEC5228FC575000D2FEE9 /* AlbumCollectionViewCell.swift in Sources */,
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
+				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
@@ -562,6 +587,7 @@
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,
 				18D51B7828F0488E00CCAE4A /* MediaPlayer.swift in Sources */,
+				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				18EC915528F6B840006B5B66 /* LibraryTableViewCell.swift in Sources */,
@@ -571,7 +597,9 @@
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
 				1876015428E34C61000223CD /* Images.swift in Sources */,
+				180EEC4F28FC571800D2FEE9 /* AlbumsCollectionViewController.swift in Sources */,
 				18680D9B28E84315001DF00D /* VerificationService.swift in Sources */,
+				180EEC4828FC030900D2FEE9 /* ArtistTableViewCell.swift in Sources */,
 				1876015228E34C59000223CD /* Album.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* SearchTableViewCell.swift in Sources */,
