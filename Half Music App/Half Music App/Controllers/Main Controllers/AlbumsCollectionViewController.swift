@@ -6,25 +6,55 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import FirebaseDatabase
 
 class AlbumsCollectionViewController: UICollectionViewController {
 
     var albums: [AlbumFB] = []
+    let ref = FireBaseStorageManager.albumsRef
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
         collectionView.register(
             UINib(nibName: AlbumCollectionViewCell.identifier,bundle: nil),
             forCellWithReuseIdentifier: AlbumCollectionViewCell.identifier
         )
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ref.observe(.value) { [weak self] snapshot in
+            var albms: [AlbumFB] = []
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let album = AlbumFB(snapshot: snapshot) else { continue }
+                albms.append(album)
+            }
+            self?.albums = albms
+            self?.collectionView.reloadData()
+        }
+//        ref.getData { [weak self] error, snapshot in
+//            guard
+//                let snapshot = snapshot else {
+//                return
+//            }
+//            for item in snapshot.children {
+//                guard let snapshot = item as? DataSnapshot,
+//                      let album = AlbumFB(snapshot: snapshot) else { continue }
+//                self?.albums.append(album)
+//            }
+//            self?.collectionView.reloadData()
+//        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ref.removeAllObservers()
+        
+        
+        
     }
 
     /*
@@ -39,14 +69,7 @@ class AlbumsCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return albums.count
     }
 
@@ -64,8 +87,24 @@ class AlbumsCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    
     // MARK: UICollectionViewDelegate
-
+    
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let album = albums[indexPath.row]
+        LocalStorage.shared.localTracks = album.tracks
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if
+            let vc = storyboard.instantiateViewController(
+                withIdentifier: "SongsTVC"
+            ) as? SongsTableViewController
+        {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -95,4 +134,12 @@ class AlbumsCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.estimatedItemSize = .zero
+        return CGSize(width: 170, height: 190)
+    }
 }

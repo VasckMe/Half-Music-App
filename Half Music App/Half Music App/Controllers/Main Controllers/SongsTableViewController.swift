@@ -36,7 +36,6 @@ class SongsTableViewController: UITableViewController {
             return UITableViewCell()
         }
         let track = LocalStorage.shared.localTracks[indexPath.row]
-        cell.photoURL = track.album.images[2].url
         cell.configure(model: track)
 
         return cell
@@ -52,6 +51,11 @@ class SongsTableViewController: UITableViewController {
             vc.trackIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60.0
     }
 
     /*

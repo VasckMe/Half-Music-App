@@ -14,6 +14,7 @@ class FireBaseStorageManager {
     static var usersRef = Database.database().reference(withPath: "users")
     static var userRef = usersRef.child(getCurrentUserUUIDAm())
     static var audioRef = userRef.child("audio")
+    static var albumsRef = userRef.child("albums")
     
     static func getCurrentUserUUIDAm() -> String {
         guard let currentUser = Auth.auth().currentUser else {

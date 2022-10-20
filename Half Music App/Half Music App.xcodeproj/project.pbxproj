@@ -18,6 +18,7 @@
 		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
 		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
 		18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF428E4532E000FCD54 /* SearchTableViewController.swift */; };
+		1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
@@ -75,6 +76,7 @@
 		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		18130AF428E4532E000FCD54 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumViewController.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
 				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
 				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
+				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -604,6 +607,7 @@
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* SearchTableViewCell.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
+				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

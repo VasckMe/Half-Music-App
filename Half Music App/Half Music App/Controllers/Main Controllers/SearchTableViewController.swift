@@ -59,7 +59,6 @@ final class SearchTableViewController: UITableViewController {
         
         let track = LocalStorage.shared.localTracks[indexPath.row]
         
-        cell.photoURL = track.album.images[2].url
         cell.configure(model: track)
 
         return cell

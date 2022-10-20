@@ -17,6 +17,7 @@ class LibraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Library"
         libraryTableView.register(
             UINib(nibName: LibraryTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: LibraryTableViewCell.identifier
