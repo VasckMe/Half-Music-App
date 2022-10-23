@@ -25,7 +25,8 @@ final class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "Music"
+        title = "Music"
+        
 //        navigationController?.isNavigationBarHidden = true
         searchTrackBar.delegate = self
         tableView.register(

@@ -28,7 +28,10 @@ final class SignInViewController: BaseViewController {
             guard let _ = user else {
                 return
             }
-            self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
+//            self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+            self?.navigationController?.pushViewController(nc, animated: true)
         }
         
         NotificationCenter.default.addObserver(

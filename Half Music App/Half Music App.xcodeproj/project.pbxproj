@@ -49,6 +49,7 @@
 		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
 		18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */; };
+		18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDC4662904048900E27FEC /* AccountViewController.swift */; };
 		18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2528E45FAF00A758CC /* LocalStorage.swift */; };
 		18D20D2A28E4654F00A758CC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */; };
 		18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */; };
@@ -109,6 +110,7 @@
 		18B66C7428DC7346000D5F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B66C7728DC7346000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B66C7928DC7346000D5F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18CDC4662904048900E27FEC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18D20D2528E45FAF00A758CC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
 				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
 				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
+				18CDC4662904048900E27FEC /* AccountViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -573,6 +576,7 @@
 			files = (
 				180EEC5228FC575000D2FEE9 /* AlbumCollectionViewCell.swift in Sources */,
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
+				18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
