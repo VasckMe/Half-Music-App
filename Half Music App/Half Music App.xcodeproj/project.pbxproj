@@ -44,6 +44,7 @@
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
 		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
 		1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336A28EC447D00558234 /* SignUpMessageViewController.swift */; };
+		18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
 		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
@@ -103,6 +104,7 @@
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
 		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1898336A28EC447D00558234 /* SignUpMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMessageViewController.swift; sourceTree = "<group>"; };
+		18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
 				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
 				18CDC4662904048900E27FEC /* AccountViewController.swift */,
+				18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -586,6 +589,7 @@
 				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
+				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
 				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
 				18EC915928F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.swift in Sources */,

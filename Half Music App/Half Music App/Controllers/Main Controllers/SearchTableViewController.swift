@@ -79,7 +79,10 @@ final class SearchTableViewController: UITableViewController {
             ) as? DetailTrackViewController
         {
             vc.trackIndex = indexPath.row
-            navigationController?.pushViewController(vc, animated: true)
+            
+//            vc.modalPresentationStyle = .fullScreen
+//            vc.modalTransitionStyle = .coverVertical
+            navigationController?.present(vc, animated: true)
         }
     }
 }

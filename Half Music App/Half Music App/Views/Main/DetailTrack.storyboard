@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail Track View Controller-->
+        <!--asd-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="DetailTrackVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="DetailTrackViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -277,7 +277,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="V4p-Hr-Z4t" secondAttribute="trailing" id="xRJ-jq-nxm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ee0-Sw-bnw"/>
+                    <navigationItem key="navigationItem" title="asd" id="ee0-Sw-bnw"/>
                     <connections>
                         <outlet property="authorNameLabel" destination="uxF-KE-oUj" id="ksh-Xd-pnY"/>
                         <outlet property="endTimeLabel" destination="Hhx-zM-97E" id="FqF-Rg-bom"/>

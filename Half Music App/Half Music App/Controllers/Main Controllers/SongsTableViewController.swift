@@ -49,7 +49,7 @@ class SongsTableViewController: UITableViewController {
             ) as? DetailTrackViewController
         {
             vc.trackIndex = indexPath.row
-            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.present(vc, animated: true)
         }
     }
     

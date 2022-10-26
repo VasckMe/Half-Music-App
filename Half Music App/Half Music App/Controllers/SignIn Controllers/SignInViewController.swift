@@ -28,10 +28,13 @@ final class SignInViewController: BaseViewController {
             guard let _ = user else {
                 return
             }
-//            self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+//            nc.modalPresentationStyle = .fullScreen
+//            nc.modalTransitionStyle = .coverVertical
+//            self?.navigationController?.present(nc, animated: true)
             self?.navigationController?.pushViewController(nc, animated: true)
+//            self?.present(nc, animated: true)
         }
         
         NotificationCenter.default.addObserver(
@@ -68,7 +71,15 @@ final class SignInViewController: BaseViewController {
             if let error = error {
                 self?.callDefaultAlert(title: "Error", message: "\(error.localizedDescription)")
             } else if let _ = user {
-                self?.performSegue(withIdentifier: "GoToMainTBVC", sender: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+//                tabBarController.modalPresentationStyle = .fullScreen
+//                tabBarController.modalTransitionStyle = .coverVertical
+//                self?.present(tabBarController, animated: true)
+                self?.navigationController?.pushViewController(tabBarController, animated: true)
+
+//                self?.navigationController?.present(tabBarController, animated: true)
+                
                 return
             } else {
                 self?.callDefaultAlert(title: "Error", message: "Uknown problem O_o")

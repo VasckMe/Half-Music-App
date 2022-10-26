@@ -12,7 +12,11 @@ import FirebaseAuth
 class FireBaseStorageManager {
     
     static var usersRef = Database.database().reference(withPath: "users")
-    static var userRef = usersRef.child(getCurrentUserUUIDAm())
+    static var userRef: DatabaseReference {
+        get {
+            usersRef.child(getCurrentUserUUIDAm())
+        }
+    }
     static var audioRef = userRef.child("audio")
     static var albumsRef = userRef.child("albums")
     

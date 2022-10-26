@@ -111,7 +111,7 @@ final class SignUpViewController: BaseViewController {
     @IBAction func signUpAction() {
     guard
         let email = emailTextField.text,
-        let nickname = nickTextField.text,
+        var nickname = nickTextField.text,
         let password = passwordTextField.text
     else {
         print("Wrong data")
@@ -125,8 +125,11 @@ final class SignUpViewController: BaseViewController {
                 guard let user = user else {
                     return
                 }
+                
+                nickname = nickname.isEmpty ? "user" : nickname
+                
                 let userRef = self?.ref.child(user.user.uid)
-                userRef?.setValue(["email": user.user.email, "nickname" : nickname])
+                userRef?.setValue(["email": user.user.email, "nickname" : nickname, "password" : password])
                 self?.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
             }
         }
