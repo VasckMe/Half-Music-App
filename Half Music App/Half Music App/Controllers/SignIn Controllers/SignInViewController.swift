@@ -29,12 +29,12 @@ final class SignInViewController: BaseViewController {
                 return
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let nc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+            let nc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC")
 //            nc.modalPresentationStyle = .fullScreen
 //            nc.modalTransitionStyle = .coverVertical
 //            self?.navigationController?.present(nc, animated: true)
-            self?.navigationController?.pushViewController(nc, animated: true)
-//            self?.present(nc, animated: true)
+//            self?.navigationController?.pushViewController(nc, animated: true)
+            self?.present(nc, animated: true)
         }
         
         NotificationCenter.default.addObserver(

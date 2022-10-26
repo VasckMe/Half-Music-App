@@ -163,7 +163,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbd-JI-oXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3476.9230769230767" y="411.6113744075829"/>
+            <point key="canvasLocation" x="4406.1538461538457" y="411.6113744075829"/>
         </scene>
         <!--Add Album View Controller-->
         <scene sceneID="Q0I-Bj-U86">
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsl-iA-Feu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4283.0769230769229" y="411.6113744075829"/>
+            <point key="canvasLocation" x="5212.3076923076924" y="411.6113744075829"/>
         </scene>
         <!--Account-->
         <scene sceneID="RCF-C1-b6x">
@@ -316,7 +316,7 @@
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="logoutAction" destination="rgC-ku-LKF" eventType="touchUpInside" id="rbu-cb-WxQ"/>
+                                                            <action selector="logoutAction" destination="rgC-ku-LKF" eventType="touchUpInside" id="lDl-CM-9lh"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6r9-9G-28Y">
@@ -327,7 +327,7 @@
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="deleteAccountAction" destination="rgC-ku-LKF" eventType="touchUpInside" id="Vv6-La-a7j"/>
+                                                            <action selector="deleteAccountAction" destination="rgC-ku-LKF" eventType="touchUpInside" id="hps-U8-J7b"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -359,16 +359,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailLabel" destination="T1H-Gl-l5x" id="63L-5i-KT3"/>
-                        <outlet property="nicknameLabel" destination="Yca-Q0-Vhz" id="gCm-il-IjI"/>
-                        <outlet property="passTextField" destination="9BA-dc-PfC" id="3xZ-9u-TaW"/>
-                        <segue destination="eTc-iz-997" kind="unwind" identifier="unwindToSignInVC" unwindAction="unwindToSignIn:" id="VnZ-ux-lsh"/>
+                        <outlet property="emailLabel" destination="T1H-Gl-l5x" id="VOM-IV-hWn"/>
+                        <outlet property="nicknameLabel" destination="Yca-Q0-Vhz" id="H0F-gj-E2t"/>
+                        <outlet property="passTextField" destination="9BA-dc-PfC" id="A0J-kw-sa7"/>
+                        <segue destination="eTc-iz-997" kind="unwind" identifier="unwindToSignIn" unwindAction="unwindToSignIn:" id="Eid-h5-j0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mL-8b-ULB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eTc-iz-997" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1593.8461538461538" y="60.426540284360186"/>
+            <point key="canvasLocation" x="1894" y="60"/>
         </scene>
         <!--Edit Account View Controller-->
         <scene sceneID="CIK-JC-aLx">
@@ -449,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rX-oS-QUf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2385" y="60"/>
+            <point key="canvasLocation" x="2695" y="60"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="UYn-X1-Dbu">
@@ -564,7 +564,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHM-NS-Myx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3586.1538461538462" y="-321.32701421800948"/>
+            <point key="canvasLocation" x="3477" y="-321"/>
         </scene>
         <!--Account-->
         <scene sceneID="wTd-g8-4eE">
@@ -589,7 +589,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0w9-ZK-Jkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664.61538461538464" y="60.426540284360186"/>
+            <point key="canvasLocation" x="1000" y="60"/>
         </scene>
     </scenes>
     <resources>

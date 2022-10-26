@@ -10,39 +10,34 @@ import FirebaseAuth
 
 class AccountViewController: BaseViewController {
 
-    
-    
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passTextField.enablePasswordToggle()
         passTextField.delegate = self
         setupUI()
+        passTextField.enablePasswordToggle()
     }
-    
-
     @IBAction private func logoutAction() {
         callClosureAlert(title: "Warning", message: "Are you sure to logout?") {
             do {
                 try Auth.auth().signOut()
-                self.performSegue(withIdentifier: "unwindToSignInVC", sender: nil)
+                self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
             } catch {
                 print("Auth signOut error")
             }
         }
     }
     @IBAction private func deleteAccountAction() {
-//        callClosureAlert(title: "Warning", message: "Are you sure to logout?") {
-//            FireBaseStorageManager.userRef.removeValue()
-//            Auth.auth().currentUser?.delete()
-//            self.performSegue(withIdentifier: "unwindToSignInVC", sender: nil)
-//        }
-        navigationController?.popToRootViewController(animated: true)
+        callClosureAlert(title: "Warning", message: "Are you sure to logout?") {
+            FireBaseStorageManager.userRef.removeValue()
+            Auth.auth().currentUser?.delete()
+            self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
+        }
     }
-    
+
     private func setupUI() {
         FireBaseStorageManager.userRef.getData { [weak self] error, snapshot in
             if let error = error {
@@ -51,7 +46,7 @@ class AccountViewController: BaseViewController {
                 guard let snapshot = snapshot else {
                     return
                 }
-                
+
                 guard
                     let snapshotValue = snapshot.value as? [String: Any],
                     let nickname = snapshotValue["nickname"] as? String,
@@ -69,17 +64,16 @@ class AccountViewController: BaseViewController {
         }
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//    }
+//    */
 
 }
-
 
 extension AccountViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

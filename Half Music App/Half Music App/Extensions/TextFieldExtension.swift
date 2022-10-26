@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
-let customButton = UIButton(type: .custom)
+//let customButton = UIButton()
 
 extension UITextField {
     func enablePasswordToggle() {
+        let customButton = UIButton()
         customButton.setImage(UIImage(systemName: "eye"), for: .normal)
         customButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
         customButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -12, bottom: 0, right: 0)
@@ -20,7 +21,7 @@ extension UITextField {
         rightViewMode = .always
     }
 
-    @objc func togglePassword() {
+    @objc func togglePassword(customButton: UIButton) {
         isSecureTextEntry.toggle()
         customButton.isSelected.toggle()
     }
