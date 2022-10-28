@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-//let customButton = UIButton()
-
 extension UITextField {
     func enablePasswordToggle() {
         let customButton = UIButton()

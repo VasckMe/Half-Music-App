@@ -8,11 +8,15 @@
 import UIKit
 import FirebaseAuth
 
+protocol UpdateAccountViewControllerProtocol {
+    func updateAccountVCP()
+}
+
 class AccountViewController: BaseViewController {
 
-    @IBOutlet weak var nicknameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet private weak var nicknameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var passTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,24 +24,36 @@ class AccountViewController: BaseViewController {
         setupUI()
         passTextField.enablePasswordToggle()
     }
-    @IBAction private func logoutAction() {
-        callClosureAlert(title: "Warning", message: "Are you sure to logout?") {
+    
+    @IBAction private func editAction(_ sender: UIBarButtonItem) {
+        guard let passw = passTextField.text else {
+            return
+        }
+        callAccountSettingsAlertSheet(
+            title: "Settings",
+            password: passw)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let editVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditAccountViewController
+            editVC.nickname = self.nicknameLabel.text
+            editVC.email = self.emailLabel.text
+            editVC.password = self.passTextField.text
+            editVC.delegate = self
+            self.navigationController?.pushViewController(editVC, animated: true)
+        } logoutCompletion: {
             do {
                 try Auth.auth().signOut()
                 self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
             } catch {
                 print("Auth signOut error")
             }
-        }
-    }
-    @IBAction private func deleteAccountAction() {
-        callClosureAlert(title: "Warning", message: "Are you sure to logout?") {
+        } deleteCompletion: {
             FireBaseStorageManager.userRef.removeValue()
             Auth.auth().currentUser?.delete()
             self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
         }
     }
-
+    
     private func setupUI() {
         FireBaseStorageManager.userRef.getData { [weak self] error, snapshot in
             if let error = error {
@@ -63,16 +79,6 @@ class AccountViewController: BaseViewController {
             }
         }
     }
-    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-
 }
 
 extension AccountViewController: UITextFieldDelegate {
@@ -82,5 +88,11 @@ extension AccountViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension AccountViewController: UpdateAccountViewControllerProtocol {
+    func updateAccountVCP() {
+        setupUI()
     }
 }

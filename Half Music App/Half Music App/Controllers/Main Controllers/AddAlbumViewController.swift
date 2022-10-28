@@ -28,7 +28,7 @@ final class AddAlbumViewController: BaseViewController {
         
     }
     
-    @IBAction func saveAlbumAction(_ sender: UIBarButtonItem) {
+    @IBAction private func saveAlbumAction(_ sender: UIBarButtonItem) {
         guard
             let text = albumNameLabel.text,
             !text.isEmpty
