@@ -30,8 +30,8 @@ final class SearchTableViewController: UITableViewController {
 //        navigationController?.isNavigationBarHidden = true
         searchTrackBar.delegate = self
         tableView.register(
-            UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: SearchTableViewCell.identifier)
+            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TrackTableViewCell.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +52,8 @@ final class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-            withIdentifier: SearchTableViewCell.identifier,
-            for: indexPath) as? SearchTableViewCell
+            withIdentifier: TrackTableViewCell.identifier,
+            for: indexPath) as? TrackTableViewCell
         else {
             return UITableViewCell()
         }

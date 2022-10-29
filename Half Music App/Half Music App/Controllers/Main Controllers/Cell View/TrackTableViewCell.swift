@@ -1,5 +1,5 @@
 //
-//  SearchTableViewCell.swift
+//  TrackTableViewCell.swift
 //  Half Music App
 //
 //  Created by Apple Macbook Pro 13 on 28.09.22.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+class TrackTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var trackImageView: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!
     @IBOutlet private weak var trackArtistsLabel: UILabel!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    static let identifier = "SearchTableViewCell"
+    static let identifier = "TrackTableViewCell"
     let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     
     override func awakeFromNib() {

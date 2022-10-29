@@ -23,8 +23,8 @@ final class AddAlbumViewController: BaseViewController {
         albumTableView.dataSource = self
         
         albumTableView.register(
-            UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: SearchTableViewCell.identifier)
+            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TrackTableViewCell.identifier)
         
     }
     
@@ -64,8 +64,8 @@ extension AddAlbumViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: SearchTableViewCell.identifier
-            ) as? SearchTableViewCell else {
+                withIdentifier: TrackTableViewCell.identifier
+            ) as? TrackTableViewCell else {
             return UITableViewCell()
         }
         let trackFB = LocalStorage.shared.localTracks[indexPath.row]

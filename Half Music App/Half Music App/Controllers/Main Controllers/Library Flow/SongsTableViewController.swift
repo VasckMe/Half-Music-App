@@ -15,8 +15,8 @@ class SongsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
-            UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: SearchTableViewCell.identifier
+            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TrackTableViewCell.identifier
         )
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -65,8 +65,8 @@ class SongsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: SearchTableViewCell.identifier,
-                for: indexPath) as? SearchTableViewCell else {
+                withIdentifier: TrackTableViewCell.identifier,
+                for: indexPath) as? TrackTableViewCell else {
             return UITableViewCell()
         }
         let track = LocalStorage.shared.localTracks[indexPath.row]

@@ -52,8 +52,8 @@
 		18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */; };
 		18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDC4662904048900E27FEC /* AccountViewController.swift */; };
 		18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2528E45FAF00A758CC /* LocalStorage.swift */; };
-		18D20D2A28E4654F00A758CC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */; };
-		18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */; };
+		18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */; };
+		18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */; };
 		18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D2D28E49B8A00A758CC /* Alamofire */; };
 		18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D3028E49BB800A758CC /* AlamofireImage */; };
 		18D51B7828F0488E00CCAE4A /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */; };
@@ -112,8 +112,8 @@
 		18B66C7928DC7346000D5F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18CDC4662904048900E27FEC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18D20D2528E45FAF00A758CC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		18EC915728F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecenltyAddedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -425,8 +425,8 @@
 		18D20D2728E4652F00A758CC /* Cell View */ = {
 			isa = PBXGroup;
 			children = (
-				18D20D2828E4654F00A758CC /* SearchTableViewCell.swift */,
-				18D20D2928E4654F00A758CC /* SearchTableViewCell.xib */,
+				18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */,
+				18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */,
 				18EC915728F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.swift */,
 				18EC915828F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.xib */,
 				180EEC5028FC575000D2FEE9 /* AlbumCollectionViewCell.swift */,
@@ -535,7 +535,7 @@
 				1898336228EC359300558234 /* File.rtf in Resources */,
 				18EC915A28F6C0D4006B5B66 /* RecenltyAddedCollectionViewCell.xib in Resources */,
 				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
-				18D20D2B28E4654F00A758CC /* SearchTableViewCell.xib in Resources */,
+				18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */,
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
@@ -629,7 +629,7 @@
 				18680D9B28E84315001DF00D /* VerificationService.swift in Sources */,
 				1876015228E34C59000223CD /* Album.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
-				18D20D2A28E4654F00A758CC /* SearchTableViewCell.swift in Sources */,
+				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
