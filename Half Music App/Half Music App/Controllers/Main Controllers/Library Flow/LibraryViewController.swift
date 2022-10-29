@@ -18,8 +18,8 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         libraryTableView.register(
-            UINib(nibName: LibraryTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: LibraryTableViewCell.identifier
+            UINib(nibName: SmallTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: SmallTableViewCell.identifier
         )
         recentlyAddedCollectionView.register(UINib(nibName: "RecenltyAddedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: RecenltyAddedCollectionViewCell.identifier)
     }
@@ -53,12 +53,12 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: LibraryTableViewCell.identifier
-            ) as? LibraryTableViewCell else {
+                withIdentifier: SmallTableViewCell.identifier
+            ) as? SmallTableViewCell else {
             return UITableViewCell()
         }
         let category = LocalStorage.shared.library[indexPath.row]
-        cell.refresh(category: category)
+        cell.configureCategory(category: category)
         return cell
     }
     

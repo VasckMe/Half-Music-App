@@ -20,8 +20,8 @@ class ArtistsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.register(
-            UINib(nibName: ArtistTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: ArtistTableViewCell.identifier
+            UINib(nibName: SmallTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: SmallTableViewCell.identifier
         )
     }
     
@@ -72,12 +72,12 @@ class ArtistsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: ArtistTableViewCell.identifier, for: indexPath
-            ) as? ArtistTableViewCell else {
+                withIdentifier: SmallTableViewCell.identifier, for: indexPath
+            ) as? SmallTableViewCell else {
             return UITableViewCell()
         }
 
-        cell.refresh(model: artists[indexPath.row])
+        cell.configureArtist(artist: artists[indexPath.row])
 
         return cell
     }
