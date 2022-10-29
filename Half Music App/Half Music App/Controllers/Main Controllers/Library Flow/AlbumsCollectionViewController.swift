@@ -87,10 +87,7 @@ class AlbumsCollectionViewController: UICollectionViewController {
         return cell
     }
 
-    
     // MARK: UICollectionViewDelegate
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.row]

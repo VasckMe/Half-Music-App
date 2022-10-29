@@ -153,15 +153,10 @@
 		18130AF328E4530D000FCD54 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
-				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
-				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
-				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
-				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
-				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
-				18CDC4662904048900E27FEC /* AccountViewController.swift */,
-				18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */,
+				18778D7C290D83FB00479294 /* Search Flow */,
+				18778D7D290D840F00479294 /* Library Flow */,
+				18778D7E290D842500479294 /* Account Flow */,
 				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
@@ -294,6 +289,35 @@
 				18D20D1F28E45EF000A758CC /* Cache */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		18778D7C290D83FB00479294 /* Search Flow */ = {
+			isa = PBXGroup;
+			children = (
+				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
+			);
+			path = "Search Flow";
+			sourceTree = "<group>";
+		};
+		18778D7D290D840F00479294 /* Library Flow */ = {
+			isa = PBXGroup;
+			children = (
+				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
+				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
+				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
+				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
+				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
+			);
+			path = "Library Flow";
+			sourceTree = "<group>";
+		};
+		18778D7E290D842500479294 /* Account Flow */ = {
+			isa = PBXGroup;
+			children = (
+				18CDC4662904048900E27FEC /* AccountViewController.swift */,
+				18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */,
+			);
+			path = "Account Flow";
 			sourceTree = "<group>";
 		};
 		1885D0CD28EDA9B600288CA4 /* Extensions */ = {

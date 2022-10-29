@@ -77,7 +77,7 @@ final class DetailTrackViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         mediaPlayer.removeObserver(observer: timeObserver!)
-        FireBaseStorageManager.audioRef.removeAllObservers()
+//        FireBaseStorageManager.audioRef.removeAllObservers()
         print("REMOVED OBSERVER")
     }
     
@@ -138,11 +138,11 @@ final class DetailTrackViewController: UIViewController {
         let track = LocalStorage.shared.localTracks[trackIndex]
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
-            print("REMOVING")
+            print("REMOVING \(track.name)")
             FireBaseStorageManager.audioRef.child(track.name).removeValue()
             likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            print("ADDING")
+            print("ADDING \(track.name)")
             likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             FireBaseStorageManager.saveTrackInDB(track: track)
         }

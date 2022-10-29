@@ -156,7 +156,7 @@
                     <navigationItem key="navigationItem" title="Albums" largeTitleDisplayMode="always" id="OIN-L6-1M2">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="p9l-9C-4Fy">
                             <connections>
-                                <segue destination="V91-gz-iFn" kind="presentation" identifier="GoToAddAlbumVC" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="SNB-gz-zyd"/>
+                                <segue destination="V91-gz-iFn" kind="show" identifier="GoToAddAlbumVC" id="SNB-gz-zyd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -174,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-vU-33R">
-                                <rect key="frame" x="10" y="67" width="370" height="733"/>
+                                <rect key="frame" x="10" y="165" width="370" height="586"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-qj-PUP">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="414"/>
@@ -198,7 +198,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-CE-UBD">
-                                        <rect key="frame" x="0.0" y="424" width="370" height="309"/>
+                                        <rect key="frame" x="0.0" y="424" width="370" height="162"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
@@ -321,7 +321,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Account" id="1CQ-WR-JrG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="vzR-Ge-qL9">
+                        <barButtonItem key="rightBarButtonItem" id="vzR-Ge-qL9">
+                            <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
                             <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="editAction:" destination="rgC-ku-LKF" id="WgD-fd-xwS"/>
@@ -598,6 +599,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="music-2" width="512" height="512"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ArtistsTableViewController: UITableViewController {
     
@@ -22,15 +23,33 @@ class ArtistsTableViewController: UITableViewController {
             UINib(nibName: ArtistTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: ArtistTableViewCell.identifier
         )
-        findArtists()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        LocalStorage.shared.refreshLocalTracks()
+        print("ADDED VIEW WILL APPEAR Artist OBSERVER")
+        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
+            var tracks = [TrackFB]()
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                tracks.append(track)
+            }
+            LocalStorage.shared.localTracks = tracks
+            LocalStorage.shared.copyLocalTracks = tracks
+            self?.findArtists()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("ADDED VIEW WILL Dissapear Artist OBSERVER")
+        FireBaseStorageManager.audioRef.removeAllObservers()
     }
     
     private func findArtists() {
         let array = LocalStorage.shared.localTracks
+        
+        var artists = [String]()
         
         for track in array {
             if !artists.contains(track.artist) {
@@ -39,6 +58,7 @@ class ArtistsTableViewController: UITableViewController {
                 continue
             }
         }
+        self.artists = artists
         tableView.reloadData()
     }
 
@@ -68,7 +88,6 @@ class ArtistsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { track in
             track.artist == artists[indexPath.row]
         }
@@ -79,10 +98,10 @@ class ArtistsTableViewController: UITableViewController {
                 withIdentifier: "SongsTVC"
             ) as? SongsTableViewController
         {
+            vc.artist = artists[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
 
     /*
     // MARK: - Navigation

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class SongsTableViewController: UITableViewController {
 
+    var artist: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
@@ -22,6 +25,37 @@ class SongsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("ADDED VIEW WILL APPEAR SONGSTABLE OBSERVER")
+        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
+            var tracks = [TrackFB]()
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                
+                if let artist = self?.artist {
+                    if artist == track.artist {
+                        tracks.append(track)
+                    } else {
+                        continue
+                    }
+                } else {
+                    tracks.append(track)
+                }
+            }
+            LocalStorage.shared.localTracks = tracks
+            LocalStorage.shared.copyLocalTracks = tracks
+
+            self?.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("REMOVED VIEW WILL DISAPPEAR SONGSTABLE OBSERVER")
+        FireBaseStorageManager.audioRef.removeAllObservers()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
