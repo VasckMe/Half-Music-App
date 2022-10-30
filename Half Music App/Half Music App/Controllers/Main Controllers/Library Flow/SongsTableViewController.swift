@@ -11,6 +11,7 @@ import FirebaseDatabase
 class SongsTableViewController: UITableViewController {
 
     var artist: String?
+    var album: AlbumFB?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +31,24 @@ class SongsTableViewController: UITableViewController {
         FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
             var tracks = [TrackFB]()
             
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                
-                if let artist = self?.artist {
-                    if artist == track.artist {
-                        tracks.append(track)
+            if let album = self?.album {
+                tracks = album.tracks
+            } else {
+                for item in snapshot.children {
+                    guard let snapshot = item as? DataSnapshot,
+                          let track = TrackFB(snapshot: snapshot) else { continue }
+                    if let artist = self?.artist {
+                        if artist == track.artist {
+                            tracks.append(track)
+                        } else {
+                            continue
+                        }
                     } else {
-                        continue
+                        tracks.append(track)
                     }
-                } else {
-                    tracks.append(track)
                 }
             }
+            
             LocalStorage.shared.localTracks = tracks
             LocalStorage.shared.copyLocalTracks = tracks
 

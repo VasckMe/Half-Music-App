@@ -99,6 +99,7 @@ class ArtistsTableViewController: UITableViewController {
             ) as? SongsTableViewController
         {
             vc.artist = artists[indexPath.row]
+            vc.title = artists[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -18,10 +18,11 @@ class AlbumsCollectionViewController: UICollectionViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+//         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         collectionView.register(
-            UINib(nibName: AlbumCollectionViewCell.identifier,bundle: nil),
-            forCellWithReuseIdentifier: AlbumCollectionViewCell.identifier
+            UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
+            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
         )
     }
     
@@ -52,20 +53,7 @@ class AlbumsCollectionViewController: UICollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
-        
-        
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -76,13 +64,13 @@ class AlbumsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AlbumCollectionViewCell.identifier,
+                withReuseIdentifier: LargeCollectionViewCell.identifier,
                 for: indexPath
-            ) as? AlbumCollectionViewCell else {
+            ) as? LargeCollectionViewCell else {
             return UICollectionViewCell()
         }
         let album = albums[indexPath.row]
-        cell.refresh(album: album)
+        cell.configureAlbum(album: album)
     
         return cell
     }
@@ -98,6 +86,7 @@ class AlbumsCollectionViewController: UICollectionViewController {
                 withIdentifier: "SongsTVC"
             ) as? SongsTableViewController
         {
+            vc.album = album
             navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -42,6 +42,7 @@ final class AddAlbumViewController: BaseViewController {
         choosedTracks.forEach { track in
             albumRef.child("\(track.name)").setValue(track.convertInDictionary())
         }
+        navigationController?.popViewController(animated: true)
     }
     
     /*

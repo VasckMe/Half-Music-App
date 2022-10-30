@@ -21,7 +21,10 @@ class LibraryViewController: UIViewController {
             UINib(nibName: SmallTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: SmallTableViewCell.identifier
         )
-        recentlyAddedCollectionView.register(UINib(nibName: "RecenltyAddedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: RecenltyAddedCollectionViewCell.identifier)
+        recentlyAddedCollectionView.register(
+            UINib(nibName: "LargeCollectionViewCell", bundle: nil),
+            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,12 +87,12 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: RecenltyAddedCollectionViewCell.identifier,
-                for: indexPath) as? RecenltyAddedCollectionViewCell else {
+                withReuseIdentifier: LargeCollectionViewCell.identifier,
+                for: indexPath) as? LargeCollectionViewCell else {
             return UICollectionViewCell()
         }
         let track = LocalStorage.shared.localTracks[indexPath.row]
-        cell.refresh(track: track)
+        cell.configureTrack(track: track)
         return cell
     }
     

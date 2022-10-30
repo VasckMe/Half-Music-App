@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="RecenltyAddedCollectionViewCell" id="gTV-IL-0wX" customClass="RecenltyAddedCollectionViewCell" customModule="Half_Music_App" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="LargeCollectionViewCell" id="gTV-IL-0wX" customClass="LargeCollectionViewCell" customModule="Half_Music_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="200" height="225"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -27,7 +27,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61C-he-uhP">
                                 <rect key="frame" x="0.0" y="195" width="190" height="20"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -47,8 +47,8 @@
                 <constraint firstAttribute="bottom" secondItem="Fw3-1c-Z7f" secondAttribute="bottom" constant="5" id="XnM-Q5-gQv"/>
             </constraints>
             <connections>
-                <outlet property="trackImageView" destination="c18-iV-SlH" id="JG2-ts-M2K"/>
-                <outlet property="trackLabel" destination="61C-he-uhP" id="7bJ-IT-cZd"/>
+                <outlet property="itemImageView" destination="c18-iV-SlH" id="UVK-Gy-Cuf"/>
+                <outlet property="itemLabel" destination="61C-he-uhP" id="oHb-01-bRa"/>
             </connections>
             <point key="canvasLocation" x="16.923076923076923" y="20.260663507109005"/>
         </collectionViewCell>
