@@ -15,6 +15,11 @@ final class LargeCollectionViewCell: UICollectionViewCell {
     static let identifier = "LargeCollectionViewCell"
     let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        itemImageView.layer.cornerRadius = 5
+    }
+    
     func configureTrack(track: TrackFB) {
         itemLabel.text = track.name
         
@@ -34,6 +39,6 @@ final class LargeCollectionViewCell: UICollectionViewCell {
     
     func configureAlbum(album: AlbumFB) {
         itemLabel.text = album.name
-        itemImageView.image = UIImage(named: "music-2")
+        itemImageView.image = UIImage(systemName: "music.note.list")
     }
 }

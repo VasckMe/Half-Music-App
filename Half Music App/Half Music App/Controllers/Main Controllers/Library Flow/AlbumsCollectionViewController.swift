@@ -16,7 +16,6 @@ class AlbumsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 //         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
@@ -37,22 +36,22 @@ class AlbumsCollectionViewController: UICollectionViewController {
             self?.albums = albms
             self?.collectionView.reloadData()
         }
-//        ref.getData { [weak self] error, snapshot in
-//            guard
-//                let snapshot = snapshot else {
-//                return
-//            }
-//            for item in snapshot.children {
-//                guard let snapshot = item as? DataSnapshot,
-//                      let album = AlbumFB(snapshot: snapshot) else { continue }
-//                self?.albums.append(album)
-//            }
-//            self?.collectionView.reloadData()
-//        }
+        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
+            var tracks = [TrackFB]()
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                tracks.append(track)
+            }
+            LocalStorage.shared.localTracks = tracks
+            LocalStorage.shared.copyLocalTracks = tracks
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
+        FireBaseStorageManager.audioRef.removeAllObservers()
     }
 
     // MARK: UICollectionViewDataSource

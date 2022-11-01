@@ -33,13 +33,13 @@
                                         <rect key="frame" x="0.0" y="198.66666666666671" width="350" height="357.33333333333326"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f80-g6-U6G">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="33.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hiV-Ly-0GL">
-                                                <rect key="frame" x="0.0" y="56" width="350" height="301.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="53.666666666666629" width="350" height="303.66666666666669"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s3b-vt-PmK">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -139,6 +139,8 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Vi-UC-wD1">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.179000402" green="0.179000402" blue="0.179000402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8Vi-UC-wD1" secondAttribute="height" multiplier="1:1" id="Hqw-3p-iwH"/>
                                                     <constraint firstAttribute="width" constant="250" id="aat-b6-DfA"/>
@@ -233,8 +235,10 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-b6-5lI">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="250"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-2" translatesAutoresizingMaskIntoConstraints="NO" id="KeS-GV-xhO">
-                                                        <rect key="frame" x="60" y="0.0" width="250" height="250"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note.list" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KeS-GV-xhO">
+                                                        <rect key="frame" x="60" y="1" width="250" height="248.66666666666666"/>
+                                                        <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.179000402" green="0.179000402" blue="0.179000402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="250" id="qBZ-hW-mlS"/>
                                                             <constraint firstAttribute="width" secondItem="KeS-GV-xhO" secondAttribute="height" multiplier="1:1" id="u60-MF-iu0"/>
@@ -670,7 +674,7 @@
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="music-2" width="512" height="512"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

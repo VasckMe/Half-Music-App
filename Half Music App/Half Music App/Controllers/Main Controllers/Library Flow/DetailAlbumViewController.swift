@@ -38,7 +38,7 @@ class DetailAlbumViewController: UIViewController {
     }
     
     private func setup() {
-        albumImageView.image = UIImage(named: "music-2")
+        albumImageView.image = UIImage(systemName: "music.note.list")
         albumTitleLabel.text = album?.name
         
         guard let album = album else { return }
