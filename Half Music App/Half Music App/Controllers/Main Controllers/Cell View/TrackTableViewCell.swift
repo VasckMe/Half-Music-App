@@ -17,11 +17,6 @@ class TrackTableViewCell: UITableViewCell {
     static let identifier = "TrackTableViewCell"
     let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func configure(model: TrackFB) {
         trackNameLabel.text = model.name
         trackArtistsLabel.text = model.artist

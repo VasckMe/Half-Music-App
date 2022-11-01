@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NF-n4-Q9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4406" y="-321"/>
+            <point key="canvasLocation" x="1128" y="-321"/>
         </scene>
         <!--Artists-->
         <scene sceneID="EO4-2t-YiZ">
@@ -101,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEE-yW-PFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5212" y="-990"/>
+            <point key="canvasLocation" x="1891" y="-1024"/>
         </scene>
         <!--Tracks-->
         <scene sceneID="X9C-tY-PCD">
@@ -121,7 +121,68 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-ef-4hI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5335.3846153846152" y="-321.32701421800948"/>
+            <point key="canvasLocation" x="1891" y="-321"/>
+        </scene>
+        <!--Detail Album View Controller-->
+        <scene sceneID="x9q-AJ-Wsl">
+            <objects>
+                <viewController storyboardIdentifier="DetailAlbumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mvg-0q-QMK" customClass="DetailAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a89-39-KRs">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="CvA-q5-mRN">
+                                <rect key="frame" x="20" y="47" width="350" height="777"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3TZ-eY-laE">
+                                        <rect key="frame" x="50" y="0.0" width="250" height="412"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Vi-UC-wD1">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8Vi-UC-wD1" secondAttribute="height" multiplier="1:1" id="Hqw-3p-iwH"/>
+                                                    <constraint firstAttribute="width" constant="250" id="aat-b6-DfA"/>
+                                                    <constraint firstAttribute="height" constant="250" id="cui-Um-9ym"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-oK-3qA">
+                                                <rect key="frame" x="54" y="265" width="142" height="147"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5lS-p0-yFv">
+                                        <rect key="frame" x="0.0" y="427" width="350" height="350"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="kfV-cM-XDp"/>
+                                            <constraint firstAttribute="height" constant="350" id="z3v-X1-h8y"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9ym-UW-W5D"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CvA-q5-mRN" secondAttribute="bottom" constant="20" id="CyY-jk-6Am"/>
+                            <constraint firstItem="9ym-UW-W5D" firstAttribute="trailing" secondItem="CvA-q5-mRN" secondAttribute="trailing" constant="20" id="chL-C4-fTg"/>
+                            <constraint firstItem="CvA-q5-mRN" firstAttribute="leading" secondItem="9ym-UW-W5D" secondAttribute="leading" constant="20" id="gyd-f2-SLb"/>
+                            <constraint firstItem="CvA-q5-mRN" firstAttribute="top" secondItem="9ym-UW-W5D" secondAttribute="top" id="qtt-YM-odE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumImageView" destination="8Vi-UC-wD1" id="OVZ-AK-hpo"/>
+                        <outlet property="albumTitleLabel" destination="3uV-oK-3qA" id="79D-fN-tzt"/>
+                        <outlet property="albumTracksTableView" destination="5lS-p0-yFv" id="riZ-Aq-vbr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTV-lk-OYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="421.53846153846155" y="330.5687203791469"/>
         </scene>
         <!--Albums-->
         <scene sceneID="1NP-tZ-FJz">
@@ -153,7 +214,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbd-JI-oXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4406.1538461538457" y="411.6113744075829"/>
+            <point key="canvasLocation" x="1128" y="331"/>
         </scene>
         <!--Add Album View Controller-->
         <scene sceneID="Q0I-Bj-U86">
@@ -166,29 +227,41 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-vU-33R">
                                 <rect key="frame" x="10" y="165" width="370" height="586"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-qj-PUP">
-                                        <rect key="frame" x="0.0" y="0.0" width="370" height="414"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-bt-Fer">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="314"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-2" translatesAutoresizingMaskIntoConstraints="NO" id="KeS-GV-xhO">
-                                                <rect key="frame" x="0.0" y="0.0" width="370" height="370"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="KeS-GV-xhO" secondAttribute="height" multiplier="1:1" id="u60-MF-iu0"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDj-P7-gDa">
-                                                <rect key="frame" x="0.0" y="380" width="370" height="34"/>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="AAo-Vp-O5w"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-b6-5lI">
+                                                <rect key="frame" x="0.0" y="0.0" width="370" height="250"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-2" translatesAutoresizingMaskIntoConstraints="NO" id="KeS-GV-xhO">
+                                                        <rect key="frame" x="60" y="0.0" width="250" height="250"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="250" id="qBZ-hW-mlS"/>
+                                                            <constraint firstAttribute="width" secondItem="KeS-GV-xhO" secondAttribute="height" multiplier="1:1" id="u60-MF-iu0"/>
+                                                            <constraint firstAttribute="height" constant="250" id="yna-DC-qgg"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-qj-PUP">
+                                                <rect key="frame" x="0.0" y="280" width="370" height="34"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDj-P7-gDa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="370" height="34"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="AAo-Vp-O5w"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-CE-UBD">
-                                        <rect key="frame" x="0.0" y="424" width="370" height="162"/>
+                                        <rect key="frame" x="0.0" y="324" width="370" height="262"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
@@ -219,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsl-iA-Feu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5212.3076923076924" y="411.6113744075829"/>
+            <point key="canvasLocation" x="1891" y="331"/>
         </scene>
         <!--Account-->
         <scene sceneID="RCF-C1-b6x">
@@ -330,7 +403,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mL-8b-ULB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eTc-iz-997" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1894" y="60"/>
+            <point key="canvasLocation" x="340" y="1020"/>
         </scene>
         <!--Edit Account View Controller-->
         <scene sceneID="CIK-JC-aLx">
@@ -446,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rX-oS-QUf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2695" y="60"/>
+            <point key="canvasLocation" x="1103" y="1020"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="UYn-X1-Dbu">
@@ -480,7 +553,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6c-Jw-fAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929.2307692307691" y="-823.2227488151658"/>
+            <point key="canvasLocation" x="1128" y="-1024"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">
@@ -516,7 +589,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.79929538749999995" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                         </textAttributes>
@@ -534,7 +607,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRa-q4-Cs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="-823.2227488151658"/>
+            <point key="canvasLocation" x="385" y="-1024"/>
         </scene>
         <!--Library-->
         <scene sceneID="tZb-oi-p8h">
@@ -549,19 +622,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.79929538749999995" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mer-Hg-O89">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ubX-lk-j1b" kind="relationship" relationship="rootViewController" id="jsH-iP-34t"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHM-NS-Myx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3477" y="-321"/>
+            <point key="canvasLocation" x="385" y="-321"/>
         </scene>
         <!--Account-->
         <scene sceneID="wTd-g8-4eE">
@@ -569,12 +645,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Ee-cP-voO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" selectedImage="person.fill" id="rS0-FZ-AF3"/>
                     <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="e2M-Mb-uzG">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.79929538749999995" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                         </textAttributes>
@@ -586,7 +663,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0w9-ZK-Jkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="60"/>
+            <point key="canvasLocation" x="-403" y="1020"/>
         </scene>
     </scenes>
     <resources>

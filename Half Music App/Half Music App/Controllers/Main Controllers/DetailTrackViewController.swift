@@ -31,7 +31,6 @@ final class DetailTrackViewController: UIViewController {
         didSet {
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
-
         }
     }
     

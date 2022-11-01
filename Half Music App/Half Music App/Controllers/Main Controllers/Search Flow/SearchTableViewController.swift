@@ -26,7 +26,6 @@ final class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Music"
-        
 //        navigationController?.isNavigationBarHidden = true
         searchTrackBar.delegate = self
         tableView.register(
@@ -61,7 +60,6 @@ final class SearchTableViewController: UITableViewController {
         let track = LocalStorage.shared.localTracks[indexPath.row]
         
         cell.configure(model: track)
-
         return cell
     }
     

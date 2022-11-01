@@ -83,8 +83,8 @@ class AlbumsCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if
             let vc = storyboard.instantiateViewController(
-                withIdentifier: "SongsTVC"
-            ) as? SongsTableViewController
+                withIdentifier: "DetailAlbumVC"
+            ) as? DetailAlbumViewController
         {
             vc.album = album
             navigationController?.pushViewController(vc, animated: true)

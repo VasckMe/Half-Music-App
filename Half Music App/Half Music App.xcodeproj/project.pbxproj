@@ -32,6 +32,7 @@
 		1876015D28E35085000223CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876015C28E35085000223CD /* Constants.swift */; };
 		18778D81290D86B700479294 /* SmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D7F290D86B700479294 /* SmallTableViewCell.swift */; };
 		18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18778D80290D86B700479294 /* SmallTableViewCell.xib */; };
+		18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D83290E85A500479294 /* DetailAlbumViewController.swift */; };
 		1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885D0C928ED846300288CA4 /* DetailTrack.storyboard */; };
 		1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */; };
 		1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */; };
@@ -88,6 +89,7 @@
 		1876015C28E35085000223CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18778D7F290D86B700479294 /* SmallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell.swift; sourceTree = "<group>"; };
 		18778D80290D86B700479294 /* SmallTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTableViewCell.xib; sourceTree = "<group>"; };
+		18778D83290E85A500479294 /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
 		1885D0C928ED846300288CA4 /* DetailTrack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailTrack.storyboard; sourceTree = "<group>"; };
 		1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackViewController.swift; sourceTree = "<group>"; };
 		1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
@@ -132,6 +134,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180E0D692911631200500233 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
 		18130AEC28E4406C000FCD54 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +154,7 @@
 		18130AF328E4530D000FCD54 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				180E0D692911631200500233 /* XIB */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18778D7C290D83FB00479294 /* Search Flow */,
 				18778D7D290D840F00479294 /* Library Flow */,
@@ -299,6 +309,7 @@
 				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
 				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
 				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
+				18778D83290E85A500479294 /* DetailAlbumViewController.swift */,
 			);
 			path = "Library Flow";
 			sourceTree = "<group>";
@@ -624,6 +635,7 @@
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
+				18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
