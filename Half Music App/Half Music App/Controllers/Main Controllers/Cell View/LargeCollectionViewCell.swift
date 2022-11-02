@@ -17,7 +17,7 @@ final class LargeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        itemImageView.layer.cornerRadius = 5
+        itemImageView.layer.cornerRadius = 15
     }
     
     func configureTrack(track: TrackFB) {

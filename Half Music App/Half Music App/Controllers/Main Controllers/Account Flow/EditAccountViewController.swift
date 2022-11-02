@@ -114,5 +114,9 @@ class EditAccountViewController: UIViewController {
         nicknameTextField.text = nickname
         emailTextField.text = email
         passwordTextField.text = password
+        
+        saveButtonOutlet.layer.borderColor = UIColor.darkGray.cgColor
+        saveButtonOutlet.layer.borderWidth = 4
+        saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.height/2
     }
 }

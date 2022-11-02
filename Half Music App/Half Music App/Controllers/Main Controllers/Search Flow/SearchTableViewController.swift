@@ -14,6 +14,7 @@ final class SearchTableViewController: UITableViewController {
     @IBOutlet private weak var searchTrackBar: UISearchBar! {
         didSet {
             searchTrackBar.searchTextField.textColor = .white
+//            searchTrackBar.searchTextField.text
         }
     }
     
@@ -41,7 +42,6 @@ final class SearchTableViewController: UITableViewController {
         }
     }
     
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

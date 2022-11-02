@@ -29,10 +29,7 @@ class AccountViewController: BaseViewController {
         guard let passw = passTextField.text else {
             return
         }
-        callAccountSettingsAlertSheet(
-            title: "Settings",
-            password: passw)
-        {
+        callAccountSettingsAlertSheet(password: passw) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let editVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditAccountViewController
             editVC.nickname = self.nicknameLabel.text

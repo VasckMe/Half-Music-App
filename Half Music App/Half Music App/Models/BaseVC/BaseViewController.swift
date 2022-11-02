@@ -62,19 +62,20 @@ class BaseViewController: UIViewController {
     }
     
     func callAccountSettingsAlertSheet(
-        title: String,
         password: String,
         editCompletion: @escaping  () -> (),
         logoutCompletion: @escaping  () -> (),
         deleteCompletion: @escaping  () -> ()
     ) {
         let alertController = UIAlertController(
-            title: title,
+            title: nil,
             message: nil,
             preferredStyle: .actionSheet
         )
-        alertController.view.tintColor = .red
 
+        alertController.setTint(color: .white)
+        alertController.setBackgroundColor(color: .darkGray)
+        
         let edit = UIAlertAction(title: "Edit", style: .default) {_ in
             editCompletion()
         }
@@ -97,12 +98,22 @@ class BaseViewController: UIViewController {
                 }
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive)
+        
         alertController.addAction(edit)
         alertController.addAction(logout)
         alertController.addAction(delete)
-        alertController.addAction(cancel)
-
-        present(alertController, animated: true)
+        
+        present(alertController, animated: true) {
+            self.addTapGestureToAlertController(alertController: alertController)
+        }
+    }
+    
+    func addTapGestureToAlertController(alertController: UIAlertController) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlert))
+        alertController.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissAlert() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
