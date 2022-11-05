@@ -567,7 +567,68 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6c-Jw-fAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="-977"/>
+            <point key="canvasLocation" x="548" y="-1600"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="SgU-DP-16D">
+            <objects>
+                <viewController id="wYs-gv-l6h" customClass="SearchViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tdz-CV-hVI">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GKh-Fc-Diu">
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eYz-gz-GVl">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="719"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Find track" id="ppb-Kl-v3j">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="3PE-65-kdr"/>
+                                            </constraints>
+                                            <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="wYs-gv-l6h" id="AHc-ri-H1N"/>
+                                            </connections>
+                                        </searchBar>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wYs-gv-l6h" id="RX1-es-ctE"/>
+                                            <outlet property="delegate" destination="wYs-gv-l6h" id="EA2-MW-zo1"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JqQ-ZD-sml"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="GKh-Fc-Diu" firstAttribute="leading" secondItem="tdz-CV-hVI" secondAttribute="leading" id="9ps-Sb-F6Z"/>
+                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="trailing" secondItem="GKh-Fc-Diu" secondAttribute="trailing" id="GJL-oF-8WM"/>
+                            <constraint firstItem="GKh-Fc-Diu" firstAttribute="top" secondItem="JqQ-ZD-sml" secondAttribute="top" id="O43-cB-Cbc"/>
+                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="bottom" secondItem="GKh-Fc-Diu" secondAttribute="bottom" id="otr-db-Irt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RX7-jL-8fn">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="Z3B-HF-RWG">
+                            <connections>
+                                <action selector="sortAction:" destination="wYs-gv-l6h" id="EaL-ko-WhC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchTrackBar" destination="ppb-Kl-v3j" id="55E-Zh-PnO"/>
+                        <outlet property="tableView" destination="eYz-gz-GVl" id="bfk-oj-Pew"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nE7-o2-wsT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="-1600"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">
@@ -616,12 +677,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="dWJ-9O-nAN" kind="relationship" relationship="rootViewController" id="nNF-zm-fuD"/>
+                        <segue destination="wYs-gv-l6h" kind="relationship" relationship="rootViewController" id="puN-kV-Ah7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRa-q4-Cs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-977"/>
+            <point key="canvasLocation" x="-222" y="-1041"/>
         </scene>
         <!--Library-->
         <scene sceneID="tZb-oi-p8h">
