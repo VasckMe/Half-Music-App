@@ -9,6 +9,10 @@ import UIKit
 import MediaPlayer
 import FirebaseDatabase
 
+protocol UpdateDetailTrackViewControllerProtocol {
+    func updateDetailTrack()
+}
+
 final class DetailTrackViewController: UIViewController {
 
     // MARK: IBOutlets
@@ -147,6 +151,16 @@ final class DetailTrackViewController: UIViewController {
         }
     }
     
+    @IBAction func addToAlbum() {
+        let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
+        let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
+        let track = LocalStorage.shared.localTracks[trackIndex!]
+        vc.track = track
+        vc.delegate = self
+        self.present(vc, animated: true)
+    }
+    
+    
     // MARK: Private
     
     private func setupTrackUI() {
@@ -208,6 +222,26 @@ final class DetailTrackViewController: UIViewController {
 //            forwardTrackAction()
             mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             trackSlider.value = Float(duration - seconds)
+        }
+    }
+}
+
+extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
+    func updateDetailTrack() {
+        FireBaseStorageManager.audioRef.getData { [weak self] error, snapshot in
+            guard let snapshot = snapshot else {
+                return
+            }
+            let track = LocalStorage.shared.localTracks[(self?.trackIndex!)!]
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let trackFB = TrackFB(snapshot: snapshot) else { continue }
+                if trackFB.name == track.name {
+                    self?.likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    return
+                }
+            }
+            self?.likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
 }

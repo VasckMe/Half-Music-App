@@ -56,6 +56,8 @@
 		18D20D2E28E49B8A00A758CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D2D28E49B8A00A758CC /* Alamofire */; };
 		18D20D3128E49BB800A758CC /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18D20D3028E49BB800A758CC /* AlamofireImage */; };
 		18D263212912969000E32184 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D263202912969000E32184 /* UIAlertControllerExtension.swift */; };
+		18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */; };
+		18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */; };
 		18D51B7828F0488E00CCAE4A /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */; };
 		18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */; };
 		18DDEBFE291184DE00634F5F /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEBFD291184DE00634F5F /* SortView.swift */; };
@@ -116,6 +118,8 @@
 		18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		18D263202912969000E32184 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTrackToAlbum.storyboard; sourceTree = "<group>"; };
+		18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackToAlbumViewController.swift; sourceTree = "<group>"; };
 		18D51B7728F0488E00CCAE4A /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		18DDEBFD291184DE00634F5F /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			children = (
 				180E0D692911631200500233 /* XIB */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
+				18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */,
 				18778D7C290D83FB00479294 /* Search Flow */,
 				18778D7D290D840F00479294 /* Library Flow */,
 				18778D7E290D842500479294 /* Account Flow */,
@@ -273,6 +278,7 @@
 			children = (
 				18B66C7128DC7343000D5F79 /* Main.storyboard */,
 				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
+				18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
 				18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */,
+				18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +622,7 @@
 				18DDEBFE291184DE00634F5F /* SortView.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
+				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
@@ -812,7 +820,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -840,7 +848,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
