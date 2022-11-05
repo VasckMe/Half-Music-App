@@ -12,7 +12,7 @@ protocol UpdateAccountViewControllerProtocol {
     func updateAccountVCP()
 }
 
-class AccountViewController: BaseViewController {
+final class AccountViewController: BaseViewController {
 
     @IBOutlet private weak var nicknameLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!

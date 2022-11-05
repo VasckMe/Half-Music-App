@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class SongsTableViewController: UITableViewController {
+final class SongsTableViewController: UITableViewController {
 
     var artist: String?
     var album: AlbumFB?

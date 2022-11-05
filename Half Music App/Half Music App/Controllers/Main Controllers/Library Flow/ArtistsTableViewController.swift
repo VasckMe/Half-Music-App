@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class ArtistsTableViewController: UITableViewController {
+final class ArtistsTableViewController: UITableViewController {
     
     var artists: [String] = []
     
@@ -86,7 +86,6 @@ class ArtistsTableViewController: UITableViewController {
         return 55.0
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { track in
             track.artist == artists[indexPath.row]
@@ -103,15 +102,4 @@ class ArtistsTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

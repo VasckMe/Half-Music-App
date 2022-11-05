@@ -8,7 +8,11 @@
 import UIKit
 import FirebaseDatabase
 
-class DetailAlbumViewController: UIViewController {
+protocol UpdateDetailAlbumViewController {
+    func update(album: AlbumFB)
+}
+
+final class DetailAlbumViewController: UIViewController {
 
     @IBOutlet private weak var albumImageView: UIImageView!
     @IBOutlet private weak var albumTitleLabel: UILabel!
@@ -24,7 +28,6 @@ class DetailAlbumViewController: UIViewController {
             UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: TrackTableViewCell.identifier
         )
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,14 @@ class DetailAlbumViewController: UIViewController {
         guard let album = album else { return }
         let ref = FireBaseStorageManager.albumsRef.child(album.name)
         ref.removeAllObservers()
+    }
+    
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddEditAlbumVC") as? AddAlbumViewController
+        vc?.detailAlbum = album
+        vc?.delegate = self
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     private func setup() {
@@ -53,9 +64,15 @@ class DetailAlbumViewController: UIViewController {
 
             LocalStorage.shared.localTracks = tracks
             LocalStorage.shared.copyLocalTracks = tracks
-            print(LocalStorage.shared.localTracks.count)
             self?.albumTracksTableView.reloadData()
         }
+    }
+}
+
+extension DetailAlbumViewController: UpdateDetailAlbumViewController {
+    func update(album: AlbumFB) {
+        self.album = album
+        setup()
     }
 }
 

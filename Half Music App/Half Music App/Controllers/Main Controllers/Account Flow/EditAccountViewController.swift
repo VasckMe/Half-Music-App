@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class EditAccountViewController: UIViewController {
+final class EditAccountViewController: UIViewController {
     
     @IBOutlet private weak var nicknameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!

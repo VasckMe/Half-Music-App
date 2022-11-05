@@ -257,6 +257,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="RYd-i9-tdh" firstAttribute="leading" secondItem="V4p-Hr-Z4t" secondAttribute="leading" id="0hX-R3-JeL"/>
                                     <constraint firstAttribute="bottom" secondItem="RYd-i9-tdh" secondAttribute="bottom" id="5Em-3c-01q"/>

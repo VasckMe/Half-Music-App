@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpMessageViewController: UIViewController {
+final class SignUpMessageViewController: UIViewController {
 
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!

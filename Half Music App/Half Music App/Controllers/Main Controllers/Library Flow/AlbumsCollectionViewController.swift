@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class AlbumsCollectionViewController: UICollectionViewController {
+final class AlbumsCollectionViewController: UICollectionViewController {
 
     var albums: [AlbumFB] = []
     let ref = FireBaseStorageManager.albumsRef

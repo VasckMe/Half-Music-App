@@ -8,12 +8,18 @@
 import UIKit
 import FirebaseDatabase
 
-class LibraryViewController: UIViewController {
+final class LibraryViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var libraryTableView: UITableView!
     @IBOutlet weak var recentlyAddedCollectionView: UICollectionView!
     
+    // MARK: Properties
+    
     let ref = FireBaseStorageManager.audioRef
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,8 @@ class LibraryViewController: UIViewController {
     }
 }
 
+// MARK: - Extension UITableView
+
 extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         LocalStorage.shared.library.count
@@ -78,6 +86,8 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
+// MARK: - Extension UICollectionView
 
 extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

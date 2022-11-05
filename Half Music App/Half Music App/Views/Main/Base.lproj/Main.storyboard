@@ -132,10 +132,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="CvA-q5-mRN">
-                                <rect key="frame" x="20" y="47" width="350" height="777"/>
+                                <rect key="frame" x="20" y="145" width="350" height="679"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3TZ-eY-laE">
-                                        <rect key="frame" x="50" y="0.0" width="250" height="412"/>
+                                        <rect key="frame" x="50" y="0.0" width="250" height="314"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Vi-UC-wD1">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
@@ -148,7 +148,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-oK-3qA">
-                                                <rect key="frame" x="54" y="265" width="142" height="147"/>
+                                                <rect key="frame" x="54" y="265" width="142" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -156,7 +156,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5lS-p0-yFv">
-                                        <rect key="frame" x="0.0" y="427" width="350" height="350"/>
+                                        <rect key="frame" x="0.0" y="329" width="350" height="350"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="kfV-cM-XDp"/>
@@ -176,6 +176,13 @@
                             <constraint firstItem="CvA-q5-mRN" firstAttribute="top" secondItem="9ym-UW-W5D" secondAttribute="top" id="qtt-YM-odE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="U7Z-Kt-IW0">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="HQm-ga-XGU">
+                            <connections>
+                                <action selector="editAction:" destination="mvg-0q-QMK" id="HAP-yl-dCh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="albumImageView" destination="8Vi-UC-wD1" id="OVZ-AK-hpo"/>
                         <outlet property="albumTitleLabel" destination="3uV-oK-3qA" id="79D-fN-tzt"/>
@@ -213,6 +220,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="mvg-0q-QMK" kind="show" id="xRr-fF-tCs"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbd-JI-oXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,7 +231,7 @@
         <!--Add Album View Controller-->
         <scene sceneID="Q0I-Bj-U86">
             <objects>
-                <viewController id="V91-gz-iFn" customClass="AddAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddEditAlbumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V91-gz-iFn" customClass="AddAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XHF-dE-1Tc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,12 +262,12 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDj-P7-gDa">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="34"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="AAo-Vp-O5w"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>

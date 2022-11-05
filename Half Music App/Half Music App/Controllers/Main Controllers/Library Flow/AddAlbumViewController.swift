@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 final class AddAlbumViewController: BaseViewController {
 
@@ -14,6 +15,8 @@ final class AddAlbumViewController: BaseViewController {
     @IBOutlet private weak var albumTableView: UITableView!
     
     let ref = FireBaseStorageManager.albumsRef
+    var detailAlbum: AlbumFB?
+    var delegate: UpdateDetailAlbumViewController?
     
     var choosedTracks: [TrackFB] = []
     
@@ -25,7 +28,27 @@ final class AddAlbumViewController: BaseViewController {
         albumTableView.register(
             UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: TrackTableViewCell.identifier)
-        
+        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
+            var tracks = [TrackFB]()
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                tracks.append(track)
+            }
+            LocalStorage.shared.localTracks = tracks
+            LocalStorage.shared.copyLocalTracks = tracks
+            
+            self?.albumTableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        FireBaseStorageManager.audioRef.removeAllObservers()
     }
     
     @IBAction private func saveAlbumAction(_ sender: UIBarButtonItem) {
@@ -36,24 +59,28 @@ final class AddAlbumViewController: BaseViewController {
             callDefaultAlert(title: "Bad title", message: "Change album title")
             return
         }
-        let album = AlbumFB(name: text, tracks: choosedTracks)
         
+        let album = AlbumFB(name: text, tracks: choosedTracks)
+
         let albumRef = ref.child("\(album.name)")
+        
+        if let detailAlbum = detailAlbum {
+            ref.child(detailAlbum.name).removeValue()
+            delegate?.update(album: album)
+        }
+    
         choosedTracks.forEach { track in
             albumRef.child("\(track.name)").setValue(track.convertInDictionary())
         }
+        
         navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setup() {
+        if let album = detailAlbum {
+            albumNameLabel.text = album.name
+            choosedTracks = album.tracks
+        }
     }
-    */
 
 }
 
@@ -71,7 +98,7 @@ extension AddAlbumViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let trackFB = LocalStorage.shared.localTracks[indexPath.row]
         cell.configure(model: trackFB)
-        cell.accessoryType = .none
+        cell.accessoryType = choosedTracks.contains(trackFB) ? .checkmark : .none
         
         return cell
     }
