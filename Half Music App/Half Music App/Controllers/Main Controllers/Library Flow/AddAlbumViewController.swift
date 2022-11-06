@@ -32,17 +32,9 @@ final class AddAlbumViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
-            var tracks = [TrackFB]()
-            
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                tracks.append(track)
-            }
-            LocalStorage.shared.localTracks = tracks
-            LocalStorage.shared.copyLocalTracks = tracks
-            
+        FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.albumTableView.reloadData()
         }
     }

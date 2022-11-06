@@ -54,16 +54,10 @@ final class DetailAlbumViewController: UIViewController {
         
         guard let album = album else { return }
         let ref = FireBaseStorageManager.albumsRef.child(album.name)
-        ref.observe(.value) { [weak self] snapshot in
-            var tracks: [TrackFB] = []
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                tracks.append(track)
-            }
-
-            LocalStorage.shared.localTracks = tracks
-            LocalStorage.shared.copyLocalTracks = tracks
+        
+        FireBaseStorageManager.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.albumTracksTableView.reloadData()
         }
     }

@@ -535,40 +535,6 @@
             </objects>
             <point key="canvasLocation" x="1103" y="1020"/>
         </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="UYn-X1-Dbu">
-            <objects>
-                <tableViewController id="dWJ-9O-nAN" customClass="SearchTableViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5Fj-wf-P81">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Find in tracks" id="OZO-UO-4XP">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.79929538749999995" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="dWJ-9O-nAN" id="aeY-Ri-V7f"/>
-                            </connections>
-                        </searchBar>
-                        <connections>
-                            <outlet property="dataSource" destination="dWJ-9O-nAN" id="xly-jm-wfB"/>
-                            <outlet property="delegate" destination="dWJ-9O-nAN" id="itn-5g-0Ap"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Cmd-lF-RXq"/>
-                    <connections>
-                        <outlet property="searchTrackBar" destination="OZO-UO-4XP" id="abw-zK-gOb"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w6c-Jw-fAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="548" y="-1600"/>
-        </scene>
         <!--Search View Controller-->
         <scene sceneID="SgU-DP-16D">
             <objects>

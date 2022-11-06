@@ -73,22 +73,14 @@ final class DetailTrackViewController: UIViewController {
         audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
     }
     
-    deinit {
-        print("DEINITED")
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         timeObserver = audioPlayerService.addObserver { [weak self] time in
             self?.makeTime(time: time)
         }
-        print("ADDED OBSERVER")
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         audioPlayerService.removeObserver(observer: timeObserver!)
-//        FireBaseStorageManager.audioRef.removeAllObservers()
-        print("REMOVED OBSERVER")
     }
     
     // MARK: - IBActions
@@ -114,7 +106,7 @@ final class DetailTrackViewController: UIViewController {
         setupTrackUI()
     }
     
-    @IBAction func shuffleAction() {
+    @IBAction private func shuffleAction() {
         shuffleOutlet.isSelected.toggle()
     }
     
@@ -122,11 +114,11 @@ final class DetailTrackViewController: UIViewController {
         audioPlayerService.setVolume(volume: sender.value)
     }
     
-    @IBAction func repeatAction() {
+    @IBAction private func repeatAction() {
         repeatOutlet.isSelected.toggle()
     }
     
-    @IBAction func addToLibrary(_ sender: Any) {
+    @IBAction private func addToLibrary(_ sender: Any) {
         guard
             let trackIndex = trackIndex,
             LocalStorage.shared.localTracks.indices.contains(trackIndex)
@@ -148,7 +140,7 @@ final class DetailTrackViewController: UIViewController {
         }
     }
     
-    @IBAction func addToAlbum() {
+    @IBAction private func addToAlbum() {
         let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
         let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
         let track = LocalStorage.shared.localTracks[trackIndex!]

@@ -32,20 +32,9 @@ class AddTrackToAlbumViewController: BaseViewController {
             UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
         )
-        ref.getData { [weak self] error, snapshot in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                guard let snapshot = snapshot else { return }
-                var albms: [AlbumFB] = []
-                for item in snapshot.children {
-                    guard let snapshot = item as? DataSnapshot,
-                          let album = AlbumFB(snapshot: snapshot) else { continue }
-                    albms.append(album)
-                }
-                self?.albums = albms
-                self?.albumCollectionView.reloadData()
-            }
+        FireBaseStorageManager.getAlbums {[weak self] albums in
+            self?.albums = albums
+            self?.albumCollectionView.reloadData()
         }
     }
 }
@@ -97,38 +86,15 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
 extension AddTrackToAlbumViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            ref.getData { [weak self] error, snapshot in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    guard let snapshot = snapshot else { return }
-                    var albms: [AlbumFB] = []
-                    for item in snapshot.children {
-                        guard let snapshot = item as? DataSnapshot,
-                              let album = AlbumFB(snapshot: snapshot) else { continue }
-                        albms.append(album)
-                    }
-                    self?.albums = albms
-                    self?.albumCollectionView.reloadData()
-                }
+            
+            FireBaseStorageManager.getAlbums {[weak self] albums in
+                self?.albums = albums
+                self?.albumCollectionView.reloadData()
             }
         } else {
-            ref.getData { [weak self] error, snapshot in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    guard let snapshot = snapshot else { return }
-                    var albms: [AlbumFB] = []
-                    for item in snapshot.children {
-                        guard let snapshot = item as? DataSnapshot,
-                              let album = AlbumFB(snapshot: snapshot) else { continue }
-                        if album.name.lowercased().contains(searchText.lowercased()) {
-                            albms.append(album)
-                        }
-                    }
-                    self?.albums = albms
-                    self?.albumCollectionView.reloadData()
-                }
+            FireBaseStorageManager.getAlbumsWithPredicade(predicate: searchText) {[weak self] albums in
+                self?.albums = albums
+                self?.albumCollectionView.reloadData()
             }
         }
     }

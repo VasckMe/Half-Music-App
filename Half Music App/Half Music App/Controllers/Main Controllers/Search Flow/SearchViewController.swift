@@ -86,10 +86,6 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
             ) as? DetailTrackViewController
         {
             vc.trackIndex = indexPath.row
-//            vc.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png"))
-            
-//            vc.modalPresentationStyle = .pageSheet
-//            vc.modalTransitionStyle = .coverVertical
             navigationController?.present(vc, animated: true)
         }
     }

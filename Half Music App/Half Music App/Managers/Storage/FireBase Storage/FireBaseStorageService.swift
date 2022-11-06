@@ -50,18 +50,89 @@ class FireBaseStorageManager {
         }
     }
     
-//    static func makeObserver() {
-//        audioRef.getData { [weak self] error, dataSnapshot in
-//            guard let snapshot = dataSnapshot
-//            else {
-//                print("error - \(error)")
-//                return
-//            }
-//            for item in snapshot.children {
-//                guard let snapshot = item as? DataSnapshot,
-//                      let track = TrackFB(snapshot: snapshot) else { continue }
-//                self?.audiofff.append(track)
-//            }
-//        }
-//    }
+    static func getAlbums(completion: @escaping ([AlbumFB]) -> ()) {
+        albumsRef.getData { error, snapshot in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else { return }
+                var albums: [AlbumFB] = []
+                for item in snapshot.children {
+                    guard let snapshot = item as? DataSnapshot,
+                          let album = AlbumFB(snapshot: snapshot) else { continue }
+                    albums.append(album)
+                }
+                DispatchQueue.main.async {
+                    completion(albums)
+                }
+            }
+        }
+    }
+    
+    static func getAlbumsWithPredicade(predicate: String, completion: @escaping ([AlbumFB])->()) {
+        albumsRef.getData { error, snapshot in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else { return }
+                var albums: [AlbumFB] = []
+                for item in snapshot.children {
+                    guard let snapshot = item as? DataSnapshot,
+                          let album = AlbumFB(snapshot: snapshot) else { continue }
+                    if album.name.lowercased().contains(predicate.lowercased()) {
+                        albums.append(album)
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(albums)
+                }
+            }
+        }
+    }
+    
+    static func addAlbumsObserver(completion: @escaping ([AlbumFB]) -> () ) {
+        
+        albumsRef.observe(.value) { snapshot in
+            var albums: [AlbumFB] = []
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let album = AlbumFB(snapshot: snapshot) else { continue }
+                albums.append(album)
+            }
+            DispatchQueue.main.async {
+                completion(albums)
+            }
+        }
+    }
+    
+    static func addAudioObserver(completion: @escaping ([TrackFB]) -> () ) {
+        FireBaseStorageManager.audioRef.observe(.value) { snapshot in
+            var tracks = [TrackFB]()
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                tracks.append(track)
+            }
+            
+            DispatchQueue.main.async {
+                completion(tracks)
+            }
+        }
+    }
+    
+    static func addAudioInAlbumObserver(albumName: String, completion: @escaping ([TrackFB]) -> ()) {
+        let ref = FireBaseStorageManager.albumsRef.child(albumName)
+        ref.observe(.value) { snapshot in
+            var tracks: [TrackFB] = []
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let track = TrackFB(snapshot: snapshot) else { continue }
+                tracks.append(track)
+            }
+            DispatchQueue.main.async {
+                completion(tracks)
+            }
+        }
+    }
 }

@@ -26,23 +26,15 @@ final class ArtistsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("ADDED VIEW WILL APPEAR Artist OBSERVER")
-        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
-            var tracks = [TrackFB]()
-            
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                tracks.append(track)
-            }
-            LocalStorage.shared.localTracks = tracks
-            LocalStorage.shared.copyLocalTracks = tracks
+        FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.findArtists()
+
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("ADDED VIEW WILL Dissapear Artist OBSERVER")
         FireBaseStorageManager.audioRef.removeAllObservers()
     }
     
