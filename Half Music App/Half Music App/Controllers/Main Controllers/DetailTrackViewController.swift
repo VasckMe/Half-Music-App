@@ -48,27 +48,29 @@ final class DetailTrackViewController: UIViewController {
     // MARK: - Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    private let mediaPlayer: MediaPlayerProtocol = MediaPlayer()
+    
+    private let audioPlayerService: AudioPlayerServiceProtocol = AudioPlayerService()
+    
     private var isPlaying = false {
         didSet {
             if isPlaying {
                 playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-                mediaPlayer.player.play()
+                audioPlayerService.play()
             } else {
                 playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-                mediaPlayer.player.pause()
+                audioPlayerService.pause()
             }
         }
     }
     private var timeObserver: Any!
     var trackIndex: Int?
     
-    // MARK: LifeCycle
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.navigationBar.backgroundColor = .clear
         setupTrackUI()
+        audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
     }
     
     deinit {
@@ -76,7 +78,7 @@ final class DetailTrackViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        timeObserver = mediaPlayer.addObserver { [weak self] time in
+        timeObserver = audioPlayerService.addObserver { [weak self] time in
             self?.makeTime(time: time)
         }
         print("ADDED OBSERVER")
@@ -84,42 +86,32 @@ final class DetailTrackViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        mediaPlayer.removeObserver(observer: timeObserver!)
+        audioPlayerService.removeObserver(observer: timeObserver!)
 //        FireBaseStorageManager.audioRef.removeAllObservers()
         print("REMOVED OBSERVER")
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     
     @IBAction private func trackSliderAction() {
         let value: Double = Double(trackSlider.value)
         let time = CMTime(seconds: value, preferredTimescale: .max)
-        mediaPlayer.seekTo(time: time)
+        audioPlayerService.seekTo(time: time)
     }
     
     @IBAction private func backwardTrackAction() {
-        if trackIndex != nil {
-//            trackIndex! -= 1
-            trackIndex! = trackIndex!-1 >= 0 ? trackIndex!-1 : LocalStorage.shared.localTracks.count-1
-            setupTrackUI()
-        }
+        trackIndex = audioPlayerService.previousAudioTrack(audioIndex: trackIndex)
+        setupTrackUI()
     }
     
     @IBAction private func playPauseTrackAction(_ sender: UIButton) {
-        trackSlider.maximumValue = Float(mediaPlayer.getDuration()!)
+        trackSlider.maximumValue = Float(audioPlayerService.getDuration()!)
         isPlaying.toggle()
     }
     
     @IBAction private func forwardTrackAction() {
-        if trackIndex != nil {
-//            trackIndex! += 1
-            if shuffleOutlet.isSelected {
-                trackIndex! = Int.random(in: 0..<LocalStorage.shared.localTracks.count)
-            } else {
-                trackIndex! = trackIndex!+1 >= LocalStorage.shared.localTracks.count ? 0 : trackIndex!+1
-            }
-            setupTrackUI()
-        }
+        trackIndex = audioPlayerService.nextAudioTrack(audioIndex: trackIndex, isShuffleOn: shuffleOutlet.isSelected)
+        setupTrackUI()
     }
     
     @IBAction func shuffleAction() {
@@ -127,7 +119,7 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
-        mediaPlayer.changeVolume(volume: sender.value)
+        audioPlayerService.setVolume(volume: sender.value)
     }
     
     @IBAction func repeatAction() {
@@ -165,8 +157,7 @@ final class DetailTrackViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    
-    // MARK: Private
+    // MARK: - Private
     
     private func setupTrackUI() {
         guard
@@ -182,9 +173,7 @@ final class DetailTrackViewController: UIViewController {
         FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
         }
-        
-        mediaPlayer.preparePlayer(urlString: track.preview_url)
-        
+                
         trackNameLabel.text = track.name
         authorNameLabel.text = track.artist
         let trackUrl = track.album.images[0].url
@@ -198,27 +187,28 @@ final class DetailTrackViewController: UIViewController {
     }
     
     private func makeTime(time: CMTime) {
-        let duration = mediaPlayer.getDuration()!
+        let duration = audioPlayerService.getDuration()!
         
         let seconds = Int(time.value/1000000000)
         trackSlider.value = Float(seconds)
         startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
         endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
 
-        
-        if duration - seconds <= 0 {
-            isPlaying = repeatOutlet.isSelected
-            //            forwardTrackAction()
-            mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
-            trackSlider.value = Float(duration - seconds)
+        if duration - seconds <= 0, duration != 0 {
+            audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
+            if repeatOutlet.isSelected {
+                audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
+            } else {
+                forwardTrackAction()
+            }
         }
     }
 }
 
+// MARK: - Extension
 extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack() {
         let track = LocalStorage.shared.localTracks[trackIndex!]
-        
         FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
         }
