@@ -16,6 +16,7 @@ protocol NetworkServiceProtocol {
         completion: @escaping (Data?, Error?) -> Void
     )
     func requestImage(url: URLConvertible, completion: @escaping(AFDataResponse<Image>) -> Void)
+    func requestImageFromCache(url: String) -> Image?
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -66,5 +67,9 @@ final class NetworkService: NetworkServiceProtocol {
         AF.request(url).responseImage { response in
             completion(response)
         }
+    }
+    
+    func requestImageFromCache(url: String) -> Image? {
+        ImageCacheManager.shared.imageCache.image(withIdentifier: url)
     }
 }

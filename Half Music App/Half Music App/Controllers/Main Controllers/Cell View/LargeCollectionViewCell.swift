@@ -24,16 +24,10 @@ final class LargeCollectionViewCell: UICollectionViewCell {
         itemLabel.text = track.name
         
         let photoURL = track.album.images[1].url
-        if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: photoURL) {
-            itemImageView.image = image
-        } else {
-            dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
-                guard let image = image else {
-                    return
-                }
-                ImageCacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
-                self?.itemImageView.image = image
-            }
+        
+        dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
+            guard let image = image else { return }
+            self?.itemImageView.image = image
         }
     }
     

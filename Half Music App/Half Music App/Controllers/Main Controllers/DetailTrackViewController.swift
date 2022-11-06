@@ -15,7 +15,7 @@ protocol UpdateDetailTrackViewControllerProtocol {
 
 final class DetailTrackViewController: UIViewController {
 
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var trackImageView: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!
@@ -31,16 +31,21 @@ final class DetailTrackViewController: UIViewController {
             shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
         }
     }
-    @IBOutlet weak var repeatOutlet: UIButton! {
+    @IBOutlet private weak var repeatOutlet: UIButton! {
         didSet {
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
         }
     }
     
-    @IBOutlet private weak var likeButtonOutlet: UIButton!
+    @IBOutlet private weak var likeButtonOutlet: UIButton! {
+        didSet {
+            likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        }
+    }
     
-    // MARK: Properties
+    // MARK: - Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let mediaPlayer: MediaPlayerProtocol = MediaPlayer()
@@ -62,7 +67,7 @@ final class DetailTrackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = .clear
+//        navigationController?.navigationBar.backgroundColor = .clear
         setupTrackUI()
     }
     
@@ -143,10 +148,10 @@ final class DetailTrackViewController: UIViewController {
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING \(track.name)")
             FireBaseStorageManager.audioRef.child(track.name).removeValue()
-            likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButtonOutlet.isSelected.toggle()
         } else {
             print("ADDING \(track.name)")
-            likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButtonOutlet.isSelected.toggle()
             FireBaseStorageManager.saveTrackInDB(track: track)
         }
     }
@@ -169,25 +174,13 @@ final class DetailTrackViewController: UIViewController {
             LocalStorage.shared.localTracks.indices.contains(trackIndex)
         else {
             print("There is no tracks with that index")
-                return
+            return
         }
         
         let track = LocalStorage.shared.localTracks[trackIndex]
         
-        FireBaseStorageManager.audioRef.getData { [weak self] error, snapshot in
-            guard let snapshot = snapshot else {
-                return
-            }
-            
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let trackFB = TrackFB(snapshot: snapshot) else { continue }
-                if trackFB.name == track.name {
-                    self?.likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    return
-                }
-            }
-            self?.likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+        FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
+            self?.likeButtonOutlet.isSelected = bool
         }
         
         mediaPlayer.preparePlayer(urlString: track.preview_url)
@@ -196,16 +189,11 @@ final class DetailTrackViewController: UIViewController {
         authorNameLabel.text = track.artist
         let trackUrl = track.album.images[0].url
                 
-        if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: trackUrl) {
-            trackImageView.image = image
-        } else {
-            dataFetcherService.fetchImage(urlString: trackUrl) {[weak self] image in
-                guard let image = image else {
-                    return
-                }
-                ImageCacheManager.shared.imageCache.add(image, withIdentifier: trackUrl)
-                self?.trackImageView.image = image
+        dataFetcherService.fetchImage(urlString: trackUrl) { [weak self] image in
+            guard let image = image else {
+                return
             }
+            self?.trackImageView.image = image
         }
     }
     
@@ -216,10 +204,11 @@ final class DetailTrackViewController: UIViewController {
         trackSlider.value = Float(seconds)
         startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
         endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
+
         
         if duration - seconds <= 0 {
             isPlaying = repeatOutlet.isSelected
-//            forwardTrackAction()
+            //            forwardTrackAction()
             mediaPlayer.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             trackSlider.value = Float(duration - seconds)
         }
@@ -228,20 +217,10 @@ final class DetailTrackViewController: UIViewController {
 
 extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack() {
-        FireBaseStorageManager.audioRef.getData { [weak self] error, snapshot in
-            guard let snapshot = snapshot else {
-                return
-            }
-            let track = LocalStorage.shared.localTracks[(self?.trackIndex!)!]
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let trackFB = TrackFB(snapshot: snapshot) else { continue }
-                if trackFB.name == track.name {
-                    self?.likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    return
-                }
-            }
-            self?.likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+        let track = LocalStorage.shared.localTracks[trackIndex!]
+        
+        FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
+            self?.likeButtonOutlet.isSelected = bool
         }
     }
 }

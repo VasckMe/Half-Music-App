@@ -46,12 +46,18 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
     }
     
     func fetchURLImageData(urlString: String, completion: @escaping (Image?) -> Void) {
-        networkService.requestImage(url: urlString) { response in
-            switch response.result {
-            case .failure(let error):
-                print("Error \(error)")
-            case .success(let image):
-                completion(image)
+        
+        if let image = networkService.requestImageFromCache(url: urlString) {
+            completion(image)
+        } else {
+            networkService.requestImage(url: urlString) { response in
+                switch response.result {
+                case .failure(let error):
+                    print("Error \(error)")
+                case .success(let image):
+                    ImageCacheManager.shared.imageCache.add(image, withIdentifier: urlString)
+                    completion(image)
+                }
             }
         }
     }

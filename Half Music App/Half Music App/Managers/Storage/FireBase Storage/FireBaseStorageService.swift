@@ -32,6 +32,24 @@ class FireBaseStorageManager {
         trackRef.setValue(track.convertInDictionary())
     }
     
+    static func isAddedInLibrary(track: TrackFB, completion: @escaping (Bool) -> ()) {
+        FireBaseStorageManager.audioRef.getData { error, snapshot in
+            guard let snapshot = snapshot else {
+                return
+            }
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let trackFB = TrackFB(snapshot: snapshot) else { continue }
+                if trackFB.name == track.name {
+                    completion(true)
+                    return
+                }
+            }
+            completion(false)
+        }
+    }
+    
 //    static func makeObserver() {
 //        audioRef.getData { [weak self] error, dataSnapshot in
 //            guard let snapshot = dataSnapshot

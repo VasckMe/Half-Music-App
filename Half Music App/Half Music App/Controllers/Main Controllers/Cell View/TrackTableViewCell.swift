@@ -21,18 +21,12 @@ class TrackTableViewCell: UITableViewCell {
         trackNameLabel.text = model.name
         trackArtistsLabel.text = model.artist
         let photoURL = model.album.images[2].url
-        if let image = ImageCacheManager.shared.imageCache.image(withIdentifier: photoURL) {
-            trackImageView.image = image
-            activityIndicator.stopAnimating()
-        } else {
-            dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
-                guard let image = image else {
-                    return
-                }
-                ImageCacheManager.shared.imageCache.add(image, withIdentifier: photoURL)
-                self?.trackImageView.image = image
-                self?.activityIndicator.stopAnimating()
-            }
+        
+        
+        dataFetcherService.fetchImage(urlString: photoURL) { [weak self] image in
+            guard let image = image else { return }
+            self?.trackImageView.image = image
+            self?.activityIndicator.stopAnimating()
         }
     }
 }
