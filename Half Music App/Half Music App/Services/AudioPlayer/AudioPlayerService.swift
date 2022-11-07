@@ -8,28 +8,48 @@
 import Foundation
 import MediaPlayer
 
-protocol AudioPlayerServiceProtocol {
-//    var player: AVPlayer { get }
-    
-    func addTrackInPlayer(audioIndex: Int?)
-    
-    func addObserver(completion: @escaping (CMTime) -> Void) -> Any
-    func removeObserver(observer: Any)
-    
-    func play()
-    func pause()
-    func nextAudioTrack(audioIndex: Int?, isShuffleOn: Bool) -> Int?
-    func previousAudioTrack(audioIndex: Int?) -> Int?
-    func getDuration() -> Int?
-    func seekTo(time: CMTime)
-    func setVolume(volume: Float)
-}
+//protocol AudioPlayerServiceProtocol {
+////    var player: AVPlayer { get }
+//    var isPlaying: Bool { get set }
+//    func addTrackInPlayer(audioIndex: Int?)
+//
+//    func addObserver(completion: @escaping (CMTime) -> Void) -> Any
+//    func removeObserver(observer: Any)
+//
+//    func play()
+//    func pause()
+//    func nextAudioTrack(audioIndex: Int?, isShuffleOn: Bool) -> Int?
+//    func previousAudioTrack(audioIndex: Int?) -> Int?
+//    func getDuration() -> Int?
+//    func seekTo(time: CMTime)
+//    func setVolume(volume: Float)
+//}
 
-final class AudioPlayerService: AudioPlayerServiceProtocol {
+final class AudioPlayerService {
 
-    // MARK: Internal
+    // MARK: Private
+    
+    private init() {}
     
     private let player = AVPlayer()
+    
+    private func createPlayerItem(urlString: String?) -> AVPlayerItem? {
+        guard
+            let urlString = urlString,
+            let url = URL(string: urlString)
+        else {
+            return nil
+        }
+        return AVPlayerItem(url: url)
+    }
+    // MARK: Internal
+        
+    static let shared = AudioPlayerService()
+    
+//    var audioIndex = 0
+    var isPlaying = false
+    var isShuffle = false
+    var isRepeat = false
     
     func play() {
         player.play()
@@ -40,33 +60,33 @@ final class AudioPlayerService: AudioPlayerServiceProtocol {
     }
     
     func nextAudioTrack(audioIndex: Int?, isShuffleOn: Bool) -> Int? {
-        guard var index = audioIndex else { return nil }
-        index = isShuffleOn
+        guard var audioIndex = audioIndex else { return nil }
+        audioIndex = isShuffleOn
         ? Int.random(in: 0..<LocalStorage.shared.localTracks.count)
-        : index+1 >= LocalStorage.shared.localTracks.count
+        : audioIndex+1 >= LocalStorage.shared.localTracks.count
             ? 0
-            : index+1
-        addTrackInPlayer(audioIndex: index)
-        return index
+            : audioIndex+1
+        addTrackInPlayer(audioIndex: audioIndex)
+        return audioIndex
     }
     
     func previousAudioTrack(audioIndex: Int?) -> Int? {
-        guard var index = audioIndex else { return nil }
-        index = index - 1 >= 0
-        ? index - 1
+        guard var audioIndex = audioIndex else { return nil }
+        audioIndex = audioIndex - 1 >= 0
+        ? audioIndex - 1
         : LocalStorage.shared.localTracks.count - 1
-        addTrackInPlayer(audioIndex: index)
-        return index
+        addTrackInPlayer(audioIndex: audioIndex)
+        return audioIndex
     }
     
     func addTrackInPlayer(audioIndex: Int?) {
         guard
-            let index = audioIndex,
-            let audioItem = createPlayerItem(urlString: LocalStorage.shared.localTracks[index].preview_url)
+            let audioIndex = audioIndex,
+            let audioItem = createPlayerItem(urlString: LocalStorage.shared.localTracks[audioIndex].preview_url)
         else {
             return
         }
-        
+
         player.replaceCurrentItem(with: audioItem)
     }
     
@@ -86,7 +106,6 @@ final class AudioPlayerService: AudioPlayerServiceProtocol {
         player.volume = volume
     }
     
-    /// observing
     func addObserver(completion: @escaping (CMTime) -> Void) -> Any {
         let observer = player.addPeriodicTimeObserver(
             forInterval: CMTime(seconds: 1.0, preferredTimescale: .max),
@@ -98,17 +117,5 @@ final class AudioPlayerService: AudioPlayerServiceProtocol {
     
     func removeObserver(observer: Any) {
         player.removeTimeObserver(observer)
-    }
-    
-    // MARK: Private
-    
-    private func createPlayerItem(urlString: String?) -> AVPlayerItem? {
-        guard
-            let urlString = urlString,
-            let url = URL(string: urlString)
-        else {
-            return nil
-        }
-        return AVPlayerItem(url: url)
     }
 }

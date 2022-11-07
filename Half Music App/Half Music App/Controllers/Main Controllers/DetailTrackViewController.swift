@@ -24,7 +24,13 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
     
-    @IBOutlet private weak var playPauseButtonOutlet: UIButton!
+    @IBOutlet private weak var playPauseButtonOutlet: UIButton! {
+        didSet {
+            playPauseButtonOutlet.isSelected = audioPlayerService.isPlaying
+            playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
+            playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        }
+    }
     @IBOutlet private weak var shuffleOutlet: UIButton! {
         didSet {
             shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
@@ -49,19 +55,20 @@ final class DetailTrackViewController: UIViewController {
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     
-    private let audioPlayerService: AudioPlayerServiceProtocol = AudioPlayerService()
+    private let audioPlayerService = AudioPlayerService.shared
     
-    private var isPlaying = false {
-        didSet {
-            if isPlaying {
-                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-                audioPlayerService.play()
-            } else {
-                playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-                audioPlayerService.pause()
-            }
-        }
-    }
+//    private var isPlaying = false {
+//        didSet {
+//            if isPlaying {
+////                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+//                audioPlayerService.play()
+//            } else {
+////                playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+//                audioPlayerService.pause()
+//            }
+//            playPauseButtonOutlet.isSelected.toggle()
+//        }
+//    }
     private var timeObserver: Any!
     var trackIndex: Int?
     
@@ -70,7 +77,10 @@ final class DetailTrackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTrackUI()
+        
         audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
+        guard let audioIndex = trackIndex else { return }
+//        audioPlayerService.audioIndex = audioIndex
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +108,14 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func playPauseTrackAction(_ sender: UIButton) {
         trackSlider.maximumValue = Float(audioPlayerService.getDuration()!)
-        isPlaying.toggle()
+//        isPlaying.toggle()
+        playPauseButtonOutlet.isSelected.toggle()
+        audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
+        if playPauseButtonOutlet.isSelected {
+            audioPlayerService.play()
+        } else {
+            audioPlayerService.pause()
+        }
     }
     
     @IBAction private func forwardTrackAction() {
@@ -108,6 +125,7 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func shuffleAction() {
         shuffleOutlet.isSelected.toggle()
+        audioPlayerService.isShuffle = shuffleOutlet.isSelected
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
@@ -116,18 +134,19 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func repeatAction() {
         repeatOutlet.isSelected.toggle()
+        audioPlayerService.isRepeat = repeatOutlet.isSelected
     }
     
     @IBAction private func addToLibrary(_ sender: Any) {
         guard
-            let trackIndex = trackIndex,
-            LocalStorage.shared.localTracks.indices.contains(trackIndex)
+            let audioIndex = trackIndex,
+            LocalStorage.shared.localTracks.indices.contains(audioIndex)
         else {
             print("Bad track index")
                 return
         }
         
-        let track = LocalStorage.shared.localTracks[trackIndex]
+        let track = LocalStorage.shared.localTracks[audioIndex]
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING \(track.name)")
@@ -153,14 +172,14 @@ final class DetailTrackViewController: UIViewController {
     
     private func setupTrackUI() {
         guard
-            let trackIndex = trackIndex,
-            LocalStorage.shared.localTracks.indices.contains(trackIndex)
+            let audioIndex = trackIndex,
+            LocalStorage.shared.localTracks.indices.contains(audioIndex)
         else {
             print("There is no tracks with that index")
             return
         }
         
-        let track = LocalStorage.shared.localTracks[trackIndex]
+        let track = LocalStorage.shared.localTracks[audioIndex]
         
         FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
@@ -189,7 +208,7 @@ final class DetailTrackViewController: UIViewController {
         if duration - seconds <= 0, duration != 0 {
             audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             if repeatOutlet.isSelected {
-                audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
+                audioPlayerService.addTrackInPlayer(audioIndex: trackIndex!)
             } else {
                 forwardTrackAction()
             }

@@ -13,8 +13,10 @@
 		18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AED28E44082000FCD54 /* NetworkService.swift */; };
 		18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */; };
 		18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF128E4515D000FCD54 /* DataFetcherService.swift */; };
-		18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18130AF428E4532E000FCD54 /* SearchTableViewController.swift */; };
 		1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */; };
+		1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */; };
+		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
+		1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23E2919055F0017FB07 /* CustomTabBarController.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
@@ -76,8 +78,10 @@
 		18130AED28E44082000FCD54 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		18130AEF28E44D6F000FCD54 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		18130AF128E4515D000FCD54 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
-		18130AF428E4532E000FCD54 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumViewController.swift; sourceTree = "<group>"; };
+		1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowIsPlayingView.xib; sourceTree = "<group>"; };
+		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
+		1824E23E2919055F0017FB07 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			children = (
 				18DDEBFD291184DE00634F5F /* SortView.swift */,
 				18DDEBFF291184E900634F5F /* SortView.xib */,
+				1824E23C291901350017FB07 /* NowIsPlayingView.swift */,
+				1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 		1876014728E34365000223CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1824E23E2919055F0017FB07 /* CustomTabBarController.swift */,
 				1872835D28E7582A0064278A /* SignUp Controllers */,
 				1872835C28E7581C0064278A /* SignIn Controllers */,
 				18130AF328E4530D000FCD54 /* Main Controllers */,
@@ -312,7 +319,6 @@
 		18778D7C290D83FB00479294 /* Search Flow */ = {
 			isa = PBXGroup;
 			children = (
-				18130AF428E4532E000FCD54 /* SearchTableViewController.swift */,
 				18D3F48829168F5C00F7D867 /* SearchViewController.swift */,
 			);
 			path = "Search Flow";
@@ -553,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */,
 				18DDEC00291184E900634F5F /* SortView.xib in Resources */,
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
 				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
@@ -629,7 +636,6 @@
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
-				18130AF528E4532E000FCD54 /* SearchTableViewController.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
 				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
@@ -642,6 +648,7 @@
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,
 				18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */,
+				1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */,
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
@@ -656,6 +663,7 @@
 				18680D9B28E84315001DF00D /* VerificationService.swift in Sources */,
 				1876015228E34C59000223CD /* Album.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
+				1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,

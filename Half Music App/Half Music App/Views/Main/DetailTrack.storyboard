@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AV Player View Controller-->
-        <scene sceneID="91I-cN-JZz">
-            <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="Lmx-7e-l1b" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SH8-N8-dDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-95" y="29"/>
-        </scene>
-        <!--asd-->
+        <!--Detail Track View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="DetailTrackVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="DetailTrackViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,11 +145,12 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4W-Id-BcF">
                                                                                 <rect key="frame" x="16.333333333333343" y="0.0" width="84.333333333333329" height="61.666666666666664"/>
-                                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain">
                                                                                     <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
                                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
+                                                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="playPauseTrackAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="15I-Ca-Fh8"/>
@@ -242,9 +235,11 @@
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILl-5L-P1l">
                                                                         <rect key="frame" x="195" y="0.0" width="155" height="34.333333333333336"/>
-                                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                                                                            <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="addToLibrary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7yZ-bn-mX7"/>
                                                                         </connections>
@@ -289,7 +284,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="V4p-Hr-Z4t" secondAttribute="trailing" id="xRJ-jq-nxm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="asd" id="ee0-Sw-bnw"/>
+                    <navigationItem key="navigationItem" id="ee0-Sw-bnw"/>
                     <connections>
                         <outlet property="authorNameLabel" destination="uxF-KE-oUj" id="ksh-Xd-pnY"/>
                         <outlet property="endTimeLabel" destination="Hhx-zM-97E" id="FqF-Rg-bom"/>
@@ -305,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1147.6923076923076" y="-120.14218009478672"/>
+            <point key="canvasLocation" x="1720" y="-147"/>
         </scene>
     </scenes>
     <resources>
