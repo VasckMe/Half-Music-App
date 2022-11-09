@@ -17,7 +17,7 @@ extension UITextField {
         customButton.addTarget(self, action: #selector(togglePassword), for: .touchUpInside)
         rightView = customButton
         rightViewMode = .always
-        tintColor = Constants.globalTintColor
+        tintColor = ColorConstants.globalTintColor
     }
 
     @objc func togglePassword(customButton: UIButton) {

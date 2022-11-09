@@ -79,7 +79,7 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = .zero
-        return CGSize(width: 170, height: 190)
+        return CGSize(width: 170, height: 210)
     }
 }
 

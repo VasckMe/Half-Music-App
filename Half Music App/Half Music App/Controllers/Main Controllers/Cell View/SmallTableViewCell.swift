@@ -15,7 +15,7 @@ class SmallTableViewCell: UITableViewCell {
     static let identifier = "SmallTableViewCell"
     
     func configureCategory(category: String) {
-        itemImageView.tintColor = Constants.globalTintColor
+        itemImageView.tintColor = ColorConstants.globalTintColor
         if category == LocalStorage.shared.library[0] { //artists
             itemImageView.image = UIImage(systemName: "music.mic")
         } else if category == LocalStorage.shared.library[1] { //albums

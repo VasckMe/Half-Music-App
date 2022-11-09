@@ -67,7 +67,7 @@ final class DetailTrackViewController: UIViewController {
         super.viewDidLoad()
         setupTrackUI()
         
-        audioPlayerService.addTrackInPlayer(audioIndex: trackIndex)
+        audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
         guard let audioIndex = trackIndex else { return }
 //        audioPlayerService.audioIndex = audioIndex
     }
@@ -198,7 +198,7 @@ final class DetailTrackViewController: UIViewController {
         if duration - seconds <= 0, duration != 0 {
             audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             if repeatOutlet.isSelected {
-                audioPlayerService.addTrackInPlayer(audioIndex: trackIndex!)
+                audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex!)
             } else {
                 forwardTrackAction()
             }

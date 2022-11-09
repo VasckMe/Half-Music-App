@@ -44,7 +44,7 @@ class BaseViewController: UIViewController {
         alertController.addTextField { textField in
             textField.enablePasswordToggle()
             textField.isSecureTextEntry = true
-            textField.tintColor = Constants.globalTintColor
+            textField.tintColor = ColorConstants.globalTintColor
         }
         let action = UIAlertAction(title: "Ok", style: .default) { action in
             completion(alertController.textFields?.first)

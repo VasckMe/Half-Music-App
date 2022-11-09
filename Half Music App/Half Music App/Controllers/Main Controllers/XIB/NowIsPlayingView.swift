@@ -81,7 +81,7 @@ class NowIsPlayingView: UIView {
         if duration - seconds <= 0, duration != 0 {
             audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
             if audioPlayerService.isRepeat {
-                audioPlayerService.addTrackInPlayer(audioIndex: audioPlayerService.trackIndex)
+                audioPlayerService.addAudioTrackInPlayer(audioIndex: audioPlayerService.trackIndex)
             } else {
                 let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
             }

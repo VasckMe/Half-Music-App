@@ -11,7 +11,7 @@ import MediaPlayer
 //protocol AudioPlayerServiceProtocol {
 ////    var player: AVPlayer { get }
 //    var isPlaying: Bool { get set }
-//    func addTrackInPlayer(audioIndex: Int?)
+//    func addAudioTrackInPlayer(audioIndex: Int?)
 //
 //    func addObserver(completion: @escaping (CMTime) -> Void) -> Any
 //    func removeObserver(observer: Any)
@@ -66,7 +66,7 @@ final class AudioPlayerService {
         : audioIndex+1 >= LocalStorage.shared.currentAudioQueue.count
             ? 0
             : audioIndex+1
-        addTrackInPlayer(audioIndex: audioIndex)
+        addAudioTrackInPlayer(audioIndex: audioIndex)
         return audioIndex
     }
     
@@ -75,11 +75,11 @@ final class AudioPlayerService {
         audioIndex = audioIndex - 1 >= 0
         ? audioIndex - 1
         : LocalStorage.shared.currentAudioQueue.count - 1
-        addTrackInPlayer(audioIndex: audioIndex)
+        addAudioTrackInPlayer(audioIndex: audioIndex)
         return audioIndex
     }
     
-    func addTrackInPlayer(audioIndex: Int?) {
+    func addAudioTrackInPlayer(audioIndex: Int?) {
         guard
             let audioIndex = audioIndex,
             let audioItem = createPlayerItem(urlString: LocalStorage.shared.currentAudioQueue[audioIndex].preview_url)
