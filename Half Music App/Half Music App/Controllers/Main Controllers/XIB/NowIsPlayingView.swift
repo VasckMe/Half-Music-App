@@ -12,25 +12,37 @@ class NowIsPlayingView: UIView {
 
     @IBOutlet weak var audioImageView: UIImageView!
     @IBOutlet weak var audioTitleLabel: UILabel!
-    @IBOutlet weak var playPauseButtonOutlet: UIButton!
+    @IBOutlet weak var playPauseButtonOutlet: UIButton! {
+        didSet {
+            playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
+            playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        }
+    }
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let audioPlayerService = AudioPlayerService.shared
     
     private var timeObserver: Any!
+//    var audioIndex: Int? {
+//        didSet {
+//            if audioIndex == nil {
+//                print("Changed, but nil")
+//            } else {
+//                print("Changed and not nil")
+//            }
+//        }
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         viewInit()
-        print("Frame hello")
-//        setup()
-//        addObserver()
+        setup()
+        addObserver()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         viewInit()
-        print("Coder hello")
     }
     
     func viewInit() {
@@ -39,45 +51,63 @@ class NowIsPlayingView: UIView {
         addSubview(xibView)
     }
     
-//    func addObserver() {
-//        timeObserver = audioPlayerService.addObserver { [weak self] time in
-//            self?.audioObserve(time: time)
-//        }
-//    }
+    func addObserver() {
+        timeObserver = audioPlayerService.addObserver { [weak self] time in
+            self?.audioObserve(time: time)
+        }
+    }
     
-//    func setup() {
-//        guard LocalStorage.shared.localTracks.count > 0 else { return }
-//        let track = LocalStorage.shared.localTracks[audioPlayerService.audioIndex]
-//        audioTitleLabel.text = track.artist +  " - " + track.name
-//        let trackUrl = track.album.images[0].url
-//
+    deinit {
+        print("DEINIT XIB")
+        audioPlayerService.removeObserver(observer: timeObserver)
+    }
+    
+    func setup() {
+        guard let audioIndex = audioPlayerService.trackIndex else {
+            print("XIB INDEX ERROR")
+            return
+        }
+        playPauseButtonOutlet.isSelected = audioPlayerService.isPlaying
+
+        let track = LocalStorage.shared.localTracks[audioIndex]
+        audioTitleLabel.text = track.artist +  " - " + track.name
+        let trackUrl = track.album.images[0].url
+
 //        dataFetcherService.fetchImage(urlString: trackUrl) { [weak self] image in
 //            guard let image = image else {
 //                return
 //            }
 //            self?.audioImageView.image = image
 //        }
-//    }
+    }
     
-//    private func audioObserve(time: CMTime) {
-//        let duration = audioPlayerService.getDuration()!
-//
-//        let seconds = Int(time.value/1000000000)
-//
-//        if duration - seconds <= 0, duration != 0 {
-//            audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
-//            if audioPlayerService.isRepeat {
-//                audioPlayerService.addTrackInPlayer()
-//            } else {
-//                audioPlayerService.nextAudioTrack(isShuffleOn: audioPlayerService.isShuffle)
-//                setup()
-//            }
-//        }
-//    }
+    private func audioObserve(time: CMTime) {
+        setup()
+        let duration = audioPlayerService.getDuration()!
+
+        let seconds = Int(time.value/1000000000)
+
+        if duration - seconds <= 0, duration != 0 {
+            audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
+            if audioPlayerService.isRepeat {
+                audioPlayerService.addTrackInPlayer(audioIndex: audioPlayerService.trackIndex)
+            } else {
+                let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
+            }
+        }
+    }
     
     @IBAction func playPauseAction() {
+        playPauseButtonOutlet.isSelected.toggle()
+        audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
+        if playPauseButtonOutlet.isSelected {
+            audioPlayerService.play()
+        } else {
+            audioPlayerService.pause()
+        }
     }
     
     @IBAction func forwardAction() {
+        let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
     }
 }

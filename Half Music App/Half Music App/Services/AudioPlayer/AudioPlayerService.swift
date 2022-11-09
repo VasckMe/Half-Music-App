@@ -46,7 +46,7 @@ final class AudioPlayerService {
         
     static let shared = AudioPlayerService()
     
-//    var audioIndex = 0
+    var trackIndex: Int!
     var isPlaying = false
     var isShuffle = false
     var isRepeat = false
@@ -86,7 +86,7 @@ final class AudioPlayerService {
         else {
             return
         }
-
+        trackIndex = audioIndex
         player.replaceCurrentItem(with: audioItem)
     }
     

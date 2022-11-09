@@ -57,18 +57,6 @@ final class DetailTrackViewController: UIViewController {
     
     private let audioPlayerService = AudioPlayerService.shared
     
-//    private var isPlaying = false {
-//        didSet {
-//            if isPlaying {
-////                playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-//                audioPlayerService.play()
-//            } else {
-////                playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-//                audioPlayerService.pause()
-//            }
-//            playPauseButtonOutlet.isSelected.toggle()
-//        }
-//    }
     private var timeObserver: Any!
     var trackIndex: Int?
     
