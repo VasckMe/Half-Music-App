@@ -17,6 +17,7 @@ final class DetailTrackViewController: UIViewController {
 
     // MARK: - IBOutlets
     
+    @IBOutlet weak var trackBackgroundImageView: UIImageView!
     @IBOutlet private weak var trackImageView: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!
     @IBOutlet private weak var authorNameLabel: UILabel!
@@ -181,6 +182,7 @@ final class DetailTrackViewController: UIViewController {
             guard let image = image else {
                 return
             }
+            self?.trackBackgroundImageView.image = image
             self?.trackImageView.image = image
         }
     }
