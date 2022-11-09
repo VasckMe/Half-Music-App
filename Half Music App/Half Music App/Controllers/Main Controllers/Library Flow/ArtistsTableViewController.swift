@@ -28,7 +28,6 @@ final class ArtistsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
-            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.findArtists()
 
         }

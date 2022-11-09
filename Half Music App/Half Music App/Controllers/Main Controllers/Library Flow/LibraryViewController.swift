@@ -37,7 +37,6 @@ final class LibraryViewController: UIViewController {
         
         FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
-            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.recentlyAddedCollectionView.reloadData()
         }
     }
@@ -112,6 +111,7 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
                 withIdentifier: "DetailTrackVC"
             ) as? DetailTrackViewController
         {
+            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
             vc.trackIndex = indexPath.row
             navigationController?.present(vc, animated: true)
         }

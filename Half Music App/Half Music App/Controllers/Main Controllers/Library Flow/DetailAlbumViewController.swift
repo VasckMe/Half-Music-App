@@ -57,7 +57,6 @@ final class DetailAlbumViewController: UIViewController {
         
         FireBaseStorageManager.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
-            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.albumTracksTableView.reloadData()
         }
     }
@@ -100,6 +99,7 @@ extension DetailAlbumViewController: UITableViewDataSource, UITableViewDelegate 
                 withIdentifier: "DetailTrackVC"
             ) as? DetailTrackViewController
         {
+            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
             vc.trackIndex = indexPath.row
             navigationController?.present(vc, animated: true)
         }

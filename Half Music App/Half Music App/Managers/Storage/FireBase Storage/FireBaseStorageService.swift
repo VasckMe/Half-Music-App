@@ -91,7 +91,6 @@ class FireBaseStorageManager {
     }
     
     static func addAlbumsObserver(completion: @escaping ([AlbumFB]) -> () ) {
-        
         albumsRef.observe(.value) { snapshot in
             var albums: [AlbumFB] = []
             for item in snapshot.children {

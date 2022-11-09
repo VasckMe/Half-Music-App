@@ -11,7 +11,15 @@ import FirebaseDatabase
 final class AddAlbumViewController: BaseViewController {
 
     @IBOutlet private weak var albumImageView: UIImageView!
-    @IBOutlet private weak var albumNameLabel: UITextField!
+    @IBOutlet private weak var albumNameLabel: UITextField! {
+        didSet {
+            let redPlaceholderText = NSAttributedString(string: "Album Title",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+            )
+                    
+            albumNameLabel.attributedPlaceholder = redPlaceholderText
+        }
+    }
     @IBOutlet private weak var albumTableView: UITableView!
     
     let ref = FireBaseStorageManager.albumsRef
@@ -34,7 +42,6 @@ final class AddAlbumViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
-            LocalStorage.shared.copyLocalTracks = tracksFB
             self?.albumTableView.reloadData()
         }
     }

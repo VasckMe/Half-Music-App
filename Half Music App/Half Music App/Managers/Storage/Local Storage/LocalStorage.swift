@@ -15,7 +15,7 @@ final class LocalStorage {
     
     var library: [String] = ["Artists", "Albums", "Songs"]
     var localTracks: [TrackFB] = []
-    var copyLocalTracks: [TrackFB] = []
+    var currentAudioQueue: [TrackFB] = []
     
     func convertToNewModelArray(itemArray: [ItemInfo]) {
         var newItemArray: [TrackFB] = []
@@ -24,10 +24,5 @@ final class LocalStorage {
             newItemArray.append(trackFB)
         }
         localTracks = newItemArray
-        copyLocalTracks = newItemArray
-    }
-    
-    func refreshLocalTracks() {
-        localTracks = copyLocalTracks
     }
 }

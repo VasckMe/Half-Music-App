@@ -49,7 +49,6 @@ final class SongsTableViewController: UITableViewController {
             }
             
             LocalStorage.shared.localTracks = tracks
-            LocalStorage.shared.copyLocalTracks = tracks
 
             self?.tableView.reloadData()
         }
@@ -85,6 +84,7 @@ final class SongsTableViewController: UITableViewController {
                 withIdentifier: "DetailTrackVC"
             ) as? DetailTrackViewController
         {
+            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
             vc.trackIndex = indexPath.row
             navigationController?.present(vc, animated: true)
         }

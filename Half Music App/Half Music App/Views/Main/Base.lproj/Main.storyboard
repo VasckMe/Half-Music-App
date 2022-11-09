@@ -263,6 +263,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDj-P7-gDa">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="34"/>
                                                         <color key="backgroundColor" systemColor="labelColor"/>
+                                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="AAo-Vp-O5w"/>
                                                         </constraints>

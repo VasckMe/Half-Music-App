@@ -62,8 +62,8 @@ final class AudioPlayerService {
     func nextAudioTrack(audioIndex: Int?, isShuffleOn: Bool) -> Int? {
         guard var audioIndex = audioIndex else { return nil }
         audioIndex = isShuffleOn
-        ? Int.random(in: 0..<LocalStorage.shared.localTracks.count)
-        : audioIndex+1 >= LocalStorage.shared.localTracks.count
+        ? Int.random(in: 0..<LocalStorage.shared.currentAudioQueue.count)
+        : audioIndex+1 >= LocalStorage.shared.currentAudioQueue.count
             ? 0
             : audioIndex+1
         addTrackInPlayer(audioIndex: audioIndex)
@@ -74,7 +74,7 @@ final class AudioPlayerService {
         guard var audioIndex = audioIndex else { return nil }
         audioIndex = audioIndex - 1 >= 0
         ? audioIndex - 1
-        : LocalStorage.shared.localTracks.count - 1
+        : LocalStorage.shared.currentAudioQueue.count - 1
         addTrackInPlayer(audioIndex: audioIndex)
         return audioIndex
     }
@@ -82,7 +82,7 @@ final class AudioPlayerService {
     func addTrackInPlayer(audioIndex: Int?) {
         guard
             let audioIndex = audioIndex,
-            let audioItem = createPlayerItem(urlString: LocalStorage.shared.localTracks[audioIndex].preview_url)
+            let audioItem = createPlayerItem(urlString: LocalStorage.shared.currentAudioQueue[audioIndex].preview_url)
         else {
             return
         }

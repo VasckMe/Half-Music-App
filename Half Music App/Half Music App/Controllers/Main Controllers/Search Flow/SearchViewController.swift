@@ -85,7 +85,9 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
                 withIdentifier: "DetailTrackVC"
             ) as? DetailTrackViewController
         {
+            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
             vc.trackIndex = indexPath.row
+
             navigationController?.present(vc, animated: true)
         }
     }
@@ -94,13 +96,26 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            LocalStorage.shared.refreshLocalTracks()
-            tableView.reloadData()
+            dataFetcher.fetchFreeMusic { [weak self] audio in
+                guard let tracks = audio?.items else { return }
+                LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+                self?.tableView.reloadData()
+            }
         } else {
-            LocalStorage.shared.localTracks = LocalStorage.shared.copyLocalTracks.filter({ trackFB in
-                trackFB.name.lowercased().contains(searchText.lowercased())
-            })
-            tableView.reloadData()
+            dataFetcher.fetchFreeMusic { [weak self] audio in
+                guard let tracks = audio?.items else { return }
+                LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+                LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { trackFB in
+                    trackFB.name.lowercased().contains(searchText.lowercased())
+                }
+                self?.tableView.reloadData()
+            }
+            
+//
+//            LocalStorage.shared.localTracks = LocalStorage.shared.copyLocalTracks.filter({ trackFB in
+//                trackFB.name.lowercased().contains(searchText.lowercased())
+//            })
+//            tableView.reloadData()
         }
     }
 }

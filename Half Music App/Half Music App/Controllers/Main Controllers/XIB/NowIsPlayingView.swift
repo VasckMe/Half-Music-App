@@ -23,15 +23,6 @@ class NowIsPlayingView: UIView {
     private let audioPlayerService = AudioPlayerService.shared
     
     private var timeObserver: Any!
-//    var audioIndex: Int? {
-//        didSet {
-//            if audioIndex == nil {
-//                print("Changed, but nil")
-//            } else {
-//                print("Changed and not nil")
-//            }
-//        }
-//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +60,7 @@ class NowIsPlayingView: UIView {
         }
         playPauseButtonOutlet.isSelected = audioPlayerService.isPlaying
 
-        let track = LocalStorage.shared.localTracks[audioIndex]
+        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         audioTitleLabel.text = track.artist +  " - " + track.name
         let trackUrl = track.album.images[0].url
 

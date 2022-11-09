@@ -34,7 +34,6 @@ final class AlbumsCollectionViewController: UICollectionViewController {
 
         FireBaseStorageManager.addAudioObserver { tracksFB in
             LocalStorage.shared.localTracks = tracksFB
-            LocalStorage.shared.copyLocalTracks = tracksFB
         }
     }
     

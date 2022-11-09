@@ -129,13 +129,13 @@ final class DetailTrackViewController: UIViewController {
     @IBAction private func addToLibrary(_ sender: Any) {
         guard
             let audioIndex = trackIndex,
-            LocalStorage.shared.localTracks.indices.contains(audioIndex)
+            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
         else {
             print("Bad track index")
                 return
         }
         
-        let track = LocalStorage.shared.localTracks[audioIndex]
+        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING \(track.name)")
@@ -151,7 +151,7 @@ final class DetailTrackViewController: UIViewController {
     @IBAction private func addToAlbum() {
         let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
         let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
-        let track = LocalStorage.shared.localTracks[trackIndex!]
+        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
         vc.track = track
         vc.delegate = self
         self.present(vc, animated: true)
@@ -162,13 +162,13 @@ final class DetailTrackViewController: UIViewController {
     private func setupTrackUI() {
         guard
             let audioIndex = trackIndex,
-            LocalStorage.shared.localTracks.indices.contains(audioIndex)
+            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
         else {
             print("There is no tracks with that index")
             return
         }
         
-        let track = LocalStorage.shared.localTracks[audioIndex]
+        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         
         FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
@@ -209,7 +209,7 @@ final class DetailTrackViewController: UIViewController {
 // MARK: - Extension
 extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack() {
-        let track = LocalStorage.shared.localTracks[trackIndex!]
+        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
         FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
         }
