@@ -8,23 +8,6 @@
 import Foundation
 import MediaPlayer
 
-//protocol AudioPlayerServiceProtocol {
-////    var player: AVPlayer { get }
-//    var isPlaying: Bool { get set }
-//    func addAudioTrackInPlayer(audioIndex: Int?)
-//
-//    func addObserver(completion: @escaping (CMTime) -> Void) -> Any
-//    func removeObserver(observer: Any)
-//
-//    func play()
-//    func pause()
-//    func nextAudioTrack(audioIndex: Int?, isShuffleOn: Bool) -> Int?
-//    func previousAudioTrack(audioIndex: Int?) -> Int?
-//    func getDuration() -> Int?
-//    func seekTo(time: CMTime)
-//    func setVolume(volume: Float)
-//}
-
 final class AudioPlayerService {
 
     // MARK: Private

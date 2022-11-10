@@ -10,12 +10,12 @@ import FirebaseDatabase
 
 class AddTrackToAlbumViewController: BaseViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar! {
+    @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.searchTextField.textColor = .white
         }
     }
-    @IBOutlet weak var albumCollectionView: UICollectionView!
+    @IBOutlet private weak var albumCollectionView: UICollectionView!
     
     var track: TrackFB?
     var albums: [AlbumFB] = []
@@ -86,7 +86,6 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
 extension AddTrackToAlbumViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            
             FireBaseStorageManager.getAlbums {[weak self] albums in
                 self?.albums = albums
                 self?.albumCollectionView.reloadData()

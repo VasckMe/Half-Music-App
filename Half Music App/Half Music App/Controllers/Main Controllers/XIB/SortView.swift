@@ -7,10 +7,8 @@
 
 import UIKit
 
-class SortView: UIView {
+final class SortView: UIView {
 
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         viewInit()

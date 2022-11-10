@@ -9,8 +9,8 @@ import UIKit
 
 final class SignUpMessageViewController: UIViewController {
 
-    @IBOutlet weak var helloLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet private weak var helloLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
     
     var nickname: String?
     

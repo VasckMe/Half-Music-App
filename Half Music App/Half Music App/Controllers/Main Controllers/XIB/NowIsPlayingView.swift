@@ -8,11 +8,11 @@
 import UIKit
 import MediaPlayer
 
-class NowIsPlayingView: UIView {
+final class NowIsPlayingView: UIView {
 
-    @IBOutlet weak var audioImageView: UIImageView!
-    @IBOutlet weak var audioTitleLabel: UILabel!
-    @IBOutlet weak var playPauseButtonOutlet: UIButton! {
+    @IBOutlet private weak var audioImageView: UIImageView!
+    @IBOutlet private weak var audioTitleLabel: UILabel!
+    @IBOutlet private weak var playPauseButtonOutlet: UIButton! {
         didSet {
             playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
             playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
@@ -36,13 +36,13 @@ class NowIsPlayingView: UIView {
         viewInit()
     }
     
-    func viewInit() {
+    private func viewInit() {
         let xibView = Bundle.main.loadNibNamed("NowIsPlayingView", owner: self)![0] as! UIView
         xibView.frame = self.bounds
         addSubview(xibView)
     }
     
-    func addObserver() {
+    private func addObserver() {
         timeObserver = audioPlayerService.addObserver { [weak self] time in
             self?.audioObserve(time: time)
         }
@@ -53,7 +53,7 @@ class NowIsPlayingView: UIView {
         audioPlayerService.removeObserver(observer: timeObserver)
     }
     
-    func setup() {
+    private func setup() {
         guard let audioIndex = audioPlayerService.trackIndex else {
             print("XIB INDEX ERROR")
             return
@@ -88,7 +88,7 @@ class NowIsPlayingView: UIView {
         }
     }
     
-    @IBAction func playPauseAction() {
+    @IBAction private func playPauseAction() {
         playPauseButtonOutlet.isSelected.toggle()
         audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
         if playPauseButtonOutlet.isSelected {
@@ -98,7 +98,7 @@ class NowIsPlayingView: UIView {
         }
     }
     
-    @IBAction func forwardAction() {
+    @IBAction private func forwardAction() {
         let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
     }
 }

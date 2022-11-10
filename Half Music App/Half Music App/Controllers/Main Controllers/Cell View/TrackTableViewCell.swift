@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrackTableViewCell: UITableViewCell {
+final class TrackTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var trackImageView: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!

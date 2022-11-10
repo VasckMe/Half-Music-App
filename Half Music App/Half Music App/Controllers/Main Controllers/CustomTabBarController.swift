@@ -8,13 +8,12 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let height: CGFloat = 60
         let y = view.bounds.height - tabBar.bounds.height - height - 34
-        let amogusXIB = NowIsPlayingView(frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height))
-        view.addSubview(amogusXIB)
+        let nowIsPlayingView = NowIsPlayingView(frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height))
+        view.addSubview(nowIsPlayingView)
     }
 }

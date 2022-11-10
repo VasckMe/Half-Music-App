@@ -17,7 +17,7 @@ final class DetailTrackViewController: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var trackBackgroundImageView: UIImageView!
+    @IBOutlet private weak var trackBackgroundImageView: UIImageView!
     @IBOutlet private weak var trackImageView: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!
     @IBOutlet private weak var authorNameLabel: UILabel!
@@ -68,8 +68,6 @@ final class DetailTrackViewController: UIViewController {
         setupTrackUI()
         
         audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
-        guard let audioIndex = trackIndex else { return }
-//        audioPlayerService.audioIndex = audioIndex
     }
     
     override func viewWillAppear(_ animated: Bool) {

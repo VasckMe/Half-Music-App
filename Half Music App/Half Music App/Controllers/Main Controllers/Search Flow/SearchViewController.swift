@@ -110,12 +110,6 @@ extension SearchViewController: UISearchBarDelegate {
                 }
                 self?.tableView.reloadData()
             }
-            
-//
-//            LocalStorage.shared.localTracks = LocalStorage.shared.copyLocalTracks.filter({ trackFB in
-//                trackFB.name.lowercased().contains(searchText.lowercased())
-//            })
-//            tableView.reloadData()
         }
     }
 }

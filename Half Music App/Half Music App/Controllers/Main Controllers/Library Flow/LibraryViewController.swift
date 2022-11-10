@@ -12,8 +12,8 @@ final class LibraryViewController: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var libraryTableView: UITableView!
-    @IBOutlet weak var recentlyAddedCollectionView: UICollectionView!
+    @IBOutlet private weak var libraryTableView: UITableView!
+    @IBOutlet private weak var recentlyAddedCollectionView: UICollectionView!
     
     // MARK: Properties
     

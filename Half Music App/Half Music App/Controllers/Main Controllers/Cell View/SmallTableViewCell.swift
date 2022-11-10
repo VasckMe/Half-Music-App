@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SmallTableViewCell: UITableViewCell {
+final class SmallTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var itemImageView: UIImageView!
     @IBOutlet private weak var itemLabel: UILabel!
