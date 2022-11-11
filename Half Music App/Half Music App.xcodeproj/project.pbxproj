@@ -65,8 +65,6 @@
 		18D5D583291C05040022F4D4 /* ApiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D582291C05040022F4D4 /* ApiString.swift */; };
 		18D5D585291C051C0022F4D4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D584291C051C0022F4D4 /* Color.swift */; };
 		18D5D587291C061C0022F4D4 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D586291C061C0022F4D4 /* Headers.swift */; };
-		18DDEBFE291184DE00634F5F /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEBFD291184DE00634F5F /* SortView.swift */; };
-		18DDEC00291184E900634F5F /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DDEBFF291184E900634F5F /* SortView.xib */; };
 		18EC915928F6C0D4006B5B66 /* LargeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC915728F6C0D4006B5B66 /* LargeCollectionViewCell.swift */; };
 		18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
@@ -132,8 +130,6 @@
 		18D5D582291C05040022F4D4 /* ApiString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiString.swift; sourceTree = "<group>"; };
 		18D5D584291C051C0022F4D4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		18D5D586291C061C0022F4D4 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
-		18DDEBFD291184DE00634F5F /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
-		18DDEBFF291184E900634F5F /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
 		18EC915728F6C0D4006B5B66 /* LargeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCollectionViewCell.swift; sourceTree = "<group>"; };
 		18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeCollectionViewCell.xib; sourceTree = "<group>"; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,8 +153,6 @@
 		180E0D692911631200500233 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				18DDEBFD291184DE00634F5F /* SortView.swift */,
-				18DDEBFF291184E900634F5F /* SortView.xib */,
 				1824E23C291901350017FB07 /* NowIsPlayingView.swift */,
 				1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */,
 			);
@@ -566,7 +560,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */,
-				18DDEC00291184E900634F5F /* SortView.xib in Resources */,
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
 				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
 				1898336228EC359300558234 /* File.rtf in Resources */,
@@ -635,7 +628,6 @@
 				18778D81290D86B700479294 /* SmallTableViewCell.swift in Sources */,
 				18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
-				18DDEBFE291184DE00634F5F /* SortView.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				18D5D587291C061C0022F4D4 /* Headers.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,

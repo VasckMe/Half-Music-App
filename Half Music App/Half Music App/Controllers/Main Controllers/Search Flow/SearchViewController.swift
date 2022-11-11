@@ -41,16 +41,6 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
         }
     }
     
-    
-    @IBAction func sortAction(_ sender: UIBarButtonItem) {
-//        let xib = SortView()
-//        xib.frame = CGRect(x: 250, y: 80, width: 100, height: 100)
-//        view.addSubview(xib)
-//        view.bringSubviewToFront(xib)
-    }
-    
-    
-    
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

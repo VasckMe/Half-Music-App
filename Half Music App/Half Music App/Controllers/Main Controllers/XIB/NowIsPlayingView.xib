@@ -19,6 +19,14 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDf-0n-a2j">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Lb-kV-8od">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pyq-mT-GaW">
                     <rect key="frame" x="10" y="10" width="370" height="60"/>
                     <subviews>
@@ -73,12 +81,16 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.14999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Pyq-mT-GaW" secondAttribute="bottom" constant="10" id="Fnu-fd-LL9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Pyq-mT-GaW" secondAttribute="trailing" constant="10" id="ILD-Qe-oRw"/>
                 <constraint firstItem="Pyq-mT-GaW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Lm5-aE-XJZ"/>
+                <constraint firstItem="RDf-0n-a2j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P1E-Gy-Eex"/>
                 <constraint firstItem="Pyq-mT-GaW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="PAj-xX-hx2"/>
+                <constraint firstItem="RDf-0n-a2j" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dEa-uY-Lda"/>
+                <constraint firstAttribute="bottom" secondItem="RDf-0n-a2j" secondAttribute="bottom" id="jzh-em-xUP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RDf-0n-a2j" secondAttribute="trailing" id="kaE-94-G6t"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="53.846153846153847" y="20.616113744075829"/>

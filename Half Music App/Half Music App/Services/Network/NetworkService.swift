@@ -58,14 +58,19 @@ final class NetworkService: NetworkServiceProtocol {
                 case .failure(let error):
                     err = error
                 }
-                completion(dataValue, err)
+                
+                DispatchQueue.main.async {
+                    completion(dataValue, err)
+                }
             }
         }
     }
     
     func requestImage(url: URLConvertible, completion: @escaping(AFDataResponse<Image>) -> Void) {
         AF.request(url).responseImage { response in
-            completion(response)
+            DispatchQueue.main.async {
+                completion(response)
+            }
         }
     }
     
