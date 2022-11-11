@@ -81,14 +81,9 @@ class BaseViewController: UIViewController {
         }
         
         let logout = UIAlertAction(title: "Logout", style: .default) {[weak self] _ in
-            self?.callAuthAlert(title: "Logout", message: "Enter password to confirm") { textField in
-                if textField?.text == password {
-                    logoutCompletion()
-                } else {
-                    self?.callDefaultAlert(title: "Auth", message: "Bad password")
-                }
-            }
+            self?.callClosureAlert(title: "Logout", message: "Are you sure to logout?", closure: logoutCompletion)
         }
+        
         let delete = UIAlertAction(title: "Delete Account", style: .default) {[weak self]_ in
             self?.callAuthAlert(title: "Delete", message: "Enter password to confirm") { textField in
                 if textField?.text == password {

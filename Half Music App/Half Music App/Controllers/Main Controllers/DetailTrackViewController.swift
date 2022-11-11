@@ -34,12 +34,14 @@ final class DetailTrackViewController: UIViewController {
     }
     @IBOutlet private weak var shuffleOutlet: UIButton! {
         didSet {
+            shuffleOutlet.isSelected = audioPlayerService.isShuffle
             shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
             shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
         }
     }
     @IBOutlet private weak var repeatOutlet: UIButton! {
         didSet {
+            repeatOutlet.isSelected = audioPlayerService.isRepeat
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
             repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
         }
@@ -95,7 +97,6 @@ final class DetailTrackViewController: UIViewController {
     
     @IBAction private func playPauseTrackAction(_ sender: UIButton) {
         trackSlider.maximumValue = Float(audioPlayerService.getDuration()!)
-//        isPlaying.toggle()
         playPauseButtonOutlet.isSelected.toggle()
         audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
         if playPauseButtonOutlet.isSelected {
@@ -116,7 +117,7 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
-        audioPlayerService.setVolume(volume: sender.value)
+        audioPlayerService.setVolume(volume: sender.value/100)
     }
     
     @IBAction private func repeatAction() {

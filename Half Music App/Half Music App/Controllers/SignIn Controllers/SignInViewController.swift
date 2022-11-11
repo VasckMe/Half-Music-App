@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import FirebaseDatabase
 import FirebaseAuth
 
@@ -69,10 +70,10 @@ final class SignInViewController: BaseViewController {
             if let error = error {
                 self?.callDefaultAlert(title: "Error", message: "\(error.localizedDescription)")
             } else if let _ = user {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
-                vc.modalPresentationStyle = .fullScreen
+                
+                let vc = UIHostingController(rootView: OnboardingView())
                 vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .fullScreen
                 self?.present(vc, animated: true)
                 return
             } else {

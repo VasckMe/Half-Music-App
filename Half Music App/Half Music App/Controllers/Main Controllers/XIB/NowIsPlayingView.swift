@@ -50,7 +50,7 @@ final class NowIsPlayingView: UIView {
     
     deinit {
         print("DEINIT XIB")
-        audioPlayerService.removeObserver(observer: timeObserver)
+        audioPlayerService.removeObserver(observer: timeObserver!)
     }
     
     private func setup() {
