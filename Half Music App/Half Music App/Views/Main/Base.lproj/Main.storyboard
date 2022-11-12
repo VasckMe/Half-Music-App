@@ -309,64 +309,6 @@
             </objects>
             <point key="canvasLocation" x="1891" y="331"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="SgU-DP-16D">
-            <objects>
-                <viewController id="wYs-gv-l6h" customClass="SearchViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tdz-CV-hVI">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GKh-Fc-Diu">
-                                <rect key="frame" x="0.0" y="145" width="390" height="567"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eYz-gz-GVl">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="567"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="621" id="tkF-6V-RzL"/>
-                                        </constraints>
-                                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Find track" id="ppb-Kl-v3j">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="3PE-65-kdr"/>
-                                            </constraints>
-                                            <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="wYs-gv-l6h" id="AHc-ri-H1N"/>
-                                            </connections>
-                                        </searchBar>
-                                        <connections>
-                                            <outlet property="dataSource" destination="wYs-gv-l6h" id="RX1-es-ctE"/>
-                                            <outlet property="delegate" destination="wYs-gv-l6h" id="EA2-MW-zo1"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="JqQ-ZD-sml"/>
-                        <color key="backgroundColor" systemColor="labelColor"/>
-                        <constraints>
-                            <constraint firstItem="GKh-Fc-Diu" firstAttribute="leading" secondItem="tdz-CV-hVI" secondAttribute="leading" id="9ps-Sb-F6Z"/>
-                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="trailing" secondItem="GKh-Fc-Diu" secondAttribute="trailing" id="GJL-oF-8WM"/>
-                            <constraint firstItem="GKh-Fc-Diu" firstAttribute="top" secondItem="JqQ-ZD-sml" secondAttribute="top" id="O43-cB-Cbc"/>
-                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="bottom" secondItem="GKh-Fc-Diu" secondAttribute="bottom" id="otr-db-Irt"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="RX7-jL-8fn"/>
-                    <connections>
-                        <outlet property="searchTrackBar" destination="ppb-Kl-v3j" id="55E-Zh-PnO"/>
-                        <outlet property="tableView" destination="eYz-gz-GVl" id="bfk-oj-Pew"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nE7-o2-wsT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="385" y="-1041"/>
-        </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="yfB-AN-lo2">
             <objects>
@@ -380,7 +322,7 @@
                         <color key="selectedImageTintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="sln-Pm-V4c" kind="relationship" relationship="viewControllers" id="Hfd-Hm-Kp5"/>
+                        <segue destination="QtD-SN-MAc" kind="relationship" relationship="viewControllers" id="Hfd-Hm-Kp5"/>
                         <segue destination="jj1-Ip-jl5" kind="relationship" relationship="viewControllers" id="gOC-6I-MAs"/>
                         <segue destination="xuX-ov-CZN" kind="relationship" relationship="viewControllers" id="Jd6-pA-pGq"/>
                     </connections>
@@ -388,38 +330,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIJ-0f-eHu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-403" y="-321"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="0x2-1r-Pgs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="sln-Pm-V4c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle" catalog="system" selectedImage="magnifyingglass.circle.fill" id="rC0-td-gkO"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" largeTitles="YES" id="QoP-Cp-U8O">
-                        <rect key="frame" x="0.0" y="47" width="390" height="98"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" white="0.14999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1nj-Uq-Dnf">
-                        <rect key="frame" x="0.0" y="717" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="wYs-gv-l6h" kind="relationship" relationship="rootViewController" id="puN-kV-Ah7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZRa-q4-Cs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-403" y="-1041"/>
         </scene>
         <!--Library-->
         <scene sceneID="tZb-oi-p8h">
@@ -461,10 +371,18 @@
             </objects>
             <point key="canvasLocation" x="-403" y="1020"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="6K3-id-wrV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="QtD-SN-MAc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="SlU-jg-9wi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uas-WA-e9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-403" y="-1041"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
-        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="rectangle.stack" catalog="system" width="128" height="122"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
