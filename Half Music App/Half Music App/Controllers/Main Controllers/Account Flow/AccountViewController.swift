@@ -45,14 +45,14 @@ final class AccountViewController: BaseViewController {
                 print("Auth signOut error")
             }
         } deleteCompletion: {
-            FireBaseStorageManager.userRef.removeValue()
+            FireBaseStorageService.userRef.removeValue()
             Auth.auth().currentUser?.delete()
             self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
         }
     }
     
     private func setupUI() {
-        FireBaseStorageManager.userRef.getData { [weak self] error, snapshot in
+        FireBaseStorageService.userRef.getData { [weak self] error, snapshot in
             if let error = error {
                 print("Account setup getData error: \(error.localizedDescription)")
             } else {

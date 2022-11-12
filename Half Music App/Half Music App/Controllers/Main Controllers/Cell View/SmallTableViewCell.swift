@@ -31,5 +31,4 @@ final class SmallTableViewCell: UITableViewCell {
         itemLabel.text = artist
         itemImageView.image = UIImage(systemName: "person.circle")
     }
-    
 }

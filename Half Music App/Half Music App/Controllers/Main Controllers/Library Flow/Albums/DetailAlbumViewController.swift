@@ -36,7 +36,7 @@ final class DetailAlbumViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         guard let album = album else { return }
-        let ref = FireBaseStorageManager.albumsRef.child(album.name)
+        let ref = FireBaseStorageService.albumsRef.child(album.name)
         ref.removeAllObservers()
     }
     
@@ -53,7 +53,7 @@ final class DetailAlbumViewController: UIViewController {
         albumTitleLabel.text = album?.name
         
         guard let album = album else { return }
-        FireBaseStorageManager.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
+        FireBaseStorageService.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.albumTracksTableView.reloadData()
         }
@@ -114,7 +114,7 @@ extension DetailAlbumViewController: UITableViewDataSource, UITableViewDelegate 
     ) {
         if editingStyle == .delete {
             let track = LocalStorage.shared.localTracks[indexPath.row]
-            FireBaseStorageManager.albumsRef.child(album!.name).child(track.name).removeValue()
+            FireBaseStorageService.albumsRef.child(album!.name).child(track.name).removeValue()
             LocalStorage.shared.localTracks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

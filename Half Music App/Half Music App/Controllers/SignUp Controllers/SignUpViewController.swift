@@ -108,7 +108,7 @@ final class SignUpViewController: BaseViewController {
         wrongConfirmedPasswordLabel.isHidden = isValidConfPass
     }
     
-    @IBAction func signUpAction() {
+    @IBAction private func signUpAction() {
     guard
         let email = emailTextField.text,
         var nickname = nickTextField.text,

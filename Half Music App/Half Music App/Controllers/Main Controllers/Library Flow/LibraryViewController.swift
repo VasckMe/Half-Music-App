@@ -15,10 +15,6 @@ final class LibraryViewController: UIViewController {
     @IBOutlet private weak var libraryTableView: UITableView!
     @IBOutlet private weak var recentlyAddedCollectionView: UICollectionView!
     
-    // MARK: Properties
-    
-//    let ref = FireBaseStorageManager.audioRef
-    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -35,14 +31,14 @@ final class LibraryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
+        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.recentlyAddedCollectionView.reloadData()
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.removeAllObservers()
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
 }
 

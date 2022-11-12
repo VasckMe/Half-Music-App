@@ -69,7 +69,6 @@
 		18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */; };
 		18F5CF9B291E5472006A5911 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CF9A291E5472006A5911 /* Onboarding.storyboard */; };
 		18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CF9C291E564B006A5911 /* OnboardingView.swift */; };
-		18F5CFA0291EA2FA006A5911 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CF9F291EA2FA006A5911 /* ContentView.swift */; };
 		18F5CFA2291EA30D006A5911 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA1291EA30D006A5911 /* PageView.swift */; };
 		18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA3291EA371006A5911 /* VCRepresentation.swift */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
@@ -139,7 +138,6 @@
 		18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeCollectionViewCell.xib; sourceTree = "<group>"; };
 		18F5CF9A291E5472006A5911 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		18F5CF9C291E564B006A5911 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		18F5CF9F291EA2FA006A5911 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18F5CFA1291EA30D006A5911 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		18F5CFA3291EA371006A5911 /* VCRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRepresentation.swift; sourceTree = "<group>"; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
@@ -340,11 +338,9 @@
 			isa = PBXGroup;
 			children = (
 				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
-				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
-				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
-				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
-				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
-				18778D83290E85A500479294 /* DetailAlbumViewController.swift */,
+				18F5CFA7291F9E1A006A5911 /* Songs */,
+				18F5CFA5291F9E05006A5911 /* Artists */,
+				18F5CFA6291F9E0F006A5911 /* Albums */,
 			);
 			path = "Library Flow";
 			sourceTree = "<group>";
@@ -489,12 +485,37 @@
 		18F5CF9E291EA2DB006A5911 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				18F5CF9F291EA2FA006A5911 /* ContentView.swift */,
 				18F5CF9C291E564B006A5911 /* OnboardingView.swift */,
 				18F5CFA1291EA30D006A5911 /* PageView.swift */,
 				18F5CFA3291EA371006A5911 /* VCRepresentation.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		18F5CFA5291F9E05006A5911 /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+				180EEC4028FBF96300D2FEE9 /* ArtistsTableViewController.swift */,
+			);
+			path = Artists;
+			sourceTree = "<group>";
+		};
+		18F5CFA6291F9E0F006A5911 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				180EEC4E28FC571800D2FEE9 /* AlbumsCollectionViewController.swift */,
+				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
+				18778D83290E85A500479294 /* DetailAlbumViewController.swift */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		18F5CFA7291F9E1A006A5911 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 		85719C8348536048B7F4D2D7 /* Frameworks */ = {
@@ -675,7 +696,6 @@
 				18D5D583291C05040022F4D4 /* ApiString.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,
 				18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */,
-				18F5CFA0291EA2FA006A5911 /* ContentView.swift in Sources */,
 				1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */,
 				18D5D585291C051C0022F4D4 /* Color.swift in Sources */,
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,

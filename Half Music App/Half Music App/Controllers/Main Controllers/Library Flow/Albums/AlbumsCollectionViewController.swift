@@ -11,14 +11,11 @@ import FirebaseDatabase
 final class AlbumsCollectionViewController: UICollectionViewController {
 
     var albums: [AlbumFB] = []
-    let ref = FireBaseStorageManager.albumsRef
+    let ref = FireBaseStorageService.albumsRef
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // self.clearsSelectionOnViewWillAppear = false
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem
-
         collectionView.register(
             UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
@@ -27,22 +24,22 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        FireBaseStorageManager.addAlbumsObserver { [weak self] albumsFB in
+        FireBaseStorageService.addAlbumsObserver { [weak self] albumsFB in
             self?.albums = albumsFB
             self?.collectionView.reloadData()
         }
 
-        FireBaseStorageManager.addAudioObserver { tracksFB in
+        FireBaseStorageService.addAudioObserver { tracksFB in
             LocalStorage.shared.localTracks = tracksFB
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
-        FireBaseStorageManager.audioRef.removeAllObservers()
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: CollectionView Data Source
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return albums.count
@@ -62,7 +59,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: Collection View Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.row]
@@ -78,7 +75,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
         }
     }
 }
-
+// MARK: Extension 
 extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout

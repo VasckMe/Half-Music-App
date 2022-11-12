@@ -138,12 +138,12 @@ final class DetailTrackViewController: UIViewController {
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING \(track.name)")
-            FireBaseStorageManager.audioRef.child(track.name).removeValue()
+            FireBaseStorageService.audioRef.child(track.name).removeValue()
             likeButtonOutlet.isSelected.toggle()
         } else {
             print("ADDING \(track.name)")
             likeButtonOutlet.isSelected.toggle()
-            FireBaseStorageManager.saveTrackInDB(track: track)
+            FireBaseStorageService.saveTrackInDB(track: track)
         }
     }
     
@@ -169,7 +169,7 @@ final class DetailTrackViewController: UIViewController {
         
         let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         
-        FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
+        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
         }
                 
@@ -209,7 +209,7 @@ final class DetailTrackViewController: UIViewController {
 extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack() {
         let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-        FireBaseStorageManager.isAddedInLibrary(track: track) { [weak self] bool in
+        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
             self?.likeButtonOutlet.isSelected = bool
         }
     }

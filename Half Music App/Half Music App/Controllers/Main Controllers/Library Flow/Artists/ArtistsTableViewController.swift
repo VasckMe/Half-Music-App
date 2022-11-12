@@ -14,11 +14,6 @@ final class ArtistsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.register(
             UINib(nibName: SmallTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: SmallTableViewCell.identifier
@@ -26,7 +21,7 @@ final class ArtistsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
+        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.findArtists()
 
@@ -34,7 +29,7 @@ final class ArtistsTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.removeAllObservers()
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
     
     private func findArtists() {

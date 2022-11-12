@@ -60,7 +60,6 @@ struct TrackFB: Equatable {
         self.name = name
         self.preview_url = preview_url
         self.album = albumModel
-//        ref = snapshot.ref
     }
     
     func convertInDictionary() -> [String : Any] {

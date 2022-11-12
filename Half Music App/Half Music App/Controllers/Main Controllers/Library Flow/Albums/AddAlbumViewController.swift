@@ -22,7 +22,7 @@ final class AddAlbumViewController: BaseViewController {
     }
     @IBOutlet private weak var albumTableView: UITableView!
     
-    let ref = FireBaseStorageManager.albumsRef
+    let ref = FireBaseStorageService.albumsRef
     var detailAlbum: AlbumFB?
     var delegate: UpdateDetailAlbumViewController?
     
@@ -40,14 +40,14 @@ final class AddAlbumViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageManager.addAudioObserver { [weak self] tracksFB in
+        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.albumTableView.reloadData()
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.removeAllObservers()
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
     
     @IBAction private func saveAlbumAction(_ sender: UIBarButtonItem) {

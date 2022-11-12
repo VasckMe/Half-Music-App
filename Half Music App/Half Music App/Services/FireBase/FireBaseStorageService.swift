@@ -1,5 +1,5 @@
 //
-//  FireBaseStorageManager.swift
+//  FireBaseStorageService.swift
 //  Half Music App
 //
 //  Created by Apple Macbook Pro 13 on 4.10.22.
@@ -9,8 +9,9 @@ import Foundation
 import FirebaseDatabase
 import FirebaseAuth
 
-class FireBaseStorageManager {
+final class FireBaseStorageService {
     
+    /// Constants
     static var usersRef = Database.database().reference(withPath: "users")
     static var userRef: DatabaseReference {
         get {
@@ -20,6 +21,7 @@ class FireBaseStorageManager {
     static var audioRef = userRef.child("audio")
     static var albumsRef = userRef.child("albums")
     
+    /// Static func
     static func getCurrentUserUUIDAm() -> String {
         guard let currentUser = Auth.auth().currentUser else {
             return ""
@@ -33,7 +35,7 @@ class FireBaseStorageManager {
     }
     
     static func isAddedInLibrary(track: TrackFB, completion: @escaping (Bool) -> ()) {
-        FireBaseStorageManager.audioRef.getData { error, snapshot in
+        FireBaseStorageService.audioRef.getData { error, snapshot in
             guard let snapshot = snapshot else {
                 return
             }
@@ -105,7 +107,7 @@ class FireBaseStorageManager {
     }
     
     static func addAudioObserver(completion: @escaping ([TrackFB]) -> () ) {
-        FireBaseStorageManager.audioRef.observe(.value) { snapshot in
+        FireBaseStorageService.audioRef.observe(.value) { snapshot in
             var tracks = [TrackFB]()
             
             for item in snapshot.children {
@@ -121,7 +123,7 @@ class FireBaseStorageManager {
     }
     
     static func addAudioInAlbumObserver(albumName: String, completion: @escaping ([TrackFB]) -> ()) {
-        let ref = FireBaseStorageManager.albumsRef.child(albumName)
+        let ref = FireBaseStorageService.albumsRef.child(albumName)
         ref.observe(.value) { snapshot in
             var tracks: [TrackFB] = []
             for item in snapshot.children {

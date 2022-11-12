@@ -78,9 +78,9 @@ final class EditAccountViewController: UIViewController {
         queue.async(group: group) {
             Auth.auth().currentUser?.updateEmail(to: emailText)
             Auth.auth().currentUser?.updatePassword(to: passwordText)
-            FireBaseStorageManager.userRef.updateChildValues(["email" : emailText])
-            FireBaseStorageManager.userRef.updateChildValues(["password" : passwordText])
-            FireBaseStorageManager.userRef.updateChildValues(["nickname" : nick])
+            FireBaseStorageService.userRef.updateChildValues(["email" : emailText])
+            FireBaseStorageService.userRef.updateChildValues(["password" : passwordText])
+            FireBaseStorageService.userRef.updateChildValues(["nickname" : nick])
         }
         group.notify(queue: .main) {
             delegate.updateAccountVCP()

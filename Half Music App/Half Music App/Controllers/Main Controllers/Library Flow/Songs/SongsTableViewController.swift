@@ -21,7 +21,7 @@ final class SongsTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.observe(.value) { [weak self] snapshot in
+        FireBaseStorageService.audioRef.observe(.value) { [weak self] snapshot in
             var tracks = [TrackFB]()
 
             for item in snapshot.children {
@@ -45,7 +45,7 @@ final class SongsTableViewController: UITableViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageManager.audioRef.removeAllObservers()
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
     
     // MARK: - Table view data source
@@ -92,10 +92,9 @@ final class SongsTableViewController: UITableViewController {
         commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath
     ) {
-        let audioTrack = LocalStorage.shared.localTracks[indexPath.row]
         if editingStyle == .delete {
-            let ref = FireBaseStorageManager.audioRef.child(audioTrack.name)
-            ref.removeValue()
+            let audioTrack = LocalStorage.shared.localTracks[indexPath.row]
+            FireBaseStorageService.audioRef.child(audioTrack.name).removeValue()
             LocalStorage.shared.localTracks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

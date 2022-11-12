@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import Firebase
 
 struct Album: Decodable {
     let images: [AlbumImage]

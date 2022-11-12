@@ -59,5 +59,4 @@ final class VerificationService {
         }
         return password == confPassword
     }
-
 }

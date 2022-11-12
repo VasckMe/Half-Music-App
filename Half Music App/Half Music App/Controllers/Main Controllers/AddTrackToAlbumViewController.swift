@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class AddTrackToAlbumViewController: BaseViewController {
+final class AddTrackToAlbumViewController: BaseViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
@@ -19,7 +19,7 @@ class AddTrackToAlbumViewController: BaseViewController {
     
     var track: TrackFB?
     var albums: [AlbumFB] = []
-    let ref = FireBaseStorageManager.albumsRef
+    let ref = FireBaseStorageService.albumsRef
     var delegate: UpdateDetailTrackViewControllerProtocol?
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class AddTrackToAlbumViewController: BaseViewController {
             UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
         )
-        FireBaseStorageManager.getAlbums {[weak self] albums in
+        FireBaseStorageService.getAlbums {[weak self] albums in
             self?.albums = albums
             self?.albumCollectionView.reloadData()
         }
@@ -66,9 +66,9 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegate, UICollectionV
             callDefaultAlert(title: "Cancelled", message: "Track is already exist in that album")
             return
         } else {
-            let ref = FireBaseStorageManager.albumsRef.child(album.name).child(track.name)
+            let ref = FireBaseStorageService.albumsRef.child(album.name).child(track.name)
             ref.setValue(track.convertInDictionary())
-            FireBaseStorageManager.saveTrackInDB(track: track)
+            FireBaseStorageService.saveTrackInDB(track: track)
             delegate?.updateDetailTrack()
             self.dismiss(animated: true)
         }
@@ -86,12 +86,12 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
 extension AddTrackToAlbumViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            FireBaseStorageManager.getAlbums {[weak self] albums in
+            FireBaseStorageService.getAlbums {[weak self] albums in
                 self?.albums = albums
                 self?.albumCollectionView.reloadData()
             }
         } else {
-            FireBaseStorageManager.getAlbumsWithPredicade(predicate: searchText) {[weak self] albums in
+            FireBaseStorageService.getAlbumsWithPredicade(predicate: searchText) {[weak self] albums in
                 self?.albums = albums
                 self?.albumCollectionView.reloadData()
             }

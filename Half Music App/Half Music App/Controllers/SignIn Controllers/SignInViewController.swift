@@ -100,6 +100,7 @@ final class SignInViewController: BaseViewController {
     }
 }
 
+// MARK: Extension
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
