@@ -298,10 +298,10 @@
 		1876015928E34FF1000223CD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				18F5CFC0291FA689006A5911 /* Library */,
-				18F5CFB6291FA1B7006A5911 /* Search */,
-				18F5CFB3291FA0B0006A5911 /* Account */,
 				18B66C7128DC7343000D5F79 /* Main.storyboard */,
+				18F5CFB6291FA1B7006A5911 /* Search */,
+				18F5CFC0291FA689006A5911 /* Library */,
+				18F5CFB3291FA0B0006A5911 /* Account */,
 				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
 				18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */,
 			);

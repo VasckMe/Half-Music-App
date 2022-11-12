@@ -131,7 +131,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w11-uI-sMR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="-1039"/>
+            <point key="canvasLocation" x="2175" y="-1031"/>
         </scene>
         <!--Tracks-->
         <scene sceneID="AhE-24-ydO">
@@ -142,16 +142,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Find track" id="6ER-14-oNs">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="76m-Ua-Sfh" id="pj0-X9-SDs"/>
+                            </connections>
+                        </searchBar>
                         <connections>
                             <outlet property="dataSource" destination="76m-Ua-Sfh" id="0p3-OG-jJc"/>
                             <outlet property="delegate" destination="76m-Ua-Sfh" id="oA8-Od-Ihk"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tracks" id="cfc-uM-VEr"/>
+                    <connections>
+                        <outlet property="searchBar" destination="6ER-14-oNs" id="gyv-GN-XJ4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9m-vZ-vhr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581" y="-321"/>
+            <point key="canvasLocation" x="2175" y="-321"/>
         </scene>
         <!--Detail Album View Controller-->
         <scene sceneID="3v1-c5-lhb">
@@ -221,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfV-j5-DLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4343" y="737"/>
+            <point key="canvasLocation" x="3337" y="739"/>
         </scene>
         <!--Albums-->
         <scene sceneID="ujt-ce-Ikr">
@@ -256,7 +268,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvh-pI-I4O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581" y="420"/>
+            <point key="canvasLocation" x="2175" y="482"/>
         </scene>
         <!--Add Album View Controller-->
         <scene sceneID="vy3-6J-M6D">
@@ -337,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGf-ys-KEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4396" y="-16"/>
+            <point key="canvasLocation" x="3337" y="-32"/>
         </scene>
     </scenes>
     <resources>

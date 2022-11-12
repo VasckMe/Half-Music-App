@@ -71,6 +71,36 @@ final class FireBaseStorageService {
         }
     }
     
+    static func getTracksWithOptionalArtist(
+        artist: String?,
+        completion: @escaping ([TrackFB]) -> ()
+    ) {
+        audioRef.getData { error, snapshot in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else { return }
+                var audioTracks: [TrackFB] = []
+                for item in snapshot.children {
+                    guard let snapshot = item as? DataSnapshot,
+                          let audioTrack = TrackFB(snapshot: snapshot) else { continue }
+                    if let artist = artist {
+                        if audioTrack.artist == artist {
+                            audioTracks.append(audioTrack)
+                        } else {
+                            continue
+                        }
+                    } else {
+                        audioTracks.append(audioTrack)
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(audioTracks)
+                }
+            }
+        }
+    }
+    
     static func getAlbumsWithPredicade(predicate: String, completion: @escaping ([AlbumFB])->()) {
         albumsRef.getData { error, snapshot in
             if let error = error {

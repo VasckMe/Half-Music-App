@@ -10,10 +10,17 @@ import FirebaseDatabase
 
 final class SongsTableViewController: UITableViewController {
 
+    @IBOutlet private weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.searchTextField.textColor = .white
+        }
+    }
+    
     var artist: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         tableView.register(
             UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: TrackTableViewCell.identifier
@@ -102,5 +109,27 @@ final class SongsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60.0
+    }
+}
+
+extension SongsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            FireBaseStorageService.getTracksWithOptionalArtist(
+                artist: self.artist
+            ) { [weak self] audioTracks in
+                LocalStorage.shared.localTracks = audioTracks
+                self?.tableView.reloadData()
+            }
+        } else {
+            FireBaseStorageService.getTracksWithOptionalArtist(
+                artist: self.artist
+            ) { [weak self] audioTracks in
+                LocalStorage.shared.localTracks = audioTracks.filter({ track in
+                    track.name.lowercased().contains(searchText.lowercased())
+                })
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
