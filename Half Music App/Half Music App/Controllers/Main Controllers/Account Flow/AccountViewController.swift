@@ -30,7 +30,7 @@ final class AccountViewController: BaseViewController {
             return
         }
         callAccountSettingsAlertSheet(password: passw) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Account", bundle: nil)
             let editVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditAccountViewController
             editVC.nickname = self.nicknameLabel.text
             editVC.email = self.emailLabel.text
