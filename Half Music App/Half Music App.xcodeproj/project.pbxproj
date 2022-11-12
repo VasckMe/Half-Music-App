@@ -73,6 +73,7 @@
 		18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA3291EA371006A5911 /* VCRepresentation.swift */; };
 		18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB4291FA0F6006A5911 /* Account.storyboard */; };
 		18F5CFB9291FA1D0006A5911 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB7291FA1D0006A5911 /* Search.storyboard */; };
+		18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFC1291FA700006A5911 /* Library.storyboard */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		18F5CFA3291EA371006A5911 /* VCRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRepresentation.swift; sourceTree = "<group>"; };
 		18F5CFB4291FA0F6006A5911 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = SOURCE_ROOT; };
 		18F5CFB8291FA1D0006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/Search.storyboard"; sourceTree = SOURCE_ROOT; };
+		18F5CFC2291FA700006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/Library.storyboard"; sourceTree = SOURCE_ROOT; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
 		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +298,7 @@
 		1876015928E34FF1000223CD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				18F5CFC0291FA689006A5911 /* Library */,
 				18F5CFB6291FA1B7006A5911 /* Search */,
 				18F5CFB3291FA0B0006A5911 /* Account */,
 				18B66C7128DC7343000D5F79 /* Main.storyboard */,
@@ -540,6 +543,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		18F5CFC0291FA689006A5911 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				18F5CFC1291FA700006A5911 /* Library.storyboard */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		85719C8348536048B7F4D2D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +644,7 @@
 				1872836128E75C700064278A /* SignUp.storyboard in Resources */,
 				18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */,
 				18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */,
+				18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */,
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
@@ -769,6 +781,14 @@
 				18F5CFB8291FA1D0006A5911 /* Base */,
 			);
 			name = Search.storyboard;
+			sourceTree = "<group>";
+		};
+		18F5CFC1291FA700006A5911 /* Library.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F5CFC2291FA700006A5911 /* Base */,
+			);
+			name = Library.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

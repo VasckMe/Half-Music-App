@@ -77,7 +77,7 @@ final class ArtistsTableViewController: UITableViewController {
             track.artist == artists[indexPath.row]
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Library", bundle: nil)
         if
             let vc = storyboard.instantiateViewController(
                 withIdentifier: "SongsTVC"
