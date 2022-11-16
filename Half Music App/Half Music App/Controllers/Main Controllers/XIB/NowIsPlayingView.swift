@@ -10,8 +10,17 @@ import MediaPlayer
 
 final class NowIsPlayingView: UIView {
 
-    @IBOutlet private weak var audioImageView: UIImageView!
+    @IBOutlet var ourView: UIView!
+    
     @IBOutlet private weak var audioTitleLabel: UILabel!
+    
+    @IBOutlet private weak var animationImageView: UIImageView! {
+        didSet {
+            animationImageView.animationImages = animationService.getAnimationImages()
+            animationImageView.animationDuration = 0.7
+        }
+    }
+
     @IBOutlet private weak var playPauseButtonOutlet: UIButton! {
         didSet {
             playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
@@ -21,19 +30,44 @@ final class NowIsPlayingView: UIView {
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let audioPlayerService = AudioPlayerService.shared
+    private let animationService = AnimationService.shared
     
     private var timeObserver: Any!
+    
+    var delegate: CustomTabBarProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         viewInit()
         setup()
         addObserver()
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(ourViewTapped))
+        ourView.addGestureRecognizer(recognizer)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         viewInit()
+    }
+    
+    deinit {
+        print("DEINIT XIB")
+        audioPlayerService.removeObserver(observer: timeObserver!)
+    }
+    
+    @IBAction private func playPauseAction() {
+        playPauseButtonOutlet.isSelected.toggle()
+        audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
+        if playPauseButtonOutlet.isSelected {
+            audioPlayerService.play()
+        } else {
+            audioPlayerService.pause()
+        }
+    }
+    
+    @IBAction private func forwardAction() {
+        let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
     }
     
     private func viewInit() {
@@ -48,28 +82,21 @@ final class NowIsPlayingView: UIView {
         }
     }
     
-    deinit {
-        print("DEINIT XIB")
-        audioPlayerService.removeObserver(observer: timeObserver!)
-    }
-    
     private func setup() {
         guard let audioIndex = audioPlayerService.trackIndex else {
             print("XIB INDEX ERROR")
             return
         }
         playPauseButtonOutlet.isSelected = audioPlayerService.isPlaying
-
+        
+        if playPauseButtonOutlet.isSelected {
+            animationImageView.startAnimating()
+        } else {
+            animationImageView.stopAnimating()
+        }
+        
         let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         audioTitleLabel.text = track.artist +  " - " + track.name
-        let trackUrl = track.album.images[0].url
-
-//        dataFetcherService.fetchImage(urlString: trackUrl) { [weak self] image in
-//            guard let image = image else {
-//                return
-//            }
-//            self?.audioImageView.image = image
-//        }
     }
     
     private func audioObserve(time: CMTime) {
@@ -88,17 +115,11 @@ final class NowIsPlayingView: UIView {
         }
     }
     
-    @IBAction private func playPauseAction() {
-        playPauseButtonOutlet.isSelected.toggle()
-        audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
-        if playPauseButtonOutlet.isSelected {
-            audioPlayerService.play()
-        } else {
-            audioPlayerService.pause()
+    @objc func ourViewTapped() {
+        guard let delegate = delegate else { return }
+        guard let index = audioPlayerService.trackIndex else {
+            return
         }
-    }
-    
-    @IBAction private func forwardAction() {
-        let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
+        delegate.showDetail(with: index)
     }
 }

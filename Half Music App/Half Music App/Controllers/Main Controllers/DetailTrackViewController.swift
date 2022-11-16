@@ -61,15 +61,22 @@ final class DetailTrackViewController: UIViewController {
     private let audioPlayerService = AudioPlayerService.shared
     
     private var timeObserver: Any!
+    
     var trackIndex: Int?
+    
+    var isOpenInBackground = false
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTrackUI()
         
-        audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
+        if !isOpenInBackground {
+            audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
+
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
