@@ -35,7 +35,11 @@ class BaseViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func callTextFieldAlert(title: String, message: String, completion: @escaping (_ textField: UITextField?) -> ()) {
+    func callTextFieldAlert(
+        title: String,
+        message: String,
+        completion: @escaping (_ textField: UITextField?) -> ()
+    ) {
         let alertController = UIAlertController(
             title: title,
             message: message,
@@ -55,7 +59,11 @@ class BaseViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func callAuthAlert(title: String, message: String, completion: @escaping (_ textField: UITextField?) -> ()) {
+    func callAuthAlert(
+        title: String,
+        message: String,
+        completion: @escaping (_ textField: UITextField?) -> ()
+    ) {
         callTextFieldAlert(title: title, message: message) { textField in
             completion(textField)
         }
@@ -81,11 +89,17 @@ class BaseViewController: UIViewController {
         }
         
         let logout = UIAlertAction(title: "Logout", style: .default) {[weak self] _ in
-            self?.callClosureAlert(title: "Logout", message: "Are you sure to logout?", closure: logoutCompletion)
+            self?.callClosureAlert(
+                title: "Logout",
+                message: "Are you sure to logout?",
+                closure: logoutCompletion)
         }
         
         let delete = UIAlertAction(title: "Delete Account", style: .default) {[weak self]_ in
-            self?.callAuthAlert(title: "Delete", message: "Enter password to confirm") { textField in
+            self?.callAuthAlert(
+                title: "Delete",
+                message: "Enter password to confirm"
+            ) { textField in
                 if textField?.text == password {
                     deleteCompletion()
                 } else {

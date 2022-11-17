@@ -27,6 +27,7 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
     }
+    
     // MARK: Internal
     
     func fetchJSONGenericData<T: Decodable>(
@@ -46,7 +47,6 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
     }
     
     func fetchURLImageData(urlString: String, completion: @escaping (Image?) -> Void) {
-        
         if let image = networkService.requestImageFromCache(url: urlString) {
             completion(image)
         } else {

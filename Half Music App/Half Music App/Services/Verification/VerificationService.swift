@@ -22,7 +22,10 @@ final class VerificationService {
         do {
             let regex = try NSRegularExpression(pattern: emailRegEx)
             let nsString = emailAddress as NSString
-            let results = regex.matches(in: emailAddress, range: NSRange(location: 0, length: nsString.length))
+            let results = regex.matches(
+                in: emailAddress,
+                range: NSRange(location: 0, length: nsString.length)
+            )
             
             if results.count == 0 {
                 returnValue = false

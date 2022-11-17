@@ -129,7 +129,11 @@ final class SignUpViewController: BaseViewController {
                 nickname = nickname.isEmpty ? "user" : nickname
                 
                 let userRef = self?.ref.child(user.user.uid)
-                userRef?.setValue(["email": user.user.email, "nickname" : nickname, "password" : password])
+                userRef?.setValue(
+                    ["email": user.user.email,
+                     "nickname" : nickname,
+                     "password" : password]
+                )
                 self?.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
             }
         }
@@ -153,7 +157,9 @@ final class SignUpViewController: BaseViewController {
     
     @objc func kbDidShow(notification: Notification) {
         self.view.frame.origin.y = 0
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (
+            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        )?.cgRectValue {
             self.view.frame.origin.y -= (keyboardSize.height / 2)
         }
     }

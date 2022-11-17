@@ -114,7 +114,10 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func forwardTrackAction() {
-        trackIndex = audioPlayerService.nextAudioTrack(audioIndex: trackIndex, isShuffleOn: shuffleOutlet.isSelected)
+        trackIndex = audioPlayerService.nextAudioTrack(
+            audioIndex: trackIndex,
+            isShuffleOn: shuffleOutlet.isSelected
+        )
         setupTrackUI()
     }
     

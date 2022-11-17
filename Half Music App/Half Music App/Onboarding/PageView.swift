@@ -57,6 +57,11 @@ struct PageView: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(title: "Title", subtitle: "Subtitle", imageName: "house", showDismissButton: false)
+        PageView(
+            title: "Title",
+            subtitle: "Subtitle",
+            imageName: "house",
+            showDismissButton: false
+        )
     }
 }

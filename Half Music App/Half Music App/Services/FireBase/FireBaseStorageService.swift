@@ -152,7 +152,10 @@ final class FireBaseStorageService {
         }
     }
     
-    static func addAudioInAlbumObserver(albumName: String, completion: @escaping ([TrackFB]) -> ()) {
+    static func addAudioInAlbumObserver(
+        albumName: String,
+        completion: @escaping ([TrackFB]) -> ()
+    ) {
         let ref = FireBaseStorageService.albumsRef.child(albumName)
         ref.observe(.value) { snapshot in
             var tracks: [TrackFB] = []

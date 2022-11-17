@@ -67,7 +67,10 @@ final class NowIsPlayingView: UIView {
     }
     
     @IBAction private func forwardAction() {
-        let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
+        let _ = audioPlayerService.nextAudioTrack(
+            audioIndex: audioPlayerService.trackIndex,
+            isShuffleOn: audioPlayerService.isShuffle
+        )
     }
     
     private func viewInit() {
@@ -110,7 +113,10 @@ final class NowIsPlayingView: UIView {
             if audioPlayerService.isRepeat {
                 audioPlayerService.addAudioTrackInPlayer(audioIndex: audioPlayerService.trackIndex)
             } else {
-                let _ = audioPlayerService.nextAudioTrack(audioIndex: audioPlayerService.trackIndex, isShuffleOn: audioPlayerService.isShuffle)
+                let _ = audioPlayerService.nextAudioTrack(
+                    audioIndex: audioPlayerService.trackIndex,
+                    isShuffleOn: audioPlayerService.isShuffle
+                )
             }
         }
     }

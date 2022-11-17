@@ -65,7 +65,9 @@ final class AudioPlayerService {
     func addAudioTrackInPlayer(audioIndex: Int?) {
         guard
             let audioIndex = audioIndex,
-            let audioItem = createPlayerItem(urlString: LocalStorage.shared.currentAudioQueue[audioIndex].preview_url)
+            let audioItem = createPlayerItem(
+                urlString: LocalStorage.shared.currentAudioQueue[audioIndex].preview_url
+            )
         else {
             return
         }
