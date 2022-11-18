@@ -6,7 +6,7 @@ Half Music is an open source app
 This is my own project at the beginning of my development journey
 
 <p align="center">
-![Screen Recording 2022-11-18 at 4 06 14 PM](https://user-images.githubusercontent.com/110229952/202712486-002ca097-bb4b-4368-8c80-69d7b17612b2.gif)
+<img src="https://user-images.githubusercontent.com/110229952/202712486-002ca097-bb4b-4368-8c80-69d7b17612b2.gif" alt="OnBoarding">
 </p>
 
 ## Features
