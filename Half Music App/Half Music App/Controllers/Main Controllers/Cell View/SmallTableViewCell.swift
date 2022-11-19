@@ -14,16 +14,10 @@ final class SmallTableViewCell: UITableViewCell {
     
     static let identifier = "SmallTableViewCell"
     
-    func configureCategory(category: String) {
+    func configureCategory(category: Category) {
         itemImageView.tintColor = UIConstants.globalTintColor
-        if category == LocalStorage.shared.library[0] { //artists
-            itemImageView.image = UIImage(systemName: "music.mic")
-        } else if category == LocalStorage.shared.library[1] { //albums
-            itemImageView.image = UIImage(systemName: "square.stack")
-        } else { //songs
-            itemImageView.image = UIImage(systemName: "music.note.list")
-        }
-        itemLabel.text = category
+        itemImageView.image = category.image
+        itemLabel.text = category.name
     }
     
     func configureArtist(artist: String) {

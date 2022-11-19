@@ -13,7 +13,6 @@ final class LocalStorage {
     
     private init() {}
     
-    var library: [String] = ["Artists", "Albums", "Songs"]
     var localTracks: [TrackFB] = []
     var currentAudioQueue: [TrackFB] = []
     

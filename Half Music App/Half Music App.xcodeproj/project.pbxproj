@@ -41,6 +41,7 @@
 		1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */; };
 		1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */; };
 		1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894E35128F721EE00ED403F /* SongsTableViewController.swift */; };
+		1894F5362928D0D800D12841 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894F5352928D0D800D12841 /* Category.swift */; };
 		1898336228EC359300558234 /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1898336128EC359300558234 /* File.rtf */; };
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
 		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
@@ -113,6 +114,7 @@
 		1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCacheManager.swift; sourceTree = "<group>"; };
 		1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		1894E35128F721EE00ED403F /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		1894F5352928D0D800D12841 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1898336128EC359300558234 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
 		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		1876014928E34BAC000223CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1894F5342928D0BD00D12841 /* Category */,
 				1898336528EC402700558234 /* BaseVC */,
 				1876014A28E34BB3000223CD /* AudioTrackModels */,
 				1898336028EC352200558234 /* FirebaseModels */,
@@ -378,6 +381,14 @@
 				18D263202912969000E32184 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1894F5342928D0BD00D12841 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1894F5352928D0D800D12841 /* Category.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		1898336028EC352200558234 /* FirebaseModels */ = {
@@ -719,6 +730,7 @@
 				18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
+				1894F5362928D0D800D12841 /* Category.swift in Sources */,
 				18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
 				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,

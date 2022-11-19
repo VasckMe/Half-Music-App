@@ -46,7 +46,7 @@ final class LibraryViewController: UIViewController {
 
 extension LibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        LocalStorage.shared.library.count
+        Category.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +56,7 @@ extension LibraryViewController: UITableViewDataSource {
             ) as? SmallTableViewCell else {
             return UITableViewCell()
         }
-        let category = LocalStorage.shared.library[indexPath.row]
+        let category = Category.allCases[indexPath.row]
         cell.configureCategory(category: category)
         return cell
     }
@@ -70,12 +70,13 @@ extension LibraryViewController: UITableViewDataSource {
 
 extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if LocalStorage.shared.library[indexPath.row] == "Songs" {
-            performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
-        } else if LocalStorage.shared.library[indexPath.row] == "Artists"{
+        switch Category.allCases[indexPath.row] {
+        case .artists:
             performSegue(withIdentifier: "GoToArtistsTVC", sender: nil)
-        } else if LocalStorage.shared.library[indexPath.row] == "Albums" {
+        case .albums:
             performSegue(withIdentifier: "GoToAlbumsCVC", sender: nil)
+        case .songs:
+            performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
         }
     }
 }
