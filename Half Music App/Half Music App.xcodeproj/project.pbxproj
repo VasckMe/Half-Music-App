@@ -63,9 +63,8 @@
 		18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3F48829168F5C00F7D867 /* SearchViewController.swift */; };
 		18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* AudioPlayerService.swift */; };
 		18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */; };
-		18D5D583291C05040022F4D4 /* ApiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D582291C05040022F4D4 /* ApiString.swift */; };
-		18D5D585291C051C0022F4D4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D584291C051C0022F4D4 /* Color.swift */; };
-		18D5D587291C061C0022F4D4 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D586291C061C0022F4D4 /* Headers.swift */; };
+		18D5D583291C05040022F4D4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D582291C05040022F4D4 /* Network.swift */; };
+		18D5D585291C051C0022F4D4 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D584291C051C0022F4D4 /* UIConstants.swift */; };
 		18EC915928F6C0D4006B5B66 /* LargeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC915728F6C0D4006B5B66 /* LargeCollectionViewCell.swift */; };
 		18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */; };
 		18F5CF9B291E5472006A5911 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CF9A291E5472006A5911 /* Onboarding.storyboard */; };
@@ -136,9 +135,8 @@
 		18D3F48829168F5C00F7D867 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		18D51B7728F0488E00CCAE4A /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
-		18D5D582291C05040022F4D4 /* ApiString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiString.swift; sourceTree = "<group>"; };
-		18D5D584291C051C0022F4D4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		18D5D586291C061C0022F4D4 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
+		18D5D582291C05040022F4D4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		18D5D584291C051C0022F4D4 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		18EC915728F6C0D4006B5B66 /* LargeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCollectionViewCell.swift; sourceTree = "<group>"; };
 		18EC915828F6C0D4006B5B66 /* LargeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeCollectionViewCell.xib; sourceTree = "<group>"; };
 		18F5CF9A291E5472006A5911 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -330,9 +328,8 @@
 		1876015B28E35029000223CD /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				18D5D582291C05040022F4D4 /* ApiString.swift */,
-				18D5D584291C051C0022F4D4 /* Color.swift */,
-				18D5D586291C061C0022F4D4 /* Headers.swift */,
+				18D5D582291C05040022F4D4 /* Network.swift */,
+				18D5D584291C051C0022F4D4 /* UIConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -723,7 +720,6 @@
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
 				1898336B28EC447D00558234 /* SignUpMessageViewController.swift in Sources */,
 				18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */,
-				18D5D587291C061C0022F4D4 /* Headers.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
 				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
@@ -740,11 +736,11 @@
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */,
-				18D5D583291C05040022F4D4 /* ApiString.swift in Sources */,
+				18D5D583291C05040022F4D4 /* Network.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,
 				18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */,
 				1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */,
-				18D5D585291C051C0022F4D4 /* Color.swift in Sources */,
+				18D5D585291C051C0022F4D4 /* UIConstants.swift in Sources */,
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				182EEDF82924FD0200D6A186 /* AnimationService.swift in Sources */,

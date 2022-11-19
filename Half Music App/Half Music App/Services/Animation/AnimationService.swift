@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AnimationService {
+final class AnimationService {
     
     private init() {}
     

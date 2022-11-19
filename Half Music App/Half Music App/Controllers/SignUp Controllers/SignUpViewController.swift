@@ -11,7 +11,7 @@ import FirebaseAuth
 
 final class SignUpViewController: BaseViewController {
 
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var nickTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField! {
@@ -35,9 +35,9 @@ final class SignUpViewController: BaseViewController {
     @IBOutlet private weak var wrongConfirmedPasswordLabel: UILabel!
     @IBOutlet private weak var signUpButtonOutlet: UIButton!
     
-    // MARK: Properties
+    // MARK: - Properties
     
-    var ref: DatabaseReference!
+    var ref = FireBaseStorageService.usersRef
     
     var isValidEmail = false {
         didSet {
@@ -55,12 +55,11 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    // MARK: Life cycle
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
-        ref = Database.database().reference(withPath: "users")
         
         NotificationCenter.default.addObserver(
             self,
@@ -80,7 +79,7 @@ final class SignUpViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     
     @IBAction private func emailTFAction() {
         isValidEmail = VerificationService.isValidEmailAddress(
@@ -139,7 +138,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    // MARK: Private functions
+    // MARK: - Private
     
     private func setupPasswordIndicator(passStrength: PasswordDifficult) {
         for (index, view) in indicatorViews.enumerated() {
@@ -177,6 +176,8 @@ final class SignUpViewController: BaseViewController {
         }
     }
 }
+
+// MARK: - Extension
 
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

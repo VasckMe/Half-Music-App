@@ -22,13 +22,13 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
     
     let networkService: NetworkServiceProtocol
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
     }
     
-    // MARK: Internal
+    // MARK: - Internal
     
     func fetchJSONGenericData<T: Decodable>(
         urlString: String,
@@ -62,7 +62,7 @@ final class NetworkDataFetcher: NetworkDataFetcherProtocol {
         }
     }
     
-    // MARK: Private
+    // MARK: - Private
     
     func decodeJSON<T: Decodable>(type: T.Type, data: Data?) -> T? {
         let decoder = JSONDecoder()

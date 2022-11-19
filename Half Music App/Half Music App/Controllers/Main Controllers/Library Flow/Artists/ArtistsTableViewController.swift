@@ -10,7 +10,11 @@ import FirebaseDatabase
 
 final class ArtistsTableViewController: UITableViewController {
     
+    // MARK: Properties
+    
     var artists: [String] = []
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,8 @@ final class ArtistsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         FireBaseStorageService.audioRef.removeAllObservers()
     }
+    
+    // MARK: - Private
     
     private func findArtists() {
         let array = LocalStorage.shared.localTracks

@@ -10,12 +10,20 @@ import FirebaseAuth
 
 final class EditAccountViewController: UIViewController {
     
+    // MARK: - Default properties
+    
+    let defaultNickname = "user"
+    
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var nicknameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var saveButtonOutlet: UIButton!
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordErrorLabel: UILabel!
+    
+    // MARK: - Properties
     
     var delegate: UpdateAccountViewControllerProtocol?
     
@@ -34,13 +42,14 @@ final class EditAccountViewController: UIViewController {
             checkButton()
         }
     }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.enablePasswordToggle()
         setup()
     }
     
+    // MARK: - IBActions
     
     @IBAction private func nicknameTFAction() {
         checkButton()
@@ -58,7 +67,6 @@ final class EditAccountViewController: UIViewController {
         passwordErrorLabel.isHidden = isValidPassword
     }
     
-    
     @IBAction private func saveAction() {
         guard
             var nick = nicknameTextField.text,
@@ -69,9 +77,7 @@ final class EditAccountViewController: UIViewController {
             return
         }
         
-        if nick.isEmpty {
-            nick = "user"
-        }
+        nick = nick.isEmpty ? defaultNickname : nick
         
         let queue = DispatchQueue(label: "AuthQueue", attributes: .concurrent)
         let group = DispatchGroup()
@@ -87,15 +93,23 @@ final class EditAccountViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    // MARK: - Private
+    
     private func checkButton() {
+        let isValid = isValidEmail && isValidPassword
+        let isPassNotEmpty = passwordTextField.text?.isEmpty == false
+        let isEmailNotEmpty = emailTextField.text?.isEmpty == false
+        let isNickNotNil = nicknameTextField.text == nil
+        let isSomethingChanged = passwordTextField.text != password
+        || emailTextField.text != email
+        || nicknameTextField.text != nickname
         if
-            isValidEmail && isValidPassword,
-            let passwordText = passwordTextField.text,
-            !passwordText.isEmpty,
-            let emailText = emailTextField.text,
-            !emailText.isEmpty,
-            let nicknameText = nicknameTextField.text,
-            passwordText != password || emailText != email || nicknameText != nickname
+            isValid,
+            isPassNotEmpty,
+            isEmailNotEmpty,
+            isNickNotNil,
+            isSomethingChanged
         {
             saveButtonOutlet.isEnabled = true
         } else {

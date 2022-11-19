@@ -42,9 +42,9 @@ final class LibraryViewController: UIViewController {
     }
 }
 
-// MARK: - Extension UITableView
+// MARK: - UITableView
 
-extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
+extension LibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         LocalStorage.shared.library.count
     }
@@ -64,6 +64,11 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55.0
     }
+}
+
+// MARK: - UITableViewDelegate
+
+extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if LocalStorage.shared.library[indexPath.row] == "Songs" {
             performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
@@ -75,9 +80,9 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// MARK: - Extension UICollectionView
+// MARK: - UICollectionViewDataSource
 
-extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension LibraryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         LocalStorage.shared.localTracks.count
     }
@@ -96,17 +101,9 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
         cell.configureTrack(track: track)
         return cell
     }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.estimatedItemSize = .zero
-        return CGSize(width: 170, height: 210)
-    }
-    
+}
+// MARK: - UICollectionViewDelegate
+extension LibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
         if
@@ -118,5 +115,19 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
             vc.trackIndex = indexPath.row
             navigationController?.present(vc, animated: true)
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension LibraryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.estimatedItemSize = .zero
+        return CGSize(width: 170, height: 210)
     }
 }

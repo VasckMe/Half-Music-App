@@ -215,7 +215,7 @@ final class DetailTrackViewController: UIViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - UpdateDetailTrackViewControllerProtocol
 extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack() {
         let track = LocalStorage.shared.currentAudioQueue[trackIndex!]

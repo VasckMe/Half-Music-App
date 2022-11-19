@@ -25,15 +25,17 @@ final class AudioPlayerService {
         }
         return AVPlayerItem(url: url)
     }
-    // MARK: Internal
+    // MARK: Static
         
     static let shared = AudioPlayerService()
+    
+    // MARK: Internal
     
     var trackIndex: Int!
     var isPlaying = false
     var isShuffle = false
     var isRepeat = false
-    
+
     func play() {
         player.play()
     }

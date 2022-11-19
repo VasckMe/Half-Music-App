@@ -42,7 +42,7 @@ struct PageView: View {
                         .foregroundColor(Color.white)
                         .font(.system(size: 20, weight: .semibold))
                         .frame(width: 150, height: 50)
-                        .background(Color(ColorConstants.globalTintColor))
+                        .background(Color(UIConstants.globalTintColor))
                         .cornerRadius(10)
                 }
                 

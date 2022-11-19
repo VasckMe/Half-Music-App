@@ -10,6 +10,8 @@ import MediaPlayer
 
 final class NowIsPlayingView: UIView {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet var ourView: UIView!
     
     @IBOutlet private weak var audioTitleLabel: UILabel!
@@ -28,6 +30,8 @@ final class NowIsPlayingView: UIView {
         }
     }
     
+    // MARK: - Properties
+    
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let audioPlayerService = AudioPlayerService.shared
     private let animationService = AnimationService.shared
@@ -35,6 +39,8 @@ final class NowIsPlayingView: UIView {
     private var timeObserver: Any!
     
     var delegate: CustomTabBarProtocol?
+    
+    // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +62,8 @@ final class NowIsPlayingView: UIView {
         audioPlayerService.removeObserver(observer: timeObserver!)
     }
     
+    // MARK: - IBActions
+    
     @IBAction private func playPauseAction() {
         playPauseButtonOutlet.isSelected.toggle()
         audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
@@ -72,6 +80,8 @@ final class NowIsPlayingView: UIView {
             isShuffleOn: audioPlayerService.isShuffle
         )
     }
+    
+    // MARK: - Private
     
     private func viewInit() {
         let xibView = Bundle.main.loadNibNamed("NowIsPlayingView", owner: self)![0] as! UIView
@@ -121,7 +131,7 @@ final class NowIsPlayingView: UIView {
         }
     }
     
-    @objc func ourViewTapped() {
+    @objc private func ourViewTapped() {
         guard let delegate = delegate else { return }
         guard let index = audioPlayerService.trackIndex else {
             return

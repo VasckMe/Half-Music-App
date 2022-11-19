@@ -26,7 +26,10 @@ final class LargeCollectionViewCell: UICollectionViewCell {
         let photoURL = track.album.images[1].url
         
         dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
-            guard let image = image else { return }
+            guard let image = image else {
+                return
+            }
+            
             self?.itemImageView.image = image
         }
     }

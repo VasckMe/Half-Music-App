@@ -12,14 +12,14 @@ import FirebaseAuth
 
 final class SignInViewController: BaseViewController {
 
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle!
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ final class SignInViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: Actions
+    // MARK: - IBActions
     
     @IBAction private func loginAction() {
         let email = emailTextField.text!
@@ -86,7 +86,7 @@ final class SignInViewController: BaseViewController {
         let _ = unwindSegue.source
     }
     
-    // MARK: Private
+    // MARK: - Private
     
     @objc private func kbDidShow(notification: Notification) {
         self.view.frame.origin.y = 0
@@ -102,7 +102,7 @@ final class SignInViewController: BaseViewController {
     }
 }
 
-// MARK: Extension
+// MARK: - Extension
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

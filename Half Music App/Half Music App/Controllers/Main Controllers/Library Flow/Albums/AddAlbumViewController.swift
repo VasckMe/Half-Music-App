@@ -9,7 +9,9 @@ import UIKit
 import FirebaseDatabase
 
 final class AddAlbumViewController: BaseViewController {
-
+    
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var albumImageView: UIImageView!
     @IBOutlet private weak var albumNameLabel: UITextField! {
         didSet {
@@ -22,11 +24,16 @@ final class AddAlbumViewController: BaseViewController {
     }
     @IBOutlet private weak var albumTableView: UITableView!
     
+    // MARK: - Properties
+    
     let ref = FireBaseStorageService.albumsRef
     var detailAlbum: AlbumFB?
     var delegate: UpdateDetailAlbumViewController?
     
     var choosedTracks: [TrackFB] = []
+    
+    // MARK: - Life Cycle
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +56,7 @@ final class AddAlbumViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         FireBaseStorageService.audioRef.removeAllObservers()
     }
-    
+    // MARK: - IBActions
     @IBAction private func saveAlbumAction(_ sender: UIBarButtonItem) {
         guard
             let text = albumNameLabel.text,
@@ -74,6 +81,9 @@ final class AddAlbumViewController: BaseViewController {
         
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - Private
+    
     private func setup() {
         if let album = detailAlbum {
             albumNameLabel.text = album.name
@@ -83,7 +93,9 @@ final class AddAlbumViewController: BaseViewController {
 
 }
 
-extension AddAlbumViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - UITableViewDataSource
+
+extension AddAlbumViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         LocalStorage.shared.localTracks.count
     }
@@ -105,7 +117,12 @@ extension AddAlbumViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60.0
     }
-    
+}
+
+// MARK: - UITableViewDelegate
+
+
+extension AddAlbumViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath)

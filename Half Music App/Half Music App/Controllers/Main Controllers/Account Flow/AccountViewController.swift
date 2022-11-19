@@ -14,9 +14,13 @@ protocol UpdateAccountViewControllerProtocol {
 
 final class AccountViewController: BaseViewController {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var nicknameLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var passTextField: UITextField!
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,8 @@ final class AccountViewController: BaseViewController {
         setupUI()
         passTextField.enablePasswordToggle()
     }
+    
+    // MARK: - IBActions
     
     @IBAction private func editAction(_ sender: UIBarButtonItem) {
         guard let passw = passTextField.text else {
@@ -50,33 +56,41 @@ final class AccountViewController: BaseViewController {
             self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
         }
     }
+
+    // MARK: - Private
     
     private func setupUI() {
         FireBaseStorageService.userRef.getData { [weak self] error, snapshot in
-            if let error = error {
-                print("Account setup getData error: \(error.localizedDescription)")
-            } else {
-                guard let snapshot = snapshot else {
-                    return
-                }
+            guard let self = self else {
+                return
+            }
 
-                guard
-                    let snapshotValue = snapshot.value as? [String: Any],
-                    let nickname = snapshotValue["nickname"] as? String,
-                    let email = snapshotValue["email"] as? String,
-                    let password = snapshotValue["password"] as? String
-                else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self?.nicknameLabel.text = nickname
-                    self?.emailLabel.text = email
-                    self?.passTextField.text = password
-                }
+            guard let snapshot = snapshot else {
+                let message = error?.localizedDescription ?? "Generic error"
+                self.callDefaultAlert(title: "Error", message: message)
+                return
+            }
+
+            guard
+                let snapshotValue = snapshot.value as? [String: Any],
+                let nickname = snapshotValue["nickname"] as? String,
+                let email = snapshotValue["email"] as? String,
+                let password = snapshotValue["password"] as? String
+            else {
+                self.callDefaultAlert(title: "Error", message: "Bad snapshot")
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.nicknameLabel.text = nickname
+                self.emailLabel.text = email
+                self.passTextField.text = password
             }
         }
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension AccountViewController: UITextFieldDelegate {
     func textField(
@@ -91,6 +105,8 @@ extension AccountViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - UpdateAccountViewControllerProtocol
 
 extension AccountViewController: UpdateAccountViewControllerProtocol {
     func updateAccountVCP() {

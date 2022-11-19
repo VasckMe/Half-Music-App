@@ -21,7 +21,7 @@ protocol NetworkServiceProtocol {
 
 final class NetworkService: NetworkServiceProtocol {
     
-    // MARK: Internal
+    // MARK: - Internal
     
     func request(
         urlString: String,

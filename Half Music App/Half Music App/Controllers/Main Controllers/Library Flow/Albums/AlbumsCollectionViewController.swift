@@ -9,9 +9,13 @@ import UIKit
 import FirebaseDatabase
 
 final class AlbumsCollectionViewController: UICollectionViewController {
-
+    
+    // MARK: Properties
+    
     var albums: [AlbumFB] = []
     let ref = FireBaseStorageService.albumsRef
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +43,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
         FireBaseStorageService.audioRef.removeAllObservers()
     }
 
-    // MARK: CollectionView Data Source
+    // MARK: - CollectionView Data Source
 
     override func collectionView(
         _ collectionView: UICollectionView,
@@ -65,7 +69,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
         return cell
     }
 
-    // MARK: Collection View Delegate
+    // MARK: - Collection View Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.row]
@@ -81,7 +85,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
         }
     }
 }
-// MARK: Extension 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,

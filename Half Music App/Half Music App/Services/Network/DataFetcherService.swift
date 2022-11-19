@@ -23,8 +23,8 @@ final class DataFetcherService: DataFetcherServiceProtocol {
     
     func fetchFreeMusic(completion: @escaping (Audio?) -> Void) {
         networkDataFetcher.fetchJSONGenericData(
-            urlString: ApiStringConstants.apiString,
-            headers: HeadersConstants.header,
+            urlString: NetworkConstants.apiString,
+            headers: NetworkConstants.header,
             response: completion)
     }
     

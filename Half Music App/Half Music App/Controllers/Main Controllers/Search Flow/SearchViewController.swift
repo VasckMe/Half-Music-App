@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     
     @IBOutlet private weak var searchTrackBar: UISearchBar! {
@@ -18,7 +18,7 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
         }
     }
     
-    // MARK: Properties
+    // MARK: - Properties
     
     let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
     
@@ -82,6 +82,8 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
         }
     }
 }
+
+// MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -9,14 +9,20 @@ import UIKit
 import FirebaseDatabase
 
 final class SongsTableViewController: UITableViewController {
-
+    
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.searchTextField.textColor = .white
         }
     }
     
+    // MARK: - Properties
+    
     var artist: String?
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +117,7 @@ final class SongsTableViewController: UITableViewController {
         60.0
     }
 }
-
+// MARK: - UISearchBarDelegate
 extension SongsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {

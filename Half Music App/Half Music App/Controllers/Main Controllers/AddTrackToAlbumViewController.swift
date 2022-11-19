@@ -10,6 +10,8 @@ import FirebaseDatabase
 
 final class AddTrackToAlbumViewController: BaseViewController {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.searchTextField.textColor = .white
@@ -17,10 +19,14 @@ final class AddTrackToAlbumViewController: BaseViewController {
     }
     @IBOutlet private weak var albumCollectionView: UICollectionView!
     
+    // MARK: - Properties
+    
     var track: TrackFB?
     var albums: [AlbumFB] = []
     let ref = FireBaseStorageService.albumsRef
     var delegate: UpdateDetailTrackViewControllerProtocol?
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +45,9 @@ final class AddTrackToAlbumViewController: BaseViewController {
     }
 }
 
-extension AddTrackToAlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource
+
+extension AddTrackToAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return albums.count
     }
@@ -57,7 +65,11 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegate, UICollectionV
     
         return cell
     }
-    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension AddTrackToAlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let track = track else { return }
         let album = albums[indexPath.row]
@@ -75,6 +87,8 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegate, UICollectionV
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -82,6 +96,8 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 170, height: 210)
     }
 }
+
+// MARK: - UISearchBarDelegate
 
 extension AddTrackToAlbumViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

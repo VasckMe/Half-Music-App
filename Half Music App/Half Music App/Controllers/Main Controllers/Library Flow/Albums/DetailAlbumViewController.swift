@@ -14,11 +14,17 @@ protocol UpdateDetailAlbumViewController {
 
 final class DetailAlbumViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var albumImageView: UIImageView!
     @IBOutlet private weak var albumTitleLabel: UILabel!
     @IBOutlet private weak var albumTracksTableView: UITableView!
     
+    // MARK: - Properties
+    
     var album: AlbumFB?
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +46,17 @@ final class DetailAlbumViewController: UIViewController {
         ref.removeAllObservers()
     }
     
-    @IBAction func editAction(_ sender: UIBarButtonItem) {
+    // MARK: - IBActions
+    
+    @IBAction private func editAction(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Library", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddEditAlbumVC") as? AddAlbumViewController
         vc?.detailAlbum = album
         vc?.delegate = self
         navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    // MARK: - Private
     
     private func setup() {
         albumImageView.image = UIImage(systemName: "music.note.list")
@@ -60,14 +70,17 @@ final class DetailAlbumViewController: UIViewController {
     }
 }
 
+// MARK: - UpdateDetailAlbumViewController
+
 extension DetailAlbumViewController: UpdateDetailAlbumViewController {
     func update(album: AlbumFB) {
         self.album = album
         setup()
     }
 }
+// MARK: - UITableViewDataSource
 
-extension DetailAlbumViewController: UITableViewDataSource, UITableViewDelegate {
+extension DetailAlbumViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         LocalStorage.shared.localTracks.count
     }
@@ -90,19 +103,6 @@ extension DetailAlbumViewController: UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailTrackVC"
-            ) as? DetailTrackViewController
-        {
-            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-            vc.trackIndex = indexPath.row
-            navigationController?.present(vc, animated: true)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
@@ -117,6 +117,21 @@ extension DetailAlbumViewController: UITableViewDataSource, UITableViewDelegate 
             FireBaseStorageService.albumsRef.child(album!.name).child(track.name).removeValue()
             LocalStorage.shared.localTracks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
+// MARK: - UITableViewDelegate
+extension DetailAlbumViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
+        if
+            let vc = storyboard.instantiateViewController(
+                withIdentifier: "DetailTrackVC"
+            ) as? DetailTrackViewController
+        {
+            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+            vc.trackIndex = indexPath.row
+            navigationController?.present(vc, animated: true)
         }
     }
 }
