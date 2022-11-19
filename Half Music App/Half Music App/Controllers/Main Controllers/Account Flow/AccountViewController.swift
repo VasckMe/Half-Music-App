@@ -19,6 +19,8 @@ final class AccountViewController: BaseViewController {
     @IBOutlet private weak var nicknameLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var passTextField: UITextField!
+    @IBOutlet private weak var blurView: UIVisualEffectView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycle
     
@@ -86,6 +88,8 @@ final class AccountViewController: BaseViewController {
                 self.emailLabel.text = email
                 self.passTextField.text = password
             }
+            self.activityIndicator.stopAnimating()
+            self.blurView.isHidden = true
         }
     }
 }
@@ -110,6 +114,8 @@ extension AccountViewController: UITextFieldDelegate {
 
 extension AccountViewController: UpdateAccountViewControllerProtocol {
     func updateAccountVCP() {
+        self.activityIndicator.startAnimating()
+        self.blurView.isHidden = false
         setupUI()
     }
 }

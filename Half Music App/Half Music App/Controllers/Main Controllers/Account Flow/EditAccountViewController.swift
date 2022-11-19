@@ -100,7 +100,7 @@ final class EditAccountViewController: UIViewController {
         let isValid = isValidEmail && isValidPassword
         let isPassNotEmpty = passwordTextField.text?.isEmpty == false
         let isEmailNotEmpty = emailTextField.text?.isEmpty == false
-        let isNickNotNil = nicknameTextField.text == nil
+        let isNickNotNil = nicknameTextField.text != nil
         let isSomethingChanged = passwordTextField.text != password
         || emailTextField.text != email
         || nicknameTextField.text != nickname

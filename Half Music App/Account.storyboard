@@ -87,14 +87,31 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uer-DA-72K">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xrl-uK-Xdb">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="UpQ-LY-80Q">
+                                <rect key="frame" x="186" y="416" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fdm-fq-JLU"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
+                            <constraint firstItem="uer-DA-72K" firstAttribute="leading" secondItem="fdm-fq-JLU" secondAttribute="leading" id="8ea-T5-99w"/>
                             <constraint firstItem="LQD-ey-NxC" firstAttribute="top" secondItem="35E-TX-k2U" secondAttribute="top" constant="80" id="DcS-y6-np6"/>
+                            <constraint firstAttribute="bottom" secondItem="uer-DA-72K" secondAttribute="bottom" id="Y4V-Az-lC3"/>
+                            <constraint firstItem="uer-DA-72K" firstAttribute="trailing" secondItem="fdm-fq-JLU" secondAttribute="trailing" id="ZRc-F3-7NU"/>
                             <constraint firstItem="LQD-ey-NxC" firstAttribute="leading" secondItem="fdm-fq-JLU" secondAttribute="leading" constant="20" id="lxR-mx-Rwz"/>
                             <constraint firstItem="fdm-fq-JLU" firstAttribute="trailing" secondItem="LQD-ey-NxC" secondAttribute="trailing" constant="20" id="niw-3Z-3ol"/>
                             <constraint firstItem="fdm-fq-JLU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LQD-ey-NxC" secondAttribute="bottom" constant="20" id="pAe-xt-uPK"/>
+                            <constraint firstItem="uer-DA-72K" firstAttribute="top" secondItem="35E-TX-k2U" secondAttribute="top" id="prs-yP-l9i"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -109,6 +126,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="UpQ-LY-80Q" id="EYQ-lD-mA4"/>
+                        <outlet property="blurView" destination="uer-DA-72K" id="hA3-fL-g2U"/>
                         <outlet property="emailLabel" destination="T1H-Gl-l5x" id="VOM-IV-hWn"/>
                         <outlet property="nicknameLabel" destination="Yca-Q0-Vhz" id="H0F-gj-E2t"/>
                         <outlet property="passTextField" destination="9BA-dc-PfC" id="A0J-kw-sa7"/>
@@ -118,7 +137,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mL-8b-ULB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eTc-iz-997" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="340" y="1020"/>
+            <point key="canvasLocation" x="339.69465648854958" y="1019.7183098591549"/>
         </scene>
         <!--Account-->
         <scene sceneID="wTd-g8-4eE">
