@@ -1,5 +1,5 @@
 //
-//  AudioPlayerService.swift
+//  AudioPlayerManager.swift
 //  Half Music App
 //
 //  Created by Apple Macbook Pro 13 on 7.10.22.
@@ -8,7 +8,7 @@
 import Foundation
 import MediaPlayer
 
-final class AudioPlayerService {
+final class AudioPlayerManager {
 
     // MARK: Private
     
@@ -27,7 +27,7 @@ final class AudioPlayerService {
     }
     // MARK: Static
         
-    static let shared = AudioPlayerService()
+    static let shared = AudioPlayerManager()
     
     // MARK: Internal
     

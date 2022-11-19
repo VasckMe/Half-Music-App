@@ -69,7 +69,9 @@ final class AccountViewController: BaseViewController {
 
             guard let snapshot = snapshot else {
                 let message = error?.localizedDescription ?? "Generic error"
-                self.callDefaultAlert(title: "Error", message: message)
+                self.callClosureAlert(title: "Error", message: message,titleForAction: "Refresh") {
+                    self.setupUI()
+                }
                 return
             }
 

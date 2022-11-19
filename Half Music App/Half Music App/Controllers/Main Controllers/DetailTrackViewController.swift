@@ -58,7 +58,7 @@ final class DetailTrackViewController: UIViewController {
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     
-    private let audioPlayerService = AudioPlayerService.shared
+    private let audioPlayerService = AudioPlayerManager.shared
     
     private var timeObserver: Any!
     

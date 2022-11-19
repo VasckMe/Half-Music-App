@@ -108,33 +108,35 @@ final class SignUpViewController: BaseViewController {
     }
     
     @IBAction private func signUpAction() {
-    guard
-        let email = emailTextField.text,
-        var nickname = nickTextField.text,
-        let password = passwordTextField.text
-    else {
-        print("Wrong data")
-        return
+        guard
+            let email = emailTextField.text,
+            var nickname = nickTextField.text,
+            let password = passwordTextField.text
+        else {
+            callDefaultAlert(title: "Error", message: "Wrong data")
+            return
         }
     
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
-            if let error = error {
-                self?.callDefaultAlert(title: "Error", message: "\(error.localizedDescription)")
-            } else {
-                guard let user = user else {
-                    return
-                }
-                
-                nickname = nickname.isEmpty ? "user" : nickname
-                
-                let userRef = self?.ref.child(user.user.uid)
-                userRef?.setValue(
-                    ["email": user.user.email,
-                     "nickname" : nickname,
-                     "password" : password]
-                )
-                self?.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
+            guard let self = self else {
+                return
             }
+            
+            guard let user = user else {
+                let message = error?.localizedDescription ?? "Generic error"
+                self.callDefaultAlert(title: "Error", message: message)
+                return
+            }
+            
+            nickname = nickname.isEmpty ? "user" : nickname
+                
+            let userRef = self.ref.child(user.user.uid)
+            userRef.setValue(
+                ["email": user.user.email,
+                 "nickname": nickname,
+                 "password": password]
+            )
+            self.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
         }
     }
     

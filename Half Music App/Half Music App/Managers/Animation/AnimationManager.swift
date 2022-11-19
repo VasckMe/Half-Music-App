@@ -1,5 +1,5 @@
 //
-//  AnimationService.swift
+//  AnimationManager.swift
 //  Half Music App
 //
 //  Created by Apple Macbook Pro 13 on 16.11.22.
@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-final class AnimationService {
+final class AnimationManager {
     
     private init() {}
     
-    static let shared = AnimationService()
+    static let shared = AnimationManager()
     
     func getAnimationImages() -> [UIImage]? {
         var images: [UIImage] = []

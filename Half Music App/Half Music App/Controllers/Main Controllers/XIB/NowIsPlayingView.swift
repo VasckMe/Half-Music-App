@@ -33,8 +33,8 @@ final class NowIsPlayingView: UIView {
     // MARK: - Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    private let audioPlayerService = AudioPlayerService.shared
-    private let animationService = AnimationService.shared
+    private let audioPlayerService = AudioPlayerManager.shared
+    private let animationService = AnimationManager.shared
     
     private var timeObserver: Any!
     

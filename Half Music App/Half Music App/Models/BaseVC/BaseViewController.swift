@@ -20,13 +20,17 @@ class BaseViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func callClosureAlert(title: String, message: String, closure: @escaping () -> ()) {
+    func callClosureAlert(
+        title: String,
+        message: String,
+        titleForAction: String = "Ok",
+        closure: @escaping () -> ()) {
         let alertController = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            let action = UIAlertAction(title: titleForAction, style: .default) { action in
             closure()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive)

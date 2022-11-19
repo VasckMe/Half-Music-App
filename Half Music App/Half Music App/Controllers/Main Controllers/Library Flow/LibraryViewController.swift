@@ -30,7 +30,6 @@ final class LibraryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.recentlyAddedCollectionView.reloadData()

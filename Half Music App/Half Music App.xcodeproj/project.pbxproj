@@ -17,7 +17,7 @@
 		1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */; };
 		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
 		1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23E2919055F0017FB07 /* CustomTabBarController.swift */; };
-		182EEDF82924FD0200D6A186 /* AnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationService.swift */; };
+		182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationManager.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
@@ -62,7 +62,7 @@
 		18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */; };
 		18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */; };
 		18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3F48829168F5C00F7D867 /* SearchViewController.swift */; };
-		18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* AudioPlayerService.swift */; };
+		18D51B7828F0488E00CCAE4A /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */; };
 		18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */; };
 		18D5D583291C05040022F4D4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D582291C05040022F4D4 /* Network.swift */; };
 		18D5D585291C051C0022F4D4 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D584291C051C0022F4D4 /* UIConstants.swift */; };
@@ -90,7 +90,7 @@
 		1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowIsPlayingView.xib; sourceTree = "<group>"; };
 		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
 		1824E23E2919055F0017FB07 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		182EEDF72924FD0200D6A186 /* AnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationService.swift; sourceTree = "<group>"; };
+		182EEDF72924FD0200D6A186 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTrackToAlbum.storyboard; sourceTree = "<group>"; };
 		18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackToAlbumViewController.swift; sourceTree = "<group>"; };
 		18D3F48829168F5C00F7D867 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		18D51B7728F0488E00CCAE4A /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
 		18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		18D5D582291C05040022F4D4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		18D5D584291C051C0022F4D4 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
@@ -178,11 +178,9 @@
 		18130AEC28E4406C000FCD54 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				182EEDF62924FCEE00D6A186 /* Animation */,
 				18D5D57D291C046A0022F4D4 /* FireBase */,
 				18680D9928E84294001DF00D /* Verification */,
 				18D20D1E28E45EE200A758CC /* Network */,
-				18D51B7928F0489300CCAE4A /* AudioPlayer */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -205,7 +203,7 @@
 		182EEDF62924FCEE00D6A186 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				182EEDF72924FD0200D6A186 /* AnimationService.swift */,
+				182EEDF72924FD0200D6A186 /* AnimationManager.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -340,6 +338,8 @@
 		1876015E28E3513B000223CD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				182EEDF62924FCEE00D6A186 /* Animation */,
+				18D51B7928F0489300CCAE4A /* AudioPlayer */,
 				18D20D2228E45F8400A758CC /* Storage */,
 				18D20D1F28E45EF000A758CC /* Cache */,
 			);
@@ -489,7 +489,7 @@
 		18D51B7928F0489300CCAE4A /* AudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				18D51B7728F0488E00CCAE4A /* AudioPlayerService.swift */,
+				18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */,
 			);
 			path = AudioPlayer;
 			sourceTree = "<group>";
@@ -750,12 +750,12 @@
 				18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */,
 				18D5D583291C05040022F4D4 /* Network.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,
-				18D51B7828F0488E00CCAE4A /* AudioPlayerService.swift in Sources */,
+				18D51B7828F0488E00CCAE4A /* AudioPlayerManager.swift in Sources */,
 				1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */,
 				18D5D585291C051C0022F4D4 /* UIConstants.swift in Sources */,
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
-				182EEDF82924FD0200D6A186 /* AnimationService.swift in Sources */,
+				182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
