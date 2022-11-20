@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TIC-zq-wZh">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tracks-->
+        <scene sceneID="X9C-tY-PCD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-ef-4hI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="SongsTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0T3-zV-LEu" customClass="SongsTableViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="zWt-a0-E0I">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="0T3-zV-LEu" id="kdx-hh-U4l"/>
+                            <outlet property="delegate" destination="0T3-zV-LEu" id="1lB-wK-kOv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tracks" id="dKE-0L-QUq"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1891" y="-321"/>
+        </scene>
+        <!--Custom Tab Bar Controller-->
+        <scene sceneID="yfB-AN-lo2">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TIC-zq-wZh" customClass="CustomTabBarController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Mgt-IL-70m">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.14999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.14999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.3131436997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QtD-SN-MAc" kind="relationship" relationship="viewControllers" id="Hfd-Hm-Kp5"/>
+                        <segue destination="aJu-Zt-Fxj" kind="relationship" relationship="viewControllers" id="gOC-6I-MAs"/>
+                        <segue destination="xuX-ov-CZN" kind="relationship" relationship="viewControllers" id="Jd6-pA-pGq"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIJ-0f-eHu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-403" y="-321"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="c1F-uP-QYj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="xuX-ov-CZN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="6qX-gF-kKM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sq-d3-GVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-403" y="1020"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="6K3-id-wrV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="QtD-SN-MAc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="SlU-jg-9wi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uas-WA-e9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-403" y="-1041"/>
+        </scene>
+        <!--UINavigationController-jj1-Ip-jl5-->
+        <scene sceneID="eKt-gA-PkG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Library" referencedIdentifier="UINavigationController-jj1-Ip-jl5" id="aJu-Zt-Fxj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fQh-dL-ccL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vF-mS-2oy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="-321"/>
+        </scene>
+        <!--AddEditAlbumVC-->
+        <scene sceneID="Vpz-nU-OFK">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AddEditAlbumVC" storyboardName="Library" referencedIdentifier="AddEditAlbumVC" id="zIm-BB-eLg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2V-Ow-srA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891" y="331"/>
+        </scene>
+        <!--DetailAlbumVC-->
+        <scene sceneID="qM7-AJ-o8O">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DetailAlbumVC" storyboardName="Library" referencedIdentifier="DetailAlbumVC" id="ogF-aU-NbP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01G-bc-wXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="331"/>
+        </scene>
+    </scenes>
+</document>
