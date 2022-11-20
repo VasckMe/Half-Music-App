@@ -13,12 +13,7 @@ protocol CustomTabBarProtocol {
 
 final class CustomTabBarController: UITabBarController, CustomTabBarProtocol {
     func showDetail(with index: Int) {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        guard
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailTrackVC"
-            ) as? DetailTrackViewController
-        else {
+        guard let vc = DetailTrackViewController.storyboardInstance() else {
             return
         }
         vc.trackIndex = index

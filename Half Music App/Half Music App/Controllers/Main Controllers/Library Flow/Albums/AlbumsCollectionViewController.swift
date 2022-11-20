@@ -19,7 +19,6 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.register(
             UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
@@ -27,22 +26,57 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        addObserverToFetchAlbums()
+        addObserverToFetchTracks()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeObserverToFetchAlbums()
+        removeObserverToFetchTracks()
+    }
+}
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.estimatedItemSize = .zero
+        return CGSize(width: 170, height: 210)
+    }
+}
+
+// MARK: - Extension Logic
+
+extension AlbumsCollectionViewController {
+    
+    // MARK: - Private
+    
+    private func addObserverToFetchAlbums() {
         FireBaseStorageService.addAlbumsObserver { [weak self] albumsFB in
             self?.albums = albumsFB
             self?.collectionView.reloadData()
         }
+    }
 
+    private func addObserverToFetchTracks() {
         FireBaseStorageService.addAudioObserver { tracksFB in
             LocalStorage.shared.localTracks = tracksFB
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        ref.removeAllObservers()
+    private func removeObserverToFetchAlbums() {
+        FireBaseStorageService.albumsRef.removeAllObservers()
+    }
+    
+    private func removeObserverToFetchTracks() {
         FireBaseStorageService.audioRef.removeAllObservers()
     }
-
+    
     // MARK: - CollectionView Data Source
 
     override func collectionView(
@@ -68,7 +102,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     
         return cell
     }
-
+    
     // MARK: - Collection View Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -83,18 +117,5 @@ final class AlbumsCollectionViewController: UICollectionViewController {
             vc.album = album
             navigationController?.pushViewController(vc, animated: true)
         }
-    }
-}
-// MARK: - UICollectionViewDelegateFlowLayout
-extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.estimatedItemSize = .zero
-        return CGSize(width: 170, height: 210)
     }
 }

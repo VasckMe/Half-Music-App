@@ -121,6 +121,39 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func removeNotificationKBObservers() {
+        NotificationCenter.default.removeObserver(self)
+
+    }
+    
+    func addNotificationKBObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbDidShow),
+            name: UIWindow.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbDidHide),
+            name: UIWindow.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc func kbDidShow(notification: Notification) {
+        self.view.frame.origin.y = 0
+        if let keyboardSize = (
+            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        )?.cgRectValue {
+            self.view.frame.origin.y -= (keyboardSize.height / 2)
+        }
+    }
+    
+    @objc func kbDidHide() {
+        self.view.frame.origin.y = 0
+    }
+    
     func addTapGestureToAlertController(alertController: UIAlertController) {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlert))
         alertController.view.superview?.subviews[0].addGestureRecognizer(tapGesture)

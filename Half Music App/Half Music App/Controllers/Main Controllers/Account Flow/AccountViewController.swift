@@ -38,27 +38,45 @@ final class AccountViewController: BaseViewController {
             return
         }
         callAccountSettingsAlertSheet(password: passw) {
-            let storyboard = UIStoryboard(name: "Account", bundle: nil)
-            let editVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditAccountViewController
-            editVC.nickname = self.nicknameLabel.text
-            editVC.email = self.emailLabel.text
-            editVC.password = self.passTextField.text
-            editVC.delegate = self
-            self.navigationController?.pushViewController(editVC, animated: true)
+            self.edit()
         } logoutCompletion: {
-            do {
-                try Auth.auth().signOut()
-                self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
-            } catch {
-                print("Auth signOut error")
-            }
+            self.logout()
         } deleteCompletion: {
-            FireBaseStorageService.userRef.removeValue()
-            Auth.auth().currentUser?.delete()
-            self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
+            self.deleteAccount()
         }
     }
+}
 
+// MARK: - UITextFieldDelegate
+
+extension AccountViewController: UITextFieldDelegate {
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        false
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - UpdateAccountViewControllerProtocol
+
+extension AccountViewController: UpdateAccountViewControllerProtocol {
+    func updateAccountVCP() {
+        self.activityIndicator.startAnimating()
+        self.blurView.isHidden = false
+        setupUI()
+    }
+}
+
+// MARK: - Extension AccountViewController
+
+extension AccountViewController {
+    
     // MARK: - Private
     
     private func setupUI() {
@@ -94,30 +112,31 @@ final class AccountViewController: BaseViewController {
             self.blurView.isHidden = true
         }
     }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension AccountViewController: UITextFieldDelegate {
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String
-    ) -> Bool {
-        false
+    
+    private func edit() {
+        guard let editVC = EditAccountViewController.storyboardInstance() else {
+            callDefaultAlert(title: "Error", message: "Cant go to Edit Account Information")
+            return
+        }
+        editVC.nickname = self.nicknameLabel.text
+        editVC.email = self.emailLabel.text
+        editVC.password = self.passTextField.text
+        editVC.delegate = self
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    
+    private func logout() {
+        do {
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
+        } catch {
+            print("Auth signOut error")
+        }
     }
-}
-
-// MARK: - UpdateAccountViewControllerProtocol
-
-extension AccountViewController: UpdateAccountViewControllerProtocol {
-    func updateAccountVCP() {
-        self.activityIndicator.startAnimating()
-        self.blurView.isHidden = false
-        setupUI()
+    
+    private func deleteAccount() {
+        FireBaseStorageService.userRef.removeValue()
+        Auth.auth().currentUser?.delete()
+        self.performSegue(withIdentifier: "unwindToSignIn", sender: nil)
     }
 }

@@ -25,6 +25,20 @@ final class ArtistsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        addObserverToFetchTracks()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+       removeObserverToFetchTracks()
+    }
+}
+// MARK: - Extension Logic
+
+extension ArtistsTableViewController {
+    
+    // MARK: - Private
+    
+    private func addObserverToFetchTracks() {
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.findArtists()
@@ -32,11 +46,9 @@ final class ArtistsTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    private func removeObserverToFetchTracks() {
         FireBaseStorageService.audioRef.removeAllObservers()
     }
-    
-    // MARK: - Private
     
     private func findArtists() {
         let array = LocalStorage.shared.localTracks
@@ -53,7 +65,7 @@ final class ArtistsTableViewController: UITableViewController {
         self.artists = artists
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

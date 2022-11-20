@@ -24,7 +24,45 @@ final class SignInViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.enablePasswordToggle()
-        
+        addAuthStateListener()
+        addNotificationKBObservers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(authStateDidChangeListenerHandle)
+        removeNotificationKBObservers()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction private func loginAction() {
+        signUp()
+    }
+    
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        let _ = unwindSegue.source
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+// MARK: - Extension Logic
+extension SignInViewController {
+    
+    // MARK: - Private
+    
+    private func addAuthStateListener() {
         authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
             guard let _ = user else {
                 return
@@ -35,34 +73,9 @@ final class SignInViewController: BaseViewController {
             vc.modalTransitionStyle = .coverVertical
             self?.present(vc, animated: true)
         }
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(kbDidShow),
-            name: UIWindow.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(kbDidHide),
-            name: UIWindow.keyboardWillHideNotification,
-            object: nil
-        )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        emailTextField.text = ""
-        passwordTextField.text = ""
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(authStateDidChangeListenerHandle)
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    // MARK: - IBActions
-    
-    @IBAction private func loginAction() {
+    private func signUp() {
         let email = emailTextField.text!
         let password = passwordTextField.text!
 
@@ -80,32 +93,5 @@ final class SignInViewController: BaseViewController {
                 self?.callDefaultAlert(title: "Error", message: "Uknown problem O_o")
             }
         }
-    }
-    
-    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
-        let _ = unwindSegue.source
-    }
-    
-    // MARK: - Private
-    
-    @objc private func kbDidShow(notification: Notification) {
-        self.view.frame.origin.y = 0
-        if let keyboardSize = (
-            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        )?.cgRectValue {
-            self.view.frame.origin.y -= (keyboardSize.height / 2)
-        }
-    }
-    
-    @objc private func kbDidHide() {
-        self.view.frame.origin.y = 0
-    }
-}
-
-// MARK: - Extension
-extension SignInViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
     }
 }

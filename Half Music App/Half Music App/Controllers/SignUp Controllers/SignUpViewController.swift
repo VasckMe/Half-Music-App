@@ -10,7 +10,9 @@ import FirebaseDatabase
 import FirebaseAuth
 
 final class SignUpViewController: BaseViewController {
-
+    
+    let defaultNickname = "user"
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var nickTextField: UITextField!
@@ -35,7 +37,7 @@ final class SignUpViewController: BaseViewController {
     @IBOutlet private weak var wrongConfirmedPasswordLabel: UILabel!
     @IBOutlet private weak var signUpButtonOutlet: UIButton!
     
-    // MARK: - Properties
+    // MARK: - Internal
     
     var ref = FireBaseStorageService.usersRef
     
@@ -60,26 +62,14 @@ final class SignUpViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(kbDidShow),
-            name: UIWindow.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(kbDidHide),
-            name: UIWindow.keyboardWillHideNotification,
-            object: nil
-        )
+        addNotificationKBObservers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
+        removeNotificationKBObservers()
     }
     
-    // MARK: - IBActions
+    // MARK: - Private
     
     @IBAction private func emailTFAction() {
         isValidEmail = VerificationService.isValidEmailAddress(
@@ -93,52 +83,37 @@ final class SignUpViewController: BaseViewController {
         isValidPassword = VerificationService.isValidPassword(password: passwordTextField.text)
         setupPasswordIndicator(passStrength: isValidPassword)
         passwordTextField.layer.borderColor = isValidPassword != .bad ? UIColor.clear.cgColor : UIColor.red.cgColor
-
+        
         wrongPasswordLabel.isHidden = isValidPassword != .bad
     }
     
     @IBAction private func confPassTFAction() {
-       isValidConfPass = VerificationService.isPasswordConfirm(
-        password: passwordTextField.text,
-        confPassword: confirmedPasswordTextField.text
-       )
+        isValidConfPass = VerificationService.isPasswordConfirm(
+            password: passwordTextField.text,
+            confPassword: confirmedPasswordTextField.text
+        )
         confirmedPasswordTextField.layer.borderColor = isValidConfPass ? UIColor.clear.cgColor : UIColor.red.cgColor
-
+        
         wrongConfirmedPasswordLabel.isHidden = isValidConfPass
     }
     
     @IBAction private func signUpAction() {
-        guard
-            let email = emailTextField.text,
-            var nickname = nickTextField.text,
-            let password = passwordTextField.text
-        else {
-            callDefaultAlert(title: "Error", message: "Wrong data")
-            return
-        }
-    
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
-            guard let self = self else {
-                return
-            }
-            
-            guard let user = user else {
-                let message = error?.localizedDescription ?? "Generic error"
-                self.callDefaultAlert(title: "Error", message: message)
-                return
-            }
-            
-            nickname = nickname.isEmpty ? "user" : nickname
-                
-            let userRef = self.ref.child(user.user.uid)
-            userRef.setValue(
-                ["email": user.user.email,
-                 "nickname": nickname,
-                 "password": password]
-            )
-            self.performSegue(withIdentifier: "GoToSignUpMessage", sender: nickname)
-        }
+        signUp()
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+// MARK: - Extension Logic
+
+extension SignUpViewController {
     
     // MARK: - Private
     
@@ -156,34 +131,46 @@ final class SignUpViewController: BaseViewController {
         signUpButtonOutlet.isEnabled = isValidEmail && isValidPassword != .bad && isValidConfPass
     }
     
-    @objc func kbDidShow(notification: Notification) {
-        self.view.frame.origin.y = 0
-        if let keyboardSize = (
-            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        )?.cgRectValue {
-            self.view.frame.origin.y -= (keyboardSize.height / 2)
+    private func signUp() {
+        guard
+            let email = emailTextField.text,
+            let nickname = nickTextField?.text,
+            let password = passwordTextField.text
+        else {
+            callDefaultAlert(title: "Error", message: "Wrong data")
+            return
+        }
+    
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
+            guard let self = self else {
+                return
+            }
+            
+            guard let user = user else {
+                let message = error?.localizedDescription ?? "Generic error"
+                self.callDefaultAlert(title: "Error", message: message)
+                return
+            }
+                            
+            let userRef = self.ref.child(user.user.uid)
+            userRef.setValue(
+                ["email": user.user.email,
+                 "nickname": nickname.isEmpty ? self.defaultNickname : nickname,
+                 "password": password]
+            )
+            self.goToMessageVC()
         }
     }
     
-    @objc func kbDidHide() {
-        self.view.frame.origin.y = 0
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if
-            let signUpMessageVC = segue.destination as? SignUpMessageViewController,
-            let nickname = sender as? String
-        {
-            signUpMessageVC.nickname = nickname
+    private func goToMessageVC() {
+        guard let vc = SignUpMessageViewController.storyboardInstance() else {
+            return
         }
-    }
-}
-
-// MARK: - Extension
-
-extension SignUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if let nick = nickTextField.text, !nick.isEmpty {
+            vc.nickname = nick
+        } else {
+            vc.nickname = defaultNickname
+        }
+        navigationController?.present(vc, animated: true)
     }
 }

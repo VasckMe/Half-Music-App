@@ -30,18 +30,15 @@ final class LibraryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.recentlyAddedCollectionView.reloadData()
-        }
+        addObserverToFetchTracks()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageService.audioRef.removeAllObservers()
+        removeObserverToFetchTracks()
     }
 }
 
-// MARK: - UITableView
+// MARK: - UITableViewDataSource
 
 extension LibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,16 +102,13 @@ extension LibraryViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension LibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailTrackVC"
-            ) as? DetailTrackViewController
-        {
-            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-            vc.trackIndex = indexPath.row
-            navigationController?.present(vc, animated: true)
+        guard let vc = DetailTrackViewController.storyboardInstance() else {
+            return
         }
+
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        vc.trackIndex = indexPath.row
+        navigationController?.present(vc, animated: true)
     }
 }
 
@@ -129,5 +123,20 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = .zero
         return CGSize(width: 170, height: 210)
+    }
+}
+
+// MARK: - Extension Logic
+extension LibraryViewController {
+    // MARK: - Private
+    
+    private func addObserverToFetchTracks() {
+        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            self?.recentlyAddedCollectionView.reloadData()
+        }
+    }
+    private func removeObserverToFetchTracks() {
+        FireBaseStorageService.audioRef.removeAllObservers()
     }
 }

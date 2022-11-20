@@ -80,6 +80,12 @@ final class NowIsPlayingView: UIView {
             isShuffleOn: audioPlayerService.isShuffle
         )
     }
+}
+
+
+// MARK: - Extension NowIsPlayingView
+
+extension NowIsPlayingView {
     
     // MARK: - Private
     

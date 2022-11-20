@@ -7,11 +7,10 @@
 
 import UIKit
 
-final class SearchViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+final class SearchViewController: BaseViewController {
     
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
-    
     @IBOutlet private weak var searchTrackBar: UISearchBar! {
         didSet {
             searchTrackBar.searchTextField.textColor = .white
@@ -34,15 +33,13 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        dataFetcher.fetchFreeMusic { [weak self] audio in
-            guard let tracks = audio?.items else { return }
-            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-            self?.tableView.reloadData()
-        }
+        fetchMusic()
     }
-    
-    // MARK: - Table view data source
+}
 
+// MARK: - UITableViewDataSource
+
+extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LocalStorage.shared.localTracks.count
     }
@@ -65,21 +62,20 @@ final class SearchViewController: BaseViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75.0
     }
-    
-    // MARK: - Table view delegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailTrackVC"
-            ) as? DetailTrackViewController
-        {
-            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-            vc.trackIndex = indexPath.row
+}
 
-            navigationController?.present(vc, animated: true)
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = DetailTrackViewController.storyboardInstance() else {
+            return
         }
+
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        vc.trackIndex = indexPath.row
+
+        navigationController?.present(vc, animated: true)
     }
 }
 
@@ -102,6 +98,18 @@ extension SearchViewController: UISearchBarDelegate {
                 }
                 self?.tableView.reloadData()
             }
+        }
+    }
+}
+
+// MARK: Extension Logic
+extension SearchViewController {
+    // MARK: - Private
+    private func fetchMusic() {
+        dataFetcher.fetchFreeMusic { [weak self] audio in
+            guard let tracks = audio?.items else { return }
+            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+            self?.tableView.reloadData()
         }
     }
 }

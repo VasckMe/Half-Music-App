@@ -28,12 +28,7 @@ final class DetailAlbumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumTracksTableView.delegate = self
-        albumTracksTableView.dataSource = self
-        albumTracksTableView.register(
-            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: TrackTableViewCell.identifier
-        )
+        signTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +36,7 @@ final class DetailAlbumViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        guard let album = album else { return }
-        let ref = FireBaseStorageService.albumsRef.child(album.name)
-        ref.removeAllObservers()
+        removeObserverToFetchTracks()
     }
     
     // MARK: - IBActions
@@ -54,19 +47,6 @@ final class DetailAlbumViewController: UIViewController {
         vc?.detailAlbum = album
         vc?.delegate = self
         navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    // MARK: - Private
-    
-    private func setup() {
-        albumImageView.image = UIImage(systemName: "music.note.list")
-        albumTitleLabel.text = album?.name
-        
-        guard let album = album else { return }
-        FireBaseStorageService.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.albumTracksTableView.reloadData()
-        }
     }
 }
 
@@ -123,15 +103,46 @@ extension DetailAlbumViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension DetailAlbumViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailTrackVC"
-            ) as? DetailTrackViewController
-        {
-            LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-            vc.trackIndex = indexPath.row
-            navigationController?.present(vc, animated: true)
+        guard let vc = DetailTrackViewController.storyboardInstance() else {
+            return
         }
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        vc.trackIndex = indexPath.row
+        navigationController?.present(vc, animated: true)
+    }
+}
+
+// MARK: - Extension DetailAlbumViewController
+
+extension DetailAlbumViewController {
+    
+    // MARK: - Private
+    
+    private func setup() {
+        albumImageView.image = UIImage(systemName: "music.note.list")
+        albumTitleLabel.text = album?.name
+    }
+    
+    private func addObserverToFetchTracks() {
+        guard let album = album else { return }
+        FireBaseStorageService.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            self?.albumTracksTableView.reloadData()
+        }
+    }
+    
+    private func removeObserverToFetchTracks() {
+        guard let album = album else { return }
+        let ref = FireBaseStorageService.albumsRef.child(album.name)
+        ref.removeAllObservers()
+    }
+    
+    private func signTableView() {
+        albumTracksTableView.delegate = self
+        albumTracksTableView.dataSource = self
+        albumTracksTableView.register(
+            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TrackTableViewCell.identifier
+        )
     }
 }

@@ -173,14 +173,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-5t-iiu">
-                                <rect key="frame" x="20" y="157" width="353" height="675"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-5t-iiu">
+                                <rect key="frame" x="20" y="157" width="350" height="675"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="T3V-vk-pWQ">
-                                        <rect key="frame" x="51.666666666666686" y="0.0" width="250" height="310"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="T3V-vk-pWQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpn-YH-uIa">
-                                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                <rect key="frame" x="50" y="0.0" width="250" height="250"/>
                                                 <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.179000402" green="0.179000402" blue="0.179000402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -190,7 +190,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XA-e8-4ea">
-                                                <rect key="frame" x="54" y="265" width="142" height="45"/>
+                                                <rect key="frame" x="104" y="270" width="142" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -198,11 +198,10 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LdA-V4-3YC">
-                                        <rect key="frame" x="1.6666666666666572" y="325" width="350" height="350"/>
+                                        <rect key="frame" x="0.0" y="315" width="350" height="360"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="8qt-Z2-r7M"/>
-                                            <constraint firstAttribute="height" constant="350" id="M2L-GB-2lZ"/>
                                         </constraints>
                                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>

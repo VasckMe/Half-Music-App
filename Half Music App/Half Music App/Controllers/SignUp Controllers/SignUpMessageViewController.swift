@@ -9,6 +9,13 @@ import UIKit
 
 final class SignUpMessageViewController: UIViewController {
     
+    static func storyboardInstance() -> SignUpMessageViewController? {
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        return storyboard.instantiateViewController(
+            withIdentifier: "SignUpMessageVC"
+        ) as? SignUpMessageViewController
+    }
+    
     @IBOutlet private weak var helloLabel: UILabel!
     @IBOutlet private weak var textLabel: UILabel!
     

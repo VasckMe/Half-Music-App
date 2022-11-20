@@ -10,6 +10,11 @@ import FirebaseAuth
 
 final class EditAccountViewController: UIViewController {
     
+    static func storyboardInstance() -> EditAccountViewController? {
+        let storyboard = UIStoryboard(name: "Account", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "EditVC") as? EditAccountViewController
+    }
+    
     // MARK: - Default properties
     
     let defaultNickname = "user"
@@ -56,44 +61,21 @@ final class EditAccountViewController: UIViewController {
     }
     
     @IBAction private func emailTFAction() {
-        let result = VerificationService.isValidEmailAddress(emailAddressString: emailTextField.text)
-        isValidEmail = result
-        emailErrorLabel.isHidden = isValidEmail
+        checkEmail()
     }
     
     @IBAction private func passwordTFAction() {
-        let result = VerificationService.isValidPassword(password: passwordTextField.text)
-        isValidPassword = result != . bad
-        passwordErrorLabel.isHidden = isValidPassword
+        checkPassword()
     }
     
     @IBAction private func saveAction() {
-        guard
-            var nick = nicknameTextField.text,
-            let emailText = emailTextField.text,
-            let passwordText = passwordTextField.text,
-            let delegate = delegate
-        else {
-            return
-        }
-        
-        nick = nick.isEmpty ? defaultNickname : nick
-        
-        let queue = DispatchQueue(label: "AuthQueue", attributes: .concurrent)
-        let group = DispatchGroup()
-        queue.async(group: group) {
-            Auth.auth().currentUser?.updateEmail(to: emailText)
-            Auth.auth().currentUser?.updatePassword(to: passwordText)
-            FireBaseStorageService.userRef.updateChildValues(["email" : emailText])
-            FireBaseStorageService.userRef.updateChildValues(["password" : passwordText])
-            FireBaseStorageService.userRef.updateChildValues(["nickname" : nick])
-        }
-        group.notify(queue: .main) {
-            delegate.updateAccountVCP()
-            self.navigationController?.popViewController(animated: true)
-        }
+        save()
     }
-    
+}
+
+// MARK: - Extension EditAccountViewController
+
+extension EditAccountViewController {
     // MARK: - Private
     
     private func checkButton() {
@@ -132,5 +114,43 @@ final class EditAccountViewController: UIViewController {
         saveButtonOutlet.layer.borderColor = UIColor.darkGray.cgColor
         saveButtonOutlet.layer.borderWidth = 4
         saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.height/2
+    }
+    
+    private func save() {
+        guard
+            var nick = nicknameTextField.text,
+            let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            let delegate = delegate
+        else {
+            return
+        }
+        
+        nick = nick.isEmpty ? defaultNickname : nick
+        
+        let queue = DispatchQueue(label: "AuthQueue", attributes: .concurrent)
+        let group = DispatchGroup()
+        queue.async(group: group) {
+            Auth.auth().currentUser?.updateEmail(to: emailText)
+            Auth.auth().currentUser?.updatePassword(to: passwordText)
+            FireBaseStorageService.userRef.updateChildValues(["email" : emailText])
+            FireBaseStorageService.userRef.updateChildValues(["password" : passwordText])
+            FireBaseStorageService.userRef.updateChildValues(["nickname" : nick])
+        }
+        group.notify(queue: .main) {
+            delegate.updateAccountVCP()
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func checkEmail() {
+        let result = VerificationService.isValidEmailAddress(emailAddressString: emailTextField.text)
+        isValidEmail = result
+        emailErrorLabel.isHidden = isValidEmail
+    }
+    private func checkPassword() {
+        let result = VerificationService.isValidPassword(password: passwordTextField.text)
+        isValidPassword = result != . bad
+        passwordErrorLabel.isHidden = isValidPassword
     }
 }

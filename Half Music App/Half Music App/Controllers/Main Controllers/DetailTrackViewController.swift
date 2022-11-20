@@ -15,6 +15,13 @@ protocol UpdateDetailTrackViewControllerProtocol {
 
 final class DetailTrackViewController: UIViewController {
 
+    static func storyboardInstance() -> DetailTrackViewController? {
+        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
+        return storyboard.instantiateViewController(
+            withIdentifier: "DetailTrackVC"
+        ) as? DetailTrackViewController
+    }
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var trackBackgroundImageView: UIImageView!
@@ -57,22 +64,16 @@ final class DetailTrackViewController: UIViewController {
     // MARK: - Properties
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    
     private let audioPlayerService = AudioPlayerManager.shared
-    
     private var timeObserver: Any!
-    
     var trackIndex: Int?
-    
     var isOpenInBackground = false
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTrackUI()
-        
         if !isOpenInBackground {
             audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
 
@@ -136,6 +137,39 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func addToLibrary(_ sender: Any) {
+        addAudioToLibrary()
+    }
+    
+    @IBAction private func addToAlbum() {
+        let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
+        let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
+        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
+        vc.track = track
+        vc.delegate = self
+        self.present(vc, animated: true)
+    }
+    
+    
+}
+
+// MARK: - UpdateDetailTrackViewControllerProtocol
+
+extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
+    func updateDetailTrack() {
+        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
+        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
+            self?.likeButtonOutlet.isSelected = bool
+        }
+    }
+}
+
+// MARK: - Extension Logic
+
+extension DetailTrackViewController {
+    
+    // MARK: - Private
+    
+    private func addAudioToLibrary() {
         guard
             let audioIndex = trackIndex,
             LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
@@ -156,17 +190,6 @@ final class DetailTrackViewController: UIViewController {
             FireBaseStorageService.saveTrackInDB(track: track)
         }
     }
-    
-    @IBAction private func addToAlbum() {
-        let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
-        let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
-        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-        vc.track = track
-        vc.delegate = self
-        self.present(vc, animated: true)
-    }
-    
-    // MARK: - Private
     
     private func setupTrackUI() {
         guard
@@ -211,16 +234,6 @@ final class DetailTrackViewController: UIViewController {
             } else {
                 forwardTrackAction()
             }
-        }
-    }
-}
-
-// MARK: - UpdateDetailTrackViewControllerProtocol
-extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
-    func updateDetailTrack() {
-        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
-            self?.likeButtonOutlet.isSelected = bool
         }
     }
 }

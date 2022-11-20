@@ -32,16 +32,8 @@ final class AddTrackToAlbumViewController: BaseViewController {
         super.viewDidLoad()
         title = "Adding track to ..."
         searchBar.delegate = self
-        albumCollectionView.delegate = self
-        albumCollectionView.dataSource = self
-        albumCollectionView.register(
-            UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
-            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
-        )
-        FireBaseStorageService.getAlbums {[weak self] albums in
-            self?.albums = albums
-            self?.albumCollectionView.reloadData()
-        }
+        signCollectionView()
+        fetchAlbums()
     }
 }
 
@@ -112,5 +104,25 @@ extension AddTrackToAlbumViewController: UISearchBarDelegate {
                 self?.albumCollectionView.reloadData()
             }
         }
+    }
+}
+
+// MARK: - Extension Logic
+
+extension AddTrackToAlbumViewController {
+    // MARK: - Private
+    private func fetchAlbums() {
+        FireBaseStorageService.getAlbums {[weak self] albums in
+            self?.albums = albums
+            self?.albumCollectionView.reloadData()
+        }
+    }
+    private func signCollectionView() {
+        albumCollectionView.delegate = self
+        albumCollectionView.dataSource = self
+        albumCollectionView.register(
+            UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
+            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
+        )
     }
 }

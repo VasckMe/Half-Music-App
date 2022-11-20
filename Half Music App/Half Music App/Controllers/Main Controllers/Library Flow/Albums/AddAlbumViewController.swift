@@ -29,7 +29,6 @@ final class AddAlbumViewController: BaseViewController {
     let ref = FireBaseStorageService.albumsRef
     var detailAlbum: AlbumFB?
     var delegate: UpdateDetailAlbumViewController?
-    
     var choosedTracks: [TrackFB] = []
     
     // MARK: - Life Cycle
@@ -47,50 +46,16 @@ final class AddAlbumViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.albumTableView.reloadData()
-        }
+        addObserverToFetchTracks()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        FireBaseStorageService.audioRef.removeAllObservers()
+        removeObserverToFetchTracks()
     }
     // MARK: - IBActions
     @IBAction private func saveAlbumAction(_ sender: UIBarButtonItem) {
-        guard
-            let text = albumNameLabel.text,
-            !text.isEmpty
-        else {
-            callDefaultAlert(title: "Bad title", message: "Change album title")
-            return
-        }
-        
-        let album = AlbumFB(name: text, tracks: choosedTracks)
-
-        let albumRef = ref.child("\(album.name)")
-        
-        if let detailAlbum = detailAlbum {
-            ref.child(detailAlbum.name).removeValue()
-            delegate?.update(album: album)
-        }
-    
-        choosedTracks.forEach { track in
-            albumRef.child("\(track.name)").setValue(track.convertInDictionary())
-        }
-        
-        navigationController?.popViewController(animated: true)
+        saveAlbum()
     }
-    
-    // MARK: - Private
-    
-    private func setup() {
-        if let album = detailAlbum {
-            albumNameLabel.text = album.name
-            choosedTracks = album.tracks
-        }
-    }
-
 }
 
 // MARK: - UITableViewDataSource
@@ -137,6 +102,53 @@ extension AddAlbumViewController: UITableViewDelegate {
                 track == trackFB
             }
             choosedTracks.remove(at: index!)
+        }
+    }
+}
+// MARK: - Extension Logic
+extension AddAlbumViewController {
+    // MARK: - Private
+    
+    private func addObserverToFetchTracks() {
+        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
+            LocalStorage.shared.localTracks = tracksFB
+            self?.albumTableView.reloadData()
+        }
+    }
+    
+    private func removeObserverToFetchTracks() {
+        FireBaseStorageService.audioRef.removeAllObservers()
+    }
+    
+    private func saveAlbum() {
+        guard
+            let text = albumNameLabel.text,
+            !text.isEmpty
+        else {
+            callDefaultAlert(title: "Bad title", message: "Change album title")
+            return
+        }
+        
+        let album = AlbumFB(name: text, tracks: choosedTracks)
+
+        let albumRef = ref.child("\(album.name)")
+        
+        if let detailAlbum = detailAlbum {
+            ref.child(detailAlbum.name).removeValue()
+            delegate?.update(album: album)
+        }
+    
+        choosedTracks.forEach { track in
+            albumRef.child("\(track.name)").setValue(track.convertInDictionary())
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setup() {
+        if let album = detailAlbum {
+            albumNameLabel.text = album.name
+            choosedTracks = album.tracks
         }
     }
 }
