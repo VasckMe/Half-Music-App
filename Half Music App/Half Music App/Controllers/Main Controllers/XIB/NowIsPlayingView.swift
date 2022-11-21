@@ -19,7 +19,7 @@ final class NowIsPlayingView: UIView {
     @IBOutlet private weak var animationImageView: UIImageView! {
         didSet {
             animationImageView.animationImages = animationService.getAnimationImages()
-            animationImageView.animationDuration = 0.7
+            animationImageView.animationDuration = 0.4
         }
     }
 
