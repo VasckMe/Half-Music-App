@@ -2,7 +2,7 @@
 
 ## Information
 
-Half Music is an open source app
+Half Music is an open source app. 
 This is my own project at the beginning of my development journey
 
 <p align="center">
