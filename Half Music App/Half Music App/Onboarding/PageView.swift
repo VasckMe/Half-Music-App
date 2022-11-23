@@ -31,7 +31,7 @@ struct PageView: View {
             
             Text(subtitle)
                 .font(.system(size: 24))
-                .foregroundColor(Color(.secondaryLabel))
+                .foregroundColor(Color(.darkGray))
                 .padding()
             
             if showDismissButton {

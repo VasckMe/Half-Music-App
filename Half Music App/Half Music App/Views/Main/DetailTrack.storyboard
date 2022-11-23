@@ -164,7 +164,7 @@
                                                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
-                                                                                    <action selector="playPauseTrackAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="15I-Ca-Fh8"/>
+                                                                                    <action selector="playPauseTrackAction" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bov-9t-4zW"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -316,6 +316,7 @@
                         <outlet property="trackImageView" destination="DVH-eC-JOj" id="bBO-3W-9ZU"/>
                         <outlet property="trackNameLabel" destination="pdH-bF-bkw" id="HuC-zr-HKs"/>
                         <outlet property="trackSlider" destination="NNI-W7-rVl" id="P8N-Yv-pAM"/>
+                        <outlet property="volumeSliderOutlet" destination="Brd-08-943" id="Orn-gC-PN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

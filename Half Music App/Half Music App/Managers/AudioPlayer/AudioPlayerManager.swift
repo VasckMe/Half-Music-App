@@ -35,7 +35,8 @@ final class AudioPlayerManager {
     var isPlaying = false
     var isShuffle = false
     var isRepeat = false
-
+    var volume: Float = 0.5
+    
     func play() {
         player.play()
     }

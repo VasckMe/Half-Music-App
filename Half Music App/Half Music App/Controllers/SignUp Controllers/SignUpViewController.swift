@@ -63,6 +63,8 @@ final class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         title = "Sign Up"
         addNotificationKBObservers()
+        passwordTextField.enablePasswordToggle()
+        confirmedPasswordTextField.enablePasswordToggle()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

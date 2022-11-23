@@ -31,6 +31,11 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var trackSlider: UISlider!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var volumeSliderOutlet: UISlider! {
+        didSet {
+            volumeSliderOutlet.value = audioPlayerService.volume * 100
+        }
+    }
     
     @IBOutlet private weak var playPauseButtonOutlet: UIButton! {
         didSet {
@@ -103,7 +108,7 @@ final class DetailTrackViewController: UIViewController {
         setupTrackUI()
     }
     
-    @IBAction private func playPauseTrackAction(_ sender: UIButton) {
+    @IBAction private func playPauseTrackAction() {
         trackSlider.maximumValue = Float(audioPlayerService.getDuration()!)
         playPauseButtonOutlet.isSelected.toggle()
         audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
@@ -128,6 +133,7 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
+        audioPlayerService.volume = sender.value/100
         audioPlayerService.setVolume(volume: sender.value/100)
     }
     
