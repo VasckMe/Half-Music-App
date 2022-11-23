@@ -6,9 +6,9 @@ Half Music is an open source app.
 This is my own project at the beginning of my development journey
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/110229952/202712486-002ca097-bb4b-4368-8c80-69d7b17612b2.gif" alt="OnBoarding">
-</p>
-
+<img src="https://user-images.githubusercontent.com/110229952/202712486-002ca097-bb4b-4368-8c80-69d7b17612b2.gif" alt="OnBoarding" width="200px" height="400px">
+  <img src="https://user-images.githubusercontent.com/110229952/203529956-5b9f9b43-3e1e-45c4-9f04-5f1b025f9851.gif" alt="Main App" width="200px" height="400px">
+ 
 ## Features
 
 - Sign In and Sign up flows with email and password verifycation service
