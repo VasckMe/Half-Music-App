@@ -16,6 +16,9 @@ This is my own project at the beginning of my development journey
 - Small account view with possibility to modify your account data
 - MVC Architecture
 - Custom UI elements and controllers
+- Multhithreading (GCD)
+- Network Requests
+- Cache Managers (For images and url)
 - Search bar for audio tracks
 - Possibility to create albums with selected audio tracks
 - Uses the AVPlayer:
