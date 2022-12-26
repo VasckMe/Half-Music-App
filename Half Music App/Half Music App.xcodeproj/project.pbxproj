@@ -17,6 +17,10 @@
 		1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */; };
 		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
 		1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23E2919055F0017FB07 /* CustomTabBarController.swift */; };
+		18253A4A294133CB003FD943 /* PurchaseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18253A48294133CB003FD943 /* PurchaseConfirmationViewController.swift */; };
+		18253A4B294133CB003FD943 /* PurchaseConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18253A49294133CB003FD943 /* PurchaseConfirmationViewController.xib */; };
+		18253A4D294135AA003FD943 /* PurchaseConfirmationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18253A4C294135AA003FD943 /* PurchaseConfirmationPresenter.swift */; };
+		18253A4F29413A83003FD943 /* PurchaseConfirmationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18253A4E29413A83003FD943 /* PurchaseConfirmationAssembly.swift */; };
 		182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationManager.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
@@ -37,7 +41,7 @@
 		18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D83290E85A500479294 /* DetailAlbumViewController.swift */; };
 		1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885D0C928ED846300288CA4 /* DetailTrack.storyboard */; };
 		1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */; };
-		1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */; };
+		1885D0CF28EDA9D500288CA4 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */; };
 		1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */; };
 		1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */; };
 		1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894E35128F721EE00ED403F /* SongsTableViewController.swift */; };
@@ -90,6 +94,10 @@
 		1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowIsPlayingView.xib; sourceTree = "<group>"; };
 		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
 		1824E23E2919055F0017FB07 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		18253A48294133CB003FD943 /* PurchaseConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationViewController.swift; sourceTree = "<group>"; };
+		18253A49294133CB003FD943 /* PurchaseConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseConfirmationViewController.xib; sourceTree = "<group>"; };
+		18253A4C294135AA003FD943 /* PurchaseConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationPresenter.swift; sourceTree = "<group>"; };
+		18253A4E29413A83003FD943 /* PurchaseConfirmationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationAssembly.swift; sourceTree = "<group>"; };
 		182EEDF72924FD0200D6A186 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
@@ -110,7 +118,7 @@
 		18778D83290E85A500479294 /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
 		1885D0C928ED846300288CA4 /* DetailTrack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailTrack.storyboard; sourceTree = "<group>"; };
 		1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackViewController.swift; sourceTree = "<group>"; };
-		1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCacheManager.swift; sourceTree = "<group>"; };
 		1885D0D228EDD73B00288CA4 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		1894E35128F721EE00ED403F /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +206,17 @@
 				180E0D692911631200500233 /* XIB */,
 			);
 			path = "Main Controllers";
+			sourceTree = "<group>";
+		};
+		18253A4729413328003FD943 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				18253A4E29413A83003FD943 /* PurchaseConfirmationAssembly.swift */,
+				18253A4C294135AA003FD943 /* PurchaseConfirmationPresenter.swift */,
+				18253A48294133CB003FD943 /* PurchaseConfirmationViewController.swift */,
+				18253A49294133CB003FD943 /* PurchaseConfirmationViewController.xib */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		182EEDF62924FCEE00D6A186 /* Animation */ = {
@@ -377,7 +396,7 @@
 		1885D0CD28EDA9B600288CA4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1885D0CE28EDA9D500288CA4 /* TextFieldExtension.swift */,
+				1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */,
 				18D263202912969000E32184 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -429,19 +448,20 @@
 		18B66C6A28DC7343000D5F79 /* Half Music App */ = {
 			isa = PBXGroup;
 			children = (
+				1876015B28E35029000223CD /* Constants */,
+				1876014728E34365000223CD /* Controllers */,
+				1876014828E3436B000223CD /* Delegates */,
+				1885D0CD28EDA9B600288CA4 /* Extensions */,
+				1876015E28E3513B000223CD /* Managers */,
+				1876014928E34BAC000223CD /* Models */,
+				18253A4729413328003FD943 /* Modules */,
 				18F5CF9E291EA2DB006A5911 /* Onboarding */,
 				18130AEC28E4406C000FCD54 /* Services */,
-				1876015E28E3513B000223CD /* Managers */,
-				1885D0CD28EDA9B600288CA4 /* Extensions */,
-				1876015B28E35029000223CD /* Constants */,
-				1876014928E34BAC000223CD /* Models */,
 				1876014628E34360000223CD /* Views */,
-				1876014728E34365000223CD /* Controllers */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
-				18B66C7928DC7346000D5F79 /* Info.plist */,
 				1898336128EC359300558234 /* File.rtf */,
 				18680D9E28E8867D001DF00D /* GoogleService-Info.plist */,
-				1876014828E3436B000223CD /* Delegates */,
+				18B66C7928DC7346000D5F79 /* Info.plist */,
 			);
 			path = "Half Music App";
 			sourceTree = "<group>";
@@ -657,6 +677,7 @@
 			files = (
 				1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */,
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
+				18253A4B294133CB003FD943 /* PurchaseConfirmationViewController.xib in Resources */,
 				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
 				1898336228EC359300558234 /* File.rtf in Resources */,
 				18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */,
@@ -740,11 +761,13 @@
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
 				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
+				18253A4A294133CB003FD943 /* PurchaseConfirmationViewController.swift in Sources */,
 				18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
 				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
 				18EC915928F6C0D4006B5B66 /* LargeCollectionViewCell.swift in Sources */,
-				1885D0CF28EDA9D500288CA4 /* TextFieldExtension.swift in Sources */,
+				18253A4F29413A83003FD943 /* PurchaseConfirmationAssembly.swift in Sources */,
+				1885D0CF28EDA9D500288CA4 /* UITextFieldExtension.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
 				18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */,
@@ -758,6 +781,7 @@
 				182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
+				18253A4D294135AA003FD943 /* PurchaseConfirmationPresenter.swift in Sources */,
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
 				18D263212912969000E32184 /* UIAlertControllerExtension.swift in Sources */,
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,

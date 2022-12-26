@@ -19,7 +19,9 @@ extension UITextField {
         rightViewMode = .always
         tintColor = UIConstants.globalTintColor
     }
+}
 
+private extension UITextField {
     @objc func togglePassword(customButton: UIButton) {
         isSecureTextEntry.toggle()
         customButton.isSelected.toggle()
