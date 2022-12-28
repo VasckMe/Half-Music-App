@@ -94,7 +94,7 @@ extension DetailAlbumViewController: UITableViewDataSource {
     ) {
         if editingStyle == .delete {
             let track = LocalStorage.shared.localTracks[indexPath.row]
-            FireBaseStorageService.albumsRef.child(album!.name).child(track.name).removeValue()
+            FireBaseStorageService.albumsRef.child(album!.name).child(track.name ?? "track-name").removeValue()
             LocalStorage.shared.localTracks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

@@ -70,7 +70,7 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegate {
             callDefaultAlert(title: "Cancelled", message: "Track is already exist in that album")
             return
         } else {
-            let ref = FireBaseStorageService.albumsRef.child(album.name).child(track.name)
+            let ref = FireBaseStorageService.albumsRef.child(album.name).child(track.name ?? "track name")
             ref.setValue(track.convertInDictionary())
             FireBaseStorageService.saveTrackInDB(track: track)
             delegate?.updateDetailTrack()

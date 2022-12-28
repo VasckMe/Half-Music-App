@@ -115,7 +115,10 @@ extension NowIsPlayingView {
         }
         
         let track = LocalStorage.shared.currentAudioQueue[audioIndex]
-        audioTitleLabel.text = track.artist +  " - " + track.name
+        guard let artist = track.artist else {
+            return
+        }
+        audioTitleLabel.text = artist +  " - " + track.name
     }
     
     private func audioObserve(time: CMTime) {

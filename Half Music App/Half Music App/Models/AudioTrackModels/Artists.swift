@@ -8,5 +8,5 @@
 import Foundation
 
 struct Artists: Decodable {
-    let name: String
+    let name: String?
 }

@@ -30,7 +30,7 @@ final class FireBaseStorageService {
     }
     
     static func saveTrackInDB(track: TrackFB) {
-        let trackRef = audioRef.child(track.name)
+        let trackRef = audioRef.child(track.name ?? "track name")
         trackRef.setValue(track.convertInDictionary())
     }
     

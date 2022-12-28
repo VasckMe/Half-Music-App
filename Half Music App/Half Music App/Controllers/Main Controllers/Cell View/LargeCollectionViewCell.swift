@@ -23,7 +23,9 @@ final class LargeCollectionViewCell: UICollectionViewCell {
     func configureTrack(track: TrackFB) {
         itemLabel.text = track.name
         
-        let photoURL = track.album.images[1].url
+        guard let photoURL = track.album?.images?[1].url else {
+            return
+        }
         
         dataFetcherService.fetchImage(urlString: photoURL) {[weak self] image in
             guard let image = image else {

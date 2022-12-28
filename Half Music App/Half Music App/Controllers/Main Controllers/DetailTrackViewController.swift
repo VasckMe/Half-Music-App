@@ -188,7 +188,7 @@ extension DetailTrackViewController {
         
         if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
             print("REMOVING \(track.name)")
-            FireBaseStorageService.audioRef.child(track.name).removeValue()
+            FireBaseStorageService.audioRef.child(track.name ?? "track name").removeValue()
             likeButtonOutlet.isSelected.toggle()
         } else {
             print("ADDING \(track.name)")
@@ -214,9 +214,11 @@ extension DetailTrackViewController {
                 
         trackNameLabel.text = track.name
         authorNameLabel.text = track.artist
-        let trackUrl = track.album.images[0].url
+        guard let trackImageUrl = track.album?.images?[0].url else {
+            return
+        }
                 
-        dataFetcherService.fetchImage(urlString: trackUrl) { [weak self] image in
+        dataFetcherService.fetchImage(urlString: trackImageUrl) { [weak self] image in
             guard let image = image else {
                 return
             }

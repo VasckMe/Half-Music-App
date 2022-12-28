@@ -56,8 +56,8 @@ extension ArtistsTableViewController {
         var artists = [String]()
         
         for track in array {
-            if !artists.contains(track.artist) {
-                artists.append(track.artist)
+            if !artists.contains(track.artist ?? "artist") {
+                artists.append(track.artist ?? "artist")
             } else {
                 continue
             }

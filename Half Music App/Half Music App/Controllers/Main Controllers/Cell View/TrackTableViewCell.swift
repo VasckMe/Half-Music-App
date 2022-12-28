@@ -20,8 +20,20 @@ final class TrackTableViewCell: UITableViewCell {
     func configure(model: TrackFB) {
         trackNameLabel.text = model.name
         trackArtistsLabel.text = model.artist
-        let photoURL = model.album.images[2].url
         
+        let numberOfImages = model.album?.images?.count
+        var photo = ""
+        switch numberOfImages {
+        case 1:
+            photo = (model.album?.images?[0].url)!
+        case 2:
+            photo = (model.album?.images?[1].url)!
+        case 3:
+            photo = (model.album?.images?[2].url)!
+        default:
+            photo = ""
+        }
+        let photoURL = photo
         
         dataFetcherService.fetchImage(urlString: photoURL) { [weak self] image in
             guard let image = image else { return }
