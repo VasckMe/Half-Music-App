@@ -53,7 +53,7 @@
                                                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <segue destination="Fct-f5-p0D" kind="show" id="O7O-c3-NRd"/>
+                                                                    <action selector="goToSignUp" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DhH-lp-xxM"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -112,16 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169" y="-321"/>
-        </scene>
-        <!--SignUp-->
-        <scene sceneID="7WL-t1-qom">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SignUpVC" storyboardName="SignUp" id="Fct-f5-p0D" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="WZp-iM-JJo"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AMM-se-wWx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="853" y="-446"/>
         </scene>
         <!--Main-->
         <scene sceneID="k02-qf-5bm">

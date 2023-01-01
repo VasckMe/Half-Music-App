@@ -40,6 +40,18 @@ final class SignInViewController: BaseViewController {
     
     // MARK: - IBActions
     
+    @IBAction func goToSignUp() {
+        guard
+            let controller = SignUpAssembly.signUpController()
+                
+        else {
+            return
+        }
+
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
     @IBAction private func loginAction() {
         signUp()
     }
