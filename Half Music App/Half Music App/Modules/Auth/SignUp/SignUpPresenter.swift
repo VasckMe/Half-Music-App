@@ -91,34 +91,35 @@ extension SignUpPresenter: SignUpSuccessModuleOutput {
 
 private extension SignUpPresenter {
     func createUser(nickname: String, email: String, password: String) {
-        controller?.showLoading()
-        
-        DispatchWorkItem(qos: .utility) {
+        self.controller?.showLoading()
+
+        DispatchQueue.global(qos: .utility).async {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
                 guard let self = self else {
                     return
                 }
-                
+                    
                 guard let user = user else {
                     let message = error?.localizedDescription ?? "Generic error"
                     self.controller?.showErrorAlert(title: "Error", message: message)
                     self.controller?.hideLoading()
                     return
                 }
-                
+                    
                 let userRef = FireBaseStorageService.usersRef.child(user.user.uid)
                 userRef.setValue(
                     ["email": user.user.email,
                      "nickname": nickname,
                      "password": password]
                 )
+                DispatchQueue.main.async {
+                    self.controller?.hideLoading()
+                    self.router?.showSignUpSuccessViewController(
+                        input: SignUpSuccessModuleInput(nickname: nickname),
+                        output: self
+                    )
+                }
             }
-        }.notify(queue: .main) {
-            self.controller?.hideLoading()
-            self.router?.showSignUpSuccessViewController(
-                input: SignUpSuccessModuleInput(nickname: nickname),
-                output: self
-            )
         }
     }
 }

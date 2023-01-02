@@ -35,11 +35,7 @@ final class SignUpViewController: BaseViewController {
     @IBOutlet private weak var confirmedPasswordTextField: UITextField!
     @IBOutlet private weak var wrongConfirmedPasswordLabel: UILabel!
     @IBOutlet private weak var signUpButtonOutlet: UIButton!
-    @IBOutlet weak var blurView: UIVisualEffectView! {
-        didSet {
-            blurView.isHidden = true
-        }
-    }
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
@@ -92,6 +88,10 @@ final class SignUpViewController: BaseViewController {
     
     @IBAction private func passwordTFAction() {
         presenter?.didTriggerPasswordTextFieldAction(password: passwordTextField.text)
+        presenter?.didTriggerConfirmedPasswordTextFieldAction(
+            password: passwordTextField.text,
+            confirmed: confirmedPasswordTextField.text
+        )
     }
     
     @IBAction private func confPassTFAction() {
@@ -162,6 +162,7 @@ extension SignUpViewController: SignUpViewControllerInterface {
 private extension SignUpViewController {
     func setup() {
         title = "Sign Up"
+        blurView.isHidden = true
         emailTextField.layer.borderWidth = 2
         passwordTextField.enablePasswordToggle()
         passwordTextField.layer.borderWidth = 2

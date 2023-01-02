@@ -18,6 +18,10 @@
 		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
 		1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23E2919055F0017FB07 /* CustomTabBarController.swift */; };
 		182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationManager.swift */; };
+		184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184F70BA2962FF3D0005268D /* SignInViewController.storyboard */; };
+		184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BC29631F4E0005268D /* SignInAssembly.swift */; };
+		184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BE2963206F0005268D /* SignInPresenter.swift */; };
+		184F70C1296322A80005268D /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70C0296322A80005268D /* SignInRouter.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
 		186651F5295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186651F4295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard */; };
 		186651F7295DB997006A7BC5 /* SignUpSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186651F6295DB997006A7BC5 /* SignUpSuccessViewController.swift */; };
@@ -30,7 +34,6 @@
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
 		18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18680D9E28E8867D001DF00D /* GoogleService-Info.plist */; };
-		1872835B28E74EC90064278A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1872835A28E74EC90064278A /* SignIn.storyboard */; };
 		1872835F28E758400064278A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872835E28E758400064278A /* SignInViewController.swift */; };
 		1872836328E75CA90064278A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872836228E75CA90064278A /* SignUpViewController.swift */; };
 		1876014C28E34C0B000223CD /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014B28E34C0B000223CD /* Audio.swift */; };
@@ -97,6 +100,10 @@
 		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
 		1824E23E2919055F0017FB07 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		182EEDF72924FD0200D6A186 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		184F70BA2962FF3D0005268D /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
+		184F70BC29631F4E0005268D /* SignInAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAssembly.swift; sourceTree = "<group>"; };
+		184F70BE2963206F0005268D /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		184F70C0296322A80005268D /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
 		186651F4295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpSuccessViewController.storyboard; sourceTree = "<group>"; };
 		186651F6295DB997006A7BC5 /* SignUpSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +116,6 @@
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
 		18680D9E28E8867D001DF00D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1872835A28E74EC90064278A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		1872835E28E758400064278A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1872836228E75CA90064278A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1876014B28E34C0B000223CD /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		186651F1295DB8A2006A7BC5 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				186803752962FCC700B39033 /* SignIn */,
 				186651F2295DB8AA006A7BC5 /* SignUp */,
 				186651F3295DB8DB006A7BC5 /* SignUpSuccess */,
 			);
@@ -260,6 +267,18 @@
 			path = SignUpSuccess;
 			sourceTree = "<group>";
 		};
+		186803752962FCC700B39033 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				184F70BC29631F4E0005268D /* SignInAssembly.swift */,
+				184F70BE2963206F0005268D /* SignInPresenter.swift */,
+				184F70C0296322A80005268D /* SignInRouter.swift */,
+				1872835E28E758400064278A /* SignInViewController.swift */,
+				184F70BA2962FF3D0005268D /* SignInViewController.storyboard */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		18680D9928E84294001DF00D /* Verification */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,18 +287,9 @@
 			path = Verification;
 			sourceTree = "<group>";
 		};
-		1872835C28E7581C0064278A /* SignIn Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1872835E28E758400064278A /* SignInViewController.swift */,
-			);
-			path = "SignIn Controllers";
-			sourceTree = "<group>";
-		};
 		1876014628E34360000223CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1876015728E34FE2000223CD /* Sign In */,
 				1876015A28E35007000223CD /* Onboarding */,
 				1876015928E34FF1000223CD /* Main */,
 				18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */,
@@ -290,7 +300,6 @@
 		1876014728E34365000223CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1872835C28E7581C0064278A /* SignIn Controllers */,
 				18130AF328E4530D000FCD54 /* Main Controllers */,
 			);
 			path = Controllers;
@@ -328,14 +337,6 @@
 				1876015528E34C6C000223CD /* Artists.swift */,
 			);
 			path = AudioTrackModels;
-			sourceTree = "<group>";
-		};
-		1876015728E34FE2000223CD /* Sign In */ = {
-			isa = PBXGroup;
-			children = (
-				1872835A28E74EC90064278A /* SignIn.storyboard */,
-			);
-			path = "Sign In";
 			sourceTree = "<group>";
 		};
 		1876015928E34FF1000223CD /* Main */ = {
@@ -691,11 +692,11 @@
 			files = (
 				1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */,
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
-				1872835B28E74EC90064278A /* SignIn.storyboard in Resources */,
 				186651F5295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard in Resources */,
 				1898336228EC359300558234 /* File.rtf in Resources */,
 				18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */,
 				18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */,
+				184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */,
 				186651FD295DC1E4006A7BC5 /* SignUpViewController.storyboard in Resources */,
 				18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */,
 				18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */,
@@ -791,6 +792,8 @@
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */,
+				184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */,
+				184F70C1296322A80005268D /* SignInRouter.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
@@ -802,6 +805,7 @@
 				180EEC4F28FC571800D2FEE9 /* AlbumsCollectionViewController.swift in Sources */,
 				18680D9B28E84315001DF00D /* VerificationService.swift in Sources */,
 				1876015228E34C59000223CD /* Album.swift in Sources */,
+				184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */,
 				18665201295E0316006A7BC5 /* SignUpPresenter.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */,
@@ -981,7 +985,7 @@
 				INFOPLIST_FILE = "Half Music App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignInViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1009,7 +1013,7 @@
 				INFOPLIST_FILE = "Half Music App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignInViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
