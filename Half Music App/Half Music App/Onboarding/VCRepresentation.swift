@@ -15,9 +15,10 @@ struct ViewControllerRepresentation: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(
-            withIdentifier: "MainTabBarVC"
-        ) as! CustomTabBarController
+//        let vc = storyboard.instantiateViewController(
+//            withIdentifier: "MainTabBarVC"
+//        ) as! CustomTabBarController
+        guard let vc = TabBarAssembly.tabBarViewController() else { return UIViewController() }
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         return vc

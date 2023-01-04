@@ -61,6 +61,11 @@
 		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
 		18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */; };
+		18C0E9022965CE51007B8589 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9012965CE51007B8589 /* TabBarViewController.swift */; };
+		18C0E9042965CE60007B8589 /* TabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C0E9032965CE60007B8589 /* TabBarViewController.storyboard */; };
+		18C0E9062965D009007B8589 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9052965D009007B8589 /* TabBarAssembly.swift */; };
+		18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9072965D093007B8589 /* TabBarPresenter.swift */; };
+		18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9092965D3C0007B8589 /* TabBarRouter.swift */; };
 		18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDC4662904048900E27FEC /* AccountViewController.swift */; };
 		18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2528E45FAF00A758CC /* LocalStorage.swift */; };
 		18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */; };
@@ -145,6 +150,11 @@
 		18B66C7428DC7346000D5F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B66C7728DC7346000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B66C7928DC7346000D5F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18C0E9012965CE51007B8589 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		18C0E9032965CE60007B8589 /* TabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarViewController.storyboard; sourceTree = "<group>"; };
+		18C0E9052965D009007B8589 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
+		18C0E9072965D093007B8589 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		18C0E9092965D3C0007B8589 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		18CDC4662904048900E27FEC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18D20D2528E45FAF00A758CC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,7 +216,6 @@
 		18130AF328E4530D000FCD54 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1824E23E2919055F0017FB07 /* CustomTabBarController.swift */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */,
 				18778D7C290D83FB00479294 /* Search Flow */,
@@ -226,10 +235,33 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		184F70C229649C390005268D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				184F70C329649FE70005268D /* TabBar */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		184F70C329649FE70005268D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				18C0E9052965D009007B8589 /* TabBarAssembly.swift */,
+				18C0E9072965D093007B8589 /* TabBarPresenter.swift */,
+				18C0E9092965D3C0007B8589 /* TabBarRouter.swift */,
+				18C0E9012965CE51007B8589 /* TabBarViewController.swift */,
+				18C0E9032965CE60007B8589 /* TabBarViewController.storyboard */,
+				18B66C7128DC7343000D5F79 /* Main.storyboard */,
+				1824E23E2919055F0017FB07 /* CustomTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		186651F0295DB898006A7BC5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				186651F1295DB8A2006A7BC5 /* Auth */,
+				184F70C229649C390005268D /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -342,7 +374,6 @@
 		1876015928E34FF1000223CD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				18B66C7128DC7343000D5F79 /* Main.storyboard */,
 				18F5CFB6291FA1B7006A5911 /* Search */,
 				18F5CFC0291FA689006A5911 /* Library */,
 				18F5CFB3291FA0B0006A5911 /* Account */,
@@ -708,6 +739,7 @@
 				18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */,
 				18F5CFB9291FA1D0006A5911 /* Search.storyboard in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
+				18C0E9042965CE60007B8589 /* TabBarViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +810,9 @@
 				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
 				18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
+				18C0E9022965CE51007B8589 /* TabBarViewController.swift in Sources */,
 				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
+				18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */,
 				18EC915928F6C0D4006B5B66 /* LargeCollectionViewCell.swift in Sources */,
 				1885D0CF28EDA9D500288CA4 /* UITextFieldExtension.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
@@ -792,7 +826,9 @@
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */,
+				18C0E9062965D009007B8589 /* TabBarAssembly.swift in Sources */,
 				184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */,
+				18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */,
 				184F70C1296322A80005268D /* SignInRouter.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,

@@ -38,7 +38,7 @@ final class NowIsPlayingView: UIView {
     
     private var timeObserver: Any!
     
-    var delegate: CustomTabBarProtocol?
+    var delegate: TabBarViewControlerInterface?
     
     // MARK: Life Cycle
     
