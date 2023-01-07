@@ -14,7 +14,7 @@ struct TabBarAssembly {
                 name: "TabBarViewController",
                 bundle: nil
             ).instantiateViewController(
-                withIdentifier: "MainTabBarVC"
+                withIdentifier: "TabBarVC"
             ) as? TabBarViewController
         else {
             return TabBarViewController()
@@ -24,6 +24,16 @@ struct TabBarAssembly {
         
         presenter.controller = controller
         controller.presenter = presenter
+        
+        
+        let searchViewController = SearchAssembly.searchViewController()
+        searchViewController.tabBarItem = UITabBarItem(
+            title: "Music",
+            image: UIImage(systemName: "magnifyingglass.circle.fill"),
+            tag: 0
+        )
+        
+        controller.setViewControllers([searchViewController], animated: true)
         
         return controller
     }

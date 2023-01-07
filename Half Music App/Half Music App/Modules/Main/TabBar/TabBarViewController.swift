@@ -32,9 +32,9 @@ extension TabBarViewController: TabBarViewControlerInterface {
 private extension TabBarViewController {
     func setup() {
         let height: CGFloat = 60
-        let y = view.bounds.height - tabBar.bounds.height - height - 34
+        let navigationBarHeight: CGFloat = navigationController?.navigationBar.bounds.height ?? 44
         let nowIsPlayingView = NowIsPlayingView(
-            frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height)
+            frame: CGRect(x: 0, y: view.bounds.height - tabBar.bounds.height - height - navigationBarHeight, width: view.bounds.width, height: height)
         )
         nowIsPlayingView.delegate = self
         view.addSubview(nowIsPlayingView)

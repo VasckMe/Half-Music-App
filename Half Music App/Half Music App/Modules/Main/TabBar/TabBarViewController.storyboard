@@ -9,8 +9,9 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="B6c-tv-dfN">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ilM-4k-Bnh" customClass="TabBarViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ilM-4k-Bnh" customClass="TabBarViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="qMf-0p-5tC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="H77-Fw-w3c">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -38,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="388" y="-186"/>
         </scene>
-        <!--Search-->
+        <!--SearchViewController-->
         <scene sceneID="quE-La-MH8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="h2W-0a-DiG" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SearchViewController" id="h2W-0a-DiG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="8sr-dV-eIJ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ImM-8y-pgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

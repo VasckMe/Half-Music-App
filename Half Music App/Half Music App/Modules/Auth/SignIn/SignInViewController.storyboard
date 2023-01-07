@@ -106,22 +106,11 @@
                     <connections>
                         <outlet property="emailTextField" destination="gaR-ai-Ehf" id="UT2-nm-9IH"/>
                         <outlet property="passwordTextField" destination="5o5-r3-JzP" id="ZPm-Sf-ZnE"/>
-                        <segue destination="ZIQ-nb-1NS" kind="show" identifier="GoToMainTBVC" id="SZs-kR-wys"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hP7-8o-YL7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169" y="-321"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="Md0-i3-BLe">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="MainTabBarVC" storyboardName="Main" id="ZIQ-nb-1NS" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="75V-mC-tkb"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rpn-ox-JLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="875" y="-250"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2z5-pH-RoT">

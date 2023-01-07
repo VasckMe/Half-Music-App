@@ -24,14 +24,13 @@ final class SignInRouter {
 
 extension SignInRouter: SignInRouterInterface {
     func showMainTabBarController() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC")
-        guard let vc = TabBarAssembly.tabBarViewController() else {
+        guard let tabBarController = TabBarAssembly.tabBarViewController() else {
             return
         }
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .coverVertical
-        controller?.present(vc, animated: true)
+//        tabBarController.modalPresentationStyle = .fullScreen
+//        tabBarController.modalTransitionStyle = .coverVertical
+//        controller?.present(tabBarController, animated: true)
+        controller?.navigationController?.pushViewController(tabBarController, animated: true)
     }
     
     func showOnBoardingController() {

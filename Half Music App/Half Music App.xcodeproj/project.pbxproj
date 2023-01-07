@@ -16,7 +16,6 @@
 		1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */; };
 		1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */; };
 		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
-		1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23E2919055F0017FB07 /* CustomTabBarController.swift */; };
 		182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationManager.swift */; };
 		184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184F70BA2962FF3D0005268D /* SignInViewController.storyboard */; };
 		184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BC29631F4E0005268D /* SignInAssembly.swift */; };
@@ -58,7 +57,6 @@
 		18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
-		18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7128DC7343000D5F79 /* Main.storyboard */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
 		18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */; };
 		18C0E9022965CE51007B8589 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9012965CE51007B8589 /* TabBarViewController.swift */; };
@@ -66,7 +64,10 @@
 		18C0E9062965D009007B8589 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9052965D009007B8589 /* TabBarAssembly.swift */; };
 		18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9072965D093007B8589 /* TabBarPresenter.swift */; };
 		18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9092965D3C0007B8589 /* TabBarRouter.swift */; };
+		18C0E90F2967383C007B8589 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E90E2967383C007B8589 /* SearchAssembly.swift */; };
 		18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDC4662904048900E27FEC /* AccountViewController.swift */; };
+		18D066632969E454009B4F89 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D066622969E454009B4F89 /* SearchPresenter.swift */; };
+		18D066652969E573009B4F89 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D066642969E573009B4F89 /* SearchRouter.swift */; };
 		18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2528E45FAF00A758CC /* LocalStorage.swift */; };
 		18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */; };
 		18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */; };
@@ -87,7 +88,7 @@
 		18F5CFA2291EA30D006A5911 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA1291EA30D006A5911 /* PageView.swift */; };
 		18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA3291EA371006A5911 /* VCRepresentation.swift */; };
 		18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB4291FA0F6006A5911 /* Account.storyboard */; };
-		18F5CFB9291FA1D0006A5911 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB7291FA1D0006A5911 /* Search.storyboard */; };
+		18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */; };
 		18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFC1291FA700006A5911 /* Library.storyboard */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
@@ -103,7 +104,6 @@
 		1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumViewController.swift; sourceTree = "<group>"; };
 		1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowIsPlayingView.xib; sourceTree = "<group>"; };
 		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
-		1824E23E2919055F0017FB07 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		182EEDF72924FD0200D6A186 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		184F70BA2962FF3D0005268D /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		184F70BC29631F4E0005268D /* SignInAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAssembly.swift; sourceTree = "<group>"; };
@@ -146,7 +146,6 @@
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		18B66C7228DC7343000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18B66C7428DC7346000D5F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B66C7728DC7346000D5F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B66C7928DC7346000D5F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,7 +154,10 @@
 		18C0E9052965D009007B8589 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
 		18C0E9072965D093007B8589 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		18C0E9092965D3C0007B8589 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		18C0E90E2967383C007B8589 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
 		18CDC4662904048900E27FEC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		18D066622969E454009B4F89 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		18D066642969E573009B4F89 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		18D20D2528E45FAF00A758CC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		18D20D2828E4654F00A758CC /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		18D20D2928E4654F00A758CC /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
@@ -174,7 +176,7 @@
 		18F5CFA1291EA30D006A5911 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		18F5CFA3291EA371006A5911 /* VCRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRepresentation.swift; sourceTree = "<group>"; };
 		18F5CFB4291FA0F6006A5911 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = SOURCE_ROOT; };
-		18F5CFB8291FA1D0006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/Search.storyboard"; sourceTree = SOURCE_ROOT; };
+		18F5CFB8291FA1D0006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/SearchViewController.storyboard"; sourceTree = SOURCE_ROOT; };
 		18F5CFC2291FA700006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/Library.storyboard"; sourceTree = SOURCE_ROOT; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
 		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,7 +220,6 @@
 			children = (
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */,
-				18778D7C290D83FB00479294 /* Search Flow */,
 				18778D7D290D840F00479294 /* Library Flow */,
 				18778D7E290D842500479294 /* Account Flow */,
 				18D20D2728E4652F00A758CC /* Cell View */,
@@ -239,6 +240,9 @@
 			isa = PBXGroup;
 			children = (
 				184F70C329649FE70005268D /* TabBar */,
+				18C0E90B296737E6007B8589 /* Music */,
+				18C0E90C296737EF007B8589 /* Library */,
+				18C0E90D296737F7007B8589 /* Account */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -251,8 +255,6 @@
 				18C0E9092965D3C0007B8589 /* TabBarRouter.swift */,
 				18C0E9012965CE51007B8589 /* TabBarViewController.swift */,
 				18C0E9032965CE60007B8589 /* TabBarViewController.storyboard */,
-				18B66C7128DC7343000D5F79 /* Main.storyboard */,
-				1824E23E2919055F0017FB07 /* CustomTabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -411,14 +413,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		18778D7C290D83FB00479294 /* Search Flow */ = {
-			isa = PBXGroup;
-			children = (
-				18D3F48829168F5C00F7D867 /* SearchViewController.swift */,
-			);
-			path = "Search Flow";
-			sourceTree = "<group>";
-		};
 		18778D7D290D840F00479294 /* Library Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +504,32 @@
 				18B66C7928DC7346000D5F79 /* Info.plist */,
 			);
 			path = "Half Music App";
+			sourceTree = "<group>";
+		};
+		18C0E90B296737E6007B8589 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				18C0E90E2967383C007B8589 /* SearchAssembly.swift */,
+				18D066622969E454009B4F89 /* SearchPresenter.swift */,
+				18D066642969E573009B4F89 /* SearchRouter.swift */,
+				18D3F48829168F5C00F7D867 /* SearchViewController.swift */,
+				18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		18C0E90C296737EF007B8589 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		18C0E90D296737F7007B8589 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		18D20D1E28E45EE200A758CC /* Network */ = {
@@ -623,7 +643,6 @@
 		18F5CFB6291FA1B7006A5911 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				18F5CFB7291FA1D0006A5911 /* Search.storyboard */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -734,10 +753,9 @@
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
-				18B66C7328DC7343000D5F79 /* Main.storyboard in Resources */,
 				18F5CF9B291E5472006A5911 /* Onboarding.storyboard in Resources */,
 				18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */,
-				18F5CFB9291FA1D0006A5911 /* Search.storyboard in Resources */,
+				18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
 				18C0E9042965CE60007B8589 /* TabBarViewController.storyboard in Resources */,
 			);
@@ -795,6 +813,7 @@
 				18665203295E1772006A7BC5 /* SignUpRouter.swift in Sources */,
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
 				18F5CFA2291EA30D006A5911 /* PageView.swift in Sources */,
+				18D066652969E573009B4F89 /* SearchRouter.swift in Sources */,
 				18778D81290D86B700479294 /* SmallTableViewCell.swift in Sources */,
 				18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
@@ -835,16 +854,17 @@
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
 				18D263212912969000E32184 /* UIAlertControllerExtension.swift in Sources */,
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,
+				18C0E90F2967383C007B8589 /* SearchAssembly.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
 				186651FF295DC80D006A7BC5 /* SignUpAssembly.swift in Sources */,
 				1876015428E34C61000223CD /* Images.swift in Sources */,
 				180EEC4F28FC571800D2FEE9 /* AlbumsCollectionViewController.swift in Sources */,
+				18D066632969E454009B4F89 /* SearchPresenter.swift in Sources */,
 				18680D9B28E84315001DF00D /* VerificationService.swift in Sources */,
 				1876015228E34C59000223CD /* Album.swift in Sources */,
 				184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */,
 				18665201295E0316006A7BC5 /* SignUpPresenter.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
-				1824E23F2919055F0017FB07 /* CustomTabBarController.swift in Sources */,
 				186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
@@ -859,14 +879,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18B66C7128DC7343000D5F79 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18B66C7228DC7343000D5F79 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -875,12 +887,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		18F5CFB7291FA1D0006A5911 /* Search.storyboard */ = {
+		18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				18F5CFB8291FA1D0006A5911 /* Base */,
 			);
-			name = Search.storyboard;
+			name = SearchViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		18F5CFC1291FA700006A5911 /* Library.storyboard */ = {

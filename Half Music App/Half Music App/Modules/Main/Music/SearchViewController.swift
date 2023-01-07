@@ -7,33 +7,34 @@
 
 import UIKit
 
+protocol SearchViewControllerInterface: AnyObject {
+    func showNavigationBar()
+    func hideNavigationBar()
+    func reloadTableView()
+}
+
 final class SearchViewController: BaseViewController {
     
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var searchTrackBar: UISearchBar! {
-        didSet {
-            searchTrackBar.searchTextField.textColor = .white
-        }
-    }
+    @IBOutlet private weak var searchTrackBar: UISearchBar!
     
     // MARK: - Properties
-    
-    let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
+    var presenter: SearchPresenterInterface?
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Music"
-        searchTrackBar.delegate = self
-        tableView.register(
-            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: TrackTableViewCell.identifier)
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchMusic()
+        presenter?.didTriggerViewAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        presenter?.didTriggerViewDisappear()
     }
 }
 
@@ -58,6 +59,7 @@ extension SearchViewController: UITableViewDataSource {
         cell.configure(model: track)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75.0
     }
@@ -82,33 +84,35 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            dataFetcher.fetchFreeMusic { [weak self] audio in
-                guard let tracks = audio?.items else { return }
-                LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-                self?.tableView.reloadData()
-            }
-        } else {
-            dataFetcher.fetchFreeMusic { [weak self] audio in
-                guard let tracks = audio?.items else { return }
-                LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-                LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { trackFB in
-                    trackFB.name.lowercased().contains(searchText.lowercased())
-                }
-                self?.tableView.reloadData()
-            }
-        }
+        searchText.isEmpty
+        ? presenter?.fetchMusic()
+        : presenter?.fetchMusicWithFilter(filter: searchText.lowercased())
     }
 }
 
-// MARK: Extension Logic
-extension SearchViewController {
-    // MARK: - Private
-    private func fetchMusic() {
-        dataFetcher.fetchFreeMusic { [weak self] audio in
-            guard let tracks = audio?.items else { return }
-            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-            self?.tableView.reloadData()
-        }
+// MARK: - SearchViewControllerInterface
+extension SearchViewController: SearchViewControllerInterface {
+    func showNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    func hideNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Private
+private extension SearchViewController {
+    func setup() {
+        title = "Music"
+        searchTrackBar.searchTextField.textColor = .white
+        searchTrackBar.delegate = self
+        tableView.register(
+            UINib(nibName: TrackTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TrackTableViewCell.identifier)
     }
 }
