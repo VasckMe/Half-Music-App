@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TabBarViewControlerInterface: AnyObject {
+protocol TabBarViewControllerInterface: AnyObject {
     func showDetail(with index: Int)
 }
 
@@ -22,7 +22,7 @@ final class TabBarViewController: UITabBarController {
 }
 
 // MARK: - TabBarViewControlerInterface
-extension TabBarViewController: TabBarViewControlerInterface {
+extension TabBarViewController: TabBarViewControllerInterface {
     func showDetail(with index: Int) {
         presenter?.didViewTapped(with: index)
     }
@@ -33,10 +33,18 @@ private extension TabBarViewController {
     func setup() {
         let height: CGFloat = 60
         let navigationBarHeight: CGFloat = navigationController?.navigationBar.bounds.height ?? 44
-        let nowIsPlayingView = NowIsPlayingView(
-            frame: CGRect(x: 0, y: view.bounds.height - tabBar.bounds.height - height - navigationBarHeight, width: view.bounds.width, height: height)
+        let frame =  CGRect(
+            x: 0,
+            y: view.bounds.height - tabBar.bounds.height - height - navigationBarHeight,
+            width: view.bounds.width,
+            height: height
         )
-        nowIsPlayingView.delegate = self
-        view.addSubview(nowIsPlayingView)
+        
+        let input = NowIsPlayingModuleInput(frame: frame, delegate: self)
+        guard let controller = NowIsPlayingAssembly.nowIsPlayingView(input: input) else {
+            return
+        }
+
+        view.addSubview(controller)
     }
 }

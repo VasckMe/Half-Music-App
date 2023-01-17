@@ -1,69 +1,53 @@
 //
-//  NowIsPlayingView.swift
+//  CurrentMusicViewController.swift
 //  Half Music App
 //
-//  Created by Apple Macbook Pro 13 on 7.11.22.
+//  Created by Apple Macbook Pro 13 on 17.01.23.
 //
 
 import UIKit
 import MediaPlayer
 
-protocol NowIsPlayingViewInterface: AnyObject {
-    func setupAudio()
-}
+final class CurrentMusicViewController: UIViewController {
 
-final class NowIsPlayingView: UIView {
-
+    
     @IBOutlet var ourView: UIView!
     @IBOutlet private weak var audioTitleLabel: UILabel!
     @IBOutlet private weak var animationImageView: UIImageView!
     @IBOutlet private weak var playPauseButtonOutlet: UIButton!
-
+    
     // MARK: - Properties
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let audioPlayerService = AudioPlayerManager.shared
     private let animationService = AnimationManager.shared
-
-    var presenter: NowIsPlayingPresenterInterface?
+    
+    var presenter: CurrentMusicPresenterInterface?
+    static let id = "CurrentMusicViewController"
+    
     private var timeObserver: Any!
-
-    // MARK: Life Cycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        viewInit()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(ourView.frame, ourView.bounds)
+//        viewInit()
         setupUI()
         setupAudio()
-//
         addObserver()
     }
-
-    override func awakeFromNib() {
-        print("YEAAA BITCH")
-        super.awakeFromNib()
-        print("YEAAA BITCH")
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    deinit {
-        removeObserver()
-    }
-
     // MARK: - IBActions
-
+    
     @IBAction private func playPauseAction() {
         playPause()
     }
-
+    
     @IBAction private func forwardAction() {
         presenter?.nextTrack()
     }
-}
-
-extension NowIsPlayingView: NowIsPlayingViewInterface {
+    
+    deinit {
+        removeObserver()
+    }
+    
     func setupAudio() {
         guard let audioIndex = audioPlayerService.trackIndex else {
             print("XIB INDEX ERROR")
@@ -73,26 +57,24 @@ extension NowIsPlayingView: NowIsPlayingViewInterface {
         playPauseButtonOutlet.isSelected
         ? animationImageView.startAnimating()
         : animationImageView.stopAnimating()
-
+        
         let track = LocalStorage.shared.currentAudioQueue[audioIndex]
         guard let artist = track.artist else {
             return
         }
         audioTitleLabel.text = artist +  " - " + track.name
     }
-}
-
-private extension NowIsPlayingView {
+    
     func addObserver() {
         timeObserver = audioPlayerService.addObserver { [weak self] time in
             self?.audioObserve(time: time)
         }
     }
-
+    
     func removeObserver() {
         audioPlayerService.removeObserver(observer: timeObserver!)
     }
-
+    
     func playPause() {
         playPauseButtonOutlet.isSelected.toggle()
         audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
@@ -100,7 +82,7 @@ private extension NowIsPlayingView {
         ? audioPlayerService.play()
         : audioPlayerService.pause()
     }
-
+    
     func setupUI() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(ourViewTapped))
         ourView.addGestureRecognizer(recognizer)
@@ -109,13 +91,13 @@ private extension NowIsPlayingView {
         playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
         playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
-
-    func viewInit() {
-        let xibView = Bundle.main.loadNibNamed("NowIsPlayingView", owner: self)![0] as! UIView
-        xibView.frame = self.bounds
-        addSubview(xibView)
-    }
-
+    
+//    func viewInit() {
+//        let xibView = Bundle.main.loadNibNamed("NowIsPlayingView", owner: self)![0] as! UIView
+//        xibView.frame = self.bounds
+//        addSubview(xibView)
+//    }
+    
     func audioObserve(time: CMTime) {
         setupAudio()
         let duration = audioPlayerService.getDuration()!
@@ -134,9 +116,8 @@ private extension NowIsPlayingView {
             }
         }
     }
-
+    
     @objc func ourViewTapped() {
         presenter?.didTriggerTapView()
     }
 }
-

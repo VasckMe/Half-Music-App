@@ -17,6 +17,9 @@
 		1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */; };
 		1824E23D291901350017FB07 /* NowIsPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824E23C291901350017FB07 /* NowIsPlayingView.swift */; };
 		182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182EEDF72924FD0200D6A186 /* AnimationManager.swift */; };
+		18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */; };
+		1833692A296C77BE0094DEA5 /* NowIsPlayingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */; };
+		1833692C296C78080094DEA5 /* NowIsPlayingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */; };
 		184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184F70BA2962FF3D0005268D /* SignInViewController.storyboard */; };
 		184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BC29631F4E0005268D /* SignInAssembly.swift */; };
 		184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BE2963206F0005268D /* SignInPresenter.swift */; };
@@ -55,6 +58,11 @@
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
 		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
 		18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */; };
+		18A98102297691B500F70656 /* CurrentMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98100297691B500F70656 /* CurrentMusicViewController.swift */; };
+		18A98103297691B500F70656 /* CurrentMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A98101297691B500F70656 /* CurrentMusicViewController.xib */; };
+		18A981052976941900F70656 /* CurrentMusicAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A981042976941900F70656 /* CurrentMusicAssembly.swift */; };
+		18A98107297694F100F70656 /* CurrentMusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98106297694F100F70656 /* CurrentMusicPresenter.swift */; };
+		18A98109297695AA00F70656 /* CurrentMusicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98108297695AA00F70656 /* CurrentMusicRouter.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
@@ -105,6 +113,9 @@
 		1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowIsPlayingView.xib; sourceTree = "<group>"; };
 		1824E23C291901350017FB07 /* NowIsPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingView.swift; sourceTree = "<group>"; };
 		182EEDF72924FD0200D6A186 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingAssembly.swift; sourceTree = "<group>"; };
+		18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingPresenter.swift; sourceTree = "<group>"; };
+		1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingRouter.swift; sourceTree = "<group>"; };
 		184F70BA2962FF3D0005268D /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		184F70BC29631F4E0005268D /* SignInAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAssembly.swift; sourceTree = "<group>"; };
 		184F70BE2963206F0005268D /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
@@ -143,6 +154,11 @@
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
 		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
+		18A98100297691B500F70656 /* CurrentMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicViewController.swift; sourceTree = "<group>"; };
+		18A98101297691B500F70656 /* CurrentMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentMusicViewController.xib; sourceTree = "<group>"; };
+		18A981042976941900F70656 /* CurrentMusicAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicAssembly.swift; sourceTree = "<group>"; };
+		18A98106297694F100F70656 /* CurrentMusicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicPresenter.swift; sourceTree = "<group>"; };
+		18A98108297695AA00F70656 /* CurrentMusicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicRouter.swift; sourceTree = "<group>"; };
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,10 +215,14 @@
 		180E0D692911631200500233 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */,
+				18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */,
+				1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */,
 				1824E23C291901350017FB07 /* NowIsPlayingView.swift */,
 				1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */,
 			);
-			path = XIB;
+			name = XIB;
+			path = "../../../Controllers/Main Controllers/XIB";
 			sourceTree = "<group>";
 		};
 		18130AEC28E4406C000FCD54 /* Services */ = {
@@ -223,7 +243,6 @@
 				18778D7D290D840F00479294 /* Library Flow */,
 				18778D7E290D842500479294 /* Account Flow */,
 				18D20D2728E4652F00A758CC /* Cell View */,
-				180E0D692911631200500233 /* XIB */,
 			);
 			path = "Main Controllers";
 			sourceTree = "<group>";
@@ -240,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				184F70C329649FE70005268D /* TabBar */,
-				18C0E90B296737E6007B8589 /* Music */,
+				18C0E90B296737E6007B8589 /* Search */,
 				18C0E90C296737EF007B8589 /* Library */,
 				18C0E90D296737F7007B8589 /* Account */,
 			);
@@ -250,6 +269,8 @@
 		184F70C329649FE70005268D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				18A980FF2976914300F70656 /* CurrentMusic (In progress) */,
+				180E0D692911631200500233 /* XIB */,
 				18C0E9052965D009007B8589 /* TabBarAssembly.swift */,
 				18C0E9072965D093007B8589 /* TabBarPresenter.swift */,
 				18C0E9092965D3C0007B8589 /* TabBarRouter.swift */,
@@ -467,6 +488,18 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		18A980FF2976914300F70656 /* CurrentMusic (In progress) */ = {
+			isa = PBXGroup;
+			children = (
+				18A981042976941900F70656 /* CurrentMusicAssembly.swift */,
+				18A98106297694F100F70656 /* CurrentMusicPresenter.swift */,
+				18A98108297695AA00F70656 /* CurrentMusicRouter.swift */,
+				18A98100297691B500F70656 /* CurrentMusicViewController.swift */,
+				18A98101297691B500F70656 /* CurrentMusicViewController.xib */,
+			);
+			path = "CurrentMusic (In progress)";
+			sourceTree = "<group>";
+		};
 		18B66C5F28DC7343000D5F79 = {
 			isa = PBXGroup;
 			children = (
@@ -506,7 +539,7 @@
 			path = "Half Music App";
 			sourceTree = "<group>";
 		};
-		18C0E90B296737E6007B8589 /* Music */ = {
+		18C0E90B296737E6007B8589 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				18C0E90E2967383C007B8589 /* SearchAssembly.swift */,
@@ -515,7 +548,7 @@
 				18D3F48829168F5C00F7D867 /* SearchViewController.swift */,
 				18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */,
 			);
-			path = Music;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		18C0E90C296737EF007B8589 /* Library */ = {
@@ -744,6 +777,7 @@
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
 				186651F5295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard in Resources */,
 				1898336228EC359300558234 /* File.rtf in Resources */,
+				18A98103297691B500F70656 /* CurrentMusicViewController.xib in Resources */,
 				18EC915A28F6C0D4006B5B66 /* LargeCollectionViewCell.xib in Resources */,
 				18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */,
 				184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */,
@@ -812,11 +846,13 @@
 			files = (
 				18665203295E1772006A7BC5 /* SignUpRouter.swift in Sources */,
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
+				18A98107297694F100F70656 /* CurrentMusicPresenter.swift in Sources */,
 				18F5CFA2291EA30D006A5911 /* PageView.swift in Sources */,
 				18D066652969E573009B4F89 /* SearchRouter.swift in Sources */,
 				18778D81290D86B700479294 /* SmallTableViewCell.swift in Sources */,
 				18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */,
 				18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */,
+				18A98109297695AA00F70656 /* CurrentMusicRouter.swift in Sources */,
 				1894F5362928D0D800D12841 /* Category.swift in Sources */,
 				18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
@@ -829,6 +865,7 @@
 				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
 				18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
+				18A98102297691B500F70656 /* CurrentMusicViewController.swift in Sources */,
 				18C0E9022965CE51007B8589 /* TabBarViewController.swift in Sources */,
 				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
 				18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */,
@@ -850,10 +887,13 @@
 				18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */,
 				184F70C1296322A80005268D /* SignInRouter.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
+				18A981052976941900F70656 /* CurrentMusicAssembly.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
+				1833692C296C78080094DEA5 /* NowIsPlayingRouter.swift in Sources */,
 				18D263212912969000E32184 /* UIAlertControllerExtension.swift in Sources */,
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,
+				1833692A296C77BE0094DEA5 /* NowIsPlayingPresenter.swift in Sources */,
 				18C0E90F2967383C007B8589 /* SearchAssembly.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
 				186651FF295DC80D006A7BC5 /* SignUpAssembly.swift in Sources */,
@@ -867,6 +907,7 @@
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
+				18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
 				186651F7295DB997006A7BC5 /* SignUpSuccessViewController.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,

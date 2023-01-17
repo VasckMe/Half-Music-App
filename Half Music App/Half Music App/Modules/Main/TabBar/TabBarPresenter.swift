@@ -12,7 +12,7 @@ protocol TabBarPresenterInterface {
 }
 
 final class TabBarPresenter {
-    weak var controller: TabBarViewControlerInterface?
+    weak var controller: TabBarViewControllerInterface?
     
     private var router: TabBarRouterInterface?
     
