@@ -8,12 +8,15 @@
 import UIKit
 import FirebaseDatabase
 
+protocol ArtistsTableViewControllerInterface: AnyObject {
+    func filterArtists(index: Int)
+    func updateArtists(with artists: [String])
+}
+
 final class ArtistsTableViewController: UITableViewController {
     
     var presenter: ArtistsPresenterInterface?
-    
-    // MARK: Properties
-    
+        
     var artists: [String] = []
     
     // MARK: Life Cycle
@@ -27,49 +30,18 @@ final class ArtistsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        addObserverToFetchTracks()
+        presenter?.didTriggerViewAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-       removeObserverToFetchTracks()
+        presenter?.didTriggerViewDisappear()
     }
 }
-// MARK: - Extension Logic
+// MARK: - Table view data source, delegate
 
 extension ArtistsTableViewController {
+    // Data source
     
-    // MARK: - Private
-    
-    private func addObserverToFetchTracks() {
-        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.findArtists()
-
-        }
-    }
-    
-    private func removeObserverToFetchTracks() {
-        FireBaseStorageService.audioRef.removeAllObservers()
-    }
-    
-    private func findArtists() {
-        let array = LocalStorage.shared.localTracks
-        
-        var artists = [String]()
-        
-        for track in array {
-            if !artists.contains(track.artist ?? "artist") {
-                artists.append(track.artist ?? "artist")
-            } else {
-                continue
-            }
-        }
-        self.artists = artists
-        tableView.reloadData()
-    }
-    
-    // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return artists.count
     }
@@ -91,20 +63,22 @@ extension ArtistsTableViewController {
         return 55.0
     }
     
+    // Delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didTriggerCell(atIndex: indexPath.row)
+    }
+}
+
+extension ArtistsTableViewController: ArtistsTableViewControllerInterface {
+    func updateArtists(with artists: [String]) {
+        self.artists = artists
+        tableView.reloadData()
+    }
+    
+    func filterArtists(index: Int) {
         LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { track in
-            track.artist == artists[indexPath.row]
-        }
-        
-        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "SongsTVC"
-            ) as? SongsTableViewController
-        {
-            vc.artist = artists[indexPath.row]
-            vc.title = artists[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            track.artist == artists[index]
         }
     }
 }
