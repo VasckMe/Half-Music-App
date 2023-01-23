@@ -8,6 +8,14 @@
 import UIKit
 import FirebaseDatabase
 
+protocol SongsTableViewControllerInterface: AnyObject {
+    func setTitle(with: String?)
+    
+    func showNavigationBar()
+    
+    func reloadData()
+}
+
 final class SongsTableViewController: UITableViewController {
     
     var presenter: SongsPresenterInterface?
@@ -19,10 +27,6 @@ final class SongsTableViewController: UITableViewController {
             searchBar.searchTextField.textColor = .white
         }
     }
-    
-    // MARK: - Properties
-    
-    var artist: String?
     
     // MARK: - Life Cycle
     
@@ -36,11 +40,11 @@ final class SongsTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        addObserverToFetchTracks()
+        presenter?.didTriggerViewAppear()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        removeObserverToFetchTracks()
+        presenter?.didTriggerViewDisappear()
     }
 }
 
@@ -48,60 +52,14 @@ final class SongsTableViewController: UITableViewController {
 
 extension SongsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            FireBaseStorageService.getTracksWithOptionalArtist(
-                artist: self.artist
-            ) { [weak self] audioTracks in
-                LocalStorage.shared.localTracks = audioTracks
-                self?.tableView.reloadData()
-            }
-        } else {
-            FireBaseStorageService.getTracksWithOptionalArtist(
-                artist: self.artist
-            ) { [weak self] audioTracks in
-                LocalStorage.shared.localTracks = audioTracks.filter({ track in
-                    track.name.lowercased().contains(searchText.lowercased())
-                })
-                self?.tableView.reloadData()
-            }
-        }
+        presenter?.didTriggerSearchBar(text: searchText)
     }
 }
 
-// MARK: - Extension Logic
+// MARK: - Table view data source, delegate
 
 extension SongsTableViewController {
-    
-    // MARK: - Private
-    
-    private func addObserverToFetchTracks() {
-        FireBaseStorageService.audioRef.observe(.value) { [weak self] snapshot in
-            var tracks = [TrackFB]()
-
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                if let artist = self?.artist {
-                    if artist == track.artist {
-                        tracks.append(track)
-                    } else {
-                        continue
-                    }
-                } else {
-                    tracks.append(track)
-                }
-            }
-
-            LocalStorage.shared.localTracks = tracks
-            self?.tableView.reloadData()
-        }
-    }
-    
-    private func removeObserverToFetchTracks() {
-        FireBaseStorageService.audioRef.removeAllObservers()
-    }
-    
-    // MARK: - Table view data source
+    // Data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LocalStorage.shared.localTracks.count
@@ -121,15 +79,6 @@ extension SongsTableViewController {
         cell.configure(model: track)
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
-            return
-        }
-        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-        vc.trackIndex = indexPath.row
-        navigationController?.present(vc, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -151,5 +100,30 @@ extension SongsTableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60.0
+    }
+    
+    // Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = DetailTrackViewController.storyboardInstance() else {
+            return
+        }
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        vc.trackIndex = indexPath.row
+        navigationController?.present(vc, animated: true)
+    }
+}
+
+extension SongsTableViewController: SongsTableViewControllerInterface {
+    func setTitle(with text: String?) {
+        self.title = text
+    }
+    
+    func showNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
     }
 }

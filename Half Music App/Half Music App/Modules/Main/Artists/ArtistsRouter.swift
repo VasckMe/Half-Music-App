@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArtistsRouterInterface {
-    func showSongsViewController(artist: Int)
+    func showSongsViewController(input: SongsInput)
 }
 
 final class ArtistsRouter {
@@ -20,19 +20,10 @@ final class ArtistsRouter {
 }
 
 extension ArtistsRouter: ArtistsRouterInterface {
-    func showSongsViewController(artist: Int) {
-        
-        /// go to songsViewController
-//        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
-//        if
-//            let vc = storyboard.instantiateViewController(
-//                withIdentifier: "SongsTVC"
-//            ) as? SongsTableViewController
-//        {
-//            vc.artist = artists[indexPath.row]
-//            vc.title = artists[indexPath.row]
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-        
+    func showSongsViewController(input: SongsInput) {
+        guard let controller = SongsAssembly.songsTableViewController(input: input) else {
+            return
+        }
+        controller.navigationController?.pushViewController(controller, animated: true)
     }
 }

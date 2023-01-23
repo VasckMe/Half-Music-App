@@ -32,7 +32,7 @@ extension LibraryPresenter: LibraryPresenterInterface {
 
     func didTriggerViewDisappear() {
         removeAudioObserver()
-        controller?.showNavigationBar()
+//        controller?.showNavigationBar()
     }
 
     func didTriggerTableViewCell(category: Category) {

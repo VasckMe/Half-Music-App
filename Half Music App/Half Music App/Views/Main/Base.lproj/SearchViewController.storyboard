@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GKh-Fc-Diu">
-                                <rect key="frame" x="0.0" y="40" width="393" height="763"/>
+                                <rect key="frame" x="0.0" y="40" width="393" height="718"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eYz-gz-GVl">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="763"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="718"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Find track" id="ppb-Kl-v3j">
@@ -47,7 +47,7 @@
                             <constraint firstAttribute="trailing" secondItem="GKh-Fc-Diu" secondAttribute="trailing" id="3St-1Q-UGk"/>
                             <constraint firstItem="GKh-Fc-Diu" firstAttribute="leading" secondItem="tdz-CV-hVI" secondAttribute="leading" id="7J9-nG-rk7"/>
                             <constraint firstItem="GKh-Fc-Diu" firstAttribute="top" secondItem="tdz-CV-hVI" secondAttribute="top" constant="40" id="And-nj-MZF"/>
-                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="bottom" secondItem="GKh-Fc-Diu" secondAttribute="bottom" constant="15" id="Iyz-T7-aAu"/>
+                            <constraint firstItem="JqQ-ZD-sml" firstAttribute="bottom" secondItem="GKh-Fc-Diu" secondAttribute="bottom" constant="60" id="Iyz-T7-aAu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RX7-jL-8fn"/>

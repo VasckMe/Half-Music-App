@@ -12,12 +12,16 @@ protocol ArtistsPresenterInterface {
     func didTriggerViewDisappear()
     
     func didTriggerCell(atIndex: Int)
+    
+    func getArtistsArray() -> [String]
 }
 
 final class ArtistsPresenter {
     weak var controller: ArtistsTableViewControllerInterface?
     
     private var router: ArtistsRouterInterface?
+    
+    var artists: [String] = []
     
     init(router: ArtistsRouterInterface) {
         self.router = router
@@ -27,6 +31,7 @@ final class ArtistsPresenter {
 extension ArtistsPresenter: ArtistsPresenterInterface {
     func didTriggerViewAppear() {
         fetchArtists()
+        controller?.showNavigationBar()
     }
     
     func didTriggerViewDisappear() {
@@ -34,8 +39,12 @@ extension ArtistsPresenter: ArtistsPresenterInterface {
     }
     
     func didTriggerCell(atIndex: Int) {
-        controller?.filterArtists(index: atIndex)
-        router?.showSongsViewController(artist: atIndex)
+        filterArtists(index: atIndex)
+        showController(artistIndex: atIndex)
+    }
+    
+    func getArtistsArray() -> [String] {
+        artists
     }
 }
 
@@ -44,6 +53,12 @@ private extension ArtistsPresenter {
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.findArtists()
+        }
+    }
+    
+    func filterArtists(index: Int) {
+        LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { track in
+            track.artist == artists[index]
         }
     }
     
@@ -59,6 +74,12 @@ private extension ArtistsPresenter {
                 continue
             }
         }
-        controller?.updateArtists(with: artists)
+        self.artists = artists
+        controller?.reloadData()
+    }
+    
+    func showController(artistIndex: Int) {
+        let input = SongsInput(artist: artists[artistIndex])
+        router?.showSongsViewController(input: input)
     }
 }

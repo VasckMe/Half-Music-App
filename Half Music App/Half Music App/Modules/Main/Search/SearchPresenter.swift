@@ -33,7 +33,7 @@ extension SearchPresenter: SearchPresenterInterface {
     }
     
     func didTriggerViewDisappear() {
-        controller?.showNavigationBar()
+//        controller?.showNavigationBar()
 
     }
     

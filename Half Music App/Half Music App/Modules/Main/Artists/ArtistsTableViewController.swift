@@ -9,16 +9,15 @@ import UIKit
 import FirebaseDatabase
 
 protocol ArtistsTableViewControllerInterface: AnyObject {
-    func filterArtists(index: Int)
-    func updateArtists(with artists: [String])
+    func showNavigationBar()
+    
+    func reloadData()
 }
 
 final class ArtistsTableViewController: UITableViewController {
     
     var presenter: ArtistsPresenterInterface?
-        
-    var artists: [String] = []
-    
+            
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -43,18 +42,23 @@ extension ArtistsTableViewController {
     // Data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artists.count
+        guard let array = presenter?.getArtistsArray() else {
+            return 0
+        }
+        return array.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: SmallTableViewCell.identifier, for: indexPath
-            ) as? SmallTableViewCell else {
+            ) as? SmallTableViewCell,
+            let array = presenter?.getArtistsArray()
+        else {
             return UITableViewCell()
         }
 
-        cell.configureArtist(artist: artists[indexPath.row])
+        cell.configureArtist(artist: array[indexPath.row])
 
         return cell
     }
@@ -71,14 +75,11 @@ extension ArtistsTableViewController {
 }
 
 extension ArtistsTableViewController: ArtistsTableViewControllerInterface {
-    func updateArtists(with artists: [String]) {
-        self.artists = artists
-        tableView.reloadData()
+    func showNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
     }
     
-    func filterArtists(index: Int) {
-        LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { track in
-            track.artist == artists[index]
-        }
+    func reloadData() {
+        tableView.reloadData()
     }
 }
