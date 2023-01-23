@@ -10,6 +10,8 @@ import FirebaseDatabase
 
 final class ArtistsTableViewController: UITableViewController {
     
+    var presenter: ArtistsPresenterInterface?
+    
     // MARK: Properties
     
     var artists: [String] = []

@@ -74,7 +74,6 @@
                     <connections>
                         <outlet property="libraryTableView" destination="EnS-hn-0SO" id="Ncm-jJ-5GC"/>
                         <outlet property="recentlyAddedCollectionView" destination="hiV-Ly-0GL" id="sGz-Xw-8XF"/>
-                        <segue destination="Ojx-ul-ZUe" kind="show" identifier="GoToArtistsTVC" id="U9p-gv-1S8"/>
                         <segue destination="76m-Ua-Sfh" kind="show" identifier="GoToSongsTVC" id="VQB-BH-jvB"/>
                         <segue destination="SAZ-ks-mIO" kind="show" identifier="GoToAlbumsCVC" id="P86-oC-vq8"/>
                     </connections>
@@ -113,9 +112,9 @@
         <!--Artists-->
         <scene sceneID="Zap-8i-0Ue">
             <objects>
-                <tableViewController id="Ojx-ul-ZUe" customClass="ArtistsTableViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ojx-ul-ZUe" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Xrw-8b-YEg">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

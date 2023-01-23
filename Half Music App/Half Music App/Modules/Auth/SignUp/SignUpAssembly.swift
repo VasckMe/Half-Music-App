@@ -17,7 +17,7 @@ struct SignUpAssembly {
                 withIdentifier: "SignUpVC"
             ) as? SignUpViewController
         else {
-            return SignUpViewController()
+            return nil
         }
         let router = SignUpRouter(controller: viewController)
         let presenter = SignUpPresenter(router: router)

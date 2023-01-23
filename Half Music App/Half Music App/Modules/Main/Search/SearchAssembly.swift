@@ -8,7 +8,7 @@
 import UIKit
 
 struct SearchAssembly {
-    static func searchViewController() -> SearchViewController {
+    static func searchViewController() -> SearchViewController? {
         guard
             let controller = UIStoryboard(
                 name: "SearchViewController",
@@ -17,7 +17,7 @@ struct SearchAssembly {
                 withIdentifier: "SearchVC"
             ) as? SearchViewController
         else {
-            return SearchViewController()
+            return nil
         }
         
         let router = SearchRouter(controller: controller)

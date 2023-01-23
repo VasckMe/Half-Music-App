@@ -136,7 +136,7 @@ extension LibraryViewController: LibraryViewControllerInterface {
     }
 
     func hideNavigationBar() {
-//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func reloadCollectionData() {

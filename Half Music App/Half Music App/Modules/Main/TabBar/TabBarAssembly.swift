@@ -15,9 +15,11 @@ struct TabBarAssembly {
                 bundle: nil
             ).instantiateViewController(
                 withIdentifier: "TabBarVC"
-            ) as? TabBarViewController
+            ) as? TabBarViewController,
+            let searchViewController = SearchAssembly.searchViewController(),
+            let libraryViewController = LibraryAssembly.libraryViewController()
         else {
-            return TabBarViewController()
+            return nil
         }
         let router = TabBarRouter(controller: controller)
         let presenter = TabBarPresenter(router: router)
@@ -26,7 +28,6 @@ struct TabBarAssembly {
         controller.presenter = presenter
         
         
-        let searchViewController = SearchAssembly.searchViewController()
         searchViewController.tabBarItem = UITabBarItem(
             title: "Music",
             image: UIImage(systemName: "magnifyingglass.circle"),
@@ -34,7 +35,6 @@ struct TabBarAssembly {
         )
         searchViewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
         
-        let libraryViewController = LibraryAssembly.libraryViewController()
         libraryViewController.tabBarItem = UITabBarItem(
             title: "Library",
             image: UIImage(systemName: "rectangle.stack"),

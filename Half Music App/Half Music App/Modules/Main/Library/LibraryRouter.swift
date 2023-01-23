@@ -23,7 +23,11 @@ final class LibraryRouter {
 
 extension LibraryRouter: LibraryRouterInterface {
     func showArtistsViewController() {
-//        controller?.navigationController.push
+        guard let artistsController = ArtistsAssembly.artistsTableViewController() else {
+            return
+        }
+        
+        controller?.navigationController?.pushViewController(artistsController, animated: true)
     }
     
     func showSongsViewController() {

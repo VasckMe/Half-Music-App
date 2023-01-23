@@ -8,7 +8,7 @@
 import UIKit
 
 struct LibraryAssembly {
-    static func libraryViewController() -> LibraryViewController {
+    static func libraryViewController() -> LibraryViewController? {
         guard
             let controller = UIStoryboard(
                 name: "LibraryViewController",
@@ -17,7 +17,7 @@ struct LibraryAssembly {
                 withIdentifier: "LibraryViewController"
             ) as? LibraryViewController
         else {
-            return LibraryViewController()
+            return nil
         }
         
         let router = LibraryRouter(controller: controller)

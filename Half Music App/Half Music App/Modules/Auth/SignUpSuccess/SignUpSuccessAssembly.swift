@@ -19,7 +19,7 @@ struct SignUpSuccessAssembly {
             withIdentifier: "SignUpSuccessVC"
             ) as? SignUpSuccessViewController
         else {
-            return SignUpSuccessViewController()
+            return nil
         }
         
         let presenter = SignUpSuccessPresenter(
