@@ -12,7 +12,7 @@
         <!--Library-->
         <scene sceneID="ihr-t4-NNv">
             <objects>
-                <viewController id="ubX-lk-j1b" customClass="LibraryViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LibraryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ubX-lk-j1b" customClass="LibraryViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kij-uK-O7D">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -42,7 +42,7 @@ final class DetailAlbumViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func editAction(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Library", bundle: nil)
+        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddEditAlbumVC") as? AddAlbumViewController
         vc?.detailAlbum = album
         vc?.delegate = self

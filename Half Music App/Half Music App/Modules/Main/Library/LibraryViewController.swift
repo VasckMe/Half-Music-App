@@ -8,8 +8,17 @@
 import UIKit
 import FirebaseDatabase
 
+protocol LibraryViewControllerInterface: AnyObject {
+    func hideNavigationBar()
+    func showNavigationBar()
+    
+    func reloadCollectionData()
+}
+
 final class LibraryViewController: UIViewController {
 
+    var presenter: LibraryPresenterInterface?
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var libraryTableView: UITableView!
@@ -24,17 +33,17 @@ final class LibraryViewController: UIViewController {
             forCellReuseIdentifier: SmallTableViewCell.identifier
         )
         recentlyAddedCollectionView.register(
-            UINib(nibName: "LargeCollectionViewCell", bundle: nil),
+            UINib(nibName: LargeCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
         )
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        addObserverToFetchTracks()
+        presenter?.didTriggerViewAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        removeObserverToFetchTracks()
+        presenter?.didTriggerViewDisappear()
     }
 }
 
@@ -66,14 +75,7 @@ extension LibraryViewController: UITableViewDataSource {
 
 extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch Category.allCases[indexPath.row] {
-        case .artists:
-            performSegue(withIdentifier: "GoToArtistsTVC", sender: nil)
-        case .albums:
-            performSegue(withIdentifier: "GoToAlbumsCVC", sender: nil)
-        case .songs:
-            performSegue(withIdentifier: "GoToSongsTVC", sender: nil)
-        }
+        presenter?.didTriggerTableViewCell(category: Category.allCases[indexPath.row])
     }
 }
 
@@ -126,17 +128,18 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Extension Logic
-extension LibraryViewController {
-    // MARK: - Private
-    
-    private func addObserverToFetchTracks() {
-        FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.recentlyAddedCollectionView.reloadData()
-        }
+// MARK: - LibraryViewControllerInterface
+
+extension LibraryViewController: LibraryViewControllerInterface {
+    func showNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = false
     }
-    private func removeObserverToFetchTracks() {
-        FireBaseStorageService.audioRef.removeAllObservers()
+
+    func hideNavigationBar() {
+//        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func reloadCollectionData() {
+        self.recentlyAddedCollectionView.reloadData()
     }
 }

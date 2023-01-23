@@ -63,6 +63,9 @@
 		18A981052976941900F70656 /* CurrentMusicAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A981042976941900F70656 /* CurrentMusicAssembly.swift */; };
 		18A98107297694F100F70656 /* CurrentMusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98106297694F100F70656 /* CurrentMusicPresenter.swift */; };
 		18A98109297695AA00F70656 /* CurrentMusicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98108297695AA00F70656 /* CurrentMusicRouter.swift */; };
+		18A9810B2976B79B00F70656 /* LibraryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9810A2976B79B00F70656 /* LibraryAssembly.swift */; };
+		18A9810D2976B80300F70656 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9810C2976B80300F70656 /* LibraryPresenter.swift */; };
+		18A9810F2976B83500F70656 /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9810E2976B83500F70656 /* LibraryRouter.swift */; };
 		18B66C6C28DC7343000D5F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6B28DC7343000D5F79 /* AppDelegate.swift */; };
 		18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */; };
 		18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B66C7428DC7346000D5F79 /* Assets.xcassets */; };
@@ -97,7 +100,7 @@
 		18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA3291EA371006A5911 /* VCRepresentation.swift */; };
 		18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB4291FA0F6006A5911 /* Account.storyboard */; };
 		18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */; };
-		18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFC1291FA700006A5911 /* Library.storyboard */; };
+		18F5CFC3291FA700006A5911 /* LibraryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFC1291FA700006A5911 /* LibraryViewController.storyboard */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +162,9 @@
 		18A981042976941900F70656 /* CurrentMusicAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicAssembly.swift; sourceTree = "<group>"; };
 		18A98106297694F100F70656 /* CurrentMusicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicPresenter.swift; sourceTree = "<group>"; };
 		18A98108297695AA00F70656 /* CurrentMusicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicRouter.swift; sourceTree = "<group>"; };
+		18A9810A2976B79B00F70656 /* LibraryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAssembly.swift; sourceTree = "<group>"; };
+		18A9810C2976B80300F70656 /* LibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
+		18A9810E2976B83500F70656 /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
 		18B66C6828DC7343000D5F79 /* Half Music App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Half Music App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B66C6B28DC7343000D5F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B66C6D28DC7343000D5F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,7 +199,7 @@
 		18F5CFA3291EA371006A5911 /* VCRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRepresentation.swift; sourceTree = "<group>"; };
 		18F5CFB4291FA0F6006A5911 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = SOURCE_ROOT; };
 		18F5CFB8291FA1D0006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/SearchViewController.storyboard"; sourceTree = SOURCE_ROOT; };
-		18F5CFC2291FA700006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/Library.storyboard"; sourceTree = SOURCE_ROOT; };
+		18F5CFC2291FA700006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/LibraryViewController.storyboard"; sourceTree = SOURCE_ROOT; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
 		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -437,7 +443,6 @@
 		18778D7D290D840F00479294 /* Library Flow */ = {
 			isa = PBXGroup;
 			children = (
-				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
 				18F5CFA7291F9E1A006A5911 /* Songs */,
 				18F5CFA5291F9E05006A5911 /* Artists */,
 				18F5CFA6291F9E0F006A5911 /* Albums */,
@@ -554,6 +559,11 @@
 		18C0E90C296737EF007B8589 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				18A9810A2976B79B00F70656 /* LibraryAssembly.swift */,
+				18A9810C2976B80300F70656 /* LibraryPresenter.swift */,
+				18A9810E2976B83500F70656 /* LibraryRouter.swift */,
+				18D51B7A28F1E9C100CCAE4A /* LibraryViewController.swift */,
+				18F5CFC1291FA700006A5911 /* LibraryViewController.storyboard */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -683,7 +693,6 @@
 		18F5CFC0291FA689006A5911 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				18F5CFC1291FA700006A5911 /* Library.storyboard */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -783,7 +792,7 @@
 				184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */,
 				186651FD295DC1E4006A7BC5 /* SignUpViewController.storyboard in Resources */,
 				18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */,
-				18F5CFC3291FA700006A5911 /* Library.storyboard in Resources */,
+				18F5CFC3291FA700006A5911 /* LibraryViewController.storyboard in Resources */,
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
@@ -882,6 +891,7 @@
 				180EEC5528FC5A3A00D2FEE9 /* AlbumFB.swift in Sources */,
 				18B66C6E28DC7343000D5F79 /* SceneDelegate.swift in Sources */,
 				182EEDF82924FD0200D6A186 /* AnimationManager.swift in Sources */,
+				18A9810F2976B83500F70656 /* LibraryRouter.swift in Sources */,
 				18C0E9062965D009007B8589 /* TabBarAssembly.swift in Sources */,
 				184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */,
 				18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */,
@@ -895,6 +905,7 @@
 				18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */,
 				1833692A296C77BE0094DEA5 /* NowIsPlayingPresenter.swift in Sources */,
 				18C0E90F2967383C007B8589 /* SearchAssembly.swift in Sources */,
+				18A9810B2976B79B00F70656 /* LibraryAssembly.swift in Sources */,
 				1876014E28E34C46000223CD /* ItemInfo.swift in Sources */,
 				186651FF295DC80D006A7BC5 /* SignUpAssembly.swift in Sources */,
 				1876015428E34C61000223CD /* Images.swift in Sources */,
@@ -913,6 +924,7 @@
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
 				18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
+				18A9810D2976B80300F70656 /* LibraryPresenter.swift in Sources */,
 				186651FB295DC09F006A7BC5 /* SignUpSuccessPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -936,12 +948,12 @@
 			name = SearchViewController.storyboard;
 			sourceTree = "<group>";
 		};
-		18F5CFC1291FA700006A5911 /* Library.storyboard */ = {
+		18F5CFC1291FA700006A5911 /* LibraryViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				18F5CFC2291FA700006A5911 /* Base */,
 			);
-			name = Library.storyboard;
+			name = LibraryViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

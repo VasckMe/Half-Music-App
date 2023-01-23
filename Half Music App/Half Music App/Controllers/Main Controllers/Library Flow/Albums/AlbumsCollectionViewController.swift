@@ -108,7 +108,7 @@ extension AlbumsCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.row]
         LocalStorage.shared.localTracks = album.tracks
-        let storyboard = UIStoryboard(name: "Library", bundle: nil)
+        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
         if
             let vc = storyboard.instantiateViewController(
                 withIdentifier: "DetailAlbumVC"

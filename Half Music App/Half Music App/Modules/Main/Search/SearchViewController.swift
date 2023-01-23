@@ -93,7 +93,7 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - SearchViewControllerInterface
 extension SearchViewController: SearchViewControllerInterface {
     func showNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.navigationBar.isHidden = false
     }
     
     func hideNavigationBar() {

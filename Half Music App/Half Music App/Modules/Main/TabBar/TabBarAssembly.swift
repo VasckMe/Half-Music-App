@@ -29,11 +29,20 @@ struct TabBarAssembly {
         let searchViewController = SearchAssembly.searchViewController()
         searchViewController.tabBarItem = UITabBarItem(
             title: "Music",
-            image: UIImage(systemName: "magnifyingglass.circle.fill"),
+            image: UIImage(systemName: "magnifyingglass.circle"),
             tag: 0
         )
+        searchViewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
         
-        controller.setViewControllers([searchViewController], animated: true)
+        let libraryViewController = LibraryAssembly.libraryViewController()
+        libraryViewController.tabBarItem = UITabBarItem(
+            title: "Library",
+            image: UIImage(systemName: "rectangle.stack"),
+            tag: 1
+        )
+        libraryViewController.tabBarItem.selectedImage = UIImage(systemName: "rectangle.stack.fill")
+        
+        controller.setViewControllers([searchViewController, libraryViewController], animated: true)
         
         return controller
     }

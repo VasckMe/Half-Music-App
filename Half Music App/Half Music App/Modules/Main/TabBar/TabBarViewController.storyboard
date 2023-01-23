@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="382" y="-451"/>
         </scene>
-        <!--Library-->
+        <!--LibraryViewController-->
         <scene sceneID="781-1S-upS">
             <objects>
-                <viewControllerPlaceholder storyboardName="Library" id="WzA-AP-XZb" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="LibraryViewController" id="WzA-AP-XZb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="tRH-zD-EnV"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLq-RD-r9u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -94,7 +94,7 @@ extension ArtistsTableViewController {
             track.artist == artists[indexPath.row]
         }
         
-        let storyboard = UIStoryboard(name: "Library", bundle: nil)
+        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
         if
             let vc = storyboard.instantiateViewController(
                 withIdentifier: "SongsTVC"
