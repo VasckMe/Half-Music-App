@@ -10,6 +10,8 @@ import FirebaseDatabase
 
 final class SongsTableViewController: UITableViewController {
     
+    var presenter: SongsPresenterInterface?
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var searchBar: UISearchBar! {

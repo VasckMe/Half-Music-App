@@ -31,12 +31,14 @@ extension LibraryRouter: LibraryRouterInterface {
     }
     
     func showSongsViewController() {
+        guard let songsController = SongsAssembly.songsTableViewController() else {
+            return
+        }
         
+        controller?.navigationController?.pushViewController(songsController, animated: true)
     }
     
     func showAlbumsViewController() {
-        
+        //
     }
-    
-    
 }

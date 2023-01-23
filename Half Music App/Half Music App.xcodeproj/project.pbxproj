@@ -21,6 +21,10 @@
 		18329CE2297E7B12002DC38E /* ArtistsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CE1297E7B12002DC38E /* ArtistsAssembly.swift */; };
 		18329CE4297E7C0C002DC38E /* ArtistsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CE3297E7C0C002DC38E /* ArtistsPresenter.swift */; };
 		18329CE6297E7C58002DC38E /* ArtistsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CE5297E7C58002DC38E /* ArtistsRouter.swift */; };
+		18329CEA297E88D6002DC38E /* SongsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18329CE9297E88D6002DC38E /* SongsTableViewController.storyboard */; };
+		18329CEC297E8911002DC38E /* SongsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CEB297E8911002DC38E /* SongsAssembly.swift */; };
+		18329CEE297E8993002DC38E /* SongsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CED297E8993002DC38E /* SongsPresenter.swift */; };
+		18329CF0297E89D6002DC38E /* SongsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CEF297E89D6002DC38E /* SongsRouter.swift */; };
 		18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */; };
 		1833692A296C77BE0094DEA5 /* NowIsPlayingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */; };
 		1833692C296C78080094DEA5 /* NowIsPlayingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */; };
@@ -124,6 +128,10 @@
 		18329CE1297E7B12002DC38E /* ArtistsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsAssembly.swift; sourceTree = "<group>"; };
 		18329CE3297E7C0C002DC38E /* ArtistsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsPresenter.swift; sourceTree = "<group>"; };
 		18329CE5297E7C58002DC38E /* ArtistsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsRouter.swift; sourceTree = "<group>"; };
+		18329CE9297E88D6002DC38E /* SongsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongsTableViewController.storyboard; sourceTree = "<group>"; };
+		18329CEB297E8911002DC38E /* SongsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsAssembly.swift; sourceTree = "<group>"; };
+		18329CED297E8993002DC38E /* SongsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsPresenter.swift; sourceTree = "<group>"; };
+		18329CEF297E89D6002DC38E /* SongsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsRouter.swift; sourceTree = "<group>"; };
 		18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingAssembly.swift; sourceTree = "<group>"; };
 		18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingPresenter.swift; sourceTree = "<group>"; };
 		1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingRouter.swift; sourceTree = "<group>"; };
@@ -281,6 +289,18 @@
 			path = Artists;
 			sourceTree = "<group>";
 		};
+		18329CE8297E888F002DC38E /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				18329CEB297E8911002DC38E /* SongsAssembly.swift */,
+				18329CED297E8993002DC38E /* SongsPresenter.swift */,
+				18329CEF297E89D6002DC38E /* SongsRouter.swift */,
+				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
+				18329CE9297E88D6002DC38E /* SongsTableViewController.storyboard */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		184F70C229649C390005268D /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +308,7 @@
 				18C0E90B296737E6007B8589 /* Search */,
 				18C0E90C296737EF007B8589 /* Library */,
 				18329CDE297E7A56002DC38E /* Artists */,
+				18329CE8297E888F002DC38E /* Songs */,
 				18C0E90D296737F7007B8589 /* Account */,
 			);
 			path = Main;
@@ -682,7 +703,6 @@
 		18F5CFA7291F9E1A006A5911 /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				1894E35128F721EE00ED403F /* SongsTableViewController.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -813,6 +833,7 @@
 				18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */,
 				18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */,
 				18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */,
+				18329CEA297E88D6002DC38E /* SongsTableViewController.storyboard in Resources */,
 				18C0E9042965CE60007B8589 /* TabBarViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,6 +898,7 @@
 				18A98109297695AA00F70656 /* CurrentMusicRouter.swift in Sources */,
 				1894F5362928D0D800D12841 /* Category.swift in Sources */,
 				18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */,
+				18329CEC297E8911002DC38E /* SongsAssembly.swift in Sources */,
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
 				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
@@ -912,6 +934,7 @@
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				18A981052976941900F70656 /* CurrentMusicAssembly.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
+				18329CEE297E8993002DC38E /* SongsPresenter.swift in Sources */,
 				1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */,
 				1833692C296C78080094DEA5 /* NowIsPlayingRouter.swift in Sources */,
 				18D263212912969000E32184 /* UIAlertControllerExtension.swift in Sources */,
@@ -931,6 +954,7 @@
 				184F70BD29631F4E0005268D /* SignInAssembly.swift in Sources */,
 				18329CE4297E7C0C002DC38E /* ArtistsPresenter.swift in Sources */,
 				18665201295E0316006A7BC5 /* SignUpPresenter.swift in Sources */,
+				18329CF0297E89D6002DC38E /* SongsRouter.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
