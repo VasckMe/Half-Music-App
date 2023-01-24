@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KU5-kK-gP5">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Album View Controller-->
+        <scene sceneID="kXv-KJ-PS5">
+            <objects>
+                <viewController storyboardIdentifier="AddEditAlbumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KU5-kK-gP5" customClass="AddAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Dr-Np-Xoq">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-fs-pH3">
+                                <rect key="frame" x="10" y="79" width="373" height="729"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="EJm-fr-gYI">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="314"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VCa-qp-nwf">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="250"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note.list" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dMm-02-pQQ">
+                                                        <rect key="frame" x="61.666666666666686" y="1" width="250" height="248.66666666666666"/>
+                                                        <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.179000402" green="0.179000402" blue="0.179000402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="dMm-02-pQQ" secondAttribute="height" multiplier="1:1" id="5SD-a1-AHt"/>
+                                                            <constraint firstAttribute="width" constant="250" id="gZh-IU-6I0"/>
+                                                            <constraint firstAttribute="height" constant="250" id="sO0-Ud-hz8"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mos-MS-3UR">
+                                                <rect key="frame" x="0.0" y="280" width="373" height="34"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZvP-iB-W4v">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="34"/>
+                                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="hgj-Hq-MAW"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qdx-3r-HyK">
+                                        <rect key="frame" x="0.0" y="324" width="373" height="405"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="36S-KB-k2c"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="36S-KB-k2c" firstAttribute="trailing" secondItem="9e6-fs-pH3" secondAttribute="trailing" constant="10" id="6sM-PF-xNn"/>
+                            <constraint firstItem="36S-KB-k2c" firstAttribute="bottom" secondItem="9e6-fs-pH3" secondAttribute="bottom" constant="10" id="Bxd-1A-Uk6"/>
+                            <constraint firstItem="9e6-fs-pH3" firstAttribute="top" secondItem="36S-KB-k2c" secondAttribute="top" constant="20" id="UuO-SX-4he"/>
+                            <constraint firstItem="9e6-fs-pH3" firstAttribute="leading" secondItem="36S-KB-k2c" secondAttribute="leading" constant="10" id="Wk2-yp-Cdx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vfb-80-Vki">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="AZ8-cz-X7d">
+                            <connections>
+                                <action selector="saveAlbumAction:" destination="KU5-kK-gP5" id="JmP-MY-kK3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="albumImageView" destination="dMm-02-pQQ" id="KRw-1C-Qdf"/>
+                        <outlet property="albumNameLabel" destination="ZvP-iB-W4v" id="P1L-Tc-Ezo"/>
+                        <outlet property="albumTableView" destination="qdx-3r-HyK" id="zvL-vc-4d1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6C3-ab-SDz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520" y="-32"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

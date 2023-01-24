@@ -31,6 +31,8 @@ final class AlbumsPresenter {
     }
 }
 
+// MARK: - AlbumsPresenterInterface
+
 extension AlbumsPresenter: AlbumsPresenterInterface {
     func didTriggerViewAppear() {
         addObserverToFetchAlbums()
@@ -48,13 +50,23 @@ extension AlbumsPresenter: AlbumsPresenterInterface {
     }
     
     func didTriggerAddButton() {
-        router?.showAddNewAlbumController()
+        router?.showAddNewAlbumController(output: self)
     }
     
     func getAlbums() -> [AlbumFB] {
         albums
     }
 }
+
+// MARK: - AddAlbumOutput
+
+extension AlbumsPresenter: AddAlbumOutput {
+    func didTriggerCloseAddAlbumViewController() {
+        router?.closeAddNewAlbumController()
+    }
+}
+
+// MARK: - Private
 
 private extension AlbumsPresenter {
     func addObserverToFetchAlbums() {

@@ -29,6 +29,10 @@
 		18329CF5297FC3E7002DC38E /* AlbumsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CF4297FC3E7002DC38E /* AlbumsAssembly.swift */; };
 		18329CF7297FC47D002DC38E /* AlbumsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CF6297FC47D002DC38E /* AlbumsPresenter.swift */; };
 		18329CF9297FC499002DC38E /* AlbumsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CF8297FC499002DC38E /* AlbumsRouter.swift */; };
+		18329CFC297FD091002DC38E /* AddAlbumViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18329CFB297FD091002DC38E /* AddAlbumViewController.storyboard */; };
+		18329CFE297FD167002DC38E /* AddAlbumAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CFD297FD167002DC38E /* AddAlbumAssembly.swift */; };
+		18329D00297FD1C8002DC38E /* AddAlbumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329CFF297FD1C8002DC38E /* AddAlbumPresenter.swift */; };
+		18329D02297FD218002DC38E /* AddAlbumRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18329D01297FD218002DC38E /* AddAlbumRouter.swift */; };
 		18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */; };
 		1833692A296C77BE0094DEA5 /* NowIsPlayingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */; };
 		1833692C296C78080094DEA5 /* NowIsPlayingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */; };
@@ -140,6 +144,10 @@
 		18329CF4297FC3E7002DC38E /* AlbumsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsAssembly.swift; sourceTree = "<group>"; };
 		18329CF6297FC47D002DC38E /* AlbumsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsPresenter.swift; sourceTree = "<group>"; };
 		18329CF8297FC499002DC38E /* AlbumsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRouter.swift; sourceTree = "<group>"; };
+		18329CFB297FD091002DC38E /* AddAlbumViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAlbumViewController.storyboard; sourceTree = "<group>"; };
+		18329CFD297FD167002DC38E /* AddAlbumAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumAssembly.swift; sourceTree = "<group>"; };
+		18329CFF297FD1C8002DC38E /* AddAlbumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumPresenter.swift; sourceTree = "<group>"; };
+		18329D01297FD218002DC38E /* AddAlbumRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumRouter.swift; sourceTree = "<group>"; };
 		18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingAssembly.swift; sourceTree = "<group>"; };
 		18336929296C77BD0094DEA5 /* NowIsPlayingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingPresenter.swift; sourceTree = "<group>"; };
 		1833692B296C78080094DEA5 /* NowIsPlayingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowIsPlayingRouter.swift; sourceTree = "<group>"; };
@@ -321,6 +329,18 @@
 			path = Albums;
 			sourceTree = "<group>";
 		};
+		18329CFA297FD04F002DC38E /* AddAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				18329CFD297FD167002DC38E /* AddAlbumAssembly.swift */,
+				18329CFF297FD1C8002DC38E /* AddAlbumPresenter.swift */,
+				18329D01297FD218002DC38E /* AddAlbumRouter.swift */,
+				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
+				18329CFB297FD091002DC38E /* AddAlbumViewController.storyboard */,
+			);
+			path = AddAlbum;
+			sourceTree = "<group>";
+		};
 		184F70C229649C390005268D /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +350,7 @@
 				18329CDE297E7A56002DC38E /* Artists */,
 				18329CE8297E888F002DC38E /* Songs */,
 				18329CF1297FC300002DC38E /* Albums */,
+				18329CFA297FD04F002DC38E /* AddAlbum */,
 				18C0E90D296737F7007B8589 /* Account */,
 			);
 			path = Main;
@@ -712,7 +733,6 @@
 		18F5CFA6291F9E0F006A5911 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				1821B10A28FEC61C0084E572 /* AddAlbumViewController.swift */,
 				18778D83290E85A500479294 /* DetailAlbumViewController.swift */,
 			);
 			path = Albums;
@@ -833,6 +853,7 @@
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				18329CE0297E7AA1002DC38E /* ArtistsTableViewController.storyboard in Resources */,
 				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
+				18329CFC297FD091002DC38E /* AddAlbumViewController.storyboard in Resources */,
 				18F5CF9B291E5472006A5911 /* Onboarding.storyboard in Resources */,
 				18D3F48529167F2C00F7D867 /* AddTrackToAlbum.storyboard in Resources */,
 				18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */,
@@ -912,10 +933,12 @@
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
+				18329D00297FD1C8002DC38E /* AddAlbumPresenter.swift in Sources */,
 				18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */,
 				18D3F48929168F5C00F7D867 /* SearchViewController.swift in Sources */,
 				1876015628E34C6C000223CD /* Artists.swift in Sources */,
 				18A98102297691B500F70656 /* CurrentMusicViewController.swift in Sources */,
+				18329D02297FD218002DC38E /* AddAlbumRouter.swift in Sources */,
 				18C0E9022965CE51007B8589 /* TabBarViewController.swift in Sources */,
 				1894E35228F721EE00ED403F /* SongsTableViewController.swift in Sources */,
 				18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */,
@@ -923,6 +946,7 @@
 				1885D0CF28EDA9D500288CA4 /* UITextFieldExtension.swift in Sources */,
 				18130AF028E44D6F000FCD54 /* NetworkDataFetcher.swift in Sources */,
 				1872836328E75CA90064278A /* SignUpViewController.swift in Sources */,
+				18329CFE297FD167002DC38E /* AddAlbumAssembly.swift in Sources */,
 				18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */,
 				18D5D583291C05040022F4D4 /* Network.swift in Sources */,
 				1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */,

@@ -9,7 +9,9 @@ import Foundation
 
 protocol AlbumsRouterInterface {
     func showDetailAlbumController()
-    func showAddNewAlbumController()
+    
+    func showAddNewAlbumController(output: AddAlbumOutput)
+    func closeAddNewAlbumController()
 }
 
 final class AlbumsRouter {
@@ -33,7 +35,15 @@ extension AlbumsRouter: AlbumsRouterInterface {
 //        }
     }
     
-    func showAddNewAlbumController() {
-        //
+    func showAddNewAlbumController(output: AddAlbumOutput) {
+        guard let controller = AddAlbumAssembly.addAlbumViewController(output: output) else {
+            return
+        }
+        
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func closeAddNewAlbumController() {
+        controller?.navigationController?.popViewController(animated: true)
     }
 }

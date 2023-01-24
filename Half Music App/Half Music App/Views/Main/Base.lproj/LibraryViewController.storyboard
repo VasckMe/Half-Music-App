@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="2175" y="482"/>
         </scene>
-        <!--Add Album View Controller-->
+        <!--View Controller-->
         <scene sceneID="vy3-6J-M6D">
             <objects>
-                <viewController storyboardIdentifier="AddEditAlbumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w6m-DN-Od2" customClass="AddAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="w6m-DN-Od2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bC3-0j-Ipc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
