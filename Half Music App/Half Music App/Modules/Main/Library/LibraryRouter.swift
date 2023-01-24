@@ -39,6 +39,10 @@ extension LibraryRouter: LibraryRouterInterface {
     }
     
     func showAlbumsViewController() {
-        //
+        guard let albumsController = AlbumsAssembly.albumsCollectionViewController() else {
+            return
+        }
+        
+        controller?.navigationController?.pushViewController(albumsController, animated: true)
     }
 }

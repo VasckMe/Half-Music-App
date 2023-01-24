@@ -8,12 +8,19 @@
 import UIKit
 import FirebaseDatabase
 
+protocol AlbumsCollectionViewControllerInterface: AnyObject {
+    func showNavigationBar()
+    
+    func reloadData()
+}
+
 final class AlbumsCollectionViewController: UICollectionViewController {
     
-    // MARK: Properties
+    @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
+        presenter?.didTriggerAddButton()
+    }
     
-    var albums: [AlbumFB] = []
-    let ref = FireBaseStorageService.albumsRef
+    var presenter: AlbumsPresenterInterface?
     
     // MARK: Life Cycle
     
@@ -26,13 +33,11 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        addObserverToFetchAlbums()
-        addObserverToFetchTracks()
+        presenter?.didTriggerViewAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        removeObserverToFetchAlbums()
-        removeObserverToFetchTracks()
+        presenter?.didTriggerViewDisappear()
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -50,40 +55,18 @@ extension AlbumsCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Extension Logic
-
+// MARK: - CollectionView Data Source, Delegate
 extension AlbumsCollectionViewController {
-    
-    // MARK: - Private
-    
-    private func addObserverToFetchAlbums() {
-        FireBaseStorageService.addAlbumsObserver { [weak self] albumsFB in
-            self?.albums = albumsFB
-            self?.collectionView.reloadData()
-        }
-    }
-
-    private func addObserverToFetchTracks() {
-        FireBaseStorageService.addAudioObserver { tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-        }
-    }
-    
-    private func removeObserverToFetchAlbums() {
-        FireBaseStorageService.albumsRef.removeAllObservers()
-    }
-    
-    private func removeObserverToFetchTracks() {
-        FireBaseStorageService.audioRef.removeAllObservers()
-    }
-    
-    // MARK: - CollectionView Data Source
+    // Data Source
 
     override func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return albums.count
+        guard let array = presenter?.getAlbums() else {
+            return 0
+        }
+        return array.count
     }
 
     override func collectionView(
@@ -94,28 +77,30 @@ extension AlbumsCollectionViewController {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: LargeCollectionViewCell.identifier,
                 for: indexPath
-            ) as? LargeCollectionViewCell else {
+            ) as? LargeCollectionViewCell,
+            let array = presenter?.getAlbums()
+        else {
             return UICollectionViewCell()
         }
-        let album = albums[indexPath.row]
+        let album = array[indexPath.row]
         cell.configureAlbum(album: album)
     
         return cell
     }
     
-    // MARK: - Collection View Delegate
+    // Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let album = albums[indexPath.row]
-        LocalStorage.shared.localTracks = album.tracks
-        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
-        if
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "DetailAlbumVC"
-            ) as? DetailAlbumViewController
-        {
-            vc.album = album
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        presenter?.didTriggerCellAt(index: indexPath.row)
+    }
+}
+
+extension AlbumsCollectionViewController: AlbumsCollectionViewControllerInterface {
+    func showNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    func reloadData() {
+        self.collectionView.reloadData()
     }
 }
