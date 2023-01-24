@@ -24,6 +24,6 @@ extension ArtistsRouter: ArtistsRouterInterface {
         guard let controller = SongsAssembly.songsTableViewController(input: input) else {
             return
         }
-        controller.navigationController?.pushViewController(controller, animated: true)
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
     }
 }
