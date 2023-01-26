@@ -1,36 +1,32 @@
 //
-//  AddAlbumPresenter.swift
+//  EditAlbumPresenter.swift
 //  Half Music App
 //
-//  Created by Apple Macbook Pro 13 on 24.01.23.
+//  Created by Apple Macbook Pro 13 on 26.01.23.
 //
 
 import Foundation
 
-protocol AddAlbumOutput {
+protocol EditAlbumOutput: AddAlbumOutput {
+    func update(with album: AlbumFB)
     func didTriggerCloseAddAlbumViewController()
 }
 
-protocol AddAlbumPresenterInterface {
-    func didTriggerViewLoad()
-    func didTriggerViewDisappear()
-    
-    func didTriggerSaveButton(albumName: String?)
-    
-    func addAudioToChoosed(audio: TrackFB)
-    func removeAudioFromCHoosedAt(index: Int?)
-    func getChoosedAudio() -> [TrackFB]
+struct EditAlbumInput {
+    var detailAlbum: AlbumFB?
 }
 
-final class AddAlbumPresenter {
+final class EditAlbumPresenter {
     weak var controller: AddAlbumViewControllerInterface?
     
     private var router: AddAlbumRouterInterface?
-    private var output: AddAlbumOutput
+    private var input: EditAlbumInput
+    private var output: EditAlbumOutput
     
     var choosedTracks: [TrackFB] = []
     
-    init(output: AddAlbumOutput, router: AddAlbumRouterInterface) {
+    init(input: EditAlbumInput, output: EditAlbumOutput, router: AddAlbumRouterInterface) {
+        self.input = input
         self.output = output
         self.router = router
     }
@@ -38,12 +34,19 @@ final class AddAlbumPresenter {
 
 //MARK: - AddAlbumPresenterInterface
 
-extension AddAlbumPresenter: AddAlbumPresenterInterface {
+extension EditAlbumPresenter: AddAlbumPresenterInterface {
     func didTriggerViewLoad() {
+        guard let album = input.detailAlbum else {
+            return
+        }
+        
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
             LocalStorage.shared.localTracks = tracksFB
             self?.controller?.reloadData()
         }
+        
+        controller?.setNameLabel(with: album.name)
+        choosedTracks = album.tracks
     }
     
     func didTriggerViewDisappear() {
@@ -52,8 +55,8 @@ extension AddAlbumPresenter: AddAlbumPresenterInterface {
     }
     
     func didTriggerSaveButton(albumName: String?) {
-        saveButtonAction(name: albumName)
-        router?.closeAddAlbumController(output: output)
+            saveButtonAction(name: albumName)
+            router?.closeAddAlbumController(output: output)
     }
     
     func addAudioToChoosed(audio: TrackFB) {
@@ -73,7 +76,7 @@ extension AddAlbumPresenter: AddAlbumPresenterInterface {
     }
 }
 
-private extension AddAlbumPresenter {
+private extension EditAlbumPresenter {
     func saveButtonAction(name: String?) {
         guard
             let text = name,
@@ -84,7 +87,13 @@ private extension AddAlbumPresenter {
         }
         
         let album = AlbumFB(name: text, tracks: choosedTracks)
+
         let albumRef = FireBaseStorageService.albumsRef.child("\(album.name)")
+        
+        if let detailAlbum = input.detailAlbum {
+            FireBaseStorageService.albumsRef.child(detailAlbum.name).removeValue()
+            output.update(with: album)
+        }
     
         choosedTracks.forEach { track in
             albumRef.child("\(track.name)").setValue(track.convertInDictionary())

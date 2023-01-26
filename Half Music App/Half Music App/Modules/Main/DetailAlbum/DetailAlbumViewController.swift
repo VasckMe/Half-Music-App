@@ -8,21 +8,24 @@
 import UIKit
 import FirebaseDatabase
 
-protocol UpdateDetailAlbumViewController {
-    func update(album: AlbumFB)
+protocol DetailAlbumViewControllerInterface: AnyObject {
+    func setAlbumTitle(text: String?)
+    
+    func deleteRowAt(index: Int)
+    func reloadData()
 }
 
 final class DetailAlbumViewController: UIViewController {
-
-    // MARK: - IBOutlets
+    @IBOutlet private weak var albumImageView: UIImageView! {
+        didSet {
+            albumImageView.image = UIImage(systemName: "music.note.list")
+        }
+    }
     
-    @IBOutlet private weak var albumImageView: UIImageView!
     @IBOutlet private weak var albumTitleLabel: UILabel!
     @IBOutlet private weak var albumTracksTableView: UITableView!
     
-    // MARK: - Properties
-    
-    var album: AlbumFB?
+    var presenter: DetailAlbumPresenterInterface?
     
     // MARK: - Life Cycle
     
@@ -32,32 +35,20 @@ final class DetailAlbumViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setup()
+        presenter?.didTriggerViewAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        removeObserverToFetchTracks()
+        presenter?.didTriggerViewDisappear()
     }
     
     // MARK: - IBActions
     
     @IBAction private func editAction(_ sender: UIBarButtonItem) {
-//        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "AddEditAlbumVC") as? AddAlbumViewController
-//        vc?.detailAlbum = album
-//        vc?.delegate = self
-//        navigationController?.pushViewController(vc!, animated: true)
+        presenter?.didTriggerEditAction()
     }
 }
 
-// MARK: - UpdateDetailAlbumViewController
-
-extension DetailAlbumViewController: UpdateDetailAlbumViewController {
-    func update(album: AlbumFB) {
-        self.album = album
-        setup()
-    }
-}
 // MARK: - UITableViewDataSource
 
 extension DetailAlbumViewController: UITableViewDataSource {
@@ -93,50 +84,37 @@ extension DetailAlbumViewController: UITableViewDataSource {
         forRowAt indexPath: IndexPath
     ) {
         if editingStyle == .delete {
-            let track = LocalStorage.shared.localTracks[indexPath.row]
-            FireBaseStorageService.albumsRef.child(album!.name).child(track.name ?? "track-name").removeValue()
-            LocalStorage.shared.localTracks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            presenter?.didTriggerCellAt(index: indexPath.row)
         }
     }
 }
 // MARK: - UITableViewDelegate
+
 extension DetailAlbumViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
-            return
-        }
-        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-        vc.trackIndex = indexPath.row
-        navigationController?.present(vc, animated: true)
+        presenter?.didTriggerCellAt(index: indexPath.row)
     }
 }
 
-// MARK: - Extension DetailAlbumViewController
+// MARK: - DetailAlbumViewControllerInterface
 
-extension DetailAlbumViewController {
-    
-    // MARK: - Private
-    
-    private func setup() {
-        albumImageView.image = UIImage(systemName: "music.note.list")
-        albumTitleLabel.text = album?.name
+extension DetailAlbumViewController: DetailAlbumViewControllerInterface {
+    func setAlbumTitle(text: String?) {
+        albumTitleLabel.text = text
     }
     
-    private func addObserverToFetchTracks() {
-        guard let album = album else { return }
-        FireBaseStorageService.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
-            LocalStorage.shared.localTracks = tracksFB
-            self?.albumTracksTableView.reloadData()
-        }
+    func reloadData() {
+        albumTracksTableView.reloadData()
     }
     
-    private func removeObserverToFetchTracks() {
-        guard let album = album else { return }
-        let ref = FireBaseStorageService.albumsRef.child(album.name)
-        ref.removeAllObservers()
+    func deleteRowAt(index: Int) {
+        albumTracksTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
-    
+}
+
+// MARK: - Private
+
+private extension DetailAlbumViewController {
     private func signTableView() {
         albumTracksTableView.delegate = self
         albumTracksTableView.dataSource = self

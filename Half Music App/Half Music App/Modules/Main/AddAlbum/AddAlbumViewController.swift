@@ -48,10 +48,6 @@ final class AddAlbumViewController: BaseViewController {
         presenter?.didTriggerViewLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        presenter?.didTriggerViewAppear()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         presenter?.didTriggerViewDisappear()
     }

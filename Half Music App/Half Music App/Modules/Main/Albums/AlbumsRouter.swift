@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AlbumsRouterInterface {
-    func showDetailAlbumController()
+    func showDetailAlbumController(input: DetailAlbumInput)
     
     func showAddNewAlbumController(output: AddAlbumOutput)
     func closeAddNewAlbumController()
@@ -23,16 +23,12 @@ final class AlbumsRouter {
 }
 
 extension AlbumsRouter: AlbumsRouterInterface {
-    func showDetailAlbumController() {
-//        let storyboard = UIStoryboard(name: "LibraryViewController", bundle: nil)
-//        if
-//            let vc = storyboard.instantiateViewController(
-//                withIdentifier: "DetailAlbumVC"
-//            ) as? DetailAlbumViewController
-//        {
-//            vc.album = album
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
+    func showDetailAlbumController(input: DetailAlbumInput) {
+        guard let controller = DetailAlbumAssembly.detailAlbumViewController(input: input) else {
+            return
+        }
+        
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
     }
     
     func showAddNewAlbumController(output: AddAlbumOutput) {

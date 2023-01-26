@@ -91,8 +91,8 @@ private extension AlbumsPresenter {
     }
     
     func goToDetailAlbumController(with index: Int) {
-        let album = albums[index]
-        LocalStorage.shared.localTracks = album.tracks
-        router?.showDetailAlbumController()
+        let input = DetailAlbumInput(album: albums[index])
+        LocalStorage.shared.localTracks = albums[index].tracks
+        router?.showDetailAlbumController(input: input)
     }
 }
