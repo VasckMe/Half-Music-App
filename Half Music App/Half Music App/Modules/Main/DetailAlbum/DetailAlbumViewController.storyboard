@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qxa-Wt-ji5">
-                                <rect key="frame" x="20" y="59" width="353" height="773"/>
+                                <rect key="frame" x="20" y="59" width="353" height="739"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-vv-RFR">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="300"/>
@@ -41,7 +41,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2mm-ni-dX7">
-                                        <rect key="frame" x="0.0" y="315" width="353" height="458"/>
+                                        <rect key="frame" x="0.0" y="315" width="353" height="424"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="dfr-Vp-LUh"/>
@@ -55,7 +55,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qxa-Wt-ji5" firstAttribute="top" secondItem="NeK-ZV-AlE" secondAttribute="top" id="4v3-ud-mRF"/>
-                            <constraint firstAttribute="bottom" secondItem="qxa-Wt-ji5" secondAttribute="bottom" constant="20" id="Mdg-U6-oE0"/>
+                            <constraint firstItem="NeK-ZV-AlE" firstAttribute="bottom" secondItem="qxa-Wt-ji5" secondAttribute="bottom" constant="20" id="Mdg-U6-oE0"/>
                             <constraint firstItem="NeK-ZV-AlE" firstAttribute="trailing" secondItem="qxa-Wt-ji5" secondAttribute="trailing" constant="20" id="ZQY-lH-9Ci"/>
                             <constraint firstItem="qxa-Wt-ji5" firstAttribute="leading" secondItem="NeK-ZV-AlE" secondAttribute="leading" constant="20" id="iHo-hw-dvy"/>
                         </constraints>
