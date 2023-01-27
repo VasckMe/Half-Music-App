@@ -11,12 +11,11 @@ This is my own project at the beginning of my development journey
 
 ## Possibilities
 
-In my project you can:
+In my app you can:
 - search music
 - add music in library
 - create albums
 - create account
-- change account data
 - use working music player for listening, skipping audio tracks
 
 ## Features
@@ -24,7 +23,7 @@ In my project you can:
 - Sign In and Sign up flows with email and password verifycation service
 - Onboarding based on SwiftUI
 - Small account view with possibility to modify your account data
-- MVC Architecture
+- MVC Architecture (VIPER in progress)
 - Custom UI elements and controllers
 - Multithreading (GCD)
 - Network Requests
@@ -36,7 +35,6 @@ In my project you can:
 - Uses Alamofire (https://github.com/Alamofire/Alamofire) and Alamofire Image (https://github.com/Alamofire/AlamofireImage) library:
   * Get data with GET method using AlamoFire Requests
   * Download and Cache images
-
 - Uses FireBase (https://console.firebase.google.com) libraries:
   * Authentication
   * Database for Audio Tracks and Albums
