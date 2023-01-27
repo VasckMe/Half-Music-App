@@ -17,7 +17,8 @@ struct TabBarAssembly {
                 withIdentifier: "TabBarVC"
             ) as? TabBarViewController,
             let searchViewController = SearchAssembly.searchViewController(),
-            let libraryViewController = LibraryAssembly.libraryViewController()
+            let libraryViewController = LibraryAssembly.libraryViewController(),
+            let accountViewController = AccountAssembly.accountViewController()
         else {
             return nil
         }
@@ -31,18 +32,24 @@ struct TabBarAssembly {
         searchViewController.tabBarItem = UITabBarItem(
             title: "Music",
             image: UIImage(systemName: "magnifyingglass.circle"),
-            tag: 0
+            selectedImage:  UIImage(systemName: "magnifyingglass.circle.fill")
         )
-        searchViewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
+//        searchViewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
         
         libraryViewController.tabBarItem = UITabBarItem(
             title: "Library",
             image: UIImage(systemName: "rectangle.stack"),
-            tag: 1
+            selectedImage: UIImage(systemName: "rectangle.stack.fill")
         )
-        libraryViewController.tabBarItem.selectedImage = UIImage(systemName: "rectangle.stack.fill")
+//        libraryViewController.tabBarItem.selectedImage = UIImage(systemName: "rectangle.stack.fill")
         
-        controller.setViewControllers([searchViewController, libraryViewController], animated: true)
+        accountViewController.tabBarItem = UITabBarItem(
+            title: "Account",
+            image: UIImage(systemName: "person"),
+            selectedImage: UIImage(systemName: "person.fill")
+        )
+        
+        controller.setViewControllers([searchViewController, libraryViewController, accountViewController], animated: true)
         
         return controller
     }

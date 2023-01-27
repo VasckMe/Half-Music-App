@@ -12,7 +12,7 @@
         <!--Account-->
         <scene sceneID="RCF-C1-b6x">
             <objects>
-                <viewController id="rgC-ku-LKF" customClass="AccountViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rgC-ku-LKF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="35E-TX-k2U">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="-403" y="1020"/>
         </scene>
-        <!--Edit Account View Controller-->
+        <!--View Controller-->
         <scene sceneID="dhC-eT-qLe">
             <objects>
-                <viewController storyboardIdentifier="EditVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kc9-tp-tu9" customClass="EditAccountViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kc9-tp-tu9" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MmX-4Q-v6J">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

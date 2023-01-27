@@ -30,19 +30,12 @@ final class NowIsPlayingView: UIView {
     // MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         viewInit()
         setupUI()
         setupAudio()
-//
         addObserver()
     }
 
-    override func awakeFromNib() {
-        print("YEAAA BITCH")
-        super.awakeFromNib()
-        print("YEAAA BITCH")
-    }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
