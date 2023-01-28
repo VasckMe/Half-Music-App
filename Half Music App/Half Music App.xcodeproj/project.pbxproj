@@ -129,6 +129,9 @@
 		18FC9FBE2983CD2600CD8EA8 /* EditAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FC9FBD2983CD2600CD8EA8 /* EditAccountViewController.storyboard */; };
 		18FC9FC02983CD6900CD8EA8 /* EditAccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC9FBF2983CD6900CD8EA8 /* EditAccountAssembly.swift */; };
 		18FC9FC22983CDE000CD8EA8 /* EditAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC9FC12983CDE000CD8EA8 /* EditAccountPresenter.swift */; };
+		18FC9FC5298518D500CD8EA8 /* DetailTrackAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC9FC4298518D500CD8EA8 /* DetailTrackAssembly.swift */; };
+		18FC9FC7298518F600CD8EA8 /* DetailTrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC9FC6298518F600CD8EA8 /* DetailTrackPresenter.swift */; };
+		18FC9FC92985190600CD8EA8 /* DetailTrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC9FC82985190600CD8EA8 /* DetailTrackRouter.swift */; };
 		66A3740E667DA92D067CD6BB /* Pods_Half_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04952DE828580D219A24B86F /* Pods_Half_Music_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -256,6 +259,9 @@
 		18FC9FBD2983CD2600CD8EA8 /* EditAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAccountViewController.storyboard; sourceTree = "<group>"; };
 		18FC9FBF2983CD6900CD8EA8 /* EditAccountAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountAssembly.swift; sourceTree = "<group>"; };
 		18FC9FC12983CDE000CD8EA8 /* EditAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountPresenter.swift; sourceTree = "<group>"; };
+		18FC9FC4298518D500CD8EA8 /* DetailTrackAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackAssembly.swift; sourceTree = "<group>"; };
+		18FC9FC6298518F600CD8EA8 /* DetailTrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackPresenter.swift; sourceTree = "<group>"; };
+		18FC9FC82985190600CD8EA8 /* DetailTrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackRouter.swift; sourceTree = "<group>"; };
 		225BD5879EB3F37760F89192 /* Pods-Half Music App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.release.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.release.xcconfig"; sourceTree = "<group>"; };
 		82EF1FC341AC10BEB485A8D3 /* Pods-Half Music App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Half Music App.debug.xcconfig"; path = "Target Support Files/Pods-Half Music App/Pods-Half Music App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,11 +306,7 @@
 		18130AF328E4530D000FCD54 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
 				18D3F48629167F4F00F7D867 /* AddTrackToAlbumViewController.swift */,
-				18778D7D290D840F00479294 /* Library Flow */,
-				18778D7E290D842500479294 /* Account Flow */,
-				18D20D2728E4652F00A758CC /* Cell View */,
 			);
 			path = "Main Controllers";
 			sourceTree = "<group>";
@@ -344,6 +346,8 @@
 		18329CF1297FC300002DC38E /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				18329CFA297FD04F002DC38E /* AddAlbum */,
+				1868518729826C03007166AE /* DetailAlbum */,
 				18329CF4297FC3E7002DC38E /* AlbumsAssembly.swift */,
 				18329CF6297FC47D002DC38E /* AlbumsPresenter.swift */,
 				18329CF8297FC499002DC38E /* AlbumsRouter.swift */,
@@ -372,13 +376,9 @@
 				184F70C329649FE70005268D /* TabBar */,
 				18C0E90B296737E6007B8589 /* Search */,
 				18C0E90C296737EF007B8589 /* Library */,
-				18329CDE297E7A56002DC38E /* Artists */,
-				18329CE8297E888F002DC38E /* Songs */,
-				18329CF1297FC300002DC38E /* Albums */,
-				18329CFA297FD04F002DC38E /* AddAlbum */,
-				1868518729826C03007166AE /* DetailAlbum */,
 				18C0E90D296737F7007B8589 /* Account */,
-				18FC9FBC2983CCF500CD8EA8 /* EditAccount */,
+				18D20D2728E4652F00A758CC /* Cell View */,
+				18FC9FC32985189300CD8EA8 /* DetailTrack */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -527,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				18F5CFB3291FA0B0006A5911 /* Account */,
-				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
 				18D3F48429167F2C00F7D867 /* AddTrackToAlbum.storyboard */,
 			);
 			path = Main;
@@ -559,22 +558,6 @@
 				18D20D1F28E45EF000A758CC /* Cache */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		18778D7D290D840F00479294 /* Library Flow */ = {
-			isa = PBXGroup;
-			children = (
-				18F5CFA7291F9E1A006A5911 /* Songs */,
-				18F5CFA6291F9E0F006A5911 /* Albums */,
-			);
-			path = "Library Flow";
-			sourceTree = "<group>";
-		};
-		18778D7E290D842500479294 /* Account Flow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Account Flow";
 			sourceTree = "<group>";
 		};
 		1885D0CD28EDA9B600288CA4 /* Extensions */ = {
@@ -677,6 +660,9 @@
 		18C0E90C296737EF007B8589 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				18329CDE297E7A56002DC38E /* Artists */,
+				18329CE8297E888F002DC38E /* Songs */,
+				18329CF1297FC300002DC38E /* Albums */,
 				18A9810A2976B79B00F70656 /* LibraryAssembly.swift */,
 				18A9810C2976B80300F70656 /* LibraryPresenter.swift */,
 				18A9810E2976B83500F70656 /* LibraryRouter.swift */,
@@ -689,6 +675,7 @@
 		18C0E90D296737F7007B8589 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				18FC9FBC2983CCF500CD8EA8 /* EditAccount */,
 				18F5CFB4291FA0F6006A5911 /* Account.storyboard */,
 				18FC9FB62983B87C00CD8EA8 /* AccountAssembly.swift */,
 				18FC9FB82983B8F000CD8EA8 /* AccountPresenter.swift */,
@@ -773,20 +760,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		18F5CFA6291F9E0F006A5911 /* Albums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Albums;
-			sourceTree = "<group>";
-		};
-		18F5CFA7291F9E1A006A5911 /* Songs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Songs;
-			sourceTree = "<group>";
-		};
 		18F5CFB3291FA0B0006A5911 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +776,18 @@
 				18FC9FBD2983CD2600CD8EA8 /* EditAccountViewController.storyboard */,
 			);
 			path = EditAccount;
+			sourceTree = "<group>";
+		};
+		18FC9FC32985189300CD8EA8 /* DetailTrack */ = {
+			isa = PBXGroup;
+			children = (
+				18FC9FC4298518D500CD8EA8 /* DetailTrackAssembly.swift */,
+				18FC9FC6298518F600CD8EA8 /* DetailTrackPresenter.swift */,
+				18FC9FC82985190600CD8EA8 /* DetailTrackRouter.swift */,
+				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
+				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
+			);
+			path = DetailTrack;
 			sourceTree = "<group>";
 		};
 		85719C8348536048B7F4D2D7 /* Frameworks */ = {
@@ -986,6 +971,7 @@
 				1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */,
 				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
+				18FC9FC5298518D500CD8EA8 /* DetailTrackAssembly.swift in Sources */,
 				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
@@ -1052,11 +1038,13 @@
 				18329CF0297E89D6002DC38E /* SongsRouter.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
 				186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */,
+				18FC9FC7298518F600CD8EA8 /* DetailTrackPresenter.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				1868518F29826D94007166AE /* DetailAlbumRouter.swift in Sources */,
 				18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
 				186651F7295DB997006A7BC5 /* SignUpSuccessViewController.swift in Sources */,
+				18FC9FC92985190600CD8EA8 /* DetailTrackRouter.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
 				18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
