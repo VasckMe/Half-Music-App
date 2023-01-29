@@ -8,19 +8,19 @@
 import UIKit
 
 struct NowIsPlayingAssembly {
-    static func nowIsPlayingView(input: NowIsPlayingModuleInput) -> NowIsPlayingView? {
+    static func nowIsPlayingView(input: NowIsPlayingModuleInput, output: NowIsPlayingOutput) -> NowIsPlayingView? {
         guard
-            let frame = input.frame,
-            let delegate = input.delegate
+            let frame = input.frame
         else {
             return nil
         }
         
         let view = NowIsPlayingView(frame: frame)
-        let router = NowIsPlayingRouter(view: view, delegate: delegate)
-        let presenter = NowIsPlayingPresenter(router: router)
+        let router = NowIsPlayingRouter(view: view)
         
+        let presenter = NowIsPlayingPresenter(output: output, router: router)
         presenter.view = view
+        
         view.presenter = presenter
         
         return view

@@ -8,6 +8,10 @@
 import Foundation
 import MediaPlayer
 
+protocol NowIsPlayingOutput: AnyObject {
+    func showDetail(with index: Int)
+}
+
 protocol NowIsPlayingPresenterInterface {
 //    func addPlayerObserver()
 //    func removePlayerObserver()
@@ -18,19 +22,20 @@ protocol NowIsPlayingPresenterInterface {
 
 struct NowIsPlayingModuleInput {
     let frame: CGRect?
-    let delegate: TabBarViewControllerInterface?
 }
 
 final class NowIsPlayingPresenter {
     weak var view: NowIsPlayingViewInterface?
     
+    private weak var output: NowIsPlayingOutput?
     private let router: NowIsPlayingRouterInteface?
     
     private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
     private let audioPlayerService = AudioPlayerManager.shared
     private let animationService = AnimationManager.shared
     
-    init(router: NowIsPlayingRouterInteface) {
+    init(output: NowIsPlayingOutput, router: NowIsPlayingRouterInteface) {
+        self.output = output
         self.router = router
     }
 }
@@ -54,7 +59,7 @@ extension NowIsPlayingPresenter: NowIsPlayingPresenterInterface {
     }
     
     func didTriggerTapView() {
-        router?.showTrack()
+        router?.showTrack(output: output)
     }
 }
 

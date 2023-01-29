@@ -8,27 +8,24 @@
 import Foundation
 
 protocol NowIsPlayingRouterInteface {
-    func showTrack()
+    func showTrack(output: NowIsPlayingOutput?)
 }
 
 final class NowIsPlayingRouter {
-    private let view: NowIsPlayingView?
-    private let delegate: TabBarViewControllerInterface?
+    private weak var view: NowIsPlayingView?
 
     private let audioPlayerService = AudioPlayerManager.shared
 
-    init(view: NowIsPlayingView, delegate: TabBarViewControllerInterface) {
+    init(view: NowIsPlayingView) {
         self.view = view
-        self.delegate = delegate
     }
 }
 
 extension NowIsPlayingRouter: NowIsPlayingRouterInteface {
-    func showTrack() {
-        guard let delegate = delegate else { return }
+    func showTrack(output: NowIsPlayingOutput?) {
         guard let index = audioPlayerService.trackIndex else {
             return
         }
-        delegate.showDetail(with: index)
+        output?.showDetail(with: index)
     }
 }
