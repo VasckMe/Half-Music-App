@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 
 
-protocol EditAccountOutput {
+protocol EditAccountOutput: AnyObject {
     func updateUserData()
     func closeEditAccount()
 }
@@ -39,7 +39,7 @@ final class EditAccountPresenter {
     weak var controller: EditAccountViewControllerInterface?
     
     private var input: EditAccountInput
-    private var output: EditAccountOutput
+    private weak var output: EditAccountOutput?
     
     var isValidEmail = true {
         didSet {
@@ -144,8 +144,8 @@ private extension EditAccountPresenter {
             FireBaseStorageService.userRef.updateChildValues(["nickname" : input?.nickname ?? "User"])
         }
         group.notify(queue: .main) {
-            self.output.updateUserData()
-            self.output.closeEditAccount()
+            self.output?.updateUserData()
+            self.output?.closeEditAccount()
         }
     }
 }

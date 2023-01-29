@@ -21,7 +21,7 @@ final class EditAlbumPresenter {
     
     private var router: AddAlbumRouterInterface?
     private var input: EditAlbumInput
-    private var output: EditAlbumOutput
+    private weak var output: EditAlbumOutput?
     
     var choosedTracks: [TrackFB] = []
     
@@ -92,7 +92,7 @@ private extension EditAlbumPresenter {
         
         if let detailAlbum = input.detailAlbum {
             FireBaseStorageService.albumsRef.child(detailAlbum.name).removeValue()
-            output.update(with: album)
+            output?.update(with: album)
         }
     
         choosedTracks.forEach { track in

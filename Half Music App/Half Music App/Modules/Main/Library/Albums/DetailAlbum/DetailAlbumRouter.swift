@@ -15,7 +15,7 @@ protocol DetailAlbumRouterInterface {
 }
 
 final class DetailAlbumRouter {
-    private var controller: DetailAlbumViewController?
+    private weak var controller: DetailAlbumViewController?
     
     init(controller: DetailAlbumViewController) {
         self.controller = controller

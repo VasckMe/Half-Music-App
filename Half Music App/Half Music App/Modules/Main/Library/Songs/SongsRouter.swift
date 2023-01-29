@@ -12,7 +12,7 @@ protocol SongsRouterInterface {
 }
 
 final class SongsRouter {
-    private var controller: SongsTableViewController?
+    private weak var controller: SongsTableViewController?
     
     init(controller: SongsTableViewController) {
         self.controller = controller
@@ -25,6 +25,6 @@ extension SongsRouter: SongsRouterInterface {
             return
         }
         
-        self.controller?.navigationController?.pushViewController(controller, animated: true)
+        self.controller?.navigationController?.present(controller, animated: true)
     }
 }

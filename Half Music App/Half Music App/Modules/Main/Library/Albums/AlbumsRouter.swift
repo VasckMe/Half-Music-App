@@ -15,7 +15,7 @@ protocol AlbumsRouterInterface {
 }
 
 final class AlbumsRouter {
-    private var controller: AlbumsCollectionViewController?
+    private weak var controller: AlbumsCollectionViewController?
     
     init(controller: AlbumsCollectionViewController) {
         self.controller = controller

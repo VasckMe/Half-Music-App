@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AddTrackToAlbumOutput {
+protocol AddTrackToAlbumOutput: AnyObject {
     func addToLibrary()
     func closeAddTrackToAlbum()
 }
@@ -29,7 +29,7 @@ final class AddTrackToAlbumPresenter {
     weak var controller: AddTrackToAlbumViewControllerInterface?
     
     private var input: AddTrackToAlbumInput
-    private var output: AddTrackToAlbumOutput
+    private weak var output: AddTrackToAlbumOutput?
     
     var albums: [AlbumFB] = []
     
@@ -67,8 +67,8 @@ extension AddTrackToAlbumPresenter: AddTrackToAlbumPresenterInterface {
             let ref = FireBaseStorageService.albumsRef.child(album.name).child(input.track.name)
             ref.setValue(input.track.convertInDictionary())
             FireBaseStorageService.saveTrackInDB(track: input.track)
-            output.addToLibrary()
-            output.closeAddTrackToAlbum()
+            output?.addToLibrary()
+            output?.closeAddTrackToAlbum()
         }
     }
     

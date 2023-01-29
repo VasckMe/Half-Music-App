@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AddAlbumOutput {
+protocol AddAlbumOutput: AnyObject {
     func didTriggerCloseAddAlbumViewController()
 }
 
@@ -26,7 +26,7 @@ final class AddAlbumPresenter {
     weak var controller: AddAlbumViewControllerInterface?
     
     private var router: AddAlbumRouterInterface?
-    private var output: AddAlbumOutput
+    private weak var output: AddAlbumOutput?
     
     var choosedTracks: [TrackFB] = []
     

@@ -13,7 +13,7 @@ protocol DetailTrackRouterInterface {
 }
 
 final class DetailTrackRouter {
-    private var controller: DetailTrackViewController?
+    private weak var controller: DetailTrackViewController?
     
     init(controller: DetailTrackViewController) {
         self.controller = controller

@@ -22,10 +22,10 @@ struct SignUpSuccessModuleInput {
 
 final class SignUpSuccessPresenter {
     weak var controller: SignUpSuccessViewControllerInterface?
-    weak var output: SignUpSuccessModuleOutput?
-    
+        
     private let input: SignUpSuccessModuleInput
-    
+    private weak var output: SignUpSuccessModuleOutput?
+
     init(input: SignUpSuccessModuleInput, output: SignUpSuccessModuleOutput) {
         self.input = input
         self.output = output

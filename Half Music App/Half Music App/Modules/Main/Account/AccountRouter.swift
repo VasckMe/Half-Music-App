@@ -15,7 +15,7 @@ protocol AccountRouterInterface {
 }
 
 final class AccountRouter {
-    private var controller: AccountViewController?
+    private weak var controller: AccountViewController?
     
     init(controller: AccountViewController) {
         self.controller = controller

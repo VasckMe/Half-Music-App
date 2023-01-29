@@ -16,7 +16,7 @@ protocol LibraryRouterInterface {
 }
 
 final class LibraryRouter {
-    private var controller: LibraryViewController?
+    private weak var controller: LibraryViewController?
     
     init(controller: LibraryViewController) {
         self.controller = controller

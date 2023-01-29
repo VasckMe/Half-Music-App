@@ -12,7 +12,7 @@ protocol ArtistsRouterInterface {
 }
 
 final class ArtistsRouter {
-    private var controller: ArtistsTableViewController?
+    private weak var controller: ArtistsTableViewController?
     
     init(controller: ArtistsTableViewController) {
         self.controller = controller

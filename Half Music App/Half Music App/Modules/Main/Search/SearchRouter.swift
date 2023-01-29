@@ -12,7 +12,7 @@ protocol SearchRouterInterface {
 }
 
 final class SearchRouter {
-    private var controller: SearchViewController?
+    private weak var controller: SearchViewController?
     
     init(controller: SearchViewController) {
         self.controller = controller

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol AddAlbumRouterInterface {
-    func closeAddAlbumController(output: AddAlbumOutput)
+    func closeAddAlbumController(output: AddAlbumOutput?)
 }
 
 final class AddAlbumRouter {
-    private var controller: AddAlbumViewController?
+    private weak var controller: AddAlbumViewController?
     
     init(controller: AddAlbumViewController) {
         self.controller = controller
@@ -20,7 +20,7 @@ final class AddAlbumRouter {
 }
 
 extension AddAlbumRouter: AddAlbumRouterInterface {
-    func closeAddAlbumController(output: AddAlbumOutput) {
-        output.didTriggerCloseAddAlbumViewController()
+    func closeAddAlbumController(output: AddAlbumOutput?) {
+        output?.didTriggerCloseAddAlbumViewController()
     }
 }
