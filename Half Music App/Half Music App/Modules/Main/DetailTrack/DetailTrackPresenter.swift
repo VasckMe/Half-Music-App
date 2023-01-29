@@ -175,9 +175,7 @@ private extension DetailTrackPresenter {
     }
     
     func makeTime(time: CMTime) {
-        guard let duration = audioPlayerService.getDuration() else {
-            return
-        }
+        let duration = audioPlayerService.getDuration()! 
         
         let seconds = Int(time.value/1000000000)
         
