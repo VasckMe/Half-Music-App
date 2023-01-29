@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TabBarRouterInterface {
-    func showDetailTrack(with index: Int)
+    func showDetailTrack(input: DetailTrackInput)
 }
 
 final class TabBarRouter {
@@ -20,12 +20,10 @@ final class TabBarRouter {
 }
 
 extension TabBarRouter: TabBarRouterInterface {
-    func showDetailTrack(with index: Int) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
+    func showDetailTrack(input: DetailTrackInput) {
+        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
             return
         }
-        vc.trackIndex = index
-        vc.isOpenInBackground = true
-        controller?.viewControllers![0].present(vc, animated: true)
+        self.controller?.viewControllers![0].present(controller, animated: true)
     }
 }

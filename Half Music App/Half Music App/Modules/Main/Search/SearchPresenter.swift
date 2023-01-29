@@ -11,6 +11,9 @@ import Foundation
 protocol SearchPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
+    
+    func didTriggerTableViewCellAt(index: Int)
+    
     func fetchMusic()
     func fetchMusicWithFilter(filter: String?)
 }
@@ -35,6 +38,12 @@ extension SearchPresenter: SearchPresenterInterface {
     func didTriggerViewDisappear() {
 //        controller?.showNavigationBar()
 
+    }
+    
+    func didTriggerTableViewCellAt(index: Int) {
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        let input = DetailTrackInput(trackIndex: index, isOpenInBackground: false)
+        router?.showDetailTrack(input: input)
     }
     
     func fetchMusic() {

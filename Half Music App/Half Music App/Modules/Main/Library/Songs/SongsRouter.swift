@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SongsRouterInterface {
-    
+    func showDetailTrack(input: DetailTrackInput)
 }
 
 final class SongsRouter {
@@ -20,5 +20,11 @@ final class SongsRouter {
 }
 
 extension SongsRouter: SongsRouterInterface {
-    
+    func showDetailTrack(input: DetailTrackInput) {
+        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
+            return
+        }
+        
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
+    }
 }

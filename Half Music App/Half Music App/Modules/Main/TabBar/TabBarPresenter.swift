@@ -23,6 +23,7 @@ final class TabBarPresenter {
 
 extension TabBarPresenter: TabBarPresenterInterface {
     func didViewTapped(with index: Int) {
-        router?.showDetailTrack(with: index)
+        let input = DetailTrackInput(trackIndex: index, isOpenInBackground: true)
+        router?.showDetailTrack(input: input)
     }
 }

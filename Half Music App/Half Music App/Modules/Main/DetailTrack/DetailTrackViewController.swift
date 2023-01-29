@@ -13,14 +13,33 @@ protocol UpdateDetailTrackViewControllerProtocol {
     func updateDetailTrack()
 }
 
+protocol DetailTrackViewControllerInterface: AnyObject {
+    func setTrackName(name: String?)
+    func setAuthorName(name: String?)
+    func setBackgroundImageView(image: UIImage?)
+    func setTrackImageView(image: UIImage?)
+    
+    func setMaxTrackSliderValue(value: Float)
+    func setTrackSliderValue(value: Float)
+    
+    func setStartTimeLabel(time: String)
+    func setEndTimeLabel(time: String)
+    
+    func setRepeat()
+    func setShuffle()
+    
+    func likeButtonIsSelected(isSelected: Bool)
+    
+    func playPauseButtonToggle()
+    func repeatButtonToggle()
+    func shuffleButtonToggle()
+    
+    func playPause()
+}
+
 final class DetailTrackViewController: UIViewController {
 
-    static func storyboardInstance() -> DetailTrackViewController? {
-        let storyboard = UIStoryboard(name: "DetailTrack", bundle: nil)
-        return storyboard.instantiateViewController(
-            withIdentifier: "DetailTrackVC"
-        ) as? DetailTrackViewController
-    }
+    var presenter: DetailTrackPresenterInterface?
     
     // MARK: - IBOutlets
     
@@ -31,143 +50,77 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var trackSlider: UISlider!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
-    @IBOutlet private weak var volumeSliderOutlet: UISlider! {
-        didSet {
-            volumeSliderOutlet.value = audioPlayerService.volume * 100
-        }
-    }
-    
-    @IBOutlet private weak var playPauseButtonOutlet: UIButton! {
-        didSet {
-            playPauseButtonOutlet.isSelected = audioPlayerService.isPlaying
-            playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
-            playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        }
-    }
-    @IBOutlet private weak var shuffleOutlet: UIButton! {
-        didSet {
-            shuffleOutlet.isSelected = audioPlayerService.isShuffle
-            shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
-            shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
-        }
-    }
-    @IBOutlet private weak var repeatOutlet: UIButton! {
-        didSet {
-            repeatOutlet.isSelected = audioPlayerService.isRepeat
-            repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
-            repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
-        }
-    }
-    
-    @IBOutlet private weak var likeButtonOutlet: UIButton! {
-        didSet {
-            likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
-            likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-        }
-    }
-    
-    // MARK: - Properties
-    
-    private let dataFetcherService: DataFetcherServiceProtocol = DataFetcherService()
-    private let audioPlayerService = AudioPlayerManager.shared
-    private var timeObserver: Any!
-    var trackIndex: Int?
-    var isOpenInBackground = false
+    @IBOutlet private weak var volumeSliderOutlet: UISlider!
+    @IBOutlet private weak var playPauseButtonOutlet: UIButton!
+    @IBOutlet private weak var shuffleOutlet: UIButton!
+    @IBOutlet private weak var repeatOutlet: UIButton!
+    @IBOutlet private weak var likeButtonOutlet: UIButton!
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTrackUI()
-        if !isOpenInBackground {
-            audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex)
-
-        }
+        setupUI()
+        presenter?.didTriggerLoadView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        timeObserver = audioPlayerService.addObserver { [weak self] time in
-            self?.makeTime(time: time)
-        }
+        presenter?.didTriggerViewAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        audioPlayerService.removeObserver(observer: timeObserver!)
+        presenter?.didTriggerViewDisappear()
     }
     
     // MARK: - IBActions
     
     @IBAction private func trackSliderAction() {
-        let value: Double = Double(trackSlider.value)
-        let time = CMTime(seconds: value, preferredTimescale: .max)
-        audioPlayerService.seekTo(time: time)
+        presenter?.didTriggerTrackSlider(value: Double(trackSlider.value))
     }
     
     @IBAction private func backwardTrackAction() {
-        trackIndex = audioPlayerService.previousAudioTrack(audioIndex: trackIndex)
-        setupTrackUI()
+        presenter?.didTriggerBackward()
     }
     
     @IBAction private func playPauseTrackAction() {
-        trackSlider.maximumValue = Float(audioPlayerService.getDuration()!)
-        playPauseButtonOutlet.isSelected.toggle()
-        audioPlayerService.isPlaying = playPauseButtonOutlet.isSelected
-        if playPauseButtonOutlet.isSelected {
-            audioPlayerService.play()
-        } else {
-            audioPlayerService.pause()
-        }
+        presenter?.didTriggerPlayPause()
     }
     
     @IBAction private func forwardTrackAction() {
-        trackIndex = audioPlayerService.nextAudioTrack(
-            audioIndex: trackIndex,
-            isShuffleOn: shuffleOutlet.isSelected
-        )
-        setupTrackUI()
+        presenter?.didTriggerForward(isShuffle: shuffleOutlet.isSelected)
     }
     
     @IBAction private func shuffleAction() {
-        shuffleOutlet.isSelected.toggle()
-        audioPlayerService.isShuffle = shuffleOutlet.isSelected
+        presenter?.didTriggerShuffle()
     }
     
     @IBAction private func volumeSliderAction(_ sender: UISlider) {
-        audioPlayerService.volume = sender.value/100
-        audioPlayerService.setVolume(volume: sender.value/100)
+        presenter?.didTriggerVolumeSlider(value: sender.value)
     }
     
     @IBAction private func repeatAction() {
-        repeatOutlet.isSelected.toggle()
-        audioPlayerService.isRepeat = repeatOutlet.isSelected
+        presenter?.didTriggerRepeat()
     }
     
     @IBAction private func addToLibrary(_ sender: Any) {
-        addAudioToLibrary()
+//        addAudioToLibrary()
     }
     
     @IBAction private func addToAlbum() {
-        let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
-        let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
-        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-        vc.track = track
-        vc.delegate = self
-        self.present(vc, animated: true)
+        presenter?.didTriggerAddToAlbum()
     }
-    
-    
 }
 
 // MARK: - UpdateDetailTrackViewControllerProtocol
 
-extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
-    func updateDetailTrack() {
-        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
-            self?.likeButtonOutlet.isSelected = bool
-        }
-    }
-}
+//extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
+//    func updateDetailTrack() {
+//        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
+//        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
+//            self?.likeButtonOutlet.isSelected = bool
+//        }
+//    }
+//}
 
 // MARK: - Extension Logic
 
@@ -175,73 +128,112 @@ extension DetailTrackViewController {
     
     // MARK: - Private
     
-    private func addAudioToLibrary() {
-        guard
-            let audioIndex = trackIndex,
-            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
-        else {
-            print("Bad track index")
-                return
-        }
-        
-        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
-        
-        if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
-            print("REMOVING \(track.name)")
-            FireBaseStorageService.audioRef.child(track.name ?? "track name").removeValue()
-            likeButtonOutlet.isSelected.toggle()
-        } else {
-            print("ADDING \(track.name)")
-            likeButtonOutlet.isSelected.toggle()
-            FireBaseStorageService.saveTrackInDB(track: track)
-        }
-    }
-    
-    private func setupTrackUI() {
-        guard
-            let audioIndex = trackIndex,
-            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
-        else {
-            print("There is no tracks with that index")
-            return
-        }
-        
-        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
-        
-        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
-            self?.likeButtonOutlet.isSelected = bool
-        }
-                
-        trackNameLabel.text = track.name
-        authorNameLabel.text = track.artist
-        guard let trackImageUrl = track.album?.images?[0].url else {
-            return
-        }
-                
-        dataFetcherService.fetchImage(urlString: trackImageUrl) { [weak self] image in
-            guard let image = image else {
-                return
-            }
-            self?.trackBackgroundImageView.image = image
-            self?.trackImageView.image = image
-        }
-    }
-    
-    private func makeTime(time: CMTime) {
-        let duration = audioPlayerService.getDuration()!
-        
-        let seconds = Int(time.value/1000000000)
-        trackSlider.value = Float(seconds)
-        startTimeLabel.text = seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)"
-        endTimeLabel.text = duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)"
+//    private func addAudioToLibrary() {
+//        guard
+//            let audioIndex = trackIndex,
+//            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
+//        else {
+//            print("Bad track index")
+//                return
+//        }
+//
+//        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
+//
+//        if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
+//            print("REMOVING \(track.name)")
+//            FireBaseStorageService.audioRef.child(track.name ?? "track name").removeValue()
+//            likeButtonOutlet.isSelected.toggle()
+//        } else {
+//            print("ADDING \(track.name)")
+//            likeButtonOutlet.isSelected.toggle()
+//            FireBaseStorageService.saveTrackInDB(track: track)
+//        }
+//    }
+}
 
-        if duration - seconds <= 0, duration != 0 {
-            audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
-            if repeatOutlet.isSelected {
-                audioPlayerService.addAudioTrackInPlayer(audioIndex: trackIndex!)
-            } else {
-                forwardTrackAction()
-            }
-        }
+extension DetailTrackViewController: DetailTrackViewControllerInterface {
+    func setTrackName(name: String?) {
+        trackNameLabel.text = name
+    }
+    
+    func setAuthorName(name: String?) {
+        authorNameLabel.text = name
+    }
+    
+    func setBackgroundImageView(image: UIImage?) {
+        trackBackgroundImageView.image = image
+    }
+    
+    func setTrackImageView(image: UIImage?) {
+        trackImageView.image = image
+    }
+    
+    func setMaxTrackSliderValue(value: Float) {
+        trackSlider.maximumValue = value
+    }
+    
+    func setTrackSliderValue(value: Float) {
+        trackSlider.value = value
+    }
+    
+    func setStartTimeLabel(time: String) {
+        startTimeLabel.text = time
+    }
+    
+    func setEndTimeLabel(time: String) {
+        endTimeLabel.text = time
+    }
+    
+    func setRepeat() {
+        AudioPlayerManager.shared.isRepeat = repeatOutlet.isSelected
+    }
+    
+    func setShuffle() {
+        AudioPlayerManager.shared.isShuffle = shuffleOutlet.isSelected
+    }
+    
+    func likeButtonIsSelected(isSelected: Bool) {
+        likeButtonOutlet.isSelected = isSelected
+    }
+    
+    func playPauseButtonToggle() {
+        playPauseButtonOutlet.isSelected.toggle()
+    }
+    
+    func shuffleButtonToggle() {
+        shuffleOutlet.isSelected.toggle()
+    }
+    
+    func repeatButtonToggle() {
+        repeatOutlet.isSelected.toggle()
+    }
+ 
+    func playPause() {
+        AudioPlayerManager.shared.isPlaying = playPauseButtonOutlet.isSelected
+        
+        playPauseButtonOutlet.isSelected
+            ? AudioPlayerManager.shared.play()
+            : AudioPlayerManager.shared.pause()
+    }
+}
+
+private extension DetailTrackViewController {
+    func setupUI() {
+        volumeSliderOutlet.value = AudioPlayerManager.shared.volume * 100
+        
+        playPauseButtonOutlet.isSelected = AudioPlayerManager.shared.isPlaying
+        playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
+        playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        
+        likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+        likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        
+        repeatOutlet.isSelected = AudioPlayerManager.shared.isRepeat
+        repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
+        repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
+        
+        shuffleOutlet.isSelected = AudioPlayerManager.shared.isShuffle
+        shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
+        shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
     }
 }

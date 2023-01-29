@@ -11,6 +11,8 @@ protocol LibraryRouterInterface {
     func showArtistsViewController()
     func showSongsViewController()
     func showAlbumsViewController()
+    
+    func showDetailTrackViewController(input: DetailTrackInput)
 }
 
 final class LibraryRouter {
@@ -44,5 +46,13 @@ extension LibraryRouter: LibraryRouterInterface {
         }
         
         controller?.navigationController?.pushViewController(albumsController, animated: true)
+    }
+    
+    func showDetailTrackViewController(input: DetailTrackInput) {
+        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
+            return
+        }
+        
+        self.controller?.navigationController?.present(controller, animated: true)
     }
 }

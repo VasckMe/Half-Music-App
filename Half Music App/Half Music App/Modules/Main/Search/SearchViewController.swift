@@ -69,14 +69,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
-            return
-        }
-
-        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-        vc.trackIndex = indexPath.row
-
-        navigationController?.present(vc, animated: true)
+        presenter?.didTriggerTableViewCellAt(index: indexPath.row)
     }
 }
 

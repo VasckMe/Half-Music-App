@@ -14,6 +14,7 @@ protocol SongsPresenterInterface {
     func didTriggerViewDisappear()
     
     func didTriggerSearchBar(text: String)
+    func didTriggerTableViewCellAt(index: Int)
 }
 
 struct SongsInput {
@@ -48,6 +49,12 @@ extension SongsPresenter: SongsPresenterInterface {
     
     func didTriggerSearchBar(text: String) {
         findSongs(with: text)
+    }
+    
+    func didTriggerTableViewCellAt(index: Int) {
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        let input = DetailTrackInput(trackIndex: index, isOpenInBackground: false)
+        router?.showDetailTrack(input: input)
     }
 }
 

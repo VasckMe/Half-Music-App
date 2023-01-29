@@ -104,13 +104,7 @@ extension LibraryViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension LibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
-            return
-        }
-
-        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-        vc.trackIndex = indexPath.row
-        navigationController?.present(vc, animated: true)
+        presenter?.didTriggerCollectionViewCellAt(index: indexPath.row)
     }
 }
 

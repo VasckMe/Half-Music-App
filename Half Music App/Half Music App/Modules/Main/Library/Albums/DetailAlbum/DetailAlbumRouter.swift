@@ -11,7 +11,7 @@ protocol DetailAlbumRouterInterface {
     func showEditAlbumViewController(input: EditAlbumInput, output: EditAlbumOutput)
     func closeEditAlbumViewController()
     
-    func showDetailTrackViewController(index: Int)
+    func showDetailTrackViewController(input: DetailTrackInput)
 }
 
 final class DetailAlbumRouter {
@@ -39,12 +39,10 @@ extension DetailAlbumRouter: DetailAlbumRouterInterface {
         controller?.navigationController?.popViewController(animated: true)
     }
     
-    func showDetailTrackViewController(index: Int) {
-        guard let vc = DetailTrackViewController.storyboardInstance() else {
+    func showDetailTrackViewController(input: DetailTrackInput) {
+        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
             return
         }
-        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
-        vc.trackIndex = index
-        self.controller?.navigationController?.present(vc, animated: true)
+        self.controller?.navigationController?.present(controller, animated: true)
     }
 }

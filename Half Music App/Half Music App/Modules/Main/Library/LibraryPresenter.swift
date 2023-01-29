@@ -11,6 +11,7 @@ protocol LibraryPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
     
+    func didTriggerCollectionViewCellAt(index: Int)
     func didTriggerTableViewCell(category: Category)
 }
 
@@ -37,6 +38,13 @@ extension LibraryPresenter: LibraryPresenterInterface {
 
     func didTriggerTableViewCell(category: Category) {
         showCategory(category: category)
+    }
+    
+    func didTriggerCollectionViewCellAt(index: Int) {
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        
+        let input = DetailTrackInput(trackIndex: index, isOpenInBackground: false)
+        router?.showDetailTrackViewController(input: input)
     }
 }
 

@@ -51,7 +51,9 @@ extension DetailAlbumPresenter: DetailAlbumPresenterInterface {
     }
     
     func didTriggerCellAt(index: Int) {
-        router?.showDetailTrackViewController(index: index)
+        let input = DetailTrackInput(trackIndex: index, isOpenInBackground: false)
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
+        router?.showDetailTrackViewController(input: input)
     }
     
     func didTriggerRemoveCellAt(index: Int) {

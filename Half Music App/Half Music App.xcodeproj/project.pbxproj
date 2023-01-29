@@ -68,7 +68,7 @@
 		18778D81290D86B700479294 /* SmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D7F290D86B700479294 /* SmallTableViewCell.swift */; };
 		18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18778D80290D86B700479294 /* SmallTableViewCell.xib */; };
 		18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D83290E85A500479294 /* DetailAlbumViewController.swift */; };
-		1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885D0C928ED846300288CA4 /* DetailTrack.storyboard */; };
+		1885D0CA28ED846300288CA4 /* DetailTrackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885D0C928ED846300288CA4 /* DetailTrackViewController.storyboard */; };
 		1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */; };
 		1885D0CF28EDA9D500288CA4 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */; };
 		1885D0D128EDD70E00288CA4 /* ResponseCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */; };
@@ -198,7 +198,7 @@
 		18778D7F290D86B700479294 /* SmallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell.swift; sourceTree = "<group>"; };
 		18778D80290D86B700479294 /* SmallTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTableViewCell.xib; sourceTree = "<group>"; };
 		18778D83290E85A500479294 /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
-		1885D0C928ED846300288CA4 /* DetailTrack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailTrack.storyboard; sourceTree = "<group>"; };
+		1885D0C928ED846300288CA4 /* DetailTrackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailTrackViewController.storyboard; sourceTree = "<group>"; };
 		1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackViewController.swift; sourceTree = "<group>"; };
 		1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		1885D0D028EDD70E00288CA4 /* ResponseCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCacheManager.swift; sourceTree = "<group>"; };
@@ -785,7 +785,7 @@
 				18FC9FC6298518F600CD8EA8 /* DetailTrackPresenter.swift */,
 				18FC9FC82985190600CD8EA8 /* DetailTrackRouter.swift */,
 				1885D0CB28ED888D00288CA4 /* DetailTrackViewController.swift */,
-				1885D0C928ED846300288CA4 /* DetailTrack.storyboard */,
+				1885D0C928ED846300288CA4 /* DetailTrackViewController.storyboard */,
 			);
 			path = DetailTrack;
 			sourceTree = "<group>";
@@ -890,7 +890,7 @@
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
 				18329CE0297E7AA1002DC38E /* ArtistsTableViewController.storyboard in Resources */,
-				1885D0CA28ED846300288CA4 /* DetailTrack.storyboard in Resources */,
+				1885D0CA28ED846300288CA4 /* DetailTrackViewController.storyboard in Resources */,
 				18329CFC297FD091002DC38E /* AddAlbumViewController.storyboard in Resources */,
 				18FC9FBE2983CD2600CD8EA8 /* EditAccountViewController.storyboard in Resources */,
 				18F5CF9B291E5472006A5911 /* Onboarding.storyboard in Resources */,
