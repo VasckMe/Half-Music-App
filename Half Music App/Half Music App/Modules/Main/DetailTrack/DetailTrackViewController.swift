@@ -33,6 +33,7 @@ protocol DetailTrackViewControllerInterface: AnyObject {
     func playPauseButtonToggle()
     func repeatButtonToggle()
     func shuffleButtonToggle()
+    func likeButtonToggle()
     
     func playPause()
 }
@@ -103,24 +104,13 @@ final class DetailTrackViewController: UIViewController {
     }
     
     @IBAction private func addToLibrary(_ sender: Any) {
-//        addAudioToLibrary()
+        presenter?.didTriggerAddToLibrary(isSelected: likeButtonOutlet.isSelected)
     }
     
     @IBAction private func addToAlbum() {
         presenter?.didTriggerAddToAlbum()
     }
 }
-
-// MARK: - UpdateDetailTrackViewControllerProtocol
-
-//extension DetailTrackViewController: UpdateDetailTrackViewControllerProtocol {
-//    func updateDetailTrack() {
-//        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-//        FireBaseStorageService.isAddedInLibrary(track: track) { [weak self] bool in
-//            self?.likeButtonOutlet.isSelected = bool
-//        }
-//    }
-//}
 
 // MARK: - Extension Logic
 
@@ -206,6 +196,10 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
     
     func repeatButtonToggle() {
         repeatOutlet.isSelected.toggle()
+    }
+    
+    func likeButtonToggle() {
+        likeButtonOutlet.isSelected.toggle()
     }
  
     func playPause() {

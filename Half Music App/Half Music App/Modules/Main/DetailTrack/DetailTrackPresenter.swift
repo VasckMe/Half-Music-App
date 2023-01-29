@@ -29,6 +29,7 @@ protocol DetailTrackPresenterInterface {
     
     func didTriggerPlayPause()
     
+    func didTriggerAddToLibrary(isSelected: Bool)
     func didTriggerAddToAlbum()
 }
 
@@ -47,6 +48,8 @@ final class DetailTrackPresenter {
         self.router = router
     }
 }
+
+// MARK: - DetailTrackPresenterInterface {
 
 extension DetailTrackPresenter: DetailTrackPresenterInterface {
     func didTriggerLoadView() {
@@ -117,13 +120,25 @@ extension DetailTrackPresenter: DetailTrackPresenterInterface {
         controller?.playPause()
     }
     
+    func didTriggerAddToLibrary(isSelected: Bool) {
+        addToLibrary(isSelected: isSelected)
+    }
+    
     func didTriggerAddToAlbum() {
-//        let storyboard = UIStoryboard(name: "AddTrackToAlbum", bundle: nil)
-//        let vc = (storyboard.instantiateViewController(withIdentifier: "AddTrackToAlbumVC") as? AddTrackToAlbumViewController)!
-//        let track = LocalStorage.shared.currentAudioQueue[trackIndex!]
-//        vc.track = track
-//        vc.delegate = self
-//        self.present(vc, animated: true)
+        let track = LocalStorage.shared.currentAudioQueue[input.trackIndex]
+        let input = AddTrackToAlbumInput(track: track)
+        
+        router?.showAddTrackToAlbum(input: input, output: self)
+    }
+}
+
+extension DetailTrackPresenter: AddTrackToAlbumOutput {
+    func addToLibrary() {
+        controller?.likeButtonIsSelected(isSelected: true)
+    }
+    
+    func closeAddTrackToAlbum() {
+        router?.closeAddTrackToAlbum()
     }
 }
 
@@ -159,7 +174,7 @@ private extension DetailTrackPresenter {
         }
     }
     
-    private func makeTime(time: CMTime) {
+    func makeTime(time: CMTime) {
         guard let duration = audioPlayerService.getDuration() else {
             return
         }
@@ -175,6 +190,25 @@ private extension DetailTrackPresenter {
             audioPlayerService.isRepeat
                 ? audioPlayerService.addAudioTrackInPlayer(audioIndex: input.trackIndex)
                 : didTriggerForward(isShuffle: audioPlayerService.isShuffle)
+        }
+    }
+    
+    func addToLibrary(isSelected: Bool) {
+        guard
+            LocalStorage.shared.currentAudioQueue.indices.contains(input.trackIndex)
+        else {
+            print("Bad track index")
+            return
+        }
+        
+        let track = LocalStorage.shared.currentAudioQueue[input.trackIndex]
+        
+        if isSelected {
+            FireBaseStorageService.audioRef.child(track.name).removeValue()
+            controller?.likeButtonToggle()
+        } else {
+            controller?.likeButtonToggle()
+            FireBaseStorageService.saveTrackInDB(track: track)
         }
     }
 }

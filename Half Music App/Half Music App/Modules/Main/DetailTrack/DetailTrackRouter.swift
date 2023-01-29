@@ -8,7 +8,8 @@
 import Foundation
 
 protocol DetailTrackRouterInterface {
-    
+    func showAddTrackToAlbum(input: AddTrackToAlbumInput, output: AddTrackToAlbumOutput)
+    func closeAddTrackToAlbum()
 }
 
 final class DetailTrackRouter {
@@ -20,5 +21,20 @@ final class DetailTrackRouter {
 }
 
 extension DetailTrackRouter: DetailTrackRouterInterface {
+    func showAddTrackToAlbum(input: AddTrackToAlbumInput, output: AddTrackToAlbumOutput) {
+        guard
+            let controller = AddTrackToAlbumAssembly.addTrackToAlbumViewController(
+                input: input,
+                output: output
+            )
+        else {
+            return
+        }
+        
+        self.controller?.present(controller, animated: true)
+    }
     
+    func closeAddTrackToAlbum() {
+        controller?.dismiss(animated: true)
+    }
 }

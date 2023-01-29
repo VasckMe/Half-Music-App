@@ -8,32 +8,32 @@
 import UIKit
 import FirebaseDatabase
 
-final class AddTrackToAlbumViewController: BaseViewController {
+protocol AddTrackToAlbumViewControllerInterface: AnyObject {
+    func reloadData()
+    func callAlert(title: String, message: String)
+}
 
-    // MARK: - IBOutlets
-    
+final class AddTrackToAlbumViewController: BaseViewController {
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.searchTextField.textColor = .white
         }
     }
     @IBOutlet private weak var albumCollectionView: UICollectionView!
-    
-    // MARK: - Properties
-    
-    var track: TrackFB?
-    var albums: [AlbumFB] = []
-    let ref = FireBaseStorageService.albumsRef
-    var delegate: UpdateDetailTrackViewControllerProtocol?
-    
-    // MARK: - Life Cycle
+        
+    var presenter: AddTrackToAlbumPresenterInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Adding track to ..."
         searchBar.delegate = self
-        signCollectionView()
-        fetchAlbums()
+        albumCollectionView.delegate = self
+        albumCollectionView.dataSource = self
+        albumCollectionView.register(
+            UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
+            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
+        )
+        presenter?.didTriggerLoadView()
     }
 }
 
@@ -41,6 +41,10 @@ final class AddTrackToAlbumViewController: BaseViewController {
 
 extension AddTrackToAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let albums = presenter?.getAlbums() else {
+            return 0
+        }
+        
         return albums.count
     }
     
@@ -49,9 +53,12 @@ extension AddTrackToAlbumViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: LargeCollectionViewCell.identifier,
                 for: indexPath
-            ) as? LargeCollectionViewCell else {
+            ) as? LargeCollectionViewCell,
+            let albums = presenter?.getAlbums()
+        else {
             return UICollectionViewCell()
         }
+        
         let album = albums[indexPath.row]
         cell.configureAlbum(album: album)
     
@@ -63,19 +70,7 @@ extension AddTrackToAlbumViewController: UICollectionViewDataSource {
 
 extension AddTrackToAlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let track = track else { return }
-        let album = albums[indexPath.row]
-        
-        if album.tracks.contains(track) {
-            callDefaultAlert(title: "Cancelled", message: "Track is already exist in that album")
-            return
-        } else {
-            let ref = FireBaseStorageService.albumsRef.child(album.name).child(track.name ?? "track name")
-            ref.setValue(track.convertInDictionary())
-            FireBaseStorageService.saveTrackInDB(track: track)
-            delegate?.updateDetailTrack()
-            self.dismiss(animated: true)
-        }
+        presenter?.didTriggerCellAt(index: indexPath.row)
     }
 }
 
@@ -93,36 +88,18 @@ extension AddTrackToAlbumViewController: UICollectionViewDelegateFlowLayout {
 
 extension AddTrackToAlbumViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            FireBaseStorageService.getAlbums {[weak self] albums in
-                self?.albums = albums
-                self?.albumCollectionView.reloadData()
-            }
-        } else {
-            FireBaseStorageService.getAlbumsWithPredicade(predicate: searchText) {[weak self] albums in
-                self?.albums = albums
-                self?.albumCollectionView.reloadData()
-            }
-        }
+        presenter?.didTriggerSearchBar(text: searchText)
     }
 }
 
-// MARK: - Extension Logic
+// MARK: - AddTrackToAlbumViewControllerInterface
 
-extension AddTrackToAlbumViewController {
-    // MARK: - Private
-    private func fetchAlbums() {
-        FireBaseStorageService.getAlbums {[weak self] albums in
-            self?.albums = albums
-            self?.albumCollectionView.reloadData()
-        }
+extension AddTrackToAlbumViewController: AddTrackToAlbumViewControllerInterface {
+    func reloadData() {
+        albumCollectionView.reloadData()
     }
-    private func signCollectionView() {
-        albumCollectionView.delegate = self
-        albumCollectionView.dataSource = self
-        albumCollectionView.register(
-            UINib(nibName: LargeCollectionViewCell.identifier,bundle: nil),
-            forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
-        )
+    
+    func callAlert(title: String, message: String) {
+        callDefaultAlert(title: title, message: message)
     }
 }
