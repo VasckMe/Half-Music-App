@@ -22,9 +22,7 @@ final class SignInPresenter {
     weak var controller: SignInViewControllerInterface?
     
     private var router: SignInRouter?
-    
-    var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
-    
+        
     init(router: SignInRouter) {
         self.router = router
     }
@@ -43,11 +41,10 @@ extension SignInPresenter: SignInPresenterInterface {
     
     func didTriggerViewDisappear() {
         removeNotificationKBObserver()
-        removeAuthStateDidChangeListener()
     }
     
     func didTriggerSignUp() {
-        router?.showSignUpViewController()
+        router?.showSignUpViewController(output: self)
     }
 
     func didTriggerSignIn(email: String?, password: String?) {
@@ -56,25 +53,28 @@ extension SignInPresenter: SignInPresenterInterface {
     
 }
 
+extension SignInPresenter: SignUpOutput {
+    func showTabBarController() {
+        router?.showMainTabBarController()
+    }
+    func showOnboarding() {
+        router?.showOnBoardingController()
+    }
+    
+    func closeSignUp() {
+        router?.closeSignUpViewController()
+    }
+}
+
 // MARK: Private
 private extension SignInPresenter {
     func addAuthStateDidChangeListener() {
-        authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
-            guard
-                let self = self,
-                let _ = user
-            else {
-                return
-            }
+        if let user = Auth.auth().currentUser {
+            print("here is user")
             self.router?.showMainTabBarController()
+        } else {
+            print("no user")
         }
-    }
-    
-    func removeAuthStateDidChangeListener() {
-        guard let listener = authStateDidChangeListenerHandle else {
-            return
-        }
-        Auth.auth().removeStateDidChangeListener(listener)
     }
     
     func addNotificationKBObserver() {
@@ -93,16 +93,16 @@ private extension SignInPresenter {
             controller?.callAlert(title: "Error", message: "bad auth")
             return
         }
-        
+
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
             guard let self = self else {
                 return
             }
-            
+
             if let error = error {
                 self.controller?.callAlert(title: "Error", message: "\(error.localizedDescription)")
             } else if let _ = user {
-                self.router?.showOnBoardingController()
+                self.router?.showMainTabBarController()
                 return
             } else {
                 self.controller?.callAlert(title: "Error", message: "Uknown problem O_o")

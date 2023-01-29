@@ -8,7 +8,7 @@
 import UIKit
 
 struct SignUpAssembly {
-    static func signUpController() -> SignUpViewController? {
+    static func signUpController(output: SignUpOutput) -> SignUpViewController? {
         guard
             let viewController = UIStoryboard(
                 name: "SignUpViewController",
@@ -19,8 +19,8 @@ struct SignUpAssembly {
         else {
             return nil
         }
-        let router = SignUpRouter(controller: viewController)
-        let presenter = SignUpPresenter(router: router)
+//        let router = SignUpRouter(controller: viewController)
+        let presenter = SignUpPresenter(output: output)
         
         presenter.controller = viewController
         viewController.presenter = presenter

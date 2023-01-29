@@ -35,6 +35,9 @@ protocol DetailTrackViewControllerInterface: AnyObject {
     func shuffleButtonToggle()
     func likeButtonToggle()
     
+    func isRepeatSelected() -> Bool
+    func isShuffleSelected() -> Bool
+    
     func playPause()
 }
 
@@ -112,34 +115,7 @@ final class DetailTrackViewController: UIViewController {
     }
 }
 
-// MARK: - Extension Logic
-
-extension DetailTrackViewController {
-    
-    // MARK: - Private
-    
-//    private func addAudioToLibrary() {
-//        guard
-//            let audioIndex = trackIndex,
-//            LocalStorage.shared.currentAudioQueue.indices.contains(audioIndex)
-//        else {
-//            print("Bad track index")
-//                return
-//        }
-//
-//        let track = LocalStorage.shared.currentAudioQueue[audioIndex]
-//
-//        if likeButtonOutlet.imageView?.image == UIImage(systemName: "heart.fill") {
-//            print("REMOVING \(track.name)")
-//            FireBaseStorageService.audioRef.child(track.name ?? "track name").removeValue()
-//            likeButtonOutlet.isSelected.toggle()
-//        } else {
-//            print("ADDING \(track.name)")
-//            likeButtonOutlet.isSelected.toggle()
-//            FireBaseStorageService.saveTrackInDB(track: track)
-//        }
-//    }
-}
+// MARK: - DetailTrackViewControllerInterface
 
 extension DetailTrackViewController: DetailTrackViewControllerInterface {
     func setTrackName(name: String?) {
@@ -208,6 +184,15 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
         playPauseButtonOutlet.isSelected
             ? AudioPlayerManager.shared.play()
             : AudioPlayerManager.shared.pause()
+    }
+    
+    func isRepeatSelected() -> Bool {
+        repeatOutlet.isSelected
+    }
+    
+    func isShuffleSelected() -> Bool {
+        shuffleOutlet.isSelected
+
     }
 }
 

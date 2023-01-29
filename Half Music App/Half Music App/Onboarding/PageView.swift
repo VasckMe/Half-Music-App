@@ -14,6 +14,7 @@ struct PageView: View {
     let imageName: String
     let showDismissButton: Bool
     
+    @Environment(\.presentationMode) var presentationMode
     @State private var uiViewIsPresented = false
     
     var body: some View {
@@ -36,7 +37,7 @@ struct PageView: View {
             
             if showDismissButton {
                 Button {
-                    uiViewIsPresented.toggle()
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Get Started")
                         .foregroundColor(Color.white)
@@ -45,11 +46,10 @@ struct PageView: View {
                         .background(Color(UIConstants.globalTintColor))
                         .cornerRadius(10)
                 }
-                
-                .fullScreenCover(isPresented: $uiViewIsPresented) {
-                    ViewControllerRepresentation()
-                        .edgesIgnoringSafeArea(.all)
-                }
+//                .fullScreenCover(isPresented: $uiViewIsPresented) {
+//                    ViewControllerRepresentation()
+//                        .edgesIgnoringSafeArea(.all)
+//                }
             }
         }
     }

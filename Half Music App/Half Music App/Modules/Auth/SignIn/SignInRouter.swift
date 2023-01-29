@@ -11,7 +11,9 @@ import SwiftUI
 protocol SignInRouterInterface {
     func showMainTabBarController()
     func showOnBoardingController()
-    func showSignUpViewController()
+    
+    func showSignUpViewController(output: SignUpOutput)
+    func closeSignUpViewController()
 }
 
 final class SignInRouter {
@@ -27,24 +29,33 @@ extension SignInRouter: SignInRouterInterface {
         guard let tabBarController = TabBarAssembly.tabBarViewController() else {
             return
         }
-//        tabBarController.modalPresentationStyle = .fullScreen
-//        tabBarController.modalTransitionStyle = .coverVertical
-//        controller?.present(tabBarController, animated: true)
+        
         controller?.navigationController?.pushViewController(tabBarController, animated: true)
     }
     
     func showOnBoardingController() {
-        let vc = UIHostingController(rootView: OnboardingView())
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .fullScreen
-        controller?.present(vc, animated: true)
+        let controller = UIHostingController(rootView: OnboardingView())
+        controller.modalTransitionStyle = .coverVertical
+        controller.modalPresentationStyle = .fullScreen
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func showSignUpViewController() {
-        guard let signUpController = SignUpAssembly.signUpController() else {
+    func showSignUpViewController(output: SignUpOutput) {
+        guard let signUpController = SignUpAssembly.signUpController(output: output) else {
             return
         }
         
         controller?.navigationController?.pushViewController(signUpController, animated: true)
     }
+    
+    func closeSignUpViewController() {
+        controller?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+//    func showOnboarding() {
+//        let controller = UIHostingController(rootView: OnboardingView())
+//        controller.modalTransitionStyle = .coverVertical
+//        controller.modalPresentationStyle = .fullScreen
+//        self.controller?.navigationController?.present(controller, animated: true)
+//    }
 }

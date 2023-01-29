@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TabBarPresenterInterface {
-    func didViewTapped(with index: Int)
+    func setupXib(with frame: CGRect)
 }
 
 final class TabBarPresenter {
@@ -22,7 +22,15 @@ final class TabBarPresenter {
 }
 
 extension TabBarPresenter: TabBarPresenterInterface {
-    func didViewTapped(with index: Int) {
+    func setupXib(with frame: CGRect) {
+        let input = NowIsPlayingModuleInput(frame: frame)
+        let xibView = NowIsPlayingAssembly.nowIsPlayingView(input: input, output: self)
+        controller?.addSubviewOnTabBar(view: xibView)
+    }
+}
+
+extension TabBarPresenter: NowIsPlayingOutput {
+    func showDetail(with index: Int) {
         let input = DetailTrackInput(trackIndex: index, isOpenInBackground: true)
         router?.showDetailTrack(input: input)
     }

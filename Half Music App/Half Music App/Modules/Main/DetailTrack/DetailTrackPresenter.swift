@@ -175,19 +175,21 @@ private extension DetailTrackPresenter {
     }
     
     func makeTime(time: CMTime) {
-        let duration = audioPlayerService.getDuration()! 
+        guard let controller = controller else { return }
+
+        let duration = audioPlayerService.getDuration()!
         
         let seconds = Int(time.value/1000000000)
         
-        controller?.setTrackSliderValue(value: Float(seconds))
-        controller?.setStartTimeLabel(time: seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)")
-        controller?.setEndTimeLabel(time: duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)")
+        controller.setTrackSliderValue(value: Float(seconds))
+        controller.setStartTimeLabel(time: seconds < 10 ? "0:0\(seconds)" : "0:\(seconds)")
+        controller.setEndTimeLabel(time: duration - seconds < 10 ? "0:0\(duration - seconds)" : "0:\(duration - seconds)")
 
         if duration - seconds <= 0, duration != 0 {
             audioPlayerService.seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
-            audioPlayerService.isRepeat
+            controller.isRepeatSelected()
                 ? audioPlayerService.addAudioTrackInPlayer(audioIndex: input.trackIndex)
-                : didTriggerForward(isShuffle: audioPlayerService.isShuffle)
+                : didTriggerForward(isShuffle: controller.isShuffleSelected())
         }
     }
     

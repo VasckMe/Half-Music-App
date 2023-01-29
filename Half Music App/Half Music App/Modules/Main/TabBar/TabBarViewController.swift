@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol TabBarViewControllerInterface: AnyObject {
-    func showDetail(with index: Int)
+//    func showDetail(with index: Int)
+    func addSubviewOnTabBar(view: UIView?)
 }
 
 final class TabBarViewController: UITabBarController {
@@ -22,9 +24,14 @@ final class TabBarViewController: UITabBarController {
 }
 
 // MARK: - TabBarViewControlerInterface
+
 extension TabBarViewController: TabBarViewControllerInterface {
-    func showDetail(with index: Int) {
-        presenter?.didViewTapped(with: index)
+    func addSubviewOnTabBar(view: UIView?) {
+        guard let view = view else {
+            return
+        }
+        
+        self.view.addSubview(view)
     }
 }
 
@@ -39,12 +46,6 @@ private extension TabBarViewController {
             width: view.bounds.width,
             height: height
         )
-        
-        let input = NowIsPlayingModuleInput(frame: frame, delegate: self)
-        guard let controller = NowIsPlayingAssembly.nowIsPlayingView(input: input) else {
-            return
-        }
-
-        view.addSubview(controller)
+        presenter?.setupXib(with: frame)
     }
 }

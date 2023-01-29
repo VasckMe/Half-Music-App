@@ -8,6 +8,13 @@
 import Foundation
 import FirebaseAuth
 
+protocol SignUpOutput: AnyObject {
+    func showTabBarController()
+    func showOnboarding()
+    
+    func closeSignUp()
+}
+
 protocol SignUpPresenterInterface {
     func didTriggerViewLoad()
     func didTriggerViewDissappear()
@@ -22,10 +29,11 @@ protocol SignUpPresenterInterface {
 final class SignUpPresenter {
     weak var controller: SignUpViewControllerInterface?
     
-    private let router: SignUpRouterInterface?
+    private weak var output: SignUpOutput?
+//    private let router: SignUpRouterInterface?
     
-    init(router: SignUpRouterInterface) {
-        self.router = router
+    init(output: SignUpOutput) {
+        self.output = output
     }
 }
 //MARK: - SignUpPresenterInterface
@@ -79,14 +87,6 @@ extension SignUpPresenter: SignUpPresenterInterface {
     }
 }
 
-// MARK: - SignUpSuccessModuleOutput
-
-extension SignUpPresenter: SignUpSuccessModuleOutput {
-    func closeSignUpSuccessController() {
-        router?.closeSignUpSuccessViewController()
-    }
-}
-
 // MARK: - Private
 
 private extension SignUpPresenter {
@@ -112,12 +112,25 @@ private extension SignUpPresenter {
                      "nickname": nickname,
                      "password": password]
                 )
-                DispatchQueue.main.async {
-                    self.controller?.hideLoading()
-                    self.router?.showSignUpSuccessViewController(
-                        input: SignUpSuccessModuleInput(nickname: nickname),
-                        output: self
-                    )
+                
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+                    guard let self = self else {
+                        return
+                    }
+                    
+                    if let error = error {
+                        print("\(error.localizedDescription)")
+                    } else if let _ = user {
+                        DispatchQueue.main.async {
+                            self.controller?.hideLoading()
+                            self.output?.closeSignUp()
+                            self.output?.showOnboarding()
+                            self.output?.showTabBarController()
+                        }
+                        return
+                    } else {
+                        print("ERROR UNKNOWN")
+                    }
                 }
             }
         }
