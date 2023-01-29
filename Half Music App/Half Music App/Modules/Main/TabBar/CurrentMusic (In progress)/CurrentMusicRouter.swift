@@ -12,7 +12,7 @@ protocol CurrentMusicRouterInterface {
 }
 
 final class CurrentMusicRouter {
-    private let view: CurrentMusicViewController?
+    private weak var view: CurrentMusicViewController?
     private let delegate: TabBarViewControllerInterface?
 
     private let audioPlayerService = AudioPlayerManager.shared
@@ -29,6 +29,6 @@ extension CurrentMusicRouter: CurrentMusicRouterInterface {
         guard let index = audioPlayerService.trackIndex else {
             return
         }
-        delegate.showDetail(with: index)
+//        delegate.showDetail(with: index)
     }
 }
