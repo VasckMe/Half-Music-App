@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 23.01.23.
 //
 
-import Foundation
-
 protocol ArtistsPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
@@ -51,8 +49,11 @@ extension ArtistsPresenter: ArtistsPresenterInterface {
 private extension ArtistsPresenter {
     func fetchArtists() {
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
+            guard let self = self else {
+                return
+            }
             LocalStorage.shared.localTracks = tracksFB
-            self?.findArtists()
+            self.findArtists()
         }
     }
     

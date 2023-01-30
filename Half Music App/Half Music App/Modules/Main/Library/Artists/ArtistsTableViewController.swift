@@ -74,6 +74,8 @@ extension ArtistsTableViewController {
     }
 }
 
+// MARK: - ArtistsTableViewControllerInterface
+
 extension ArtistsTableViewController: ArtistsTableViewControllerInterface {
     func showNavigationBar() {
         navigationController?.navigationBar.isHidden = false

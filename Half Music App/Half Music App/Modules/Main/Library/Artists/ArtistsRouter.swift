@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 23.01.23.
 //
 
-import Foundation
-
 protocol ArtistsRouterInterface {
     func showSongsViewController(input: SongsInput)
 }
@@ -21,9 +19,9 @@ final class ArtistsRouter {
 
 extension ArtistsRouter: ArtistsRouterInterface {
     func showSongsViewController(input: SongsInput) {
-        guard let controller = SongsAssembly.songsTableViewController(input: input) else {
+        guard let songsController = SongsAssembly.songsTableViewController(input: input) else {
             return
         }
-        self.controller?.navigationController?.pushViewController(controller, animated: true)
+        controller?.navigationController?.pushViewController(songsController, animated: true)
     }
 }

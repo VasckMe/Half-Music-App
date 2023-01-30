@@ -10,7 +10,7 @@ import UIKit
 struct ArtistsAssembly {
     static func artistsTableViewController() -> ArtistsTableViewController? {
         guard
-            let tableController = UIStoryboard(
+            let artistsController = UIStoryboard(
                 name: "ArtistsTableViewController",
                 bundle: nil
             ).instantiateViewController(
@@ -20,13 +20,13 @@ struct ArtistsAssembly {
             return nil
         }
         
-        let router = ArtistsRouter(controller: tableController)
+        let router = ArtistsRouter(controller: artistsController)
         
         let presenter = ArtistsPresenter(router: router)
-        presenter.controller = tableController
+        presenter.controller = artistsController
 
-        tableController.presenter = presenter
+        artistsController.presenter = presenter
         
-        return tableController
+        return artistsController
     }
 }
