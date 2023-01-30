@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
 
 protocol SignUpViewControllerInterface: AnyObject {
     func addKeyBoardObserver()

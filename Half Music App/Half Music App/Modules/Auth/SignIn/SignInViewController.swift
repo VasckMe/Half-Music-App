@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
-import FirebaseAuth
 
 protocol SignInViewControllerInterface: AnyObject {
     func addNotificationKBObserver()

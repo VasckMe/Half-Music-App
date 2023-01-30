@@ -5,7 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 29.12.22.
 //
 
-import Foundation
 import FirebaseAuth
 
 protocol SignUpOutput: AnyObject {

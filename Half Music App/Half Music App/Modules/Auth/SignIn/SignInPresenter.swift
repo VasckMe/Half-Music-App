@@ -5,9 +5,7 @@
 //  Created by Apple Macbook Pro 13 on 2.01.23.
 //
 
-import Foundation
 import FirebaseAuth
-import SwiftUI
 
 protocol SignInPresenterInterface {
     func didTriggerViewLoad()

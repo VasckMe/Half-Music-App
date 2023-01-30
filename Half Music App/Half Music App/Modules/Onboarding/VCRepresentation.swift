@@ -5,7 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 11.11.22.
 //
 
-import Foundation
 import SwiftUI
 
 struct ViewControllerRepresentation: UIViewControllerRepresentable {
