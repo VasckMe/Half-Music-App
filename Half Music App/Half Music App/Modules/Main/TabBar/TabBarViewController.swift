@@ -9,12 +9,10 @@ import UIKit
 import FirebaseAuth
 
 protocol TabBarViewControllerInterface: AnyObject {
-//    func showDetail(with index: Int)
     func addSubviewOnTabBar(view: UIView?)
 }
 
 final class TabBarViewController: UITabBarController {
-    
     var presenter: TabBarPresenterInterface?
     
     override func viewDidLoad() {
@@ -36,6 +34,7 @@ extension TabBarViewController: TabBarViewControllerInterface {
 }
 
 // MARK: - Private
+
 private extension TabBarViewController {
     func setup() {
         let height: CGFloat = 60

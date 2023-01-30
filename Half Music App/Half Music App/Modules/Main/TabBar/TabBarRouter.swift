@@ -12,7 +12,7 @@ protocol TabBarRouterInterface {
 }
 
 final class TabBarRouter {
-    private weak var controller: TabBarViewController?
+    weak var controller: TabBarViewController?
     
     init(controller: TabBarViewController) {
         self.controller = controller
@@ -21,9 +21,12 @@ final class TabBarRouter {
 
 extension TabBarRouter: TabBarRouterInterface {
     func showDetailTrack(input: DetailTrackInput) {
-        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
+        guard let detailTrackController = DetailTrackAssembly.detailTrackViewController(
+            input: input
+        ) else {
             return
         }
-        self.controller?.viewControllers![0].present(controller, animated: true)
+        
+        controller?.viewControllers![0].present(detailTrackController, animated: true)
     }
 }
