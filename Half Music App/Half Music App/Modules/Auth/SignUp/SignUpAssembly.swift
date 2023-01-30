@@ -19,9 +19,10 @@ struct SignUpAssembly {
         else {
             return nil
         }
-        let presenter = SignUpPresenter(output: output)
         
+        let presenter = SignUpPresenter(output: output)
         presenter.controller = viewController
+        
         viewController.presenter = presenter
         
         return viewController

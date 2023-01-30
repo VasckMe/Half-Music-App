@@ -90,21 +90,21 @@ extension SignUpPresenter: SignUpPresenterInterface {
 
 private extension SignUpPresenter {
     func createUser(nickname: String, email: String, password: String) {
-        self.controller?.showLoading()
-
+        controller?.showLoading()
+        
         DispatchQueue.global(qos: .utility).async {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
                 guard let self = self else {
                     return
                 }
-                    
+                
                 guard let user = user else {
                     let message = error?.localizedDescription ?? "Generic error"
                     self.controller?.showErrorAlert(title: "Error", message: message)
                     self.controller?.hideLoading()
                     return
                 }
-                    
+                
                 let userRef = FireBaseStorageService.usersRef.child(user.user.uid)
                 userRef.setValue(
                     ["email": user.user.email,
@@ -112,25 +112,29 @@ private extension SignUpPresenter {
                      "password": password]
                 )
                 
-                Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
-                    guard let self = self else {
-                        return
-                    }
-                    
-                    if let error = error {
-                        print("\(error.localizedDescription)")
-                    } else if let _ = user {
-                        DispatchQueue.main.async {
-                            self.controller?.hideLoading()
-                            self.output?.closeSignUp()
-                            self.output?.showTabBarController()
-                            self.output?.showOnboarding()
-                        }
-                        return
-                    } else {
-                        print("ERROR UNKNOWN")
-                    }
+                self.singIn(email: email, password: password)
+            }
+        }
+    }
+    
+    func singIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                print("\(error.localizedDescription)")
+            } else if let _ = user {
+                DispatchQueue.main.async {
+                    self.controller?.hideLoading()
+                    self.output?.closeSignUp()
+                    self.output?.showOnboarding()
+                    self.output?.showTabBarController()
                 }
+                return
+            } else {
+                print("ERROR UNKNOWN")
             }
         }
     }
