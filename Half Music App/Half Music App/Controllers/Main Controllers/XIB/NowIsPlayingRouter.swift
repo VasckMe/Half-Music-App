@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 9.01.23.
 //
 
-import Foundation
-
 protocol NowIsPlayingRouterInteface {
     func showTrack(output: NowIsPlayingOutput?)
 }

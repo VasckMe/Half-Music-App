@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 4.01.23.
 //
 
-import Foundation
-
 protocol TabBarRouterInterface {
     func showDetailTrack(input: DetailTrackInput)
 }

@@ -23,25 +23,23 @@ struct TabBarAssembly {
             return nil
         }
         let router = TabBarRouter(controller: controller)
+        
         let presenter = TabBarPresenter(router: router)
-        
         presenter.controller = controller
-        controller.presenter = presenter
         
+        controller.presenter = presenter
         
         searchViewController.tabBarItem = UITabBarItem(
             title: "Music",
             image: UIImage(systemName: "magnifyingglass.circle"),
             selectedImage:  UIImage(systemName: "magnifyingglass.circle.fill")
         )
-//        searchViewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
         
         libraryViewController.tabBarItem = UITabBarItem(
             title: "Library",
             image: UIImage(systemName: "rectangle.stack"),
             selectedImage: UIImage(systemName: "rectangle.stack.fill")
         )
-//        libraryViewController.tabBarItem.selectedImage = UIImage(systemName: "rectangle.stack.fill")
         
         accountViewController.tabBarItem = UITabBarItem(
             title: "Account",
