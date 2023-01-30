@@ -21,10 +21,11 @@ struct ArtistsAssembly {
         }
         
         let router = ArtistsRouter(controller: tableController)
-        let presenter = ArtistsPresenter(router: router)
         
-        tableController.presenter = presenter
+        let presenter = ArtistsPresenter(router: router)
         presenter.controller = tableController
+
+        tableController.presenter = presenter
         
         return tableController
     }

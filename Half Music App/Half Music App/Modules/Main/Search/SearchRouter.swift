@@ -21,10 +21,10 @@ final class SearchRouter {
 
 extension SearchRouter: SearchRouterInterface {
     func showDetailTrack(input: DetailTrackInput) {
-        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
+        guard let detailTrackController = DetailTrackAssembly.detailTrackViewController(input: input) else {
             return
         }
         
-        self.controller?.navigationController?.present(controller, animated: true)
+        controller?.navigationController?.present(detailTrackController, animated: true)
     }
 }
