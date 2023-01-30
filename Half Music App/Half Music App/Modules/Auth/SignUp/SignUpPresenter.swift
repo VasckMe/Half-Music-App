@@ -30,7 +30,6 @@ final class SignUpPresenter {
     weak var controller: SignUpViewControllerInterface?
     
     private weak var output: SignUpOutput?
-//    private let router: SignUpRouterInterface?
     
     init(output: SignUpOutput) {
         self.output = output

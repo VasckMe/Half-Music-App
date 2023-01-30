@@ -41,14 +41,9 @@
 		184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70BE2963206F0005268D /* SignInPresenter.swift */; };
 		184F70C1296322A80005268D /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F70C0296322A80005268D /* SignInRouter.swift */; };
 		1860484428EB1E38007F4A93 /* TrackFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860484328EB1E38007F4A93 /* TrackFB.swift */; };
-		186651F5295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186651F4295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard */; };
-		186651F7295DB997006A7BC5 /* SignUpSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186651F6295DB997006A7BC5 /* SignUpSuccessViewController.swift */; };
-		186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186651F8295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift */; };
-		186651FB295DC09F006A7BC5 /* SignUpSuccessPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186651FA295DC09F006A7BC5 /* SignUpSuccessPresenter.swift */; };
 		186651FD295DC1E4006A7BC5 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186651FC295DC1E4006A7BC5 /* SignUpViewController.storyboard */; };
 		186651FF295DC80D006A7BC5 /* SignUpAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186651FE295DC80D006A7BC5 /* SignUpAssembly.swift */; };
 		18665201295E0316006A7BC5 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18665200295E0316006A7BC5 /* SignUpPresenter.swift */; };
-		18665203295E1772006A7BC5 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18665202295E1772006A7BC5 /* SignUpRouter.swift */; };
 		18680D9B28E84315001DF00D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9A28E84315001DF00D /* VerificationService.swift */; };
 		18680D9D28E843E0001DF00D /* PasswordDifficult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18680D9C28E843E0001DF00D /* PasswordDifficult.swift */; };
 		18680D9F28E8867E001DF00D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18680D9E28E8867D001DF00D /* GoogleService-Info.plist */; };
@@ -120,7 +115,6 @@
 		18F5CF9D291E564B006A5911 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CF9C291E564B006A5911 /* OnboardingView.swift */; };
 		18F5CFA2291EA30D006A5911 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA1291EA30D006A5911 /* PageView.swift */; };
 		18F5CFA4291EA371006A5911 /* VCRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5CFA3291EA371006A5911 /* VCRepresentation.swift */; };
-		18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB4291FA0F6006A5911 /* Account.storyboard */; };
 		18F5CFB9291FA1D0006A5911 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFB7291FA1D0006A5911 /* SearchViewController.storyboard */; };
 		18F5CFC3291FA700006A5911 /* LibraryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5CFC1291FA700006A5911 /* LibraryViewController.storyboard */; };
 		18FC9FB52983B83400CD8EA8 /* AccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FC9FB42983B83400CD8EA8 /* AccountViewController.storyboard */; };
@@ -173,14 +167,9 @@
 		184F70BE2963206F0005268D /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		184F70C0296322A80005268D /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		1860484328EB1E38007F4A93 /* TrackFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFB.swift; sourceTree = "<group>"; };
-		186651F4295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpSuccessViewController.storyboard; sourceTree = "<group>"; };
-		186651F6295DB997006A7BC5 /* SignUpSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessViewController.swift; sourceTree = "<group>"; };
-		186651F8295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessAssembly.swift; sourceTree = "<group>"; };
-		186651FA295DC09F006A7BC5 /* SignUpSuccessPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessPresenter.swift; sourceTree = "<group>"; };
 		186651FC295DC1E4006A7BC5 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		186651FE295DC80D006A7BC5 /* SignUpAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAssembly.swift; sourceTree = "<group>"; };
 		18665200295E0316006A7BC5 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
-		18665202295E1772006A7BC5 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		18680D9A28E84315001DF00D /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		18680D9C28E843E0001DF00D /* PasswordDifficult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDifficult.swift; sourceTree = "<group>"; };
 		18680D9E28E8867D001DF00D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -252,7 +241,6 @@
 		18F5CF9C291E564B006A5911 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		18F5CFA1291EA30D006A5911 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		18F5CFA3291EA371006A5911 /* VCRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRepresentation.swift; sourceTree = "<group>"; };
-		18F5CFB4291FA0F6006A5911 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Account.storyboard; path = "Half Music App/Modules/Main/Account/Account.storyboard"; sourceTree = SOURCE_ROOT; };
 		18F5CFB8291FA1D0006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/SearchViewController.storyboard"; sourceTree = SOURCE_ROOT; };
 		18F5CFC2291FA700006A5911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Half Music App/Views/Main/Base.lproj/LibraryViewController.storyboard"; sourceTree = SOURCE_ROOT; };
 		18FC9FB42983B83400CD8EA8 /* AccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountViewController.storyboard; sourceTree = "<group>"; };
@@ -305,13 +293,6 @@
 				18D20D1E28E45EE200A758CC /* Network */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		18130AF328E4530D000FCD54 /* Main Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Main Controllers";
 			sourceTree = "<group>";
 		};
 		182EEDF62924FCEE00D6A186 /* Animation */ = {
@@ -405,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				186651F1295DB8A2006A7BC5 /* Auth */,
+				18A3BACB29879B9600B1B73C /* Onboarding */,
 				184F70C229649C390005268D /* Main */,
 			);
 			path = Modules;
@@ -415,7 +397,6 @@
 			children = (
 				186803752962FCC700B39033 /* SignIn */,
 				186651F2295DB8AA006A7BC5 /* SignUp */,
-				186651F3295DB8DB006A7BC5 /* SignUpSuccess */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -425,22 +406,10 @@
 			children = (
 				186651FE295DC80D006A7BC5 /* SignUpAssembly.swift */,
 				18665200295E0316006A7BC5 /* SignUpPresenter.swift */,
-				18665202295E1772006A7BC5 /* SignUpRouter.swift */,
 				1872836228E75CA90064278A /* SignUpViewController.swift */,
 				186651FC295DC1E4006A7BC5 /* SignUpViewController.storyboard */,
 			);
 			path = SignUp;
-			sourceTree = "<group>";
-		};
-		186651F3295DB8DB006A7BC5 /* SignUpSuccess */ = {
-			isa = PBXGroup;
-			children = (
-				186651F8295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift */,
-				186651FA295DC09F006A7BC5 /* SignUpSuccessPresenter.swift */,
-				186651F6295DB997006A7BC5 /* SignUpSuccessViewController.swift */,
-				186651F4295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard */,
-			);
-			path = SignUpSuccess;
 			sourceTree = "<group>";
 		};
 		186803752962FCC700B39033 /* SignIn */ = {
@@ -475,24 +444,6 @@
 			path = DetailAlbum;
 			sourceTree = "<group>";
 		};
-		1876014628E34360000223CD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1876015A28E35007000223CD /* Onboarding */,
-				1876015928E34FF1000223CD /* Main */,
-				18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1876014728E34365000223CD /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				18130AF328E4530D000FCD54 /* Main Controllers */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		1876014828E3436B000223CD /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,22 +476,6 @@
 				1876015528E34C6C000223CD /* Artists.swift */,
 			);
 			path = AudioTrackModels;
-			sourceTree = "<group>";
-		};
-		1876015928E34FF1000223CD /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				18F5CFB3291FA0B0006A5911 /* Account */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		1876015A28E35007000223CD /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				18F5CF9A291E5472006A5911 /* Onboarding.storyboard */,
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		1876015B28E35029000223CD /* Constants */ = {
@@ -597,6 +532,17 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		18A3BACB29879B9600B1B73C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				18F5CF9C291E564B006A5911 /* OnboardingView.swift */,
+				18F5CFA1291EA30D006A5911 /* PageView.swift */,
+				18F5CFA3291EA371006A5911 /* VCRepresentation.swift */,
+				18F5CF9A291E5472006A5911 /* Onboarding.storyboard */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		18A980FF2976914300F70656 /* CurrentMusic (In progress) */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,15 +577,14 @@
 			isa = PBXGroup;
 			children = (
 				186651F0295DB898006A7BC5 /* Modules */,
+				18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */,
 				1876015B28E35029000223CD /* Constants */,
-				1876014728E34365000223CD /* Controllers */,
 				1876014828E3436B000223CD /* Delegates */,
 				1885D0CD28EDA9B600288CA4 /* Extensions */,
 				1876015E28E3513B000223CD /* Managers */,
 				1876014928E34BAC000223CD /* Models */,
 				18F5CF9E291EA2DB006A5911 /* Onboarding */,
 				18130AEC28E4406C000FCD54 /* Services */,
-				1876014628E34360000223CD /* Views */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
 				1898336128EC359300558234 /* File.rtf */,
 				18680D9E28E8867D001DF00D /* GoogleService-Info.plist */,
@@ -679,7 +624,6 @@
 			isa = PBXGroup;
 			children = (
 				18FC9FBC2983CCF500CD8EA8 /* EditAccount */,
-				18F5CFB4291FA0F6006A5911 /* Account.storyboard */,
 				18FC9FB62983B87C00CD8EA8 /* AccountAssembly.swift */,
 				18FC9FB82983B8F000CD8EA8 /* AccountPresenter.swift */,
 				18FC9FBA2983B94100CD8EA8 /* AccountRouter.swift */,
@@ -756,18 +700,8 @@
 		18F5CF9E291EA2DB006A5911 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				18F5CF9C291E564B006A5911 /* OnboardingView.swift */,
-				18F5CFA1291EA30D006A5911 /* PageView.swift */,
-				18F5CFA3291EA371006A5911 /* VCRepresentation.swift */,
 			);
 			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		18F5CFB3291FA0B0006A5911 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Account;
 			sourceTree = "<group>";
 		};
 		18FC9FBC2983CCF500CD8EA8 /* EditAccount */ = {
@@ -891,7 +825,6 @@
 			files = (
 				1824E23B2919011C0017FB07 /* NowIsPlayingView.xib in Resources */,
 				18B66C7828DC7346000D5F79 /* LaunchScreen.storyboard in Resources */,
-				186651F5295DB91D006A7BC5 /* SignUpSuccessViewController.storyboard in Resources */,
 				1898336228EC359300558234 /* File.rtf in Resources */,
 				18FC9FB52983B83400CD8EA8 /* AccountViewController.storyboard in Resources */,
 				18A98103297691B500F70656 /* CurrentMusicViewController.xib in Resources */,
@@ -899,7 +832,6 @@
 				18D20D2B28E4654F00A758CC /* TrackTableViewCell.xib in Resources */,
 				184F70BB2962FF3D0005268D /* SignInViewController.storyboard in Resources */,
 				186651FD295DC1E4006A7BC5 /* SignUpViewController.storyboard in Resources */,
-				18F5CFB5291FA0F6006A5911 /* Account.storyboard in Resources */,
 				18F5CFC3291FA700006A5911 /* LibraryViewController.storyboard in Resources */,
 				18778D82290D86B700479294 /* SmallTableViewCell.xib in Resources */,
 				18B66C7528DC7346000D5F79 /* Assets.xcassets in Resources */,
@@ -967,7 +899,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18665203295E1772006A7BC5 /* SignUpRouter.swift in Sources */,
 				18130AF228E4515D000FCD54 /* DataFetcherService.swift in Sources */,
 				18A98107297694F100F70656 /* CurrentMusicPresenter.swift in Sources */,
 				18329CF5297FC3E7002DC38E /* AlbumsAssembly.swift in Sources */,
@@ -1052,20 +983,17 @@
 				18FC9FCC2986522600CD8EA8 /* AddTrackToAlbumAssembly.swift in Sources */,
 				18329CF0297E89D6002DC38E /* SongsRouter.swift in Sources */,
 				18D20D2628E45FAF00A758CC /* LocalStorage.swift in Sources */,
-				186651F9295DBAD4006A7BC5 /* SignUpSuccessAssembly.swift in Sources */,
 				18FC9FC7298518F600CD8EA8 /* DetailTrackPresenter.swift in Sources */,
 				18D20D2A28E4654F00A758CC /* TrackTableViewCell.swift in Sources */,
 				1868518F29826D94007166AE /* DetailAlbumRouter.swift in Sources */,
 				18336928296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift in Sources */,
 				18130AEE28E44082000FCD54 /* NetworkService.swift in Sources */,
-				186651F7295DB997006A7BC5 /* SignUpSuccessViewController.swift in Sources */,
 				18FC9FC92985190600CD8EA8 /* DetailTrackRouter.swift in Sources */,
 				1821B10B28FEC61C0084E572 /* AddAlbumViewController.swift in Sources */,
 				18B80AB3298652DF0034C3D7 /* AddTrackToAlbumPresenter.swift in Sources */,
 				18778D84290E85A500479294 /* DetailAlbumViewController.swift in Sources */,
 				1876015028E34C50000223CD /* Track.swift in Sources */,
 				18A9810D2976B80300F70656 /* LibraryPresenter.swift in Sources */,
-				186651FB295DC09F006A7BC5 /* SignUpSuccessPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
