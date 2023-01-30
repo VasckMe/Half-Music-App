@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 23.01.23.
 //
 
-import Foundation
-
 protocol SongsRouterInterface {
     func showDetailTrack(input: DetailTrackInput)
 }
@@ -21,10 +19,10 @@ final class SongsRouter {
 
 extension SongsRouter: SongsRouterInterface {
     func showDetailTrack(input: DetailTrackInput) {
-        guard let controller = DetailTrackAssembly.detailTrackViewController(input: input) else {
+        guard let detailTrackController = DetailTrackAssembly.detailTrackViewController(input: input) else {
             return
         }
         
-        self.controller?.navigationController?.present(controller, animated: true)
+        controller?.navigationController?.present(detailTrackController, animated: true)
     }
 }

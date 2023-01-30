@@ -8,7 +8,7 @@
 import UIKit
 
 struct SongsAssembly {
-    static func songsTableViewController(input: SongsInput? = nil) -> SongsTableViewController? {
+    static func songsTableViewController(input: SongsModuleInput? = nil) -> SongsTableViewController? {
         guard
             let songsController = UIStoryboard(
                 name: "SongsTableViewController",
@@ -21,9 +21,10 @@ struct SongsAssembly {
         }
         
         let router = SongsRouter(controller: songsController)
-        let presenter = SongsPresenter(input: input, router: router)
         
+        let presenter = SongsPresenter(input: input, router: router)
         presenter.controller = songsController
+        
         songsController.presenter = presenter
         
         return songsController

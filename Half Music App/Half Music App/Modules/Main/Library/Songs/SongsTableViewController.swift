@@ -91,10 +91,7 @@ extension SongsTableViewController {
         forRowAt indexPath: IndexPath
     ) {
         if editingStyle == .delete {
-            let audioTrack = LocalStorage.shared.localTracks[indexPath.row]
-            FireBaseStorageService.audioRef.child(audioTrack.name ?? "track name").removeValue()
-            LocalStorage.shared.localTracks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            presenter?.didTriggerRemoveCellAt(index: indexPath.row)
         }
     }
 

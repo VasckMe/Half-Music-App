@@ -69,19 +69,28 @@ final class FireBaseStorageService {
         }
     }
     
-    static func getTracksWithOptionalArtist(
-        artist: String?,
+    static func getTracks(
+        of artist: String? = nil,
         completion: @escaping ([TrackFB]) -> ()
     ) {
         audioRef.getData { error, snapshot in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                guard let snapshot = snapshot else { return }
+                guard let snapshot = snapshot else {
+                    return
+                }
+                
                 var audioTracks: [TrackFB] = []
+                
                 for item in snapshot.children {
-                    guard let snapshot = item as? DataSnapshot,
-                          let audioTrack = TrackFB(snapshot: snapshot) else { continue }
+                    guard
+                        let snapshot = item as? DataSnapshot,
+                        let audioTrack = TrackFB(snapshot: snapshot)
+                    else {
+                        continue
+                    }
+                    
                     if let artist = artist {
                         if audioTrack.artist == artist {
                             audioTracks.append(audioTrack)
@@ -92,8 +101,8 @@ final class FireBaseStorageService {
                         audioTracks.append(audioTrack)
                     }
                 }
-                completion(audioTracks)
                 
+                completion(audioTracks)
             }
         }
     }
@@ -129,14 +138,27 @@ final class FireBaseStorageService {
         }
     }
     
-    static func addAudioObserver(completion: @escaping ([TrackFB]) -> ()) {
+    static func addAudioObserver(of artist: String? = nil, completion: @escaping ([TrackFB]) -> ()) {
         FireBaseStorageService.audioRef.observe(.value) { snapshot in
             var tracks = [TrackFB]()
             
             for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let track = TrackFB(snapshot: snapshot) else { continue }
-                tracks.append(track)
+                guard
+                    let snapshot = item as? DataSnapshot,
+                    let track = TrackFB(snapshot: snapshot)
+                else {
+                    continue
+                }
+                
+                if let artist = artist {
+                    if artist == track.artist {
+                        tracks.append(track)
+                    } else {
+                        continue
+                    }
+                } else {
+                    tracks.append(track)
+                }
             }
             
             completion(tracks)

@@ -80,7 +80,7 @@ private extension ArtistsPresenter {
     }
     
     func showController(artistIndex: Int) {
-        let input = SongsInput(artist: artists[artistIndex])
+        let input = SongsModuleInput(artist: artists[artistIndex])
         router?.showSongsViewController(input: input)
     }
 }

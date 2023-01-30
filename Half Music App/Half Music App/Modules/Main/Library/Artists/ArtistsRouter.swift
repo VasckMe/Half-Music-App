@@ -6,7 +6,7 @@
 //
 
 protocol ArtistsRouterInterface {
-    func showSongsViewController(input: SongsInput)
+    func showSongsViewController(input: SongsModuleInput)
 }
 
 final class ArtistsRouter {
@@ -18,7 +18,7 @@ final class ArtistsRouter {
 }
 
 extension ArtistsRouter: ArtistsRouterInterface {
-    func showSongsViewController(input: SongsInput) {
+    func showSongsViewController(input: SongsModuleInput) {
         guard let songsController = SongsAssembly.songsTableViewController(input: input) else {
             return
         }
