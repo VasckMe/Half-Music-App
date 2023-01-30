@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol SearchPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()

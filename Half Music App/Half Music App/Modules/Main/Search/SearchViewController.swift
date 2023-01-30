@@ -15,13 +15,11 @@ protocol SearchViewControllerInterface: AnyObject {
 
 final class SearchViewController: BaseViewController {
     
-    // MARK: - IBOutlets
+    var presenter: SearchPresenterInterface?
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchTrackBar: UISearchBar!
-    
-    // MARK: - Properties
-    var presenter: SearchPresenterInterface?
-    
+        
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
