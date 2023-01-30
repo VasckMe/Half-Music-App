@@ -21,11 +21,11 @@ struct SearchAssembly {
         }
         
         let router = SearchRouter(controller: controller)
+        
         let presenter = SearchPresenter(router: router)
-        
         presenter.controller = controller
-        controller.presenter = presenter
         
+        controller.presenter = presenter
         
         return controller
     }

@@ -12,7 +12,7 @@ protocol TabBarRouterInterface {
 }
 
 final class TabBarRouter {
-    weak var controller: TabBarViewController?
+    private weak var controller: TabBarViewController?
     
     init(controller: TabBarViewController) {
         self.controller = controller

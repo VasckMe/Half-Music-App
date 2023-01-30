@@ -77,13 +77,12 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchText.isEmpty
-        ? presenter?.fetchMusic()
-        : presenter?.fetchMusicWithFilter(filter: searchText.lowercased())
+        presenter?.didTriggerSearchBar(text: searchText)
     }
 }
 
 // MARK: - SearchViewControllerInterface
+
 extension SearchViewController: SearchViewControllerInterface {
     func showNavigationBar() {
         self.navigationController?.navigationBar.isHidden = false
@@ -99,6 +98,7 @@ extension SearchViewController: SearchViewControllerInterface {
 }
 
 // MARK: - Private
+
 private extension SearchViewController {
     func setup() {
         title = "Music"

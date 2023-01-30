@@ -64,9 +64,7 @@ final class FireBaseStorageService {
                           let album = AlbumFB(snapshot: snapshot) else { continue }
                     albums.append(album)
                 }
-                DispatchQueue.main.async {
-                    completion(albums)
-                }
+                completion(albums)
             }
         }
     }
@@ -94,14 +92,13 @@ final class FireBaseStorageService {
                         audioTracks.append(audioTrack)
                     }
                 }
-                DispatchQueue.main.async {
-                    completion(audioTracks)
-                }
+                completion(audioTracks)
+                
             }
         }
     }
     
-    static func getAlbumsWithPredicade(predicate: String, completion: @escaping ([AlbumFB])->()) {
+    static func getAlbumsWithPredicade(predicate: String, completion: @escaping ([AlbumFB]) -> ()) {
         albumsRef.getData { error, snapshot in
             if let error = error {
                 print(error.localizedDescription)
@@ -115,14 +112,12 @@ final class FireBaseStorageService {
                         albums.append(album)
                     }
                 }
-                DispatchQueue.main.async {
-                    completion(albums)
-                }
+                completion(albums)
             }
         }
     }
     
-    static func addAlbumsObserver(completion: @escaping ([AlbumFB]) -> () ) {
+    static func addAlbumsObserver(completion: @escaping ([AlbumFB]) -> ()) {
         albumsRef.observe(.value) { snapshot in
             var albums: [AlbumFB] = []
             for item in snapshot.children {
@@ -130,13 +125,11 @@ final class FireBaseStorageService {
                       let album = AlbumFB(snapshot: snapshot) else { continue }
                 albums.append(album)
             }
-            DispatchQueue.main.async {
-                completion(albums)
-            }
+            completion(albums)
         }
     }
     
-    static func addAudioObserver(completion: @escaping ([TrackFB]) -> () ) {
+    static func addAudioObserver(completion: @escaping ([TrackFB]) -> ()) {
         FireBaseStorageService.audioRef.observe(.value) { snapshot in
             var tracks = [TrackFB]()
             
@@ -146,9 +139,7 @@ final class FireBaseStorageService {
                 tracks.append(track)
             }
             
-            DispatchQueue.main.async {
-                completion(tracks)
-            }
+            completion(tracks)
         }
     }
     
@@ -164,9 +155,7 @@ final class FireBaseStorageService {
                       let track = TrackFB(snapshot: snapshot) else { continue }
                 tracks.append(track)
             }
-            DispatchQueue.main.async {
-                completion(tracks)
-            }
+            completion(tracks)
         }
     }
 }

@@ -12,22 +12,24 @@ protocol SearchPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
     
-    func didTriggerTableViewCellAt(index: Int)
+    func didTriggerSearchBar(text: String)
     
-    func fetchMusic()
-    func fetchMusicWithFilter(filter: String?)
+    func didTriggerTableViewCellAt(index: Int)
 }
 
 final class SearchPresenter {
     weak var controller: SearchViewControllerInterface?
-    let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
     
     private var router: SearchRouterInterface?
+    
+    let dataFetcher: DataFetcherServiceProtocol = DataFetcherService()
     
     init(router: SearchRouterInterface) {
         self.router = router
     }
 }
+
+// MARK: - SearchPresenterInterface
 
 extension SearchPresenter: SearchPresenterInterface {
     func didTriggerViewAppear() {
@@ -37,7 +39,10 @@ extension SearchPresenter: SearchPresenterInterface {
     
     func didTriggerViewDisappear() {
 //        controller?.showNavigationBar()
-
+    }
+    
+    func didTriggerSearchBar(text: String) {
+        fetchMusic(with: text)
     }
     
     func didTriggerTableViewCellAt(index: Int) {
@@ -45,23 +50,52 @@ extension SearchPresenter: SearchPresenterInterface {
         let input = DetailTrackInput(trackIndex: index, isOpenInBackground: false)
         router?.showDetailTrack(input: input)
     }
+}
+
+// MARK: - Private
+
+private extension SearchPresenter {
+    func fetchMusic(with filter: String = "") {
+        filter.isEmpty
+            ? fetchMusicWithouFilter()
+            : fetchMusicWithFilter(filter: filter)
+    }
     
-    func fetchMusic() {
-        dataFetcher.fetchFreeMusic { [weak self] audio in
-            guard let tracks = audio?.items else { return }
-            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-            self?.controller?.reloadTableView()
+    func fetchMusicWithouFilter() {
+        DispatchQueue.global(qos: .utility).async {
+            self.dataFetcher.fetchFreeMusic { [weak self] audio in
+                guard
+                    let self = self,
+                    let tracks = audio?.items
+                else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+                    self.controller?.reloadTableView()
+                }
+            }
         }
     }
     
     func fetchMusicWithFilter(filter: String?) {
-        dataFetcher.fetchFreeMusic { [weak self] audio in
-            guard let tracks = audio?.items else { return }
-            LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
-            LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { trackFB in
-                trackFB.name.lowercased().contains(filter?.lowercased() ?? "")
+        DispatchQueue.global(qos: .utility).async {
+            self.dataFetcher.fetchFreeMusic { [weak self] audio in
+                guard
+                    let self = self,
+                    let tracks = audio?.items
+                else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    LocalStorage.shared.convertToNewModelArray(itemArray: tracks)
+                    LocalStorage.shared.localTracks = LocalStorage.shared.localTracks.filter { trackFB in
+                        trackFB.name.lowercased().contains(filter?.lowercased() ?? "")
+                    }
+                    self.controller?.reloadTableView()
+                }
             }
-            self?.controller?.reloadTableView()
         }
     }
 }
