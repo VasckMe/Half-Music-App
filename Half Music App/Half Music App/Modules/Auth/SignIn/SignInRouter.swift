@@ -34,10 +34,11 @@ extension SignInRouter: SignInRouterInterface {
     }
     
     func showOnBoardingController() {
-        let controller = UIHostingController(rootView: OnboardingView())
-        controller.modalTransitionStyle = .coverVertical
-        controller.modalPresentationStyle = .fullScreen
-        self.controller?.navigationController?.pushViewController(controller, animated: true)
+        let onboardingController = UIHostingController(rootView: OnboardingView())
+        onboardingController.modalTransitionStyle = .coverVertical
+        onboardingController.modalPresentationStyle = .fullScreen
+        
+        controller?.navigationController?.present(onboardingController, animated: true)
     }
     
     func showSignUpViewController(output: SignUpOutput) {
@@ -51,11 +52,4 @@ extension SignInRouter: SignInRouterInterface {
     func closeSignUpViewController() {
         controller?.navigationController?.popToRootViewController(animated: true)
     }
-    
-//    func showOnboarding() {
-//        let controller = UIHostingController(rootView: OnboardingView())
-//        controller.modalTransitionStyle = .coverVertical
-//        controller.modalPresentationStyle = .fullScreen
-//        self.controller?.navigationController?.present(controller, animated: true)
-//    }
 }

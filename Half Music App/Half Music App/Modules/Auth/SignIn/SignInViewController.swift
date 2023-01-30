@@ -19,8 +19,7 @@ protocol SignInViewControllerInterface: AnyObject {
 }
 
 final class SignInViewController: BaseViewController {
-
-    // MARK: - IBOutlets
+    var presenter: SignInPresenterInterface?
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField! {
@@ -28,8 +27,13 @@ final class SignInViewController: BaseViewController {
             passwordTextField.enablePasswordToggle()
         }
     }
+    @IBAction func goToSignUp() {
+        presenter?.didTriggerSignUp()
+    }
     
-    var presenter: SignInPresenterInterface?
+    @IBAction private func loginAction() {
+        presenter?.didTriggerSignIn(email: emailTextField.text, password: passwordTextField.text)
+    }
     
     // MARK: - Life Cycle
     
@@ -46,23 +50,10 @@ final class SignInViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         presenter?.didTriggerViewDisappear()
     }
-    
-    // MARK: - IBActions
-    
-    @IBAction func goToSignUp() {
-        presenter?.didTriggerSignUp()
-    }
-    
-    @IBAction private func loginAction() {
-        presenter?.didTriggerSignIn(email: emailTextField.text, password: passwordTextField.text)
-    }
-    
-    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
-        let _ = unwindSegue.source
-    }
 }
 
 // MARK: - UITextFieldDelegate
+
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -71,6 +62,7 @@ extension SignInViewController: UITextFieldDelegate {
 }
 
 //MARK: - SignInViewControllerInterface
+
 extension SignInViewController: SignInViewControllerInterface {
     func addNotificationKBObserver() {
         addNotificationKBObservers()

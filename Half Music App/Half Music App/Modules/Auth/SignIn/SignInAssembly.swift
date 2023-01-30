@@ -10,9 +10,10 @@ import UIKit
 struct SignInAssembly {
     static func assemblySignInViewController(with viewController: SignInViewController) {
         let router = SignInRouter(controller: viewController)
-        let presenter = SignInPresenter(router: router)
         
-        viewController.presenter = presenter
+        let presenter = SignInPresenter(router: router)
         presenter.controller = viewController
+
+        viewController.presenter = presenter
     }
 }

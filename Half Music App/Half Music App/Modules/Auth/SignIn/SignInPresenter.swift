@@ -69,11 +69,11 @@ extension SignInPresenter: SignUpOutput {
 // MARK: Private
 private extension SignInPresenter {
     func addAuthStateDidChangeListener() {
-        if let user = Auth.auth().currentUser {
-            print("here is user")
+        if let _ = Auth.auth().currentUser {
+            print("user is logged in")
             self.router?.showMainTabBarController()
         } else {
-            print("no user")
+            print("no logged user")
         }
     }
     
@@ -103,9 +103,8 @@ private extension SignInPresenter {
                 self.controller?.callAlert(title: "Error", message: "\(error.localizedDescription)")
             } else if let _ = user {
                 self.router?.showMainTabBarController()
-                return
             } else {
-                self.controller?.callAlert(title: "Error", message: "Uknown problem O_o")
+                self.controller?.callAlert(title: "Error", message: "Unknown problem O_o")
             }
         }
     }

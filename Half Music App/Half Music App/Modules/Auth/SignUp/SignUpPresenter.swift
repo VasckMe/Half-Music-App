@@ -123,8 +123,8 @@ private extension SignUpPresenter {
                         DispatchQueue.main.async {
                             self.controller?.hideLoading()
                             self.output?.closeSignUp()
-                            self.output?.showOnboarding()
                             self.output?.showTabBarController()
+                            self.output?.showOnboarding()
                         }
                         return
                     } else {
