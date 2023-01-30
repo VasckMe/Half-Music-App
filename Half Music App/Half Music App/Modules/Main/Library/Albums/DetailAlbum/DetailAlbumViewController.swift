@@ -84,7 +84,7 @@ extension DetailAlbumViewController: UITableViewDataSource {
         forRowAt indexPath: IndexPath
     ) {
         if editingStyle == .delete {
-            presenter?.didTriggerCellAt(index: indexPath.row)
+            presenter?.didTriggerRemoveCellAt(index: indexPath.row)
         }
     }
 }

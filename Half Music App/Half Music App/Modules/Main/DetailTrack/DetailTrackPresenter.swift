@@ -207,8 +207,8 @@ private extension DetailTrackPresenter {
             FireBaseStorageService.audioRef.child(track.name).removeValue()
             controller?.likeButtonToggle()
         } else {
-            controller?.likeButtonToggle()
             FireBaseStorageService.saveTrackInDB(track: track)
+            controller?.likeButtonToggle()
         }
     }
 }

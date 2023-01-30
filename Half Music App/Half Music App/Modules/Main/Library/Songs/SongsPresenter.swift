@@ -60,7 +60,7 @@ extension SongsPresenter: SongsPresenterInterface {
     
     func didTriggerRemoveCellAt(index: Int) {
         let track = LocalStorage.shared.localTracks[index]
-        FireBaseStorageService.audioRef.child(track.name ?? "track name").removeValue()
+        FireBaseStorageService.audioRef.child(track.name).removeValue()
     }
 }
 
