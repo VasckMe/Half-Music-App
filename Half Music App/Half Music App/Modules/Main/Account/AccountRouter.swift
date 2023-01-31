@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 27.01.23.
 //
 
-import Foundation
-
 protocol AccountRouterInterface {
     func showEditAccount(input: EditAccountInput, output: EditAccountOutput)
     func closeEditAccount()
@@ -24,11 +22,11 @@ final class AccountRouter {
 
 extension AccountRouter: AccountRouterInterface {
     func showEditAccount(input: EditAccountInput, output: EditAccountOutput) {
-        guard let controller = EditAccountAssembly.editAccount(input: input, output: output) else {
+        guard let editAccountController = EditAccountAssembly.editAccount(input: input, output: output) else {
             return
         }
         
-        self.controller?.navigationController?.pushViewController(controller, animated: true)
+        controller?.navigationController?.pushViewController(editAccountController, animated: true)
     }
     
     func closeEditAccount() {

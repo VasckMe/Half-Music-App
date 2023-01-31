@@ -25,6 +25,8 @@ final class AccountPresenter {
     }
 }
 
+// MARK: - EditAccountOutput
+
 extension AccountPresenter: EditAccountOutput {
     func updateUserData() {
         controller?.activityIndicatorIsAnimating(isAnimating: true)
@@ -35,6 +37,8 @@ extension AccountPresenter: EditAccountOutput {
         router?.closeEditAccount()
     }
 }
+
+// MARK: - AccountPresenterInterface
 
 extension AccountPresenter: AccountPresenterInterface {
     func didTriggerViewLoad() {
@@ -53,6 +57,8 @@ extension AccountPresenter: AccountPresenterInterface {
         remove()
     }
 }
+
+// MARK: - Private
 
 private extension AccountPresenter {
     func fetchUserData() {

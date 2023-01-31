@@ -5,9 +5,7 @@
 //  Created by Apple Macbook Pro 13 on 27.01.23.
 //
 
-import Foundation
 import FirebaseAuth
-
 
 protocol EditAccountOutput: AnyObject {
     func updateUserData()

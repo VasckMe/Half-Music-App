@@ -23,8 +23,8 @@ protocol EditAccountViewControllerInterface: AnyObject {
 
 final class EditAccountViewController: UIViewController {
     
-    // MARK: - IBOutlets
-    
+    var presenter: EditAccountPresenterInterface?
+
     @IBOutlet private weak var nicknameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -38,9 +38,7 @@ final class EditAccountViewController: UIViewController {
     
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordErrorLabel: UILabel!
-    
-    var presenter: EditAccountPresenterInterface?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.enablePasswordToggle()
