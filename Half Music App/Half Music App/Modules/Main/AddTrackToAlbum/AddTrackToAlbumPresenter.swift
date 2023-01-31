@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 29.01.23.
 //
 
-import Foundation
-
 protocol AddTrackToAlbumOutput: AnyObject {
     func addToLibrary()
     func closeAddTrackToAlbum()
@@ -39,10 +37,13 @@ final class AddTrackToAlbumPresenter {
     }
 }
 
+// MARK: - AddTrackToAlbumPresenterInterface
+
 extension AddTrackToAlbumPresenter: AddTrackToAlbumPresenterInterface {
     func didTriggerLoadView() {
         fetchAlbums()
     }
+    
     func didTriggerSearchBar(text: String) {
         if text.isEmpty {
             FireBaseStorageService.getAlbums {[weak self] albums in
@@ -76,6 +77,8 @@ extension AddTrackToAlbumPresenter: AddTrackToAlbumPresenterInterface {
         albums
     }
 }
+
+// MARK: - AddTrackToAlbumPresenter
 
 private extension AddTrackToAlbumPresenter {
     func fetchAlbums() {
