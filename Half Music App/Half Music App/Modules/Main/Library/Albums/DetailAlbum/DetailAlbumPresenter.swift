@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 26.01.23.
 //
 
-import Foundation
-
 struct DetailAlbumInput {
     var album: AlbumFB?
 }
@@ -80,18 +78,30 @@ extension DetailAlbumPresenter: EditAlbumOutput {
     }
 }
 
+// MARK: - Private
+
 private extension DetailAlbumPresenter {
     func removeObserverToFetchTracks() {
-        guard let album = input?.album else { return }
+        guard let album = input?.album else {
+            return
+        }
+        
         let ref = FireBaseStorageService.albumsRef.child(album.name)
         ref.removeAllObservers()
     }
     
     private func addObserverToFetchTracks() {
-        guard let album = input?.album else { return }
+        guard let album = input?.album else {
+            return
+        }
+        
         FireBaseStorageService.addAudioInAlbumObserver(albumName: album.name) { [weak self] tracksFB in
+            guard let self = self else {
+                return
+            }
+            
             LocalStorage.shared.localTracks = tracksFB
-            self?.controller?.reloadData()
+            self.controller?.reloadData()
         }
     }
 }

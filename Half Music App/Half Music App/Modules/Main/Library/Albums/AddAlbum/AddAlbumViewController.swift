@@ -19,21 +19,19 @@ protocol AddAlbumViewControllerInterface: AnyObject {
 final class AddAlbumViewController: BaseViewController {
     
     var presenter: AddAlbumPresenterInterface?
-    
-    // MARK: - IBOutlets
-    
+        
     @IBOutlet private weak var albumImageView: UIImageView!
+    @IBOutlet private weak var albumTableView: UITableView!
     @IBOutlet private weak var albumNameLabel: UITextField! {
         didSet {
             let redPlaceholderText = NSAttributedString(
                 string: "Album Title",
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
             )
-                    
+            
             albumNameLabel.attributedPlaceholder = redPlaceholderText
         }
     }
-    @IBOutlet private weak var albumTableView: UITableView!
     
     // MARK: - Life Cycle
     

@@ -18,9 +18,7 @@ protocol LibraryViewControllerInterface: AnyObject {
 final class LibraryViewController: UIViewController {
 
     var presenter: LibraryPresenterInterface?
-    
-    // MARK: - IBOutlets
-    
+        
     @IBOutlet private weak var libraryTableView: UITableView!
     @IBOutlet private weak var recentlyAddedCollectionView: UICollectionView!
     

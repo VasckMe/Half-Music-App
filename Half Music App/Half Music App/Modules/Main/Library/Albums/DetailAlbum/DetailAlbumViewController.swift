@@ -16,6 +16,8 @@ protocol DetailAlbumViewControllerInterface: AnyObject {
 }
 
 final class DetailAlbumViewController: UIViewController {
+    var presenter: DetailAlbumPresenterInterface?
+
     @IBOutlet private weak var albumImageView: UIImageView! {
         didSet {
             albumImageView.image = UIImage(systemName: "music.note.list")
@@ -24,8 +26,6 @@ final class DetailAlbumViewController: UIViewController {
     
     @IBOutlet private weak var albumTitleLabel: UILabel!
     @IBOutlet private weak var albumTracksTableView: UITableView!
-    
-    var presenter: DetailAlbumPresenterInterface?
     
     // MARK: - Life Cycle
     
