@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 24.01.23.
 //
 
-import Foundation
-
 protocol AlbumsPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
@@ -71,8 +69,12 @@ extension AlbumsPresenter: AddAlbumOutput {
 private extension AlbumsPresenter {
     func addObserverToFetchAlbums() {
         FireBaseStorageService.addAlbumsObserver { [weak self] albumsFB in
-            self?.albums = albumsFB
-            self?.controller?.reloadData()
+            guard let self = self else {
+                return
+            }
+            
+            self.albums = albumsFB
+            self.controller?.reloadData()
         }
     }
     

@@ -21,9 +21,10 @@ struct AlbumsAssembly {
         }
         
         let router = AlbumsRouter(controller: controller)
-        let presenter = AlbumsPresenter(router: router)
         
+        let presenter = AlbumsPresenter(router: router)
         presenter.controller = controller
+        
         controller.presenter = presenter
         
         return controller

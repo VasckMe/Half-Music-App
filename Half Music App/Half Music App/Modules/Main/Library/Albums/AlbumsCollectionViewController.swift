@@ -16,12 +16,12 @@ protocol AlbumsCollectionViewControllerInterface: AnyObject {
 
 final class AlbumsCollectionViewController: UICollectionViewController {
     
+    var presenter: AlbumsPresenterInterface?
+    
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
         presenter?.didTriggerAddButton()
     }
-    
-    var presenter: AlbumsPresenterInterface?
-    
+
     // MARK: Life Cycle
     
     override func viewDidLoad() {
