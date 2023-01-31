@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 28.01.23.
 //
 
-import Foundation
-
 protocol DetailTrackRouterInterface {
     func showAddTrackToAlbum(input: AddTrackToAlbumInput, output: AddTrackToAlbumOutput)
     func closeAddTrackToAlbum()
@@ -23,7 +21,7 @@ final class DetailTrackRouter {
 extension DetailTrackRouter: DetailTrackRouterInterface {
     func showAddTrackToAlbum(input: AddTrackToAlbumInput, output: AddTrackToAlbumOutput) {
         guard
-            let controller = AddTrackToAlbumAssembly.addTrackToAlbumViewController(
+            let addTrackToAlbumController = AddTrackToAlbumAssembly.addTrackToAlbumViewController(
                 input: input,
                 output: output
             )
@@ -31,7 +29,7 @@ extension DetailTrackRouter: DetailTrackRouterInterface {
             return
         }
         
-        self.controller?.present(controller, animated: true)
+        controller?.present(addTrackToAlbumController, animated: true)
     }
     
     func closeAddTrackToAlbum() {

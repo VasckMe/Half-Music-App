@@ -192,7 +192,6 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
     
     func isShuffleSelected() -> Bool {
         shuffleOutlet.isSelected
-
     }
 }
 

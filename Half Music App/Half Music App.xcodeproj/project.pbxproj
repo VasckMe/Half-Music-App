@@ -583,7 +583,6 @@
 				1885D0CD28EDA9B600288CA4 /* Extensions */,
 				1876015E28E3513B000223CD /* Managers */,
 				1876014928E34BAC000223CD /* Models */,
-				18F5CF9E291EA2DB006A5911 /* Onboarding */,
 				18130AEC28E4406C000FCD54 /* Services */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
 				1898336128EC359300558234 /* File.rtf */,
@@ -695,13 +694,6 @@
 				18680D9C28E843E0001DF00D /* PasswordDifficult.swift */,
 			);
 			path = VerificationModels;
-			sourceTree = "<group>";
-		};
-		18F5CF9E291EA2DB006A5911 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		18FC9FBC2983CCF500CD8EA8 /* EditAccount */ = {

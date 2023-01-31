@@ -5,7 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 28.01.23.
 //
 
-import Foundation
 import MediaPlayer
 
 struct DetailTrackInput {
@@ -132,6 +131,8 @@ extension DetailTrackPresenter: DetailTrackPresenterInterface {
     }
 }
 
+ //MARK: - AddTrackToAlbumOutput
+
 extension DetailTrackPresenter: AddTrackToAlbumOutput {
     func addToLibrary() {
         controller?.likeButtonIsSelected(isSelected: true)
@@ -141,6 +142,8 @@ extension DetailTrackPresenter: AddTrackToAlbumOutput {
         router?.closeAddTrackToAlbum()
     }
 }
+
+//MARK: - Private
 
 private extension DetailTrackPresenter {
     func setupTrack() {
