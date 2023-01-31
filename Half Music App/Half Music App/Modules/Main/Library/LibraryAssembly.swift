@@ -21,9 +21,10 @@ struct LibraryAssembly {
         }
         
         let router = LibraryRouter(controller: controller)
-        let presenter = LibraryPresenter(router: router)
         
+        let presenter = LibraryPresenter(router: router)
         presenter.controller = controller
+        
         controller.presenter = presenter
         
         return controller

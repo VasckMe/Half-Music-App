@@ -102,6 +102,7 @@ extension LibraryViewController: UICollectionViewDataSource {
     }
 }
 // MARK: - UICollectionViewDelegate
+
 extension LibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.didTriggerCollectionViewCellAt(index: indexPath.row)

@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 17.01.23.
 //
 
-import Foundation
-
 protocol LibraryPresenterInterface {
     func didTriggerViewAppear()
     func didTriggerViewDisappear()
@@ -24,6 +22,8 @@ final class LibraryPresenter {
         self.router = router
     }
 }
+
+// MARK: - LibraryPresenterInterface
 
 extension LibraryPresenter: LibraryPresenterInterface {
     func didTriggerViewAppear() {
@@ -48,11 +48,17 @@ extension LibraryPresenter: LibraryPresenterInterface {
     }
 }
 
+// MARK: - Privat
+
 private extension LibraryPresenter {
     func addAudioObserver() {
         FireBaseStorageService.addAudioObserver { [weak self] tracksFB in
+            guard let self = self else {
+                return
+            }
+            
             LocalStorage.shared.localTracks = tracksFB
-            self?.controller?.reloadCollectionData()
+            self.controller?.reloadCollectionData()
         }
     }
     
