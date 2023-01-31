@@ -29,7 +29,7 @@ final class SignInPresenter {
 // MARK: - SignInPresenterInterface
 extension SignInPresenter: SignInPresenterInterface {
     func didTriggerViewLoad() {
-        addAuthStateDidChangeListener()
+        isLoggedUser()
         addNotificationKBObserver()
     }
     
@@ -66,7 +66,7 @@ extension SignInPresenter: SignUpOutput {
 
 // MARK: Private
 private extension SignInPresenter {
-    func addAuthStateDidChangeListener() {
+    func isLoggedUser() {
         if let _ = Auth.auth().currentUser {
             print("user is logged in")
             self.router?.showMainTabBarController()
