@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 24.01.23.
 //
 
-import Foundation
-
 protocol AddAlbumOutput: AnyObject {
     func didTriggerCloseAddAlbumViewController()
 }
@@ -72,6 +70,8 @@ extension AddAlbumPresenter: AddAlbumPresenterInterface {
         choosedTracks
     }
 }
+
+// MARK: - Private
 
 private extension AddAlbumPresenter {
     func saveButtonAction(name: String?) {

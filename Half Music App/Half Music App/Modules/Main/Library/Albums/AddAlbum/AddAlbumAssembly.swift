@@ -21,9 +21,10 @@ struct AddAlbumAssembly {
         }
         
         let router = AddAlbumRouter(controller: controller)
-        let presenter = AddAlbumPresenter(output: output, router: router)
         
+        let presenter = AddAlbumPresenter(output: output, router: router)
         presenter.controller = controller
+        
         controller.presenter = presenter
         
         return controller
@@ -42,9 +43,10 @@ struct AddAlbumAssembly {
         }
         
         let router = AddAlbumRouter(controller: controller)
-        let presenter = EditAlbumPresenter(input: input, output: output, router: router)
         
+        let presenter = EditAlbumPresenter(input: input, output: output, router: router)
         presenter.controller = controller
+        
         controller.presenter = presenter
         
         return controller

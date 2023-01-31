@@ -5,8 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 26.01.23.
 //
 
-import Foundation
-
 protocol EditAlbumOutput: AddAlbumOutput {
     func update(with album: AlbumFB)
     func didTriggerCloseAddAlbumViewController()
@@ -19,9 +17,9 @@ struct EditAlbumInput {
 final class EditAlbumPresenter {
     weak var controller: AddAlbumViewControllerInterface?
     
-    private var router: AddAlbumRouterInterface?
     private var input: EditAlbumInput
     private weak var output: EditAlbumOutput?
+    private var router: AddAlbumRouterInterface?
     
     var choosedTracks: [TrackFB] = []
     
@@ -55,8 +53,8 @@ extension EditAlbumPresenter: AddAlbumPresenterInterface {
     }
     
     func didTriggerSaveButton(albumName: String?) {
-            saveButtonAction(name: albumName)
-            router?.closeAddAlbumController(output: output)
+        saveButtonAction(name: albumName)
+        router?.closeAddAlbumController(output: output)
     }
     
     func addAudioToChoosed(audio: TrackFB) {
@@ -75,6 +73,8 @@ extension EditAlbumPresenter: AddAlbumPresenterInterface {
         choosedTracks
     }
 }
+
+// MARK: - Private
 
 private extension EditAlbumPresenter {
     func saveButtonAction(name: String?) {
