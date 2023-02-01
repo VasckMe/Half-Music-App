@@ -5,7 +5,6 @@
 //  Created by Apple Macbook Pro 13 on 5.10.22.
 //
 
-import Foundation
 import UIKit
 
 extension UITextField {

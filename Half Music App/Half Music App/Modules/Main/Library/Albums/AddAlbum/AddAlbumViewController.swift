@@ -16,7 +16,7 @@ protocol AddAlbumViewControllerInterface: AnyObject {
     func setNameLabel(with: String)
 }
 
-final class AddAlbumViewController: BaseViewController {
+final class AddAlbumViewController: UIViewController {
     
     var presenter: AddAlbumPresenterInterface?
         

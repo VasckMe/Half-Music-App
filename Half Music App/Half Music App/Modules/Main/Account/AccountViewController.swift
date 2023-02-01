@@ -26,7 +26,7 @@ protocol AccountViewControllerInterface: AnyObject {
     )
 }
 
-final class AccountViewController: BaseViewController {
+final class AccountViewController: UIViewController {
     
     // MARK: - IBOutlets
     

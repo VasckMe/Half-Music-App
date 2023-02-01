@@ -20,7 +20,7 @@ protocol SignUpViewControllerInterface: AnyObject {
     func hideLoading()
 }
 
-final class SignUpViewController: BaseViewController {
+final class SignUpViewController: UIViewController {
     
     var presenter: SignUpPresenterInterface?
     

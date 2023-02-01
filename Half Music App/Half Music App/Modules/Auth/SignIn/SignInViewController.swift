@@ -16,7 +16,7 @@ protocol SignInViewControllerInterface: AnyObject {
 
 }
 
-final class SignInViewController: BaseViewController {
+final class SignInViewController: UIViewController {
     var presenter: SignInPresenterInterface?
     
     @IBOutlet private weak var emailTextField: UITextField!

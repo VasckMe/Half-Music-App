@@ -52,6 +52,7 @@
 		1868518D29826D40007166AE /* DetailAlbumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868518C29826D40007166AE /* DetailAlbumPresenter.swift */; };
 		1868518F29826D94007166AE /* DetailAlbumRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868518E29826D94007166AE /* DetailAlbumRouter.swift */; };
 		1868519129827E36007166AE /* EditAlbumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868519029827E36007166AE /* EditAlbumPresenter.swift */; };
+		186D1504298A627400CF9D1B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D1503298A627400CF9D1B /* UIViewControllerExtension.swift */; };
 		1872835F28E758400064278A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872835E28E758400064278A /* SignInViewController.swift */; };
 		1872836328E75CA90064278A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872836228E75CA90064278A /* SignUpViewController.swift */; };
 		1876014C28E34C0B000223CD /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876014B28E34C0B000223CD /* Audio.swift */; };
@@ -72,7 +73,6 @@
 		1894F5362928D0D800D12841 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894F5352928D0D800D12841 /* Category.swift */; };
 		1898336228EC359300558234 /* File.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1898336128EC359300558234 /* File.rtf */; };
 		1898336428EC361E00558234 /* FireBaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336328EC361E00558234 /* FireBaseStorageService.swift */; };
-		1898336928EC406400558234 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898336828EC406400558234 /* BaseViewController.swift */; };
 		18A3B430290848D3005E7C0C /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */; };
 		18A98102297691B500F70656 /* CurrentMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A98100297691B500F70656 /* CurrentMusicViewController.swift */; };
 		18A98103297691B500F70656 /* CurrentMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A98101297691B500F70656 /* CurrentMusicViewController.xib */; };
@@ -178,6 +178,7 @@
 		1868518C29826D40007166AE /* DetailAlbumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumPresenter.swift; sourceTree = "<group>"; };
 		1868518E29826D94007166AE /* DetailAlbumRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumRouter.swift; sourceTree = "<group>"; };
 		1868519029827E36007166AE /* EditAlbumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlbumPresenter.swift; sourceTree = "<group>"; };
+		186D1503298A627400CF9D1B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		1872835E28E758400064278A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1872836228E75CA90064278A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1876014B28E34C0B000223CD /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 		1894F5352928D0D800D12841 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1898336128EC359300558234 /* File.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = File.rtf; sourceTree = "<group>"; };
 		1898336328EC361E00558234 /* FireBaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageService.swift; sourceTree = "<group>"; };
-		1898336828EC406400558234 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		18A3B42F290848D3005E7C0C /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		18A98100297691B500F70656 /* CurrentMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMusicViewController.swift; sourceTree = "<group>"; };
 		18A98101297691B500F70656 /* CurrentMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentMusicViewController.xib; sourceTree = "<group>"; };
@@ -457,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				1894F5342928D0BD00D12841 /* Category */,
-				1898336528EC402700558234 /* BaseVC */,
 				1876014A28E34BB3000223CD /* AudioTrackModels */,
 				1898336028EC352200558234 /* FirebaseModels */,
 				18D5D588291C07070022F4D4 /* VerificationModels */,
@@ -502,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				1885D0CE28EDA9D500288CA4 /* UITextFieldExtension.swift */,
+				186D1503298A627400CF9D1B /* UIViewControllerExtension.swift */,
 				18D263202912969000E32184 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -522,14 +522,6 @@
 				180EEC5428FC5A3A00D2FEE9 /* AlbumFB.swift */,
 			);
 			path = FirebaseModels;
-			sourceTree = "<group>";
-		};
-		1898336528EC402700558234 /* BaseVC */ = {
-			isa = PBXGroup;
-			children = (
-				1898336828EC406400558234 /* BaseViewController.swift */,
-			);
-			path = BaseVC;
 			sourceTree = "<group>";
 		};
 		18A3BACB29879B9600B1B73C /* Onboarding */ = {
@@ -909,8 +901,8 @@
 				18D3F48729167F4F00F7D867 /* AddTrackToAlbumViewController.swift in Sources */,
 				180EEC4128FBF96300D2FEE9 /* ArtistsTableViewController.swift in Sources */,
 				18FC9FC5298518D500CD8EA8 /* DetailTrackAssembly.swift in Sources */,
-				1898336928EC406400558234 /* BaseViewController.swift in Sources */,
 				18D51B7B28F1E9C100CCAE4A /* LibraryViewController.swift in Sources */,
+				186D1504298A627400CF9D1B /* UIViewControllerExtension.swift in Sources */,
 				1885D0CC28ED888D00288CA4 /* DetailTrackViewController.swift in Sources */,
 				1885D0D328EDD73B00288CA4 /* ImageCacheManager.swift in Sources */,
 				18329D00297FD1C8002DC38E /* AddAlbumPresenter.swift in Sources */,

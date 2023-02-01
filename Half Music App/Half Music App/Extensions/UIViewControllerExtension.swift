@@ -1,16 +1,16 @@
 //
-//  BaseViewController.swift
+//  UIViewControllerExtension.swift
 //  Half Music App
 //
-//  Created by Apple Macbook Pro 13 on 4.10.22.
+//  Created by Apple Macbook Pro 13 on 1.02.23.
 //
 
-import Foundation
 import UIKit
 
-
-
-class BaseViewController: UIViewController {
+extension UIViewController {
+    
+    // MARK: - Internal
+    
     func callDefaultAlert(title: String, message: String) {
         let alertController = UIAlertController(
             title: title,
@@ -39,40 +39,6 @@ class BaseViewController: UIViewController {
         alertController.addAction(action)
         alertController.addAction(cancel)
         present(alertController, animated: true)
-    }
-    
-    func callTextFieldAlert(
-        title: String,
-        message: String,
-        completion: @escaping (_ textField: UITextField?) -> ()
-    ) {
-        let alertController = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        alertController.addTextField { textField in
-            textField.enablePasswordToggle()
-            textField.isSecureTextEntry = true
-            textField.tintColor = UIConstants.globalTintColor
-        }
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
-            completion(alertController.textFields?.first)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive)
-        alertController.addAction(action)
-        alertController.addAction(cancel)
-        present(alertController, animated: true)
-    }
-    
-    func callAuthAlert(
-        title: String,
-        message: String,
-        completion: @escaping (_ textField: UITextField?) -> ()
-    ) {
-        callTextFieldAlert(title: title, message: message) { textField in
-            completion(textField)
-        }
     }
     
     func callAccountSettingsAlertSheet(
@@ -142,8 +108,49 @@ class BaseViewController: UIViewController {
             object: nil
         )
     }
-
-    @objc func kbDidShow(notification: Notification) {
+    
+    // MARK: - Private
+    
+    private func addTapGestureToAlertController(alertController: UIAlertController) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlert))
+        alertController.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+    }
+    
+    private func callTextFieldAlert(
+        title: String,
+        message: String,
+        completion: @escaping (_ textField: UITextField?) -> ()
+    ) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alertController.addTextField { textField in
+            textField.enablePasswordToggle()
+            textField.isSecureTextEntry = true
+            textField.tintColor = UIConstants.globalTintColor
+        }
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            completion(alertController.textFields?.first)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive)
+        alertController.addAction(action)
+        alertController.addAction(cancel)
+        present(alertController, animated: true)
+    }
+    
+    private func callAuthAlert(
+        title: String,
+        message: String,
+        completion: @escaping (_ textField: UITextField?) -> ()
+    ) {
+        callTextFieldAlert(title: title, message: message) { textField in
+            completion(textField)
+        }
+    }
+    
+    @objc private func kbDidShow(notification: Notification) {
         self.view.frame.origin.y = 0
         if let keyboardSize = (
             notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
@@ -152,16 +159,11 @@ class BaseViewController: UIViewController {
         }
     }
     
-    @objc func kbDidHide() {
+    @objc private func kbDidHide() {
         self.view.frame.origin.y = 0
     }
     
-    func addTapGestureToAlertController(alertController: UIAlertController) {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlert))
-        alertController.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func dismissAlert() {
+    @objc private func dismissAlert() {
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -13,7 +13,7 @@ protocol SearchViewControllerInterface: AnyObject {
     func reloadTableView()
 }
 
-final class SearchViewController: BaseViewController {
+final class SearchViewController: UIViewController {
     
     var presenter: SearchPresenterInterface?
 

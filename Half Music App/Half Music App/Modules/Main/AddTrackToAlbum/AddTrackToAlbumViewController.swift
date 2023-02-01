@@ -13,7 +13,7 @@ protocol AddTrackToAlbumViewControllerInterface: AnyObject {
     func callAlert(title: String, message: String)
 }
 
-final class AddTrackToAlbumViewController: BaseViewController {
+final class AddTrackToAlbumViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.searchTextField.textColor = .white
