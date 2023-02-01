@@ -288,19 +288,11 @@
 		18130AEC28E4406C000FCD54 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				18D5D57D291C046A0022F4D4 /* FireBase */,
-				18680D9928E84294001DF00D /* Verification */,
+				1898336328EC361E00558234 /* FireBaseStorageService.swift */,
+				18680D9A28E84315001DF00D /* VerificationService.swift */,
 				18D20D1E28E45EE200A758CC /* Network */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		182EEDF62924FCEE00D6A186 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				182EEDF72924FD0200D6A186 /* AnimationManager.swift */,
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		18329CDE297E7A56002DC38E /* Artists */ = {
@@ -424,14 +416,6 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		18680D9928E84294001DF00D /* Verification */ = {
-			isa = PBXGroup;
-			children = (
-				18680D9A28E84315001DF00D /* VerificationService.swift */,
-			);
-			path = Verification;
-			sourceTree = "<group>";
-		};
 		1868518729826C03007166AE /* DetailAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,9 +473,9 @@
 		1876015E28E3513B000223CD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				182EEDF62924FCEE00D6A186 /* Animation */,
-				18D51B7928F0489300CCAE4A /* AudioPlayer */,
-				18D20D2228E45F8400A758CC /* Storage */,
+				182EEDF72924FD0200D6A186 /* AnimationManager.swift */,
+				18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */,
+				18D20D2528E45FAF00A758CC /* LocalStorage.swift */,
 				18D20D1F28E45EF000A758CC /* Cache */,
 			);
 			path = Managers;
@@ -560,12 +544,12 @@
 		18B66C6A28DC7343000D5F79 /* Half Music App */ = {
 			isa = PBXGroup;
 			children = (
-				186651F0295DB898006A7BC5 /* Modules */,
 				1876015B28E35029000223CD /* Constants */,
 				1876014828E3436B000223CD /* Delegates */,
 				1885D0CD28EDA9B600288CA4 /* Extensions */,
 				1876015E28E3513B000223CD /* Managers */,
 				1876014928E34BAC000223CD /* Models */,
+				186651F0295DB898006A7BC5 /* Modules */,
 				18130AEC28E4406C000FCD54 /* Services */,
 				18B66C7428DC7346000D5F79 /* Assets.xcassets */,
 				1898336128EC359300558234 /* File.rtf */,
@@ -635,14 +619,6 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		18D20D2228E45F8400A758CC /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				18D20D2528E45FAF00A758CC /* LocalStorage.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
 		18D20D2728E4652F00A758CC /* Cell View */ = {
 			isa = PBXGroup;
 			children = (
@@ -654,22 +630,6 @@
 				18778D80290D86B700479294 /* SmallTableViewCell.xib */,
 			);
 			path = "Cell View";
-			sourceTree = "<group>";
-		};
-		18D51B7928F0489300CCAE4A /* AudioPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */,
-			);
-			path = AudioPlayer;
-			sourceTree = "<group>";
-		};
-		18D5D57D291C046A0022F4D4 /* FireBase */ = {
-			isa = PBXGroup;
-			children = (
-				1898336328EC361E00558234 /* FireBaseStorageService.swift */,
-			);
-			path = FireBase;
 			sourceTree = "<group>";
 		};
 		18FC9FBC2983CCF500CD8EA8 /* EditAccount */ = {
