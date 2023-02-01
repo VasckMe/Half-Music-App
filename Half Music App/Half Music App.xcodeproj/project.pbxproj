@@ -456,10 +456,10 @@
 		1876014928E34BAC000223CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1894F5342928D0BD00D12841 /* Category */,
+				1894F5352928D0D800D12841 /* Category.swift */,
+				18680D9C28E843E0001DF00D /* PasswordDifficult.swift */,
 				1876014A28E34BB3000223CD /* AudioTrackModels */,
 				1898336028EC352200558234 /* FirebaseModels */,
-				18D5D588291C07070022F4D4 /* VerificationModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,14 +505,6 @@
 				18D263202912969000E32184 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		1894F5342928D0BD00D12841 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				1894F5352928D0D800D12841 /* Category.swift */,
-			);
-			path = Category;
 			sourceTree = "<group>";
 		};
 		1898336028EC352200558234 /* FirebaseModels */ = {
@@ -569,7 +561,6 @@
 			isa = PBXGroup;
 			children = (
 				186651F0295DB898006A7BC5 /* Modules */,
-				18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */,
 				1876015B28E35029000223CD /* Constants */,
 				1876014828E3436B000223CD /* Delegates */,
 				1885D0CD28EDA9B600288CA4 /* Extensions */,
@@ -580,6 +571,7 @@
 				1898336128EC359300558234 /* File.rtf */,
 				18680D9E28E8867D001DF00D /* GoogleService-Info.plist */,
 				18B66C7928DC7346000D5F79 /* Info.plist */,
+				18B66C7628DC7346000D5F79 /* LaunchScreen.storyboard */,
 			);
 			path = "Half Music App";
 			sourceTree = "<group>";
@@ -678,14 +670,6 @@
 				1898336328EC361E00558234 /* FireBaseStorageService.swift */,
 			);
 			path = FireBase;
-			sourceTree = "<group>";
-		};
-		18D5D588291C07070022F4D4 /* VerificationModels */ = {
-			isa = PBXGroup;
-			children = (
-				18680D9C28E843E0001DF00D /* PasswordDifficult.swift */,
-			);
-			path = VerificationModels;
 			sourceTree = "<group>";
 		};
 		18FC9FBC2983CCF500CD8EA8 /* EditAccount */ = {
