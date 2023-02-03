@@ -28,7 +28,7 @@ struct TabBarAssembly {
         presenter.controller = controller
         
         controller.presenter = presenter
-        
+            
         searchViewController.tabBarItem = UITabBarItem(
             title: "Music",
             image: UIImage(systemName: "magnifyingglass.circle"),
@@ -47,8 +47,22 @@ struct TabBarAssembly {
             selectedImage: UIImage(systemName: "person.fill")
         )
         
-        controller.setViewControllers([searchViewController, libraryViewController, accountViewController], animated: true)
+        let searchNav = UINavigationController(rootViewController: searchViewController)
+        let libraryNav = UINavigationController(rootViewController: libraryViewController)
+        let accountNav = UINavigationController(rootViewController: accountViewController)
         
+        searchNav.setupNavigationController()
+        libraryNav.setupNavigationController()
+        accountNav.setupNavigationController()
+        
+        controller.setViewControllers(
+            [
+                searchNav,
+                libraryNav,
+                accountNav
+            ],
+            animated: true)
+                
         return controller
     }
 }

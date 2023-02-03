@@ -29,7 +29,6 @@ final class ArtistsPresenter {
 extension ArtistsPresenter: ArtistsPresenterInterface {
     func didTriggerViewAppear() {
         fetchArtists()
-        controller?.showNavigationBar()
     }
     
     func didTriggerViewDisappear() {

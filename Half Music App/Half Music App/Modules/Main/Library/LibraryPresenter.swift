@@ -28,12 +28,10 @@ final class LibraryPresenter {
 extension LibraryPresenter: LibraryPresenterInterface {
     func didTriggerViewAppear() {
         addAudioObserver()
-        controller?.hideNavigationBar()
     }
 
     func didTriggerViewDisappear() {
         removeAudioObserver()
-//        controller?.showNavigationBar()
     }
 
     func didTriggerTableViewCell(category: Category) {

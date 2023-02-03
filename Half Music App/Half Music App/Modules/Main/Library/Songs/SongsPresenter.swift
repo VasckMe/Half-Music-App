@@ -41,7 +41,6 @@ extension SongsPresenter: SongsPresenterInterface {
     
     func didTriggerViewAppear() {
         addObserverToFetchSongs()
-        controller?.showNavigationBar()
     }
     
     func didTriggerViewDisappear() {

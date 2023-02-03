@@ -33,6 +33,10 @@ final class SignInViewController: UIViewController {
         presenter?.didTriggerSignIn(email: emailTextField.text, password: passwordTextField.text)
     }
     
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        //
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {

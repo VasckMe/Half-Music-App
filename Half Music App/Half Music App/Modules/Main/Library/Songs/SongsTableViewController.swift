@@ -10,9 +10,7 @@ import FirebaseDatabase
 
 protocol SongsTableViewControllerInterface: AnyObject {
     func setTitle(with: String?)
-    
-    func showNavigationBar()
-    
+        
     func reloadData()
 }
 
@@ -109,10 +107,6 @@ extension SongsTableViewController {
 extension SongsTableViewController: SongsTableViewControllerInterface {
     func setTitle(with text: String?) {
         self.title = text
-    }
-    
-    func showNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
     }
     
     func reloadData() {

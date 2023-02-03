@@ -15,8 +15,9 @@ protocol TabBarViewControllerInterface: AnyObject {
 final class TabBarViewController: UITabBarController {
     var presenter: TabBarPresenterInterface?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
         setup()
     }
 }
@@ -45,6 +46,7 @@ private extension TabBarViewController {
             width: view.bounds.width,
             height: height
         )
+        
         presenter?.setupXib(with: frame)
     }
 }

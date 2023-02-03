@@ -9,7 +9,7 @@ protocol AccountRouterInterface {
     func showEditAccount(input: EditAccountInput, output: EditAccountOutput)
     func closeEditAccount()
     
-    func showSignIn()
+    func closeTabBarController()
 }
 
 final class AccountRouter {
@@ -33,7 +33,7 @@ extension AccountRouter: AccountRouterInterface {
         controller?.navigationController?.popViewController(animated: true)
     }
     
-    func showSignIn() {
-        controller?.navigationController?.popToRootViewController(animated: true)
+    func closeTabBarController() {
+        controller?.performSegue(withIdentifier: "goBackToSignIn", sender: nil)
     }
 }

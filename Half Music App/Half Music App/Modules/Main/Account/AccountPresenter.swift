@@ -102,7 +102,7 @@ private extension AccountPresenter {
     func logout() {
         do {
             try Auth.auth().signOut()
-            router?.showSignIn()
+            router?.closeTabBarController()
         } catch {
             controller?.callAlert(title: "Autho error", message: "Sign out error")
         }
@@ -111,6 +111,6 @@ private extension AccountPresenter {
     func remove() {
         FireBaseStorageService.userRef.removeValue()
         Auth.auth().currentUser?.delete()
-        router?.showSignIn()
+        router?.closeTabBarController()
     }
 }

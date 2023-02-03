@@ -9,7 +9,6 @@ import Foundation
 
 protocol SearchPresenterInterface {
     func didTriggerViewAppear()
-    func didTriggerViewDisappear()
     
     func didTriggerSearchBar(text: String)
     
@@ -32,12 +31,7 @@ final class SearchPresenter {
 
 extension SearchPresenter: SearchPresenterInterface {
     func didTriggerViewAppear() {
-        controller?.hideNavigationBar()
         fetchMusic()
-    }
-    
-    func didTriggerViewDisappear() {
-//        controller?.showNavigationBar()
     }
     
     func didTriggerSearchBar(text: String) {

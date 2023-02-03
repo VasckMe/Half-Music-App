@@ -9,9 +9,6 @@ import UIKit
 import FirebaseDatabase
 
 protocol LibraryViewControllerInterface: AnyObject {
-    func hideNavigationBar()
-    func showNavigationBar()
-    
     func reloadCollectionData()
 }
 
@@ -26,6 +23,7 @@ final class LibraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Library"
         libraryTableView.register(
             UINib(nibName: SmallTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: SmallTableViewCell.identifier
@@ -34,6 +32,7 @@ final class LibraryViewController: UIViewController {
             UINib(nibName: LargeCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: LargeCollectionViewCell.identifier
         )
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,14 +123,6 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - LibraryViewControllerInterface
 
 extension LibraryViewController: LibraryViewControllerInterface {
-    func showNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = false
-    }
-
-    func hideNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     func reloadCollectionData() {
         self.recentlyAddedCollectionView.reloadData()
     }

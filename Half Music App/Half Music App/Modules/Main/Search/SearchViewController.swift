@@ -8,8 +8,6 @@
 import UIKit
 
 protocol SearchViewControllerInterface: AnyObject {
-    func showNavigationBar()
-    func hideNavigationBar()
     func reloadTableView()
 }
 
@@ -29,10 +27,6 @@ final class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         presenter?.didTriggerViewAppear()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        presenter?.didTriggerViewDisappear()
     }
 }
 
@@ -81,15 +75,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 // MARK: - SearchViewControllerInterface
 
-extension SearchViewController: SearchViewControllerInterface {
-    func showNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
-    func hideNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
+extension SearchViewController: SearchViewControllerInterface {    
     func reloadTableView() {
         tableView.reloadData()
     }

@@ -9,8 +9,6 @@ import UIKit
 import FirebaseDatabase
 
 protocol ArtistsTableViewControllerInterface: AnyObject {
-    func showNavigationBar()
-    
     func reloadData()
 }
 
@@ -77,10 +75,6 @@ extension ArtistsTableViewController {
 // MARK: - ArtistsTableViewControllerInterface
 
 extension ArtistsTableViewController: ArtistsTableViewControllerInterface {
-    func showNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     func reloadData() {
         tableView.reloadData()
     }

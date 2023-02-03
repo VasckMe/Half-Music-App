@@ -45,7 +45,7 @@ extension SignInRouter: SignInRouterInterface {
         guard let signUpController = SignUpAssembly.signUpController(output: output) else {
             return
         }
-        
+
         controller?.navigationController?.pushViewController(signUpController, animated: true)
     }
     

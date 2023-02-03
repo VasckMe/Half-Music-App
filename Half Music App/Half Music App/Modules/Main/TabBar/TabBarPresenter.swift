@@ -21,6 +21,8 @@ final class TabBarPresenter {
     }
 }
 
+// MARK: - TabBarPresenterInterface
+
 extension TabBarPresenter: TabBarPresenterInterface {
     func setupXib(with frame: CGRect) {
         let input = NowIsPlayingModuleInput(frame: frame)
@@ -28,6 +30,8 @@ extension TabBarPresenter: TabBarPresenterInterface {
         controller?.addSubviewOnTabBar(view: xibView)
     }
 }
+
+// MARK: - NowIsPlayingOutput
 
 extension TabBarPresenter: NowIsPlayingOutput {
     func showDetail(with index: Int) {

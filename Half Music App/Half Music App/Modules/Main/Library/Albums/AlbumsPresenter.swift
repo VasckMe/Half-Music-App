@@ -35,7 +35,6 @@ extension AlbumsPresenter: AlbumsPresenterInterface {
     func didTriggerViewAppear() {
         addObserverToFetchAlbums()
         addObserverToFetchTracks()
-        controller?.showNavigationBar()
     }
     
     func didTriggerViewDisappear() {

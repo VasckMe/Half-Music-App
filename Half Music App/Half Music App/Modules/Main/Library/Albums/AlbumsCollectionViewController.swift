@@ -9,8 +9,6 @@ import UIKit
 import FirebaseDatabase
 
 protocol AlbumsCollectionViewControllerInterface: AnyObject {
-    func showNavigationBar()
-    
     func reloadData()
 }
 
@@ -96,10 +94,6 @@ extension AlbumsCollectionViewController {
 }
 
 extension AlbumsCollectionViewController: AlbumsCollectionViewControllerInterface {
-    func showNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     func reloadData() {
         self.collectionView.reloadData()
     }

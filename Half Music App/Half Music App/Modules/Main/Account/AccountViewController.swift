@@ -50,19 +50,6 @@ final class AccountViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func editAction(_ sender: UIBarButtonItem) {
-//        guard let passw = passTextField.text else {
-//            return
-//        }
-//        callAccountSettingsAlertSheet(password: passw) {
-//            self.edit()
-//        } logoutCompletion: {
-//            self.logout()
-//        } deleteCompletion: {
-//            self.deleteAccount()
-//        }
-    }
-    
-    @IBAction func settingsAction() {
         guard let passw = passTextField.text else {
             return
         }
