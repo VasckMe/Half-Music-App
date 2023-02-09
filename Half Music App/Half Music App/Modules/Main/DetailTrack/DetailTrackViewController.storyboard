@@ -71,6 +71,8 @@
                                                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="maximumTrackTintColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <connections>
+                                                                            <action selector="touchUpDown:" destination="Y6W-OH-hqX" eventType="touchDown" id="mon-dk-bUn"/>
+                                                                            <action selector="touchUpInside:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DCF-YX-Jgv"/>
                                                                             <action selector="trackSliderAction" destination="Y6W-OH-hqX" eventType="valueChanged" id="B73-nG-V6N"/>
                                                                         </connections>
                                                                     </slider>

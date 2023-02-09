@@ -26,19 +26,16 @@ protocol DetailTrackViewControllerInterface: AnyObject {
     func setEndTimeLabel(time: String)
     
     func setRepeat()
-    func setShuffle()
-    
-    func likeButtonIsSelected(isSelected: Bool)
-    
-    func playPauseButtonToggle()
     func repeatButtonToggle()
+    
+    func setShuffle()
     func shuffleButtonToggle()
-    func likeButtonToggle()
-    
-    func isRepeatSelected() -> Bool
-    func isShuffleSelected() -> Bool
-    
+        
     func playPause()
+    func playPauseButtonToggle()
+    
+    func likeButtonToggle()
+    func likeButtonIsSelected(isSelected: Bool)
 }
 
 final class DetailTrackViewController: UIViewController {
@@ -61,7 +58,6 @@ final class DetailTrackViewController: UIViewController {
     @IBOutlet private weak var likeButtonOutlet: UIButton!
     
     // MARK: - LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -77,6 +73,14 @@ final class DetailTrackViewController: UIViewController {
     }
     
     // MARK: - IBActions
+    
+    @IBAction private func touchUpInside(_ sender: UISlider) {
+        presenter?.didTriggerTrackSliderTouchUp(value: Double(sender.value))
+    }
+    
+    @IBAction private func touchUpDown(_ sender: UISlider) {
+        presenter?.didTriggerTrackSliderTouchDown()
+    }
     
     @IBAction private func trackSliderAction() {
         presenter?.didTriggerTrackSlider(value: Double(trackSlider.value))
@@ -135,7 +139,7 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
     }
     
     func setMaxTrackSliderValue(value: Float) {
-        trackSlider.maximumValue = value
+        trackSlider.maximumValue != value ? trackSlider.maximumValue = value : nil
     }
     
     func setTrackSliderValue(value: Float) {
@@ -154,63 +158,53 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
         AudioPlayerManager.shared.isRepeat = repeatOutlet.isSelected
     }
     
+    func repeatButtonToggle() {
+        repeatOutlet.isSelected.toggle()
+    }
+
     func setShuffle() {
         AudioPlayerManager.shared.isShuffle = shuffleOutlet.isSelected
-    }
-    
-    func likeButtonIsSelected(isSelected: Bool) {
-        likeButtonOutlet.isSelected = isSelected
-    }
-    
-    func playPauseButtonToggle() {
-        playPauseButtonOutlet.isSelected.toggle()
     }
     
     func shuffleButtonToggle() {
         shuffleOutlet.isSelected.toggle()
     }
     
-    func repeatButtonToggle() {
-        repeatOutlet.isSelected.toggle()
+    func playPause() {
+        playPauseButtonOutlet.isSelected ? AudioManager.shared.play() : AudioManager.shared.pause()
+    }
+    
+    func playPauseButtonToggle() {
+        playPauseButtonOutlet.isSelected.toggle()
+    }
+    
+    func likeButtonIsSelected(isSelected: Bool) {
+        likeButtonOutlet.isSelected = isSelected
     }
     
     func likeButtonToggle() {
         likeButtonOutlet.isSelected.toggle()
     }
- 
-    func playPause() {
-        AudioPlayerManager.shared.isPlaying = playPauseButtonOutlet.isSelected
-        
-        playPauseButtonOutlet.isSelected
-            ? AudioPlayerManager.shared.play()
-            : AudioPlayerManager.shared.pause()
-    }
-    
-    func isRepeatSelected() -> Bool {
-        repeatOutlet.isSelected
-    }
-    
-    func isShuffleSelected() -> Bool {
-        shuffleOutlet.isSelected
-    }
 }
+
+// MARK: - Private
 
 private extension DetailTrackViewController {
     func setupUI() {
-        volumeSliderOutlet.value = AudioPlayerManager.shared.volume * 100
+        volumeSliderOutlet.value = AudioManager.shared.volume * 100
         
-        playPauseButtonOutlet.isSelected = AudioPlayerManager.shared.isPlaying
+        playPauseButtonOutlet.isSelected = AudioManager.shared.isPlaying
         playPauseButtonOutlet.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
         playPauseButtonOutlet.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
         
         likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         
-        repeatOutlet.isSelected = AudioPlayerManager.shared.isRepeat
+        repeatOutlet.isSelected = AudioManager.shared.isRepeat
         repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle"), for: .normal)
         repeatOutlet.setImage(UIImage(systemName: "arrow.2.circlepath.circle.fill"), for: .selected)
         
-        shuffleOutlet.isSelected = AudioPlayerManager.shared.isShuffle
+        shuffleOutlet.isSelected = AudioManager.shared.isShuffle
         shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle"), for: .normal)
         shuffleOutlet.setImage(UIImage(systemName: "shuffle.circle.fill"), for: .selected)
     }

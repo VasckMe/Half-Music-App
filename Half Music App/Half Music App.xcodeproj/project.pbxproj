@@ -93,6 +93,7 @@
 		18C0E9082965D093007B8589 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9072965D093007B8589 /* TabBarPresenter.swift */; };
 		18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E9092965D3C0007B8589 /* TabBarRouter.swift */; };
 		18C0E90F2967383C007B8589 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0E90E2967383C007B8589 /* SearchAssembly.swift */; };
+		18CAAA442993D0B00003F248 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAAA432993D0B00003F248 /* AudioManager.swift */; };
 		18CDC4672904048900E27FEC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDC4662904048900E27FEC /* AccountViewController.swift */; };
 		18D066632969E454009B4F89 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D066622969E454009B4F89 /* SearchPresenter.swift */; };
 		18D066652969E573009B4F89 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D066642969E573009B4F89 /* SearchRouter.swift */; };
@@ -222,6 +223,7 @@
 		18C0E9072965D093007B8589 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		18C0E9092965D3C0007B8589 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		18C0E90E2967383C007B8589 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		18CAAA432993D0B00003F248 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		18CDC4662904048900E27FEC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18D066622969E454009B4F89 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		18D066642969E573009B4F89 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				182EEDF72924FD0200D6A186 /* AnimationManager.swift */,
+				18CAAA432993D0B00003F248 /* AudioManager.swift */,
 				18D51B7728F0488E00CCAE4A /* AudioPlayerManager.swift */,
 				18D20D2528E45FAF00A758CC /* LocalStorage.swift */,
 				18D20D1F28E45EF000A758CC /* Cache */,
@@ -885,6 +888,7 @@
 				184F70BF2963206F0005268D /* SignInPresenter.swift in Sources */,
 				18C0E90A2965D3C0007B8589 /* TabBarRouter.swift in Sources */,
 				184F70C1296322A80005268D /* SignInRouter.swift in Sources */,
+				18CAAA442993D0B00003F248 /* AudioManager.swift in Sources */,
 				1872835F28E758400064278A /* SignInViewController.swift in Sources */,
 				18A981052976941900F70656 /* CurrentMusicAssembly.swift in Sources */,
 				1876014C28E34C0B000223CD /* Audio.swift in Sources */,
