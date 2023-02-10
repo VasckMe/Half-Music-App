@@ -276,7 +276,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		180E0D692911631200500233 /* XIB */ = {
+		180E0D692911631200500233 /* XIB (DEPRECATED) */ = {
 			isa = PBXGroup;
 			children = (
 				18336927296C6F3B0094DEA5 /* NowIsPlayingAssembly.swift */,
@@ -285,8 +285,8 @@
 				1824E23C291901350017FB07 /* NowIsPlayingView.swift */,
 				1824E23A2919011C0017FB07 /* NowIsPlayingView.xib */,
 			);
-			name = XIB;
-			path = "../../../Controllers/Main Controllers/XIB";
+			name = "XIB (DEPRECATED)";
+			path = "../../../Controllers/Main Controllers/XIB (DEPRECATED)";
 			sourceTree = "<group>";
 		};
 		18130AEC28E4406C000FCD54 /* Services */ = {
@@ -367,8 +367,8 @@
 		184F70C329649FE70005268D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				18A980FF2976914300F70656 /* CurrentMusic (In progress) */,
-				180E0D692911631200500233 /* XIB */,
+				18A980FF2976914300F70656 /* CurrentMusic */,
+				180E0D692911631200500233 /* XIB (DEPRECATED) */,
 				18C0E9052965D009007B8589 /* TabBarAssembly.swift */,
 				18C0E9072965D093007B8589 /* TabBarPresenter.swift */,
 				18C0E9092965D3C0007B8589 /* TabBarRouter.swift */,
@@ -517,7 +517,7 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		18A980FF2976914300F70656 /* CurrentMusic (In progress) */ = {
+		18A980FF2976914300F70656 /* CurrentMusic */ = {
 			isa = PBXGroup;
 			children = (
 				18A981042976941900F70656 /* CurrentMusicAssembly.swift */,
@@ -526,7 +526,7 @@
 				18A98100297691B500F70656 /* CurrentMusicViewController.swift */,
 				18A98101297691B500F70656 /* CurrentMusicViewController.xib */,
 			);
-			path = "CurrentMusic (In progress)";
+			path = CurrentMusic;
 			sourceTree = "<group>";
 		};
 		18B66C5F28DC7343000D5F79 = {

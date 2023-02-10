@@ -11,7 +11,6 @@
             <connections>
                 <outlet property="animationImageView" destination="fLT-uw-7AU" id="Fiy-oY-kqH"/>
                 <outlet property="audioTitleLabel" destination="iXE-th-Qx0" id="79i-0o-wXW"/>
-                <outlet property="ourView" destination="i5M-Pr-FkT" id="gR4-YT-LM9"/>
                 <outlet property="playPauseButtonOutlet" destination="p93-I8-pa3" id="c4q-WX-KW0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

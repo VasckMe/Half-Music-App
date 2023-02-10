@@ -68,7 +68,7 @@ extension DetailTrackPresenter: DetailTrackPresenterInterface {
     
     func didTriggerViewAppear() {
         timeObserver = player.addObserver { [weak self] time in
-            self?.makeTime(time: time)
+            self?.observeTime(time: time)
         }
     }
     
@@ -181,7 +181,7 @@ private extension DetailTrackPresenter {
         }
     }
     
-    func makeTime(time: CMTime) {
+    func observeTime(time: CMTime) {
         guard let controller = controller else {
             return
         }
@@ -209,12 +209,9 @@ private extension DetailTrackPresenter {
         
         let track = LocalStorage.shared.currentAudioQueue[input.trackIndex]
         
-        if isSelected {
-            FireBaseStorageService.audioRef.child(track.name).removeValue()
-            controller?.likeButtonToggle()
-        } else {
-            FireBaseStorageService.saveTrackInDB(track: track)
-            controller?.likeButtonToggle()
-        }
+        isSelected
+            ? FireBaseStorageService.audioRef.child(track.name).removeValue()
+            : FireBaseStorageService.saveTrackInDB(track: track)
+        controller?.likeButtonToggle()
     }
 }

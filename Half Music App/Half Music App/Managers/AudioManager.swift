@@ -9,10 +9,8 @@ import Foundation
 import MediaPlayer
 
 final class AudioManager {
-    // Static
     static let shared = AudioManager()
     
-    // Player
     private let player = AVPlayer()
     private var observer: Any!
     
@@ -27,10 +25,9 @@ final class AudioManager {
     // Private
     private init() {
         setObserver()
-        print("AudioManager inited")
     }
     
-    // Func
+    // Play / pause
     func pause() {
         player.pause()
         isPlaying = false
@@ -41,6 +38,7 @@ final class AudioManager {
         isPlaying = true
     }
     
+    // Shuffle
     func shuffleOn() {
         isShuffle = true
     }
@@ -49,6 +47,7 @@ final class AudioManager {
         isShuffle = false
     }
     
+    // Repeat
     func repeatOn() {
         isRepeat = true
     }
@@ -57,31 +56,22 @@ final class AudioManager {
         isRepeat = false
     }
     
+    // Volume
     func setVolume(volume: Float) {
         player.volume = volume
         self.volume = volume
     }
     
+    // Seek to
+    func seekTo(time: CMTime) {
+        player.seek(to: time)
+    }
+    
+    //  Observer
     func setObserver() {
         observer = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.0, preferredTimescale: .max), queue: nil) { time in
             self.observe(time: time)
         }
-    }
-    
-    func observe(time: CMTime) {
-        let duration = getDuration()
-        let seconds = Int(time.seconds)
-        
-        if duration - seconds <= 0, duration != 0 {
-            seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
-            isRepeat
-                ? addAudioTrackInPlayer()
-                : nextAudioTrack()
-        }
-    }
-    
-    func seekTo(time: CMTime) {
-        player.seek(to: time)
     }
     
     func addObserver(completion: @escaping (CMTime) -> Void) -> Any {
@@ -96,6 +86,7 @@ final class AudioManager {
         player.removeTimeObserver(observer)
     }
     
+    // Duration
     func getDuration() -> Int {
         guard let currentItem = player.currentItem else {
             return 0
@@ -104,6 +95,7 @@ final class AudioManager {
         return duration
     }
     
+    // Forward / backward
     func nextAudioTrack() {
         if isShuffle {
             trackIndex = Int.random(in: 0..<LocalStorage.shared.currentAudioQueue.count)
@@ -126,8 +118,10 @@ final class AudioManager {
         addAudioTrackInPlayer()
     }
     
+    // Add track in player
     func addAudioTrackInPlayer() {
         guard
+            LocalStorage.shared.currentAudioQueue.indices.contains(trackIndex),
             let audioItem = createPlayerItem(
                 urlString: LocalStorage.shared.currentAudioQueue[trackIndex].preview_url
             )
@@ -136,8 +130,12 @@ final class AudioManager {
         }
         player.replaceCurrentItem(with: audioItem)
     }
-    
-    private func createPlayerItem(urlString: String?) -> AVPlayerItem? {
+}
+
+
+// MARK: - Private
+private extension AudioManager {
+    func createPlayerItem(urlString: String?) -> AVPlayerItem? {
         guard
             let urlString = urlString,
             let url = URL(string: urlString)
@@ -145,5 +143,17 @@ final class AudioManager {
             return nil
         }
         return AVPlayerItem(url: url)
+    }
+    
+    func observe(time: CMTime) {
+        let duration = getDuration()
+        let seconds = Int(time.seconds)
+        
+        if duration - seconds <= 0, duration != 0 {
+            seekTo(time: CMTime(seconds: 0.0, preferredTimescale: .max))
+            isRepeat
+                ? addAudioTrackInPlayer()
+                : nextAudioTrack()
+        }
     }
 }

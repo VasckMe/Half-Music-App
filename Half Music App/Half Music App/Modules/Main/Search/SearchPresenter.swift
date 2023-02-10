@@ -52,6 +52,7 @@ private extension SearchPresenter {
         filter.isEmpty
             ? fetchMusicWithouFilter()
             : fetchMusicWithFilter(filter: filter)
+        LocalStorage.shared.currentAudioQueue = LocalStorage.shared.localTracks
     }
     
     func fetchMusicWithouFilter() {

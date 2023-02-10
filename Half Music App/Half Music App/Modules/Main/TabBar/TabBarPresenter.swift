@@ -13,6 +13,7 @@ protocol TabBarPresenterInterface {
 
 final class TabBarPresenter {
     weak var controller: TabBarViewControllerInterface?
+    var xibController: CurrentMusicViewController?
     
     private var router: TabBarRouterInterface?
     
@@ -25,15 +26,19 @@ final class TabBarPresenter {
 
 extension TabBarPresenter: TabBarPresenterInterface {
     func setupXib(with frame: CGRect) {
-        let input = NowIsPlayingModuleInput(frame: frame)
-        let xibView = NowIsPlayingAssembly.nowIsPlayingView(input: input, output: self)
-        controller?.addSubviewOnTabBar(view: xibView)
+        guard let controller = CurrentMusicAssembly.currentMusicViewController(output: self) else {
+            return
+        }
+        
+        xibController = controller
+        controller.view.frame = frame
+        self.controller?.addViewOnTabBar(view: controller.view)
     }
 }
 
 // MARK: - NowIsPlayingOutput
 
-extension TabBarPresenter: NowIsPlayingOutput {
+extension TabBarPresenter: CurrentMusicModuleOutput {
     func showDetail(with index: Int) {
         let input = DetailTrackInput(trackIndex: index, isOpenInBackground: true)
         router?.showDetailTrack(input: input)

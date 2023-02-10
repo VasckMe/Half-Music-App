@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 protocol TabBarViewControllerInterface: AnyObject {
-    func addSubviewOnTabBar(view: UIView?)
+    func addViewOnTabBar(view: UIView?)
 }
 
 final class TabBarViewController: UITabBarController {
@@ -25,7 +25,7 @@ final class TabBarViewController: UITabBarController {
 // MARK: - TabBarViewControlerInterface
 
 extension TabBarViewController: TabBarViewControllerInterface {
-    func addSubviewOnTabBar(view: UIView?) {
+    func addViewOnTabBar(view: UIView?) {
         guard let view = view else {
             return
         }
