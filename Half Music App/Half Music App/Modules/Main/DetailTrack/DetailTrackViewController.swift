@@ -155,7 +155,9 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
     }
     
     func setRepeat() {
-        AudioPlayerManager.shared.isRepeat = repeatOutlet.isSelected
+        repeatOutlet.isSelected
+            ? AudioManager.shared.repeatOn()
+            : AudioManager.shared.repeatOff()
     }
     
     func repeatButtonToggle() {
@@ -163,7 +165,9 @@ extension DetailTrackViewController: DetailTrackViewControllerInterface {
     }
 
     func setShuffle() {
-        AudioPlayerManager.shared.isShuffle = shuffleOutlet.isSelected
+        shuffleOutlet.isSelected
+            ? AudioManager.shared.shuffleOn()
+            : AudioManager.shared.shuffleOff()
     }
     
     func shuffleButtonToggle() {
