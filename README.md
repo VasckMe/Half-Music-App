@@ -23,7 +23,7 @@ In my app you can:
 - Sign In and Sign up flows with email and password verifycation service
 - Onboarding based on SwiftUI
 - Small account view with possibility to modify your account data
-- MVC Architecture (VIPER in progress)
+- VIPER Architecture
 - Custom UI elements and controllers
 - Multithreading (GCD)
 - Network Requests
