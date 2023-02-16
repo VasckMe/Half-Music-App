@@ -8,8 +8,8 @@
 import Foundation
 
 struct Track: Decodable {
-    let album: Album
-    let artists: [Artists]
-    let name: String
-    let preview_url: String
+    let album: Album?
+    let artists: [Artists]?
+    let name: String?
+    let preview_url: String?
 }

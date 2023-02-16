@@ -8,8 +8,8 @@
 import Foundation
 
 struct Album: Decodable {
-    let images: [AlbumImage]
-    let name: String
+    let images: [AlbumImage]?
+    let name: String?
     
     static func convertFromDictionary(dictionary: [String: Any]) -> Album? {
         guard

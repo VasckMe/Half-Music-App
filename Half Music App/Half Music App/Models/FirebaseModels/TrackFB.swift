@@ -15,16 +15,26 @@ struct TrackFB: Equatable {
     
     var ref: DatabaseReference?
 
-    let album: Album
-    let artist: String
+    let album: Album?
+    let artist: String?
     let name: String
-    let preview_url: String
+    let preview_url: String?
 
     init(itemInfo: ItemInfo) {
-        self.album = itemInfo.track.album
-        self.artist = itemInfo.track.artists[0].name
-        self.name = itemInfo.track.name
-        self.preview_url = itemInfo.track.preview_url
+        var trackName = ""
+        
+        itemInfo.track?.name?.forEach {
+            if ".#$[]".contains($0) {
+                trackName.append("")
+            } else {
+                trackName.append($0)
+            }
+        }
+        self.name = trackName
+        self.album = itemInfo.track?.album
+        self.artist = itemInfo.track?.artists?[0].name
+//        self.name = itemInfo.track?.name ?? "track name"
+        self.preview_url = itemInfo.track?.preview_url
         self.ref = nil
     }
 
@@ -64,10 +74,10 @@ struct TrackFB: Equatable {
     
     func convertInDictionary() -> [String : Any] {
         ["Name" : self.name,
-         "Album" : ["Album name" : self.album.name,
-                    "Images" : ["Big image" : self.album.images[0].url,
-                                "Medium image" : self.album.images[1].url,
-                                "Small image" : self.album.images[2].url]],
+         "Album" : ["Album name" : self.album?.name,
+                    "Images" : ["Big image" : self.album?.images?[0].url,
+                                "Medium image" : self.album?.images?[1].url,
+                                "Small image" : self.album?.images?[2].url]],
          "Artist" : self.artist,
          "Preview_url" : self.preview_url]
     }

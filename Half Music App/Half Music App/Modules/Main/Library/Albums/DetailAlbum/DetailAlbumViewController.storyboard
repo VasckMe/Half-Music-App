@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqR-9j-OLb">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail Album View Controller-->
+        <scene sceneID="Zlg-ij-PnU">
+            <objects>
+                <viewController storyboardIdentifier="DetailAlbumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dqR-9j-OLb" customClass="DetailAlbumViewController" customModule="Half_Music_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qnE-q1-dFM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qxa-Wt-ji5">
+                                <rect key="frame" x="20" y="59" width="353" height="739"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-vv-RFR">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="300"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lUe-2i-z6i">
+                                                <rect key="frame" x="51.666666666666686" y="0.0" width="250" height="250"/>
+                                                <color key="backgroundColor" red="0.093671856499999998" green="0.093671856499999998" blue="0.093671856499999998" alpha="0.94691447070000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.179000402" green="0.179000402" blue="0.179000402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="9qR-Mn-VrX"/>
+                                                    <constraint firstAttribute="width" secondItem="lUe-2i-z6i" secondAttribute="height" multiplier="1:1" id="AId-rK-01k"/>
+                                                    <constraint firstAttribute="height" constant="250" id="pW0-Xa-Eg5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhQ-gl-qPF">
+                                                <rect key="frame" x="105.66666666666669" y="270" width="142" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2mm-ni-dX7">
+                                        <rect key="frame" x="0.0" y="315" width="353" height="424"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="dfr-Vp-LUh"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NeK-ZV-AlE"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qxa-Wt-ji5" firstAttribute="top" secondItem="NeK-ZV-AlE" secondAttribute="top" id="4v3-ud-mRF"/>
+                            <constraint firstItem="NeK-ZV-AlE" firstAttribute="bottom" secondItem="qxa-Wt-ji5" secondAttribute="bottom" constant="20" id="Mdg-U6-oE0"/>
+                            <constraint firstItem="NeK-ZV-AlE" firstAttribute="trailing" secondItem="qxa-Wt-ji5" secondAttribute="trailing" constant="20" id="ZQY-lH-9Ci"/>
+                            <constraint firstItem="qxa-Wt-ji5" firstAttribute="leading" secondItem="NeK-ZV-AlE" secondAttribute="leading" constant="20" id="iHo-hw-dvy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s5M-Vh-jZb">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="DsG-ux-LF4">
+                            <connections>
+                                <action selector="editAction:" destination="dqR-9j-OLb" id="086-A5-Y3H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="albumImageView" destination="lUe-2i-z6i" id="SpJ-SH-luF"/>
+                        <outlet property="albumTitleLabel" destination="lhQ-gl-qPF" id="eqn-XT-jb6"/>
+                        <outlet property="albumTracksTableView" destination="2mm-ni-dX7" id="Lsq-Lk-DCv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Yn-Mr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3337" y="739"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

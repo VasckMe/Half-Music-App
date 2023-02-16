@@ -8,5 +8,5 @@
 import Foundation
 
 struct Audio: Decodable {
-    let items: [ItemInfo]
+    let items: [ItemInfo]?
 }
