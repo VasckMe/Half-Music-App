@@ -1,5 +1,10 @@
 # Half-Music-App
 
+## Attention
+
+1. This project need to be updated with new FireBase Realtime DB token
+2. The rapid music API also have to be updated
+
 ## Information
 
 Half Music is an open source app. 
